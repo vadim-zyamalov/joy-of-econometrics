@@ -1,0 +1,57 @@
+texpreamble("\usepackage{fontspec}\usepackage{unicode-math}\setmainfont{Noto Sans}\setmathfont{Noto Sans Math}");
+
+settings.tex = "xelatex";
+settings.outformat = "pdf";
+settings.prc = false;
+settings.render = 0;
+
+unitsize(2mm);
+
+import graph;
+import stats;
+import myfunc;
+
+int n = 300;
+real sgm = 4, xmax = 60, a0 = -10, a1 = .5;
+
+using rr = real(real);
+rr EY(real a0, real a1, real sgm) {
+		return new real(real x) {
+		real z = a0 + a1 * x;
+		return cdfGaussian(z / sgm) * z + sgm * Gaussian(z / sgm);
+	};
+};
+
+file fin = input("../tobit.txt").line();
+real[][] data = fin;
+data = transpose(data);
+real[] x = data[0], y = data[1];
+close(fin);
+
+file fin = input("../tobit_betas.txt").line();
+real[][] betas = fin;
+real[] ltrue = betas[0], lskew = betas[1], ltrim = betas[2], ltobit = betas[3];
+close(fin);
+
+for (int i=0; i < n; ++i) {
+	if (y[i] > 0) {
+		filldraw(Circle((x[i], y[i]), .3), black, black);
+	} else {
+		filldraw(Circle((x[i], y[i]), .3), gray(.66), gray(.66));
+		filldraw(Circle((x[i], 0), .3), white, black+.5bp);
+	}
+}
+
+draw((0, ltrue[1])--(xmax, ltrue[1] + ltrue[0] * xmax), black+dashed, legend="True");
+draw((0, lskew[1])--(xmax, lskew[1] + lskew[0] * xmax), red+1bp, legend="Censored");
+draw((0, ltrim[1])--(xmax, ltrim[1] + ltrim[0] * xmax), orange+1bp, legend="Trimmed");
+
+draw(graph(x, map(EY(ltobit[1], ltobit[0], sgm), x)), blue+1bp, legend="Tobit");
+
+xaxis("$x$", xmin=0, arrow=Arrow(TeXHead));
+yaxis("$y$", arrow=Arrow(TeXHead));
+
+add(scale(.5)*legend(hstretch=true, vstretch=true), (xmax, min(y)), align=NW);
+
+shipout("tobit");
+abort();

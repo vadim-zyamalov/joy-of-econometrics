@@ -1,0 +1,2184 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass extarticle
+\begin_preamble
+\usepackage{praeambel}
+\usepackage[mathb]{mathabx}
+\usepackage{icomma}
+\VerbatimFootnotes
+\raggedbottom
+\end_preamble
+\use_default_options true
+\begin_modules
+enumitem
+graphicboxes
+\end_modules
+\maintain_unincluded_children no
+\language russian
+\language_package none
+\inputencoding utf8
+\fontencoding default
+\font_roman "default" "PT Astra Serif"
+\font_sans "default" "PT Astra Sans"
+\font_typewriter "default" "Cascadia Code"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype true
+\use_dash_ligatures false
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command biber
+\index_command default
+\float_placement class
+\float_alignment class
+\paperfontsize 12
+\spacing onehalf
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize a4
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine biblatex
+\cite_engine_type authoryear
+\biblio_style plain
+\biblatex_bibstyle gost-authoryear-min
+\biblatex_citestyle gost-authoryear
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 0
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style russian
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content true
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "~/AppData/Roaming/LyX2.4/templates/ru/Articles/trinkets.lyx"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+Лекция 5
+\end_layout
+
+\begin_layout SubTitle
+Модели условной гетероскедастичности
+\end_layout
+
+\begin_layout Author
+Зямалов В.Е.
+\end_layout
+
+\begin_layout Section
+ARCH
+\end_layout
+
+\begin_layout Standard
+В обычных эконометрических моделях дисперсия случайной компоненты считается постоянной.
+ Однако рис.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:1"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ показывает,
+ что многие экономические временные ряды имеют периоды с необычно высокой волатильностью,
+ за которыми следуют периоды относительного спокойствия.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+alignment document
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename data/fig_3_3.png
+	width 75text%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Процентное изменение индекса NYSE U.S.
+ 100 (4 января 2000 —
+ 16 июля 2012)
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:1"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Данный факт можно смоделировать при помощи дополнительной переменной.
+ Например,
+ 
+\begin_inset Formula 
+\[
+y_{t+1}=\varepsilon_{t+1}x_{t}
+\]
+
+\end_inset
+
+где:
+ 
+\begin_inset Formula $y_{t+1}$
+\end_inset
+
+ —
+ интересующая нас переменная,
+ 
+\begin_inset Formula $\varepsilon_{t+1}$
+\end_inset
+
+ —
+ белый шум с дисперсией 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $x_{t}$
+\end_inset
+
+ —
+ независимая переменная,
+ наблюдаемая в момент 
+\begin_inset Formula $t$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Если 
+\begin_inset Formula $x_{t}=x_{t-1}=x_{t-2}=\dots=const$
+\end_inset
+
+,
+ то последовательность 
+\begin_inset Formula $\{y_{t}\}$
+\end_inset
+
+ является знакомым нам процессом белого шума с постоянной дисперсией.
+ Однако,
+ когда реализации процесса 
+\begin_inset Formula $\{x_{t}\}$
+\end_inset
+
+ не равны друг другу,
+ условная дисперсия 
+\begin_inset Formula $y_{t+1}$
+\end_inset
+
+ при наблюдаемом значении 
+\begin_inset Formula $x_{t}$
+\end_inset
+
+ равна 
+\begin_inset Formula 
+\[
+\Var\left[y_{t+1}\mid x_{t}\right]=x_{t}^{2}\sigma^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Энгл
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "engle1982autoregressive"
+literal "false"
+
+\end_inset
+
+ показал,
+ что возможно одновременное моделирование среднего значения и дисперсии временного ряда.
+ Модель может быть описана как 
+\begin_inset Formula 
+\[
+\begin{aligned}y_{t} & =\mu_{t}+\varepsilon_{t}\\
+\varepsilon_{t} & =\sqrt{h_{t}}\nu_{t}\\
+\nu_{t} & \sim WN\!\left(0,1\right)
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Простым способом является моделирование условной дисперсии как процесса AR(
+\begin_inset Formula $q$
+\end_inset
+
+) с использованием 
+\series bold
+квадратов
+\series default
+ ошибок 
+\begin_inset Formula 
+\begin{equation}
+h_{t}=\omega+\alpha_{1}\varepsilon_{t-1}^{2}+\alpha_{2}\varepsilon_{t-2}^{2}+\dots+\alpha_{q}\varepsilon_{t-q}^{2}
+\end{equation}
+
+\end_inset
+
+Данная модель описывает условную дисперсию 
+\begin_inset Formula $\Var(\varepsilon_{t}\mid\Omega_{t-1})$
+\end_inset
+
+.
+ При этом безусловная дисперсия равна 
+\begin_inset Formula 
+\begin{align}
+\Var\varepsilon_{t}=\E\varepsilon_{t}^{2} & =\E h_{t}=\nonumber \\
+ & =\omega+\alpha_{1}\E\varepsilon_{t-1}^{2}+\dots+\alpha_{q}\E\varepsilon_{t-q}^{2}=\nonumber \\
+ & =\omega+\alpha_{1}\Var\varepsilon_{t-1}+\dots+\alpha_{q}\Var\varepsilon_{t-q}\nonumber \\
+\Var\varepsilon_{t} & =\frac{\omega}{1-\sum_{i=1}^{q}\alpha_{i}}\label{eq:ARCH-2}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Выражение
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:ARCH-2"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ показывает,
+ что для стационарности 
+\begin_inset Formula $y_{t}$
+\end_inset
+
+ необходимо,
+ чтобы 
+\begin_inset Formula $\sum_{i=1}^{q}\alpha_{i}<1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Также не стоит забывать,
+ что 
+\begin_inset Formula $\sigma_{t}^{2}\geqslant0$
+\end_inset
+
+,
+ для чего 
+\begin_inset Formula $\omega>0$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\alpha_{i}>0,\ \forall i$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+GARCH
+\end_layout
+
+\begin_layout Standard
+Условие 
+\begin_inset Formula $\alpha_{i}>0,\ \forall i$
+\end_inset
+
+ может быть проблемой,
+ если 
+\begin_inset Formula $q$
+\end_inset
+
+ достаточно большое.
+ По аналогии с AR/ARMA хотелось бы как-то сократить число оцениваемых параметров.
+\end_layout
+
+\begin_layout Standard
+Боллерслев
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "bollerslev1986generalized"
+literal "false"
+
+\end_inset
+
+ разработал методику,
+ позволяющую условной дисперсии быть ARMA процессом.
+ Рассмотрим процесс 
+\begin_inset Formula 
+\[
+\begin{aligned}y_{t} & =\mu_{t}+\varepsilon_{t}\\
+\varepsilon_{t} & =\sqrt{h_{t}}\nu_{t}\\
+\nu_{t} & \sim WN\!\left(0,1\right)
+\end{aligned}
+\]
+
+\end_inset
+
+где 
+\begin_inset Formula 
+\begin{equation}
+h_{t}=\omega+\sum\limits_{i=1}^{q}\alpha_{i}\varepsilon_{t-i}^{2}+\sum\limits_{i=1}^{p}\beta_{i}h_{t-i}\label{eq:GARCH-1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Очевидно,
+ что более краткая модель влечет за собой меньшее число ограничений.
+ Кроме того,
+ для гарантии конечности дисперсии,
+ все характеристические корни уравнения
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:GARCH-1"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ должны лежать вне единичного круга для обеспечения стабильности ARMA процесса.
+\end_layout
+
+\begin_layout Subsection
+Тестирование ARCH/GARCH
+\end_layout
+
+\begin_layout Standard
+Если модель для 
+\begin_inset Formula $y_{t}$
+\end_inset
+
+ адекватна,
+ то автокорреляционная функция (ACF) и частная автокорреляционная функция (PACF) остатков должны показывать нам процесс белого шума.
+ Однако,
+ ACF 
+\series bold
+квадратов
+\series default
+ остатков может помочь в идентификации порядка GARCH процесса.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument listpreamble:1
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+tightlist
+\end_layout
+
+\end_inset
+
+Постройте «наилучшую» модель 
+\begin_inset Formula $y_{t}$
+\end_inset
+
+.
+ Получите квадраты остатков и рассчитайте оценку безусловной дисперсии 
+\begin_inset Formula 
+\[
+\hat{\sigma}^{2}=\frac{1}{T}\sum_{i=1}^{T}\hat{\varepsilon}_{t}^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Рассчитайте и отметьте на графике выборочные автокорреляции квадратов остатков 
+\begin_inset Formula 
+\[
+\rho_{i}=\frac{\sum\limits_{t=i+1}^{T}(\hat{\varepsilon}_{t}^{2}-\hat{\sigma}^{2})(\hat{\varepsilon}_{t-i}^{2}-\hat{\sigma}^{2})}{\sum\limits_{t=1}^{T}(\hat{\varepsilon}_{t}^{2}-\hat{\sigma}^{2})^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Как показыает теория
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "enders2015applied"
+posttextlist "enders2015applied гл. 2"
+literal "false"
+
+\end_inset
+
+,
+ на больших выборках стандартное отклонение 
+\begin_inset Formula $\rho_{i}$
+\end_inset
+
+ может быть приблизительно вычислено как 
+\begin_inset Formula $T^{-1/2}$
+\end_inset
+
+.
+ Отдельные значения 
+\begin_inset Formula $\rho_{i}$
+\end_inset
+
+,
+ значимо отличающиеся от нуля,
+ являются показателями GARCH ошибок.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Для тестирования также могут быть использованы 
+\begin_inset Formula $Q$
+\end_inset
+
+-статистики Льюнг-Бокса.
+ Статистика 
+\begin_inset Formula 
+\[
+Q=T(T+2)\sum\limits_{i=1}^{n}\frac{\rho_{i}^{2}}{T-i}
+\]
+
+\end_inset
+
+имеет асимптотическое распределение 
+\begin_inset Formula $\chi^{2}$
+\end_inset
+
+ с 
+\begin_inset Formula $n$
+\end_inset
+
+ степенями свободы в случае,
+ когда последовательность 
+\begin_inset Formula $\{\hat{\varepsilon}_{t}^{2}\}$
+\end_inset
+
+ последовательно некоррелирована.
+ Отклонение нулевой гипотезы о последовательной некоррелированности последовательности 
+\begin_inset Formula $\{\hat{\varepsilon}_{t}^{2}\}$
+\end_inset
+
+ эквивалентно отклонению нулевой гипотезы об отсутствии ARCH или GARCH ошибок.
+ На практике имеет смысл рассматривать 
+\begin_inset Formula $n$
+\end_inset
+
+ вплоть до 
+\begin_inset Formula $T/4$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Более формальное тестирование можно провести при помощи теста МакЛеода-Ли
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "mcleod1983diagnostic"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument listpreamble:1
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+tightlist
+\end_layout
+
+\end_inset
+
+Постройте «наилучшую» модель 
+\begin_inset Formula $y_{t}$
+\end_inset
+
+.
+ Получите квадраты остатков.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Оцените уравнение регрессии следующего вида 
+\begin_inset Formula 
+\[
+\hat{\varepsilon}_{t}^{2}=\omega+\alpha_{1}\hat{\varepsilon}_{t-1}^{2}+\alpha_{2}\hat{\varepsilon}_{t-2}^{2}+\dots+\alpha_{q}\hat{\varepsilon}_{t-q}^{2}+\nu_{t}
+\]
+
+\end_inset
+
+При отсутствии ARCH или GARCH эффектов оцененные значения 
+\begin_inset Formula $\alpha_{1},...,\alpha_{q}$
+\end_inset
+
+ должны быть равны нулю.
+ При нулевой гипотезе отсутствия ARCH эффектов тестовая статистика 
+\begin_inset Formula $TR^{2}$
+\end_inset
+
+ сходится к распределению 
+\begin_inset Formula $\chi^{2}$
+\end_inset
+
+ с 
+\begin_inset Formula $q$
+\end_inset
+
+ степенями свободы.
+ На малых выборках,
+ обычно используемых в практических работах,
+ было показано,
+ что 
+\begin_inset Formula $F$
+\end_inset
+
+-тест для нулевой гипотезы 
+\begin_inset Formula $\alpha_{1}=\dots=\alpha_{q}=0$
+\end_inset
+
+ превосходит тест 
+\begin_inset Formula $\chi^{2}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsection
+Свойства процессов GARCH(1,
+ 1)
+\end_layout
+
+\begin_layout Description
+\begin_inset Argument listpreamble:1
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+tightlist
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+Математическое ожидание 
+\backslash
+(
+\backslash
+varepsilon_t
+\backslash
+)
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\E\varepsilon_{t}=\E\left[\sqrt{h_{t}}\nu_{t}\right]=\E(\sqrt{h_{t}})\E\nu_{t}=0$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Description
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+Дисперсия 
+\backslash
+(
+\backslash
+varepsilon_t
+\backslash
+)
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\varepsilon_{t}^{2}=\nu_{t}^{2}(\omega+\alpha_{1}\varepsilon_{t-1}^{2}+\beta_{1}h_{t-1})$
+\end_inset
+
+ откуда следует 
+\begin_inset Formula 
+\[
+\E\varepsilon_{t}^{2}=\E\nu_{t}^{2}\times(\omega+\alpha_{1}\E\varepsilon_{t-1}^{2}+\beta_{1}\E h_{t-1})
+\]
+
+\end_inset
+
+Так как 
+\begin_inset Formula $\E\varepsilon_{t}^{2}=\E(\E_{t-1}\varepsilon_{t}^{2})=\E h_{t}$
+\end_inset
+
+ и 
+\begin_inset Formula $\E\varepsilon_{t}^{2}=\E\varepsilon_{t-1}^{2}$
+\end_inset
+
+,
+ то 
+\begin_inset Formula 
+\[
+\E\varepsilon_{t}^{2}=\frac{\omega}{1-\alpha_{1}-\beta_{1}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+Автокорреляционная функция
+\end_layout
+
+\end_inset
+
+ Рассмотрим 
+\begin_inset Formula 
+\[
+\E\varepsilon_{t}\varepsilon_{t-j}=\E\left[\nu_{t}\sqrt{h_{t}}\nu_{t-j}\sqrt{h_{t-j}}\right]
+\]
+
+\end_inset
+
+Так как 
+\begin_inset Formula $h_{t}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\nu_{t-j}$
+\end_inset
+
+ и 
+\begin_inset Formula $h_{t-j}$
+\end_inset
+
+ не зависят от значений 
+\begin_inset Formula $\nu_{t}$
+\end_inset
+
+ и 
+\begin_inset Formula $E\nu_{t}$
+\end_inset
+
+ = 0,
+ из этого следует,
+ что все автокорреляции равны нулю для 
+\begin_inset Formula $j\neq0$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Description
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+Условная дисперсия
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\E_{t-1}\varepsilon_{t}^{2}=\E_{t-1}\nu_{t}^{2}h_{t}=\E_{t-1}\nu_{t}^{2}\E_{t-1}h_{t}=h_{t}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Subsection
+Качество подгонки
+\end_layout
+
+\begin_layout Standard
+Так как «чистые» инновации в модели GARCH задаются последовательностью 
+\begin_inset Formula $\{\nu_{t}\}$
+\end_inset
+
+,
+ то разумно использовать в качеcтве простейшей меры 
+\begin_inset Formula 
+\[
+{RSS}'=\sum_{t=1}^{T}\hat{\nu}_{t}^{2}=\sum_{t=1}^{T}\frac{\hat{\varepsilon}_{t}^{2}}{\hat{h}_{t}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Также в качестве меры качетсва модели можно рассматривать значение функции првдободобия 
+\begin_inset Formula 
+\[
+2\ln L=-\sum_{t=1}^{T}\left[\ln\hat{h}_{t}+\frac{\hat{\varepsilon}_{t}^{2}}{\hat{h}_{t}}\right]-{\underbrace{T\ln{(2\pi)}}_{\text{часто опускается}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Если вас интересует получение максимально экономной модели,
+ то можно построить информационные критерии 
+\begin_inset Formula 
+\[
+\begin{aligned}AIC & =-2\ln L+2n\\
+SBC & =-2\ln L+n\ln(t)
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Прогнозирование условной дисперсии
+\end_layout
+
+\begin_layout Standard
+Прогноз условной дисперсии на один шаг вперед получить легко (рассмотрим пример GARCH(1,
+ 1)):
+ 
+\begin_inset Formula 
+\[
+h_{t+1}=\omega+\alpha_{1}\varepsilon_{t}^{2}+\beta_{1}h_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Прогноз на 
+\begin_inset Formula $j$
+\end_inset
+
+ шагов вперед построить несклько сложнее.
+ Для начала отметим,
+ что 
+\begin_inset Formula 
+\[
+\E_{t}\varepsilon_{t+j}^{2}=\E_{t}(h_{t+j}\nu_{t+j}^{2})=\E_{t}(h_{t+j})\E_{t}(\nu_{t+j}^{2})=\E_{t}(h_{t+j})
+\]
+
+\end_inset
+
+При этом 
+\begin_inset Formula 
+\[
+\E_{t}h_{t+j}=\omega+\E_{t}\varepsilon_{t+j-1}^{2}+\beta_{1}\E_{t}h_{t+j-1}
+\]
+
+\end_inset
+
+Если совместить эти два выражения,
+ то получим 
+\begin_inset Formula 
+\begin{equation}
+\E_{t}h_{t+j}=\omega+(\alpha_{1}+\beta_{1})\E_{t}h_{t+j-1}\underset{j\rightarrow\infty}{\rightarrow}\frac{\omega}{1-\alpha_{1}-\beta_{1}}\label{GARCH(1,1)-F}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Аналогично можно показать,
+ что для ARCH(
+\begin_inset Formula $q$
+\end_inset
+
+) 
+\begin_inset Formula 
+\[
+\E_{t}h_{t+j}\underset{j\rightarrow\infty}{\rightarrow}\frac{\omega}{1-\sum_{i=1}^{q}\alpha_{i}}=\frac{\omega}{1-\alpha(1)}
+\]
+
+\end_inset
+
+а для GARCH(
+\begin_inset Formula $p$
+\end_inset
+
+,
+ 
+\begin_inset Formula $q$
+\end_inset
+
+)
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "bollerslev1986generalized"
+literal "false"
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{equation}
+\E_{t}h_{t+j}\underset{j\rightarrow\infty}{\rightarrow}\frac{\omega}{1-\sum_{i=1}^{q}\alpha_{i}-\sum_{i=1}^{p}\beta_{i}}=\frac{\omega}{1-\alpha(1)-\beta(1)}\label{eq:GARCH-LR}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Другие одномерные модели
+\end_layout
+
+\begin_layout Subsection
+Модель ARCH-M
+\end_layout
+
+\begin_layout Standard
+Энгл,
+ Лилиен и Робинс
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "engle1987estimating"
+literal "false"
+
+\end_inset
+
+ расширили ARCH подход так,
+ что 
+\begin_inset Formula $\mu_{t}$
+\end_inset
+
+ могло бы зависеть от условной дисперсии 
+\begin_inset Formula $h_{t}$
+\end_inset
+
+.
+ Этот класс моделей,
+ названный моделью ARCH в среднем (ARCH-M),
+ является особенно подходящим для исследования рынков активов.
+ Основная идея заключается в том,
+ что агенты,
+ не склонные к риску,
+ требуют компенсации за владение рисковыми активами.
+ 
+\begin_inset Formula 
+\[
+\begin{aligned}y_{t} & =\mu_{t}+\varepsilon_{t}\\
+\varepsilon_{t} & =\sqrt{h_{t}}\nu_{t}\\
+\mu_{t} & =\beta+\delta h_{t}\\
+h_{t} & =\omega+\sum_{i=1}^{q}\alpha_{i}\varepsilon_{t-i}^{2}\\
+\nu_{t} & \sim WN\!\left(0,1\right)
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+IGARCH
+\end_layout
+
+\begin_layout Standard
+В финансовых временных рядах условная волатильность,
+ как правило,
+ очень стойкая.
+ В самом деле,
+ если оценить модель GARCH(1,1),
+ используя длинные ряды доходности акций,
+ мы обнаружим,
+ что сумма 
+\begin_inset Formula $\alpha_{1}$
+\end_inset
+
+ и 
+\begin_inset Formula $\beta_{1}$
+\end_inset
+
+ близка к единице.
+\end_layout
+
+\begin_layout Standard
+Нельсон
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "nelson1990stationarity"
+literal "false"
+
+\end_inset
+
+ отмечал,
+ что ограничение 
+\begin_inset Formula $\alpha_{1}+\beta_{1}=1$
+\end_inset
+
+ может привести к очень лаконичному описанию распределения доходности активов.
+ В некотором отношении,
+ это ограничение вынуждает условную дисперсию вести себя подобно процессу с единичным корнем.
+\end_layout
+
+\begin_layout Standard
+Из
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "GARCH(1,1)-F"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ следует,
+ что прогноз условной дисперсии на один шаг вперед равен 
+\begin_inset Formula 
+\[
+\E_{t}h_{t+1}=\omega+h_{t}
+\]
+
+\end_inset
+
+а прогноз на 
+\begin_inset Formula $j$
+\end_inset
+
+ шагов вперед равен 
+\begin_inset Formula 
+\[
+\E_{t}h_{t+j}=j\omega+h_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Однако,
+ мы можем записать условную дисперсию как 
+\begin_inset Formula 
+\[
+h_{t}=\omega+\left(1-\beta_{1}\right)\varepsilon_{t-1}^{2}+\beta_{1}Lh_{t}
+\]
+
+\end_inset
+
+и,
+ решая относительно 
+\begin_inset Formula $h_{t}$
+\end_inset
+
+,
+ 
+\begin_inset Formula 
+\[
+h_{t}=\frac{\omega}{1-\beta_{1}}+\left(1-\beta_{1}\right)\sum\limits_{i=0}^{\infty}\beta_{1}^{i}\varepsilon_{t-1-i}^{2}
+\]
+
+\end_inset
+
+В отличие от действительно нестационарного процесса,
+ условная дисперсия является геометрически 
+\emph on
+убывающей
+\emph default
+ функцией от текущей и прошлых реализаций последовательности 
+\begin_inset Formula $\{\varepsilon_{t}^{2}\}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Модели с объясняющими переменными
+\end_layout
+
+\begin_layout Standard
+Точно также как модель среднего может включать в себя объясняющие переменные,
+ так и спецификация 
+\begin_inset Formula $h_{t}$
+\end_inset
+
+ также позволяет включать в себя экзогенные переменные.
+\end_layout
+
+\begin_layout Subsection
+Модели с асимметрией:
+ TARCH и EGARCH
+\end_layout
+
+\begin_layout Standard
+Интересной особенностью цен активов является то,
+ что «плохие» новости,
+ по-видимому,
+ оказывают более выраженный эффект на волатильность,
+ чем «хорошие» новости.
+ Глостен,
+ Джаганаттан и Ранкл
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "glosten1993relation"
+literal "false"
+
+\end_inset
+
+ показали,
+ как можно смоделировать различное влияние положительных и отрицательных новостей на волатильность.
+\end_layout
+
+\begin_layout Standard
+Рассмотрим пороговый GARCH (TARCH) процесс 
+\begin_inset Formula 
+\[
+h_{t}=\omega+\alpha_{1}\varepsilon_{t-1}^{2}+\lambda_{1}d_{t-1}\varepsilon_{t-1}^{2}+\beta_{1}h_{t-1}
+\]
+
+\end_inset
+
+где 
+\begin_inset Formula $d_{t-1}$
+\end_inset
+
+ —
+ дамми переменная,
+ равная единице,
+ если 
+\begin_inset Formula $\varepsilon_{t-1}<0$
+\end_inset
+
+,
+ и нулю,
+ если 
+\begin_inset Formula $\varepsilon_{t-1}\geqslant0$
+\end_inset
+
+.
+ Если 
+\begin_inset Formula $\lambda_{1}>0$
+\end_inset
+
+ и статистически значима,
+ то негативные шоки будут иметь больший эффект,
+ чем позитивные.
+\end_layout
+
+\begin_layout Standard
+Одной из проблем стандартной GARCH модели является необходимость строгой положительности всех оцененных коэффициентов.
+ Нельсон
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "nelson1991conditional"
+literal "false"
+
+\end_inset
+
+ предложил спецификацию,
+ которая не требует этих ограничений.
+ Рассмотрим экспоненциальную GARCH (EGARCH) модель 
+\begin_inset Formula 
+\[
+\ln(h_{t})=\omega+\alpha_{1}{\underbrace{\frac{\varepsilon_{t-1}}{\sqrt{h_{t-1}}}}_{\nu_{t}}}+\lambda_{1}\left|\frac{\varepsilon_{t-1}}{\sqrt{h_{t-1}}}\right|+\beta_{1}\ln(h_{t-1})
+\]
+
+\end_inset
+
+Так как модель записана в лог-линейной форме,
+ то ограничения на коэффициенты снимаются,
+ ведь 
+\begin_inset Formula $\exp(\ln h_{t})>0,\;\forall h_{t}$
+\end_inset
+
+.
+ Наличие в уравнении стандартизованных ошибок 
+\begin_inset Formula $\varepsilon_{t}$
+\end_inset
+
+ 
+\series bold
+вместе
+\series default
+ с их абсолютным значением позволяет моделировать асимметричные реакции:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Argument listpreamble:1
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+tightlist
+\end_layout
+
+\end_inset
+
+Если значение 
+\begin_inset Formula $\frac{\varepsilon_{t-1}}{\sqrt{h_{t-1}}}$
+\end_inset
+
+ положительно,
+ то эффект шока на логарифм условной дисперсии равен 
+\begin_inset Formula $\alpha_{1}+\lambda_{1}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Если значение 
+\begin_inset Formula $\frac{\varepsilon_{t-1}}{\sqrt{h_{t-1}}}$
+\end_inset
+
+ отрицательно,
+ то эффект шока на логарифм условной дисперсии равен 
+\begin_inset Formula $-\alpha_{1}+\lambda_{1}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Тестирование асимметрии
+\end_layout
+
+\begin_layout Standard
+Одним из способов тестирования наличия эффекта левериджа является оценивание TARCH или EGARCH модели с проведением t-теста для нулевой гипотезы 
+\begin_inset Formula $\hat{\lambda}_{1}=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Другим способом является следующий:
+ после оценивания ARCH или GARCH модели постройте стандартизованные остатки 
+\begin_inset Formula 
+\[
+s_{t}=\frac{\hat{\varepsilon}_{t}}{\sqrt{\hat{h}_{t}}}
+\]
+
+\end_inset
+
+После оцените регрессию вида 
+\begin_inset Formula 
+\[
+s_{t}^{2}=a_{0}+a_{1}s_{t-1}+a_{2}s_{t-2}+\dots
+\]
+
+\end_inset
+
+При отсутствии эффекта асимметрии квадраты ошибок должны быть некоррелированными с уровнем ошибок.
+ Следовательно вы можете сделать вывод об отсутствии эффекта,
+ если выборочное значение 
+\begin_inset Formula $F$
+\end_inset
+
+ для нулевой гипотезы 
+\begin_inset Formula $a_{1}=a_{2}=\dots$
+\end_inset
+
+ превышает табличное критическое значение.
+\end_layout
+
+\begin_layout Standard
+Энгл и Ын
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "engle1993measuring"
+literal "false"
+
+\end_inset
+
+ разработали другой способ определения того,
+ оказывают ли положительные и отрицательные шоки различное влияние на условную дисперсию.
+ Пусть 
+\begin_inset Formula $d_{t-1}$
+\end_inset
+
+ —
+ дамми переменная,
+ равная 1 при 
+\begin_inset Formula $\hat{\varepsilon}_{t-1}<0$
+\end_inset
+
+,
+ и 0 в противном случае.
+ Оцените регрессию вида 
+\begin_inset Formula 
+\[
+s_{t}^{2}=a_{0}+a_{1}d_{t-1}+\nu_{t}
+\]
+
+\end_inset
+
+или в более общем виде 
+\begin_inset Formula 
+\[
+s_{t}^{2}=a_{0}+a_{1}d_{t-1}+a_{2}d_{t-1}s_{t-1}+a_{3}(1-d_{t-1})s_{t-1}+\nu_{t}
+\]
+
+\end_inset
+
+Для проведения теста надо протестировать гипотезу 
+\begin_inset Formula $a_{1}=0$
+\end_inset
+
+ для первой модели или 
+\begin_inset Formula $a_{1}=a_{2}=a_{3}=0$
+\end_inset
+
+ для второй.
+\end_layout
+
+\begin_layout Section
+Многомерные модели
+\end_layout
+
+\begin_layout Standard
+Для упрощения рассмотрим двумерный случай 
+\begin_inset Formula 
+\[
+\begin{aligned}y_{1,t} & =\mu_{1,t}+\varepsilon_{1,t}\\
+y_{2,t} & =\mu_{2,t}+\varepsilon_{2,t}\\
+\varepsilon_{1,t} & =\nu_{1,t}\sqrt{h_{11,t}}\\
+\varepsilon_{2,t} & =\nu_{2,t}\sqrt{h_{22,t}}\\
+\E_{t-1}(\varepsilon_{1,t}\varepsilon_{2,t}) & =h_{12,t}\\
+\nu_{i,t} & \sim WN\!\left(0,1\right),\ i=1,2
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+VECH-модель
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left(\begin{array}{c}
+h_{1,t}\\
+h_{12,t}\\
+h_{2,t}
+\end{array}\right)=A_{0}+A_{1}\left(\begin{array}{c}
+\varepsilon_{1,t-1}^{2}\\
+\varepsilon_{1,t-1}\varepsilon_{2,t-1}\\
+\varepsilon_{2,t-1}^{2}
+\end{array}\right)+B_{1}\left(\begin{array}{c}
+h_{1,t-1}\\
+h_{12,t-1}\\
+h_{2,t}
+\end{array}\right)
+\]
+
+\end_inset
+
+где 
+\begin_inset Formula $A_{0}=(3\times1)$
+\end_inset
+
+,
+ 
+\begin_inset Formula $A_{1}=(3\times3)$
+\end_inset
+
+,
+ 
+\begin_inset Formula $B_{1}=(3\times3)$
+\end_inset
+
+.
+ Итого 
+\begin_inset Formula $3+9+9=21$
+\end_inset
+
+ коэффициент
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Если бы мы рассматривали трехмерный случай,
+ то число коэффициентов было бы равно 
+\begin_inset Formula $6+36+36=78$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+!
+\end_layout
+
+\begin_layout Standard
+Как сократить число коэффициентов?
+ Один из путей —
+ диагонализация VECH-модели.
+ 
+\begin_inset Formula 
+\begin{multline*}
+\left(\begin{array}{c}
+h_{1,t}\\
+h_{12,t}\\
+h_{2,t}
+\end{array}\right)=\left(\begin{array}{c}
+\alpha_{1,0}\\
+\alpha_{2,0}\\
+\alpha_{3,0}
+\end{array}\right)+\left(\begin{array}{ccc}
+\alpha_{11} & 0 & 0\\
+0 & \alpha_{22} & 0\\
+0 & 0 & \alpha_{33}
+\end{array}\right)\left(\begin{array}{c}
+\varepsilon_{1,t-1}^{2}\\
+\varepsilon_{1,t-1}\varepsilon_{2,t-1}\\
+\varepsilon_{2,t-1}^{2}
+\end{array}\right)+\\
+\left(\begin{array}{ccc}
+\beta_{11} & 0 & 0\\
+0 & \beta_{22} & 0\\
+0 & 0 & \beta_{33}
+\end{array}\right)\left(\begin{array}{c}
+h_{1,t-1}\\
+h_{12,t-1}\\
+h_{2,t}
+\end{array}\right)
+\end{multline*}
+
+\end_inset
+
+Однако данная постановка модели теряет возможность моделирования «перелива» волатильности.
+\end_layout
+
+\begin_layout Subsection
+BEKK-модель
+\end_layout
+
+\begin_layout Standard
+Энгл и Кронер
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "engle1995multivariate"
+literal "false"
+
+\end_inset
+
+ предложили 
+\series bold
+BEKK
+\series default
+-модель следующего вида 
+\begin_inset Formula 
+\[
+\begin{aligned}H_{t} & =A_{0}^{\prime}A_{0}+A_{1}^{\prime}\varepsilon_{t-1}^{\prime}\varepsilon_{t-1}A_{1}+B_{1}^{\prime}H_{t-1}B_{1}\\
+H_{t} & =\left(\begin{array}{cc}
+h_{1,t} & h_{12,t}\\
+h_{21,t} & h_{2,t}
+\end{array}\right)
+\end{aligned}
+\]
+
+\end_inset
+
+где 
+\begin_inset Formula $A_{0}=(2\times2)$
+\end_inset
+
+ —
+ треугольная,
+ 
+\begin_inset Formula $A_{1}=(2\times2)$
+\end_inset
+
+,
+ 
+\begin_inset Formula $B_{1}=(2\times2)$
+\end_inset
+
+.
+ Простое условие 
+\begin_inset Formula $A_{0}^{11}>0$
+\end_inset
+
+,
+ 
+\begin_inset Formula $A_{0}^{22}>0$
+\end_inset
+
+,
+ 
+\begin_inset Formula $A_{1}^{11}>0$
+\end_inset
+
+,
+ 
+\begin_inset Formula $B_{1}^{11}>0$
+\end_inset
+
+ делает эту модель оцениваемой однозначно.
+\end_layout
+
+\begin_layout Subsection
+CCC/DCC-модели
+\end_layout
+
+\begin_layout Standard
+Боллерслев
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "bollerslev1990modelling"
+literal "false"
+
+\end_inset
+
+ рассмотрел 
+\series bold
+модель постоянных корреляций (CCC)
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+Суть модели в том,
+ что 
+\begin_inset Formula 
+\[
+h_{ij,t}=\rho_{ij}\sqrt{h_{i,t}h_{j,t}},\ \forall i\neq j
+\]
+
+\end_inset
+
+то есть условная ковариация всегда пропорциональна условным дисперсиям.
+ Один параметр вместо семи!
+ Теоретическая формула для матрицы корреляций имеет вид 
+\begin_inset Formula 
+\[
+R=\frac{1}{T}\sum_{t=1}^{T}\nu_{t}\nu'_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Энгл
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "engle2002dynamic"
+literal "false"
+
+\end_inset
+
+ обобщил данную модель,
+ сняв предположение о постоянстве корреляции 
+\begin_inset Formula $\rho_{ij}$
+\end_inset
+
+.
+ Модель описывается следующим образом 
+\begin_inset Formula 
+\[
+\begin{aligned}r_{t}\coloneq y_{t}-\mu_{t} & =\varepsilon_{t}\\
+\varepsilon_{t} & \sim N\!\left(0,H_{t}^{1/2}R_{t}H_{t}^{1/2}\right)\\
+H_{t}^{1/2} & =\diag\!\left\{ h_{1t}^{1/2},\dots,h_{kt}^{1/2}\right\} \\
+\nu_{t} & =H_{t}^{-1/2}r_{t}\\
+H_{t} & =\diag\!\left\{ \omega_{i}\right\} +\diag\!\left\{ \alpha_{1i}\right\} \circ r_{t-1}r_{t-1}'+\diag\!\left\{ \beta_{1i}\right\} \circ H_{t-1}\\
+Q_{t} & =R\left(\iota\iota'-A-B\right)+A\circ\nu_{t-1}\nu_{t-1}'+B\circ Q_{t-1}\\
+R_{t} & =\diag\!\left\{ Q_{t}\right\} ^{-1/2}Q_{t}\diag\!\left\{ Q_{t}\right\} ^{-1/2}
+\end{aligned}
+\]
+
+\end_inset
+
+где 
+\begin_inset Formula $\iota$
+\end_inset
+
+ —
+ вектор из единиц,
+ 
+\begin_inset Formula $\circ$
+\end_inset
+
+ —
+ произведение Адамара (поэлементное).
+\end_layout
+
+\begin_layout Section
+Импульсные отклики
+\end_layout
+
+\begin_layout Standard
+Хафнер и Херварц
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "hafner2006volatility"
+literal "false"
+
+\end_inset
+
+ предложили простой алгоритм построения функций импульсных откликов условной дисперсии на шоки:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument listpreamble:1
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+tightlist
+\end_layout
+
+\end_inset
+
+В момент 
+\begin_inset Formula $T$
+\end_inset
+
+ постройте набор прогнозов 
+\begin_inset Formula $\E_{t}\left[h_{T+j}\mid\Omega_{T}\right]$
+\end_inset
+
+ интересующей протяженности.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Вручную введите в момент времени 
+\begin_inset Formula $T$
+\end_inset
+
+ нужный набор шоков 
+\begin_inset Formula $\Delta\varepsilon_{T}$
+\end_inset
+
+ и постройте второй набор прогнозов 
+\begin_inset Formula $\E\left[h_{T+j}\mid\Delta\varepsilon_{T},\Omega_{T}\right]$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Интересующие нас отклики равны 
+\begin_inset Formula 
+\[
+V(\Delta\varepsilon_{T})=\E\left[h_{T+j}\mid\Delta\varepsilon_{T},\Omega_{T}\right]-\E\left[h_{T+j}\mid\Omega_{T}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "data/bibliography"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{Список литературы}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\start_of_appendix
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%dummy comment inserted by tex2lyx to ensure that this paragraph is not empty
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Вывод формулы 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:GARCH-LR"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Рассмотрим вывод формулы 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:GARCH-LR"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+,
+ приведенный в статье 
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "bollerslev1986generalized"
+posttextlist "bollerslev1986generalized прил. A1"
+literal "false"
+
+\end_inset
+
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Данное доказательство основано на доказательстве аналогичного факта для ARCH модели,
+ приведенного в статье 
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "milhoj1985moment"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+По построению имеем
+\begin_inset Formula 
+\begin{align*}
+\varepsilon_{t} & =\sqrt{h_{t}}\nu_{t}\\
+\nu_{t} & \sim{WN}\!\left(0,1\right)
+\end{align*}
+
+\end_inset
+
+Воспользуемся этим для проведения последовательной подстановки
+\size small
+
+\begin_inset Formula 
+\begin{align*}
+h_{t} & =\omega+\sum_{i=1}^{q}\alpha_{i}\varepsilon_{t-i}^{2}+\sum_{i=1}^{p}\beta_{i}h_{t-i}=\\
+ & =\omega+\sum_{i=1}^{q}\alpha_{i}h_{t-i}\nu_{t-i}^{2}+\sum_{i=1}^{p}\beta_{i}h_{t-i}=\\
+ & =\omega+\sum_{i=1}^{q}\alpha_{i}\nu_{t-i}^{2}\left(\omega+\sum_{j=1}^{q}\alpha_{j}\varepsilon_{t-i-j}^{2}+\sum_{j=1}^{p}\beta_{j}h_{t-i-j}\right)+\sum_{i=1}^{p}\beta_{i}\left(\text{---\texttt{"}---}\right)=\\
+ & =\omega+\omega\left(\sum_{i=1}^{q}\alpha_{i}\nu_{t-i}^{2}+\sum_{i=1}^{p}\beta_{i}\right)+\sum_{i=1}^{q}\alpha_{i}\nu_{t-i}^{2}\underbrace{\left(\sum_{j=1}^{q}\alpha_{j}\varepsilon_{t-i-j}^{2}+\sum_{j=1}^{p}\beta_{j}h_{t-i-j}\right)}_{\Psi(t-i)}+\sum_{i=1}^{p}\beta_{i}\left(\text{---\texttt{"}---}\right)=\bigast
+\end{align*}
+
+\end_inset
+
+
+\size default
+Если ввести обозначения
+\begin_inset Formula 
+\begin{align*}
+M\!\left(t,0\right) & =1,\enspace\forall t\\
+M\!\left(t,1\right) & =\sum_{i=1}^{q}\alpha_{i}\nu_{t-i}^{2}+\sum_{i=1}^{p}\beta_{i}=\sum_{i=1}^{q}\alpha_{i}\nu_{t-i}^{2}M\!\left(t-i,0\right)+\sum_{i=1}^{p}\beta_{i}M\!\left(t-i,0\right)
+\end{align*}
+
+\end_inset
+
+то можно увидеть,
+ что
+\begin_inset Formula 
+\begin{align*}
+\bigast & =\omega M\!\left(t,0\right)+\omega M\!\left(t,1\right)+{\underbrace{\sum_{i=1}^{q}\alpha_{i}\nu_{t-i}^{2}\Psi\!\left(t-i\right)+\sum_{i=1}^{p}\beta_{i}\Psi\!\left(t-i\right)}_{\Phi(t)}}=\bigast
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Рассмотрим последнее слагаемое
+\begin_inset Formula 
+\begin{align*}
+\Psi\!\left(t-i\right) & =\sum_{j=1}^{q}\alpha_{i}\varepsilon_{t-i-j}^{2}+\sum_{j=1j}^{p}\beta_{i}h_{t-i-j}=\\
+ & =\sum_{j=1}^{q}\alpha_{j}h_{t-i-j}\nu_{t-i-j}^{2}+\sum_{j=1}^{p}\beta_{j}h_{t-i-j}=\\
+ & =\sum_{j=1}^{q}\alpha_{j}\nu_{t-i-j}^{2}\left(\omega+\sum_{k=1}^{q}\alpha_{k}\varepsilon_{t-i-j-k}^{2}+\sum_{k=1}^{p}\beta_{k}h_{t-i-j-k}\right)+\sum_{j=1}^{p}\beta_{j}\left(\text{---\texttt{"}---}\right)=\\
+ & =\omega\sum_{j=1}^{q}\alpha_{j}\nu_{t-i-j}^{2}+\\
+ & \qquad+\sum_{j=1}^{q}\alpha_{j}\nu_{t-i-j}^{2}\left(\sum_{k=1}^{q}\alpha_{k}\varepsilon_{t-i-j-k}^{2}+\sum_{k=1}^{p}\beta_{k}h_{t-i-j-k}\right)+\omega\sum_{j=1}^{p}\beta_{j}+\sum_{j=1}^{p}\beta_{j}\left(\text{---\texttt{"}---}\right)=\\
+ & =\omega M\!\left(t-i,1\right)+\sum_{j=1}^{q}\alpha_{j}\nu_{t-i-j}^{2}\Psi\!\left(t-i-j\right)+\sum_{j=1}^{p}\beta_{j}\Psi\!\left(t-i-j\right)
+\end{align*}
+
+\end_inset
+
+Получим отсюда
+\begin_inset Formula 
+\begin{multline*}
+\Phi\!\left(t\right)=\omega\underbrace{\left(\sum_{i=1}^{q}\alpha_{i}\nu_{t-i}^{2}M\!\left(t-i,1\right)+\sum_{i=1}^{q}\beta_{i}M\!\left(t-i,1\right)\right)}_{M(t,2)}+\\
++\sum_{i=1}^{q}\alpha_{i}\nu_{t-i}^{2}\left(\sum_{j=1}^{q}\alpha_{j}\nu_{t-i-j}^{2}\Psi\!\left(t-i-j\right)+\sum_{j=1}^{p}\beta_{j}\Psi\!\left(t-i-j\right)\right)+\sum_{i=1}^{q}\beta_{i}\left(\text{---\texttt{"}---}\right)
+\end{multline*}
+
+\end_inset
+
+Итого
+\begin_inset Formula 
+\[
+\bigast=\omega M\!\left(t,0\right)+\omega M\!\left(t,1\right)+\omega M\!\left(t,2\right)+\sum_{i=1}^{q}\alpha_{i}\nu_{t-i}^{2}\Phi\!\left(t-i\right)+\sum_{i=1}^{q}\beta_{i}\Phi\!\left(t-i\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Очевидно,
+ что выражение для 
+\begin_inset Formula $\Phi$
+\end_inset
+
+ описывается следующим рекуррентным выражением
+\begin_inset Formula 
+\begin{equation}
+\Phi\!\left(\tau\right)=\omega M\!\left(\tau,2\right)+\sum_{i=1}^{q}\alpha_{i}\nu_{t-i}^{2}\Phi\!\left(\tau-i\right)+\sum_{i=1}^{q}\beta_{i}\Phi\!\left(\tau-i\right),\label{eq:Phi-rec}
+\end{equation}
+
+\end_inset
+
+которое,
+ если ввести соотношение 
+\begin_inset Formula $M\!\left(t,k\right)=\sum_{i=1}^{q}\alpha_{i}\nu_{t-i}^{2}M\!\left(t-i,k-1\right)+\sum_{i=1}^{p}\beta_{i}M\!\left(t-i,k-1\right)$
+\end_inset
+
+,
+ приводит к тому,
+ что при бесконечном повторении таких подстановок
+\begin_inset Formula 
+\[
+h_{t}=\omega\sum_{i=0}^{\infty}M\!\left(t,i\right)
+\]
+
+\end_inset
+
+Действительно,
+ при первой подстановке 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Phi-rec"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ в 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Phi-rec"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ мы получим 
+\series bold
+два
+\series default
+ значения 
+\begin_inset Formula $M\!\left(\tau-i,2\right)$
+\end_inset
+
+,
+ которые сольются в 
+\begin_inset Formula $M\!\left(\tau,3\right)$
+\end_inset
+
+;
+ помимо этого в выражении появятся 
+\series bold
+четыре
+\series default
+ слагаемых с 
+\begin_inset Formula $\Phi\!\left(\tau-i-j\right)$
+\end_inset
+
+,
+ обернутых в такие суммы,
+ что 
+\series bold
+четыре
+\series default
+ значения 
+\begin_inset Formula $M\!\left(\tau-i-j,2\right)$
+\end_inset
+
+ сначала сольются в 
+\series bold
+два
+\series default
+ значения 
+\begin_inset Formula $M\!\left(\tau-i,3\right)$
+\end_inset
+
+,
+ которые дадут нам 
+\begin_inset Formula $M\!\left(\tau,4\right)$
+\end_inset
+
+.
+ При этом в выражении появятся 
+\series bold
+восемь
+\series default
+ слагаемых с 
+\begin_inset Formula $\Phi\!\left(\tau-i-j-k\right)$
+\end_inset
+
+,
+ дающих 
+\series bold
+восемь
+\series default
+ значений 
+\begin_inset Formula $M\!\left(\tau-i-j-k,2\right)\Rightarrow M\!\left(\tau,5\right)$
+\end_inset
+
+ и 
+\series bold
+шестнадцать
+\series default
+ слагаемых с 
+\begin_inset Formula $\Phi\!\left(\tau-i-j-k-l\right)$
+\end_inset
+
+,
+ и так далее.
+ На каждом шаге циклической подстановки мы будем получать 
+\begin_inset Formula $2^{\lambda}$
+\end_inset
+
+ значения 
+\begin_inset Formula $M\!\left(t-S,2\right)\Rightarrow M\!\left(t,\lambda+2\right)$
+\end_inset
+
+ и 
+\begin_inset Formula $2^{\lambda+1}$
+\end_inset
+
+ слагаемое с 
+\begin_inset Formula $\Phi\!\left(t-S-i\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+В силу того,
+ что 
+\begin_inset Formula $\nu_{t}$
+\end_inset
+
+ —
+ белый шум,
+\begin_inset Formula 
+\[
+\E M\!\left(t,k\right)=\E M\!\left(s,k\right),\enspace\forall t,s,
+\]
+
+\end_inset
+
+то есть
+\begin_inset Formula 
+\begin{align*}
+\E M\!\left(t,k\right) & =\left(\sum_{i=1}^{q}\alpha_{i}+\sum_{i=1}^{p}\beta_{i}\right)\E M\!\left(t,k-1\right)=\\
+ & =\left(\sum_{i=1}^{q}\alpha_{i}+\sum_{i=1}^{p}\beta_{i}\right)^{2}\E M\!\left(t,k-2\right)=\\
+ & =\left(\sum_{i=1}^{q}\alpha_{i}+\sum_{i=1}^{p}\beta_{i}\right)^{3}\E M\!\left(t,k-3\right)=\\
+ & \vdots\\
+ & =\left(\sum_{i=1}^{q}\alpha_{i}+\sum_{i=1}^{p}\beta_{i}\right)^{k}
+\end{align*}
+
+\end_inset
+
+Отсюда
+\begin_inset Formula 
+\begin{align*}
+\E\varepsilon_{t}^{2}=\E h_{t} & =\omega\sum_{i=0}^{\infty}\E M\!\left(t,i\right)=\\
+ & =\omega\sum_{i=0}^{\infty}\left(\sum_{i=1}^{q}\alpha_{i}+\sum_{i=1}^{p}\beta_{i}\right)^{i}=\\
+ & =\frac{\omega}{1-\sum_{i=1}^{q}\alpha_{i}-\sum_{i=1}^{p}\beta_{i}}
+\end{align*}
+
+\end_inset
+
+если 
+\begin_inset Formula $\sum_{i=1}^{q}\alpha_{i}+\sum_{i=1}^{p}\beta_{i}<1$
+\end_inset
+
+.
+\end_layout
+
+\end_body
+\end_document

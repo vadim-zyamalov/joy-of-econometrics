@@ -1,0 +1,2094 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass extarticle
+\begin_preamble
+\usepackage[changes]{praeambel}
+\usepackage[mathb]{mathabx}
+\usepackage{icomma}
+\VerbatimFootnotes
+\raggedbottom
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children no
+\language russian
+\language_package none
+\inputencoding utf8
+\fontencoding default
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command biber
+\index_command default
+\float_placement class
+\float_alignment class
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize a4
+\use_geometry false
+\use_package amsmath 0
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 0
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine biblatex
+\cite_engine_type authoryear
+\biblio_style plain
+\biblatex_bibstyle gost-authoryear-min
+\biblatex_citestyle gost-authoryear
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 0
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style russian
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content true
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "~/AppData/Roaming/LyX2.4/templates/ru/Articles/trinkets.lyx"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+Лекция 3
+\end_layout
+
+\begin_layout SubTitle
+Методы оценивания
+\end_layout
+
+\begin_layout Author
+Зямалов В.Е.
+\end_layout
+
+\begin_layout Standard
+Основные источники:
+ учебники Хаяши
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "hayyashi2017ekonometrika,hayashi2000econometrics"
+literal "false"
+
+\end_inset
+
+ и Гамильтона
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "hamilton1994time"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Хаяши выделяет два класса так называемых «экстремальных» оценок:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Argument listpreamble:1
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+tightlist
+\end_layout
+
+\end_inset
+
+M-оценки,
+ получаемые из задачи,
+ целевая функция которой имеет вид 
+\begin_inset Formula 
+\[
+Q_{T}(\theta)=\frac{1}{T}\sum_{t=1}^{T}m(y_{t}\mid\theta)
+\]
+
+\end_inset
+
+где 
+\begin_inset Formula $m(y_{t}\mid\theta)$
+\end_inset
+
+ —
+ некоторая функция 
+\begin_inset Formula $\Vect Y\times\Theta\rightarrow\mathbb{R}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+GMM,
+ получаемые из задачи,
+ целевая функция которой имеет вид 
+\begin_inset Formula 
+\[
+Q_{T}(\theta)=-\frac{1}{2}\Vect g_{T}(\theta)'\hat{\Vect W}\Vect g_{T}(\theta)
+\]
+
+\end_inset
+
+где 
+\begin_inset Formula $\Vect g_{T}(\theta)=\frac{1}{T}\sum_{t=1}^{T}\Vect g(y_{t}\mid\theta)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Section
+Метод максимального правдоподобия
+\end_layout
+
+\begin_layout Standard
+Рассмотрим следующую задачу.
+ У нас есть некоторый набор наблюдений 
+\begin_inset Formula $\{y_{t}\}$
+\end_inset
+
+,
+ полученный из генеральной совокупности с набором некоторых параметров 
+\begin_inset Formula $\theta$
+\end_inset
+
+,
+ которые нам нужно оценить.
+\end_layout
+
+\begin_layout Standard
+Для решения этой задачи можно воспользоваться 
+\series bold
+методом максимального правдоподобия
+\series default
+.
+ Предположим,
+ что наблюдения являются независимыми и одинаково распределенными,
+ причем вид распределения нам 
+\series bold
+известен
+\series default
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Это утверждение приведено в учебнике
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "hayyashi2017ekonometrika"
+literal "false"
+
+\end_inset
+
+,
+ хотя,
+ как мы увидим далее,
+ это не обязательное требование.
+ Главное,
+ чтобы мы 
+\series bold
+знали
+\series default
+ распределения отдельных наблюдений.
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Для данных наблюдений можно записать плотность распределения каждого из них с учетом значений вектора параметров 
+\begin_inset Formula $\theta$
+\end_inset
+
+ —
+ 
+\begin_inset Formula $f(y_{t};\theta)$
+\end_inset
+
+.
+ Так как все наблюдения считаются независимыми,
+ то достаточно легко можно вычислить совместную плотность распределения всего набора наблюдений 
+\begin_inset Formula 
+\[
+f(y_{1},y_{2},\dots,y_{T}\mid\theta)=\prod_{t=1}^{T}f(y_{t}\mid\theta)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Полученное выражение и задает нам 
+\series bold
+функцию правдоподобия
+\series default
+.
+ Формально можно записать,
+ что 
+\begin_inset Formula 
+\[
+L(\theta\mid\Vect y)=\Pr(\Vect y\mid\theta)
+\]
+
+\end_inset
+
+что означает,
+ что значение функции правдоподобия,
+ вычисленной на данном наборе параметров с учетом текущей выборки,
+ численно совпадает с вероятностью получить данную выборку при данном наборе параметров.
+\end_layout
+
+\begin_layout Standard
+Оптимальной оценкой 
+\begin_inset Formula $\theta$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\arg\max_{\theta\in\Theta}L(\theta\mid\Vect y)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Для упрощения функцию правдоподобия часто берут в логарифмах 
+\begin_inset Formula 
+\[
+l(\theta\mid\Vect y)=\sum_{t=1}^{T}\ln f(y_{t}\mid\theta)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Необходимым условием экстремума для решения задачи является равенство нулю градиента функции правдоподобия 
+\begin_inset Formula 
+\[
+\nabla l(\theta\mid\Vect y)\big|_{\theta=\hat{\theta}}=\frac{\partial l}{\partial\theta}(\hat{\theta})=\Vect 0
+\]
+
+\end_inset
+
+Достаточным условием является отрицательная определенность матрицы Гессе 
+\begin_inset Formula 
+\[
+H(\theta\mid\Vect y)=\left(\frac{\partial^{2}l}{\partial\theta\partial\theta'}\right)(\theta\mid\Vect y)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Как отмечает Хаяши
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "hayyashi2017ekonometrika"
+literal "false"
+
+\end_inset
+
+,
+ при выполнении достаточно простых условий ML-оценки являются состоятельными:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Argument listpreamble:1
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+tightlist
+\end_layout
+
+\end_inset
+
+функция правдоподобия должна быть вогнутой на пространстве параметров 
+\begin_inset Formula $\Theta$
+\end_inset
+
+;
+ 
+\end_layout
+
+\begin_layout Itemize
+функция правдоподобия измерима на пространстве данных для любого 
+\begin_inset Formula $\theta\in\Theta$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+стационарный процесс 
+\begin_inset Formula $\{y_{t}\}$
+\end_inset
+
+ эргодичен.
+ 
+\end_layout
+
+\begin_layout Subsection
+Линейная регрессия
+\end_layout
+
+\begin_layout Standard
+Рассмотрим пример оценивания линейной регрессии
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+autocite{magnus2021ekonometrika}
+\end_layout
+
+\end_inset
+
+.
+ Допустим,
+ что мы ищем оценку параметров модели 
+\begin_inset Formula 
+\[
+y_{t}=\beta_{0}+\beta_{1}x_{t}+\varepsilon_{t}
+\]
+
+\end_inset
+
+Предположим,
+ что выполняются все предпосылки МНК,
+ а также дополнительное предположение гауссовости случайных ошибок 
+\begin_inset Formula 
+\[
+\varepsilon_{t}\sim WN(0,\sigma^{2})
+\]
+
+\end_inset
+
+что эквивалентно
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+В примере подразумевается детерминированность 
+\begin_inset Formula $x_{t}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+y_{t}\sim N(\beta_{0}+\beta_{1}x_{t},\sigma^{2})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Quote
+Для решения данной задачи имеет смысл рассмотреть так называемый 
+\series bold
+условный метод максимального правдоподобия
+\series default
+.
+ Смысл метода заключается в том,
+ что исходный набор наблюдений разбивается на две части,
+ причем исследователя интересует влияние одной части данных —
+ в нашем случае 
+\begin_inset Formula $x_{t}$
+\end_inset
+
+ —
+ на условное матожидание других —
+ 
+\begin_inset Formula $y_{t}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Quote
+Плотность можно разложить следующим образом 
+\begin_inset Formula 
+\[
+f(y_{t},x_{t}\mid\theta,\psi)=f(y_{t}\mid x_{t};\theta)f(x_{t};\psi)
+\]
+
+\end_inset
+
+где 
+\begin_inset Formula $\psi$
+\end_inset
+
+ —
+ параметры распределения 
+\begin_inset Formula $x_{t}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Quote
+В итоге функция правдоподобия примет вид 
+\begin_inset Formula 
+\[
+l(\theta\mid y_{t},x_{t})=\frac{1}{T}\sum_{t=1}^{T}\ln f(y_{t}\mid x_{t};\theta)+\frac{1}{T}\sum_{t=1}^{T}f(x_{t};\psi)
+\]
+
+\end_inset
+
+Очевидно,
+ что при поиске оптимального значения 
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+ максимизироваться будет только первая часть;
+ вторая часть игнорируется.
+ 
+\end_layout
+
+\begin_layout Standard
+Вернемся к примеру.
+ Запишем функцию правдоподобия 
+\begin_inset Formula 
+\[
+\begin{split}L(\beta_{0},\beta_{1},\sigma^{2}\mid y_{1},\dots,y_{T}) & =\Pr(y_{1},\dots,y_{T}\mid x_{1},\dots,x_{T},\beta_{0},\beta_{1},\sigma^{2})=\\
+ & =(2\pi)^{-T/2}(\sigma^{2})^{-T/2}\exp{\left(-\frac{1}{2\sigma^{2}}\sum_{t=1}^{T}(y_{t}-\beta_{0}-\beta_{1}x_{t})^{2}\right)}
+\end{split}
+\]
+
+\end_inset
+
+или 
+\begin_inset Formula 
+\[
+\ln L(\beta_{0},\beta_{1},\sigma^{2}\mid y_{1},\dots,y_{T})=-\frac{T}{2}\ln(2\pi)-\frac{T}{2}\ln(\sigma^{2})-\frac{1}{2\sigma^{2}}\sum_{t=1}^{T}(y_{t}-\beta_{0}-\beta_{1}x_{t})^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Найдем необходимые условия первого порядка максимизации функции 
+\begin_inset Formula 
+\[
+\begin{aligned}\frac{\partial\ln L}{\partial\beta_{0}} & =\frac{1}{\sigma^{2}}\sum_{t=1}^{T}(y_{t}-\beta_{0}-\beta_{1}x_{t})=0\\
+\frac{\partial\ln L}{\partial\beta_{1}} & =\frac{1}{\sigma^{2}}\sum_{t=1}^{T}x_{t}(y_{t}-\beta_{0}-\beta_{1}x_{t})=0\\
+\frac{\partial\ln L}{\partial\sigma^{2}} & =-\frac{n}{2}\frac{1}{\sigma^{2}}+\frac{1}{2\sigma^{4}}\sum_{t=1}^{T}(y_{t}-\beta_{0}-\beta_{1}x_{t})^{2}=0
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Нетрудно завметить,
+ что первые два уравнения дают нам оценки 
+\begin_inset Formula 
+\[
+\begin{aligned}\hat{\beta}_{0} & =\bar{y}-\hat{\beta}_{1}\bar{x}\\
+\hat{\beta}_{1} & =\frac{\sum(x_{t}-\bar{x})(y_{t}-\bar{y})}{\sum(x_{t}-\bar{x})^{2}}\\
+\hat{\sigma}^{2} & =\frac{1}{n}\sum e_{t}^{2}
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+То есть полученные оценки коэффициентов совпадают с МНК оценками.
+ При этом оценка 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ оказывается состоятельной,
+ но смещенной.
+\end_layout
+
+\begin_layout Subsection
+AR(p)
+\end_layout
+
+\begin_layout Standard
+Рассмотрим функцию правдоподобия для процесса AR(
+\begin_inset Formula $p$
+\end_inset
+
+) 
+\begin_inset Formula 
+\[
+Y_{t}=c+\alpha_{1}Y_{t-1}+\dots+\alpha_{p}Y_{t-p}+\varepsilon_{t}
+\]
+
+\end_inset
+
+где 
+\begin_inset Formula $\varepsilon\sim WN(0,\sigma^{2})$
+\end_inset
+
+.
+ Оцениваемый вектор параметров 
+\begin_inset Formula $\theta=(c,\alpha_{1},\dots,\alpha_{p},\sigma^{2})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Очевидно,
+ что с описанием данного процесса есть сложность,
+ связанная с первыми 
+\begin_inset Formula $p$
+\end_inset
+
+ наблюдениями.
+ Гамильтон
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "hamilton1994time"
+literal "false"
+
+\end_inset
+
+ использует способ разделения функции на две части.
+\end_layout
+
+\begin_layout Standard
+Первая часть определяет первые 
+\begin_inset Formula $p$
+\end_inset
+
+ наблюдений как реализацию 
+\begin_inset Formula $p$
+\end_inset
+
+-мерной Гауссовой случайной величины с математическим ожиданием 
+\begin_inset Formula 
+\[
+\mu=\frac{c}{1-\sum_{i=1}^{p}\alpha_{i}}
+\]
+
+\end_inset
+
+Ковариационная матрица 
+\begin_inset Formula $(y_{1},\dots,y_{p})$
+\end_inset
+
+ равна 
+\begin_inset Formula 
+\[
+\sigma^{2}\Vect V_{p}=\begin{bmatrix}\E(Y_{1}-\mu)^{2} & \E(Y_{1}-\mu)(Y_{2}-\mu) & \cdots & \E(Y_{1}-\mu)(Y_{p}-\mu)\\
+\E(Y_{2}-\mu)(Y_{1}-\mu) & \E(Y_{2}-\mu)^{2} & \cdots & \E(Y_{2}-\mu)(Y_{p}-\mu)\\
+\vdots & \vdots & \ddots & \vdots\\
+\E(Y_{p}-\mu)(Y_{1}-\mu) & \E(Y_{p}-\mu)(Y_{2}-\mu) & \cdots & \E(Y_{p}-\mu)^{2}
+\end{bmatrix}=\begin{bmatrix}\gamma_{0} & \gamma_{1} & \cdots & \gamma_{p-1}\\
+\gamma_{1} & \gamma_{0} & \cdots & \gamma_{p-2}\\
+\vdots & \vdots & \ddots & \vdots\\
+\gamma_{p-1} & \gamma_{p-2} & \cdots & \gamma_{0}
+\end{bmatrix}
+\]
+
+\end_inset
+
+Отсюда совместная плотность первых 
+\begin_inset Formula $p$
+\end_inset
+
+ наблюдений равна 
+\begin_inset Formula 
+\[
+\begin{split}f_{Y_{p},Y_{p-1},\dots,Y_{1}}(y_{p},\dots,y_{1};\theta) & =(2\pi)^{-p/2}|\sigma^{-2}\Vect V_{p}^{-1}|^{1/2}\exp\left[-\frac{1}{2\sigma^{2}}(\Vect y_{p}-\Vect{\mu}_{p})'\Vect V_{p}^{-1}(\Vect y_{p}-\Vect{\mu}_{p})\right]=\\
+ & =(2\pi)^{-p/2}(\sigma^{-2})^{p/2}|\Vect V_{p}^{-1}|^{1/2}\exp\left[-\frac{1}{2\sigma^{2}}(\Vect y_{p}-\Vect{\mu}_{p})'\Vect V_{p}^{-1}(\Vect y_{p}-\Vect{\mu}_{p})\right]
+\end{split}
+\]
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "galbraith1974inverses"
+literal "false"
+
+\end_inset
+
+ показали,
+ что элемент 
+\begin_inset Formula $ij$
+\end_inset
+
+ матрицы 
+\begin_inset Formula $\Vect V_{p}^{-1}$
+\end_inset
+
+ равен 
+\begin_inset Formula 
+\[
+v^{ij}=v^{ji}=\left[\sum_{k=0}^{i-1}\alpha_{k}\alpha_{k+j-i}-\sum_{k=p+1-j}^{p+i-j}\alpha_{k}\alpha_{k+j-i}\right]
+\]
+
+\end_inset
+
+причем 
+\begin_inset Formula $\alpha_{0}=-1$
+\end_inset
+
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+В исходном тексте свободный член в модели обозначается как 
+\begin_inset Formula $c$
+\end_inset
+
+,
+ чтобы избежать коллизии с 
+\begin_inset Formula $v^{ij}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Для оставшейся части выборки поступают следующим образом.
+ Для наблюдения 
+\begin_inset Formula $t$
+\end_inset
+
+ математическое ожидание зависит 
+\series bold
+только
+\series default
+ от предыдущих 
+\begin_inset Formula $p$
+\end_inset
+
+ наблюдений,
+ то есть 
+\begin_inset Formula 
+\[
+\E(Y_{t}\mid Y_{t-1},\dots,Y_{1})=\E(Y_{t}\mid Y_{t-1},\dots,Y_{t-p})=\alpha_{0}+\sum_{i=1}^{p}\alpha_{i}y_{t-i}
+\]
+
+\end_inset
+
+При этом дисперсия равна 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Поэтому для второй части плотность 
+\begin_inset Formula $Y_{t}$
+\end_inset
+
+ имеет вид 
+\begin_inset Formula 
+\[
+f_{Y_{t}\mid Y_{t-1},\dots,Y_{t-p}}(y_{t}\mid y_{t-1},\dots,y_{t-p};\theta)=\frac{1}{\sqrt{2\pi\sigma^{2}}}\exp{\left[-\frac{(y_{t}-\alpha_{0}-\sum_{i=1}^{p}\alpha_{i}y_{t-i})^{2}}{2\sigma^{2}}\right]}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+А совокупная плотность 
+\series bold
+всей
+\series default
+ выборки равна 
+\begin_inset Formula 
+\[
+f_{Y_{T},\dots,Y_{1}}(y_{T},\dots,y_{1};\theta)=f_{Y_{p},Y_{p-1},\dots,Y_{1}}(y_{p},\dots,y_{1};\theta)\times\prod_{t=p+1}^{T}f_{Y_{t}\mid Y_{t-1},\dots,Y_{t-p}}(y_{t}\mid y_{t-1},\dots,y_{t-p};\theta)
+\]
+
+\end_inset
+
+А функция правдоподобия 
+\begin_inset Formula 
+\[
+\begin{split}\ln L(\theta\mid\Vect y) & =-\frac{T}{2}\ln(2\pi)-\frac{T}{2}\ln(\sigma^{2})+\frac{1}{2}\ln|\Vect V_{p}^{-1}|-\\
+ & \qquad-\frac{1}{2\sigma^{2}}(\Vect y_{p}-\Vect{\mu}_{p})'\Vect V_{p}^{-1}(\Vect y_{p}-\Vect{\mu}_{p})-\\
+ & \qquad-\sum_{t=p+1}^{T}\frac{\left(y_{t}-\alpha_{0}-\sum_{i=1}^{p}\alpha_{i}y_{t-i}\right)^{2}}{2\sigma^{2}}
+\end{split}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Если проигнорировать первые 
+\begin_inset Formula $p$
+\end_inset
+
+ наблюдений,
+ что допускается на больших выборках,
+ то функция правдоподобия примет вид 
+\begin_inset Formula 
+\[
+\ln L(\theta\mid y_{T},\dots,y_{p+1})=-\frac{T-p}{2}\ln(2\pi)-\frac{T-p}{2}\ln(\sigma^{2})-\sum_{t=p+1}^{T}\frac{(y_{t}-\alpha_{0}-\sum_{i=1}^{p}\alpha_{i}y_{t-i})^{2}}{2\sigma^{2}}
+\]
+
+\end_inset
+
+Эта функция дает нам в итоге МНК-оценки коэффициентов.
+ Оценка 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ равна 
+\begin_inset Formula 
+\[
+\hat{\sigma}^{2}=\frac{1}{T-p}\sum_{t=p+1}^{T}e_{t}^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+MA(1)
+\end_layout
+
+\begin_layout Standard
+Рассмотрим процесс 
+\begin_inset Formula 
+\[
+Y_{t}=\mu+\varepsilon_{t}+\theta\varepsilon_{t-1}
+\]
+
+\end_inset
+
+где 
+\begin_inset Formula $\varepsilon\sim WN(0,\sigma^{2})$
+\end_inset
+
+.
+ Оцениваемый вектор параметров 
+\begin_inset Formula $\theta=(\mu,\theta,\sigma^{2})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Если бы мы точно знали 
+\begin_inset Formula $\varepsilon_{t-1}$
+\end_inset
+
+,
+ то 
+\begin_inset Formula 
+\[
+\begin{split}Y_{t}\mid\varepsilon_{t-1} & \sim N(\mu+\theta\varepsilon_{t-1},\sigma^{2})\\
+f_{Y_{t}\mid\varepsilon_{t-1}} & =\frac{1}{\sqrt{2\pi\sigma^{2}}}\exp\left[-\frac{(y_{t}-\mu-\theta\varepsilon_{t-1})^{2}}{2\sigma^{2}}\right]
+\end{split}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Далее следим за руками.
+ Предположим,
+ что мы 
+\series bold
+знаем
+\series default
+,
+ что 
+\begin_inset Formula $\varepsilon_{0}=0$
+\end_inset
+
+.
+ Тогда 
+\begin_inset Formula 
+\[
+Y_{1}\mid\varepsilon_{0}\sim N(\mu,\sigma^{2})
+\]
+
+\end_inset
+
+Более того,
+ мы 
+\series bold
+достоверно
+\series default
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+С точностью до 
+\series bold
+неизвестного
+\series default
+ параметра 
+\begin_inset Formula $\mu$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ знаем 
+\begin_inset Formula $\varepsilon_{1}=y_{1}-\mu$
+\end_inset
+
+;
+ это позволяет нам записать 
+\begin_inset Formula 
+\[
+f_{Y_{2}\mid Y_{1},\varepsilon_{0}}=\frac{1}{\sqrt{2\pi\sigma^{2}}}\exp\left[-\frac{(y_{2}-\mu-\theta\varepsilon_{1})^{2}}{2\sigma^{2}}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Вообще,
+ знание 
+\begin_inset Formula $\varepsilon_{0}=0$
+\end_inset
+
+ позволяет нам достоверно рассчитать 
+\begin_inset Formula $\{\varepsilon_{t}\}$
+\end_inset
+
+.
+ Так как 
+\begin_inset Formula $\varepsilon_{t}=y_{t}-\mu-\theta\varepsilon_{t-1}$
+\end_inset
+
+,
+ то итоговая функция правдоподобия имеет вид 
+\begin_inset Formula 
+\[
+\ln L(\theta)=-\frac{T}{2}\ln(2\pi)-\frac{T}{2}\ln(\sigma^{2})-\sum_{t=1}^{T}\frac{\varepsilon_{t}^{2}}{2\sigma^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Кстати,
+ именно на данном этапе проявляется роль обратимости MA-процесса:
+ если 
+\begin_inset Formula $|\theta|\ll1$
+\end_inset
+
+,
+ то эффект весьма произвольного выбора 
+\begin_inset Formula $\varepsilon_{0}$
+\end_inset
+
+ крайне быстро затухает.
+ Если при численном решении задачи получается значение 
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+ больше 1,
+ то оно должно быть отброшено,
+ а процесс подбора начат заново с 
+\begin_inset Formula $1/\hat{\theta}$
+\end_inset
+
+ в качестве начального значения.
+\end_layout
+
+\begin_layout Standard
+С другой стороны мы можем записать точное значение функции правдоподобия 
+\series bold
+без
+\series default
+ волюнтаристических предположений.
+ Ковариационная матрица выборки из процесса MA(1) 
+\begin_inset Formula 
+\[
+\Vect{\Omega}=\E(\Vect Y-\Vect{\mu})(\Vect Y-\Vect{\mu})'
+\]
+
+\end_inset
+
+имеет вид 
+\begin_inset Formula 
+\[
+\Vect{\Omega}=\sigma^{2}\begin{bmatrix}(1+\theta^{2}) & \theta & 0 & \cdots & 0\\
+\theta & (1+\theta^{2}) & \theta & \cdots & 0\\
+0 & \theta & (1+\theta^{2}) & \cdots & 0\\
+\vdots & \vdots & \vdots & \ddots & \vdots\\
+0 & 0 & 0 & \cdots & (1+\theta^{2})
+\end{bmatrix}
+\]
+
+\end_inset
+
+А функция правдоподобия 
+\begin_inset Formula 
+\begin{equation}
+\ln L(\theta)=-\frac{T}{2}\ln(2\pi)-\frac{1}{2}\ln|\Vect{\Omega}|-\frac{1}{2}(\Vect y-\Vect{\mu})'\Vect{\Omega}^{-1}(\Vect y-\Vect{\mu})\label{eq:ma-mle}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Треугольное разложение
+\end_layout
+
+\begin_layout Standard
+Гамильтон
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "hamilton1994time"
+literal "false"
+
+\end_inset
+
+ рассматривает следующую модификацию 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:ma-mle"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+.
+ Известно
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+См.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+autocite[][стр.~87]{hamilton1994time}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+,
+ что любая симметрическая положительно определенная матрица 
+\begin_inset Formula $\Vect{\Omega}$
+\end_inset
+
+ единственным образом раскладывается следующим образом 
+\begin_inset Formula 
+\[
+\Vect{\Omega}=\Vect A\Vect D\Vect A'
+\]
+
+\end_inset
+
+где 
+\begin_inset Formula $\Vect A$
+\end_inset
+
+ —
+ нижняя унитреугольная матрица
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Треугольная матрица с единицами на главной диагонали.
+\end_layout
+
+\end_inset
+
+,
+ 
+\begin_inset Formula $\Vect D$
+\end_inset
+
+ —
+ диагональная матрица.
+\end_layout
+
+\begin_layout Standard
+Из этого разложения следует,
+ что 
+\begin_inset Formula 
+\[
+|\Vect{\Omega}|=|\Vect A|\times|\Vect D|\times|\Vect{A'}|=|\Vect D|
+\]
+
+\end_inset
+
+Также можно ввести следующие переменные 
+\begin_inset Formula 
+\[
+\bar{\Vect y}=\Vect A^{-1}(\Vect y-\Vect{\mu})
+\]
+
+\end_inset
+
+С учетом этого 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:ma-mle"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ примет вид 
+\begin_inset Formula 
+\[
+\ln L(\theta)=-\frac{T}{2}\ln(2\pi)-\frac{1}{2}\ln|\Vect D|-\frac{1}{2}\bar{\Vect y}'\Vect D^{-1}\bar{\Vect y}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Если обратить внимание на то,
+ что 
+\begin_inset Formula 
+\[
+\Vect A\Vect D\Vect A'={\underbrace{\Vect A\Vect D^{1/2}}_{\Vect L}}{\underbrace{\Vect D^{1/2}\Vect A'}_{\Vect L'}}
+\]
+
+\end_inset
+
+где 
+\begin_inset Formula $\Vect L$
+\end_inset
+
+ —
+ матрица разложения Холецкого,
+ 
+\begin_inset Formula $\Vect D^{1/2}$
+\end_inset
+
+ —
+ матрица,
+ состоящая из корней элементов матрицы 
+\begin_inset Formula $\Vect D$
+\end_inset
+
+,
+ и ввести переменную 
+\begin_inset Formula 
+\[
+\tilde{\Vect y}=\Vect L^{-1}(\Vect y-\Vect{\mu})
+\]
+
+\end_inset
+
+то 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:ma-mle"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ примет вид 
+\begin_inset Formula 
+\[
+\ln L(\theta)=-\frac{T}{2}\ln(2\pi)-\chdeleted{\frac{1}{2}}\ln|\Vect L|-\frac{1}{2}\tilde{\Vect y}'\tilde{\Vect y}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+ARMA(p,
+ q)
+\end_layout
+
+\begin_layout Standard
+Как ни странно,
+ но ARMA(p,
+ q) по построению функции правдоподобия ближе к процессам скользящего среднего.
+\end_layout
+
+\begin_layout Standard
+Если взять начальные значения 
+\begin_inset Formula $\Vect y_{0}=(y_{0},y_{-1},\dots,y_{-p+1})'$
+\end_inset
+
+ и 
+\begin_inset Formula $\Vect{\varepsilon}_{0}=(\varepsilon_{0},\varepsilon_{-1},\dots,\varepsilon_{-q+1})'$
+\end_inset
+
+,
+ то последовательность 
+\begin_inset Formula $\{\varepsilon_{t}\}$
+\end_inset
+
+ может быть «достоверно» рассчитана 
+\begin_inset Formula 
+\[
+\varepsilon_{t}=y_{t}-\alpha_{0}-\sum_{i=1}^{p}\alpha_{i}y_{t-i}-\sum_{j=1}^{q}\theta_{j}\varepsilon_{t-j}
+\]
+
+\end_inset
+
+что дает нам 
+\begin_inset Formula 
+\[
+\begin{split}\ln L(\theta) & =\ln f_{Y_{T},Y_{T-1},\dots,Y_{1}\mid Y_{0},\varepsilon_{0}}(y_{t},\dots,y_{1}\mid\Vect y_{0},\Vect{\varepsilon}_{0};\theta)=\\
+ & =-\frac{T}{2}\ln(2\pi)-\frac{T}{2}\ln(\sigma^{2})-\sum_{t=1}^{T}\frac{\varepsilon_{t}^{2}}{2\sigma^{2}}
+\end{split}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+В качестве начальных значений можно взять:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Argument listpreamble:1
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+математические ожидания,
+ то есть 
+\begin_inset Formula 
+\[
+\begin{aligned}y_{t} & =\frac{\alpha_{0}}{1-\sum_{i=1}^{p}\alpha_{i}}, & t & =0,-1,\dots,-p+1\\
+\varepsilon_{t} & =0 & t & =0,-1,\dots,-q+1
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Бокс и Дженкинс
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "box2016time"
+literal "false"
+
+\end_inset
+
+ предложили брать в качестве 
+\begin_inset Formula $\Vect y_{0}$
+\end_inset
+
+ первые 
+\begin_inset Formula $p$
+\end_inset
+
+ значений 
+\begin_inset Formula $y_{t}$
+\end_inset
+
+,
+ а в качестве 
+\begin_inset Formula $\Vect{\varepsilon}_{0}$
+\end_inset
+
+ —
+ 
+\begin_inset Formula $\varepsilon_{t}=0,\ t=p,\dots,p-q+1$
+\end_inset
+
+.
+ Понятно,
+ что расчет последовательности 
+\begin_inset Formula $\{\varepsilon_{t}\}$
+\end_inset
+
+ будет проходить на наблюдениях 
+\begin_inset Formula $p+1,\dots,T$
+\end_inset
+
+;
+ соответствующим образом меняется функция правдоподобия 
+\begin_inset Formula 
+\[
+\begin{split}\ln L(\theta) & =\ln f_{Y_{T},Y_{T-1},\dots,Y_{p+1}\mid Y_{0},\varepsilon_{0}}(y_{t},\dots,y_{p+1}\mid\Vect y_{0},\Vect{\varepsilon}_{0};\theta)=\\
+ & =-\frac{T-p}{2}\ln(2\pi)-\frac{T-p}{2}\ln(\sigma^{2})-\sum_{t=p+1}^{T}\frac{\varepsilon_{t}^{2}}{2\sigma^{2}}
+\end{split}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+GMM
+\end_layout
+
+\begin_layout Standard
+Обобщенный метод моментов является,
+ как понятно из названия,
+ обобщением метода моментов.
+ Опишем этот метод согласно обзорной работе Хансена
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "hansen2007generalized"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Рассмотрим наши данные,
+ которые являются конечной реализацией процесса 
+\begin_inset Formula $\{y_{t}\}_{t=1}^{T}$
+\end_inset
+
+.
+ Сама модель определяется следующим простым выражением 
+\begin_inset Formula 
+\[
+\E f(y_{T};\beta_{0})=0
+\]
+
+\end_inset
+
+где 
+\begin_inset Formula $\beta_{0}\in\mathbb{P}\subset\mathbb{R}^{k}$
+\end_inset
+
+ —
+ истинные значения параметров модели
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Обычно к GMM прибегают в случае полупараметрических моделей,
+ когда функцию правдоподобия записать «затруднительно».
+\end_layout
+
+\end_inset
+
+,
+ а 
+\begin_inset Formula $f(\dots)$
+\end_inset
+
+ —
+ вектор-функция,
+ имеющая 
+\begin_inset Formula $r$
+\end_inset
+
+ компонент.
+ Для того,
+ чтобы решение задачи было единственным,
+ необходимо выполнение условия 
+\begin_inset Formula 
+\[
+\E f(y_{t};\beta)=0\iff\beta=\beta_{0}
+\]
+
+\end_inset
+
+
+\begin_inset Formula $f(\dots)$
+\end_inset
+
+ называют моментной функцией.
+\end_layout
+
+\begin_layout Standard
+Реальное оценивание производится на выборочном аналоге матожидания 
+\begin_inset Formula 
+\[
+g_{T}(\beta)=\frac{1}{T}\sum_{t=1}^{T}f(y_{t};\beta)
+\]
+
+\end_inset
+
+В литературе показано,
+ что 
+\begin_inset Formula 
+\[
+\sqrt{T}g_{T}(\beta_{0})\overset{d}{\rightarrow}N(0,V)
+\]
+
+\end_inset
+
+где 
+\begin_inset Formula 
+\[
+V=\sum_{j=-\infty}^{\infty}\E[f(y_{t};\beta_{0})f(y_{t+j};\beta_{0})']
+\]
+
+\end_inset
+
+То есть 
+\begin_inset Formula $V$
+\end_inset
+
+ —
+ спектральная плотность на нулевой частоте.
+\end_layout
+
+\begin_layout Standard
+Если
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Argument listpreamble:1
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+tightlist
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $r<k$
+\end_inset
+
+,
+ то модель недоопределена;
+ оценки в данном случае получить нельзя.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $r=k$
+\end_inset
+
+,
+ то модель определена точно;
+ у модели 
+\series bold
+может
+\series default
+ быть решение.
+ Это традиционный метод моментов.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $r>k$
+\end_inset
+
+,
+ то модель переопределена;
+ в общем случае решения также нет.
+ Но возможно найти не точное,
+ а максимально к нему приближенное решение.
+ Это и есть обобщенный метод моментов.
+ 
+\end_layout
+
+\begin_layout Subsection
+Оценивание модели
+\end_layout
+
+\begin_layout Standard
+Одним из подходов к оцениванию является минимизация квадратичной формы 
+\begin_inset Formula 
+\[
+J(\beta)=g_{T}(\beta)'\Vect Wg_{T}(\beta)
+\]
+
+\end_inset
+
+то есть оценка равна 
+\begin_inset Formula 
+\[
+b_{GMM}=\arg\min_{\beta\in\mathbb{P}}J(\beta)
+\]
+
+\end_inset
+
+Данный подход обосновывается тем,
+ что 
+\begin_inset Formula $J(\beta)$
+\end_inset
+
+ является выборочным аналогом 
+\begin_inset Formula 
+\[
+\E f(y_{t};\beta)'\Vect W\E f(y_{t};\beta)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Полученная оценка является состоятельной;
+ в работе
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "hansen1982large"
+literal "false"
+
+\end_inset
+
+ было показано,
+ что если процесс порождения данных стационарен и эргодичен,
+ то выполняется специальная форма закона больших чисел,
+ по которой 
+\begin_inset Formula 
+\[
+\sup_{\beta\in\mathbb{P}}|g_{T}(\beta)-\E f(y_{t};\beta)|=0
+\]
+
+\end_inset
+
+причем 
+\begin_inset Formula $\mathbb{P}$
+\end_inset
+
+ компактно
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Компактное пространство —
+ топологическое пространство,
+ в любом покрытии которого открытыми множествами найдётся конечное подпокрытие.
+\end_layout
+
+\end_inset
+
+.
+ Свойство компактности важно для «хорошего» поведения функции «вдали» от 
+\begin_inset Formula $\beta_{0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+В качестве 
+\begin_inset Formula $\Vect W$
+\end_inset
+
+ часто предпочитают брать 
+\begin_inset Formula $\Vect V^{-1}$
+\end_inset
+
+,
+ так как в этом случае 
+\begin_inset Formula 
+\[
+Tg_{T}(\beta)'\Vect V^{-1}g_{T}(\beta)\overset{d}{\rightarrow}\chi^{2}(r)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Оценкой ковариационной матрицы 
+\begin_inset Formula $b_{GMM}$
+\end_inset
+
+ является
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "matyas1999generalized"
+posttextlist "matyas1999generalized гл. 2"
+literal "false"
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\begin{aligned}\hat{\Sigma}_{b_{GMM}} & =\frac{1}{T}[F'_{T}V_{T}^{-1}F_{T}]^{-1}\\
+F_{T} & =\frac{1}{T}\sum_{t=1}^{T}\frac{\partial f(y_{t};\beta)}{\partial\beta'}\bigg|_{\beta=b_{GMM}}
+\end{aligned}
+\]
+
+\end_inset
+
+а 
+\begin_inset Formula $\Vect V_{T}$
+\end_inset
+
+ —
+ оценка 
+\begin_inset Formula $\Vect V$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+На практике для оценивания модели используется следующая последовательная процедура:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument listpreamble:1
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+tightlist
+\end_layout
+
+\end_inset
+
+Задайте начальное значение 
+\begin_inset Formula $\Vect W_{0}$
+\end_inset
+
+.
+ Удобно для этой цели взять единичную матрицу.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Минимизируйте 
+\begin_inset Formula $J(\beta;\Vect W_{0})$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+b_{1}=\arg\min_{\beta\in\mathbb{P}}g_{T}(\beta)'\Vect W_{0}g_{T}(\beta)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Найдите новое значение 
+\begin_inset Formula $\Vect W_{1}$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\Vect W_{1}=\left\{ \frac{1}{T}\sum_{t=1}^{T}g_{T}(b_{1})g_{T}(b_{1})'\right\} ^{-1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Повторяйте шаги 2–3 до достижения сходимости.
+ 
+\end_layout
+
+\begin_layout Subsection
+Примеры
+\end_layout
+
+\begin_layout Subsubsection
+Линейная регрессия
+\end_layout
+
+\begin_layout Standard
+Рассмотрим пример линейной регрессии 
+\begin_inset Formula 
+\[
+y_{t}=\beta_{0}+\beta_{1}x_{1,t}+\beta_{2}x_{2,t}+\dots+\beta_{k}x_{k,t}+\varepsilon_{t}
+\]
+
+\end_inset
+
+где выполняются все предпосылки МНК и условия теоремы Гаусса-Маркова.
+\end_layout
+
+\begin_layout Standard
+Из курса эконометрики известно,
+ что для МНК оценок модели
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+В том числе 
+\series bold
+без
+\series default
+ свободного члена.
+\end_layout
+
+\end_inset
+
+ выполняется 
+\begin_inset Formula 
+\[
+\sum_{t=1}^{T}x_{j,t}e_{t}=\sum_{t=1}^{T}x_{j,t}\left(y_{t}-\hat{\beta}_{0}-\sum_{i=1}^{k}\beta_{i}x_{i,t}\right)=0,\ j=1,\dots,k
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Очевидно,
+ что в качестве моментных функций можно взять 
+\begin_inset Formula 
+\[
+x_{j,t}\left(y_{t}-\hat{\beta}_{0}-\sum_{i=1}^{k}\beta_{i}x_{i,t}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Инструментальные переменные
+\end_layout
+
+\begin_layout Standard
+Из теории метода инструментальных переменных известно,
+ что инструменты должны удовлетворять двум свойствам:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument listpreamble:1
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+tightlist
+\end_layout
+
+\end_inset
+
+релевантности,
+ то есть 
+\begin_inset Formula $\Cov(z_{t},x_{t})\neq0$
+\end_inset
+
+,
+ 
+\end_layout
+
+\begin_layout Enumerate
+экзогенности,
+ то есть 
+\begin_inset Formula $\Cov(z_{t},\varepsilon_{t})=0$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Выборочный аналог второго свойства принимает вид 
+\begin_inset Formula 
+\[
+\sum_{t=1}^{T}z_{t}(y_{t}-\beta_{0}-\beta_{1}x_{t})=0
+\]
+
+\end_inset
+
+То есть в качестве моментных функций можно взять 
+\begin_inset Formula 
+\[
+z_{t}(y_{t}-\beta_{0}-\beta_{1}x_{t})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+ARMA(2,
+ 1)
+\end_layout
+
+\begin_layout Standard
+Взято из блога 
+\begin_inset CommandInset href
+LatexCommand href
+name "Янга (Аллена) Вонга"
+target "https://allenfrostline.com/blog/gmm-estimation/"
+literal "true"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Рассмотрим модель ARMA(2,1) 
+\begin_inset Formula 
+\[
+y_{t}=\alpha_{1}y_{t-1}+\alpha_{2}y_{t-2}+{\underbrace{\varepsilon_{t}+\theta_{1}\varepsilon_{t}}_{\nu_{t}}}
+\]
+
+\end_inset
+
+где 
+\begin_inset Formula $\varepsilon_{t}\sim WN(0,1)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Данная модель дает нам следующие кандидаты в моментные функции:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument listpreamble:1
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+tightlist
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\E(\nu_{t})=0$
+\end_inset
+
+;
+ 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\Var(\nu_{t})=(1+\theta_{1}^{2})$
+\end_inset
+
+;
+ 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\Cov(\nu_{t},\nu_{t-1})=\theta_{1}$
+\end_inset
+
+;
+ 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\Cov(\nu_{t},\nu_{t-j})=0,\ j\ge2$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Если ограничиться этими условиями,
+ то 
+\begin_inset Formula $f(y_{t};\beta)$
+\end_inset
+
+ можно записать в виде 
+\begin_inset Formula 
+\[
+f(y_{t};\beta)=\begin{bmatrix}y_{t}-\alpha_{1}y_{t-1}-\alpha_{2}y_{t-2}\\
+(y_{t}-\alpha_{1}y_{t-1}-\alpha_{2}y_{t-2})^{2}-(1+\theta_{1}^{2})\\
+(y_{t}-\alpha_{1}y_{t-1}-\alpha_{2}y_{t-2})(y_{t-1}-\alpha_{1}y_{t-2}-\alpha_{2}y_{t-3})-\theta_{1}\\
+(y_{t}-\alpha_{1}y_{t-1}-\alpha_{2}y_{t-2})(y_{t-2}-\alpha_{1}y_{t-3}-\alpha_{2}y_{t-4})
+\end{bmatrix}
+\]
+
+\end_inset
+
+Откуда 
+\begin_inset Formula 
+\[
+\E f(y_{t},\hat{\beta})=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Для расчета ковариационной матрицы и для целей процедуры оценивания рассчитаем частные производные 
+\begin_inset Formula $f(y_{t};\beta)$
+\end_inset
+
+:
+ 
+\begin_inset Formula 
+\[
+\frac{\partial f}{\partial\theta'}=\begin{bmatrix}\mathcal{E}_{1} & \mathcal{E}_{2} & \mathcal{E}_{3}\end{bmatrix}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\mathcal{E}_{1}=\begin{bmatrix}-y_{t-1}\\
+-2y_{t-1}(y_{t}-\alpha_{1}y_{t-1}-\alpha_{2}x_{t-2})\\
+-y_{t-1}(y_{t-1}-\alpha_{1}y_{t-2}-\alpha_{2}y_{t-3})-y_{t-2}(y_{t}-\alpha_{1}y_{t-1}-\alpha_{2}y_{t-2})\\
+-y_{t-1}(y_{t-2}-\alpha_{1}y_{t-3}-\alpha_{2}y_{t-4})-y_{t-3}(y_{t}-\alpha_{1}y_{t-1}-\alpha_{2}y_{t-2})
+\end{bmatrix}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\mathcal{E}_{2}=\begin{bmatrix}-y_{t-2}\\
+-2y_{t-2}(y_{t}-\alpha_{1}y_{t-1}-\alpha_{2}y_{t-2})\\
+-y_{t-2}(y_{t-1}-\alpha_{1}y_{t-2}-\alpha_{2}y_{t-3})-y_{t-3}(y_{t}-\alpha_{1}y_{t-1}-\alpha_{2}y_{t-2})\\
+-y_{t-2}(y_{t-2}-\alpha_{1}y_{t-3}-\alpha_{2}y_{t-4})-y_{t-4}(y_{t}-\alpha_{1}y_{t-1}-\alpha_{2}y_{t-2})
+\end{bmatrix}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\mathcal{E}_{3}=\begin{bmatrix}0\\
+-2\theta_{1}\\
+-1\\
+0
+\end{bmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "data/bibliography"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{Список литературы}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

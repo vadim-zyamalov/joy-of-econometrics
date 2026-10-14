@@ -1,0 +1,3781 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass extarticle
+\begin_preamble
+\usepackage{praeambel}
+\usepackage[mathb]{mathabx}
+\usepackage{icomma}
+\VerbatimFootnotes
+\raggedbottom
+\end_preamble
+\use_default_options false
+\begin_modules
+enumitem
+\end_modules
+\maintain_unincluded_children no
+\language russian
+\language_package none
+\inputencoding utf8
+\fontencoding default
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype true
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command biber
+\index_command default
+\float_placement class
+\float_alignment class
+\paperfontsize 12
+\spacing onehalf
+\use_hyperref false
+\papersize a4
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine biblatex
+\cite_engine_type authoryear
+\biblio_style plain
+\biblatex_bibstyle gost-authoryear-min
+\biblatex_citestyle gost-authoryear
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 0
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style russian
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content true
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "~/AppData/Roaming/LyX2.4/templates/ru/Articles/trinkets.lyx"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+Лекция 1
+\end_layout
+
+\begin_layout SubTitle
+Стационарные временные ряды
+\end_layout
+
+\begin_layout Author
+Зямалов В.Е.
+\end_layout
+
+\begin_layout Section
+Оператор запаздывания
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Оператор запаздывания
+\series default
+ 
+\begin_inset Formula $L$
+\end_inset
+
+ —
+ оператор,
+ переводящий значения временного ряда в момент времени 
+\begin_inset Formula $t$
+\end_inset
+
+,
+ в его значении в предыдущий момент времени,
+ то есть 
+\begin_inset Formula 
+\[
+LY_{t}=Y_{t-1}
+\]
+
+\end_inset
+
+Оператор запаздывания обладает следующими свойствами:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument listpreamble:1
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+tightlist
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $Lc=c$
+\end_inset
+
+;
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Дистрибутивный закон
+\emph default
+:
+ 
+\begin_inset Formula $\left(L^{i}+L^{j}\right)y_{t}=y_{t-i}+y_{t-j}$
+\end_inset
+
+;
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Ассоциативный закон умножения
+\emph default
+:
+ 
+\begin_inset Formula $L^{i}L^{j}y_{t}=y_{t-i-j}$
+\end_inset
+
+;
+ 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $L^{-s}y_{t}=y_{t+s}$
+\end_inset
+
+;
+ 
+\end_layout
+
+\begin_layout Enumerate
+Если 
+\begin_inset Formula $|a|<1$
+\end_inset
+
+,
+ то 
+\begin_inset Formula $\left(1+aL+a^{2}L^{2}+a^{3}L^{3}+\dots\right)y_{t}=\dfrac{1}{1-aL}y_{t}$
+\end_inset
+
+;
+ 
+\end_layout
+
+\begin_layout Enumerate
+Если 
+\begin_inset Formula $|a|>1$
+\end_inset
+
+,
+ то 
+\begin_inset Formula $\left(1+{\left(aL\right)}^{-1}+{\left(aL\right)}^{-2}+{\left(aL\right)}^{-3}+\dots\right)y_{t}=-\dfrac{aL}{1-aL}y_{t}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Section
+Стационарность
+\end_layout
+
+\begin_layout Description
+\begin_inset Argument listpreamble:1
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+tightlist
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+Сильная стационарность
+\end_layout
+
+\end_inset
+
+ независимость совместных распределений от сдвига во времени.
+ 
+\end_layout
+
+\begin_layout Description
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+Слабая стационарность
+\end_layout
+
+\end_inset
+
+ выполнение следующих условий:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Argument listpreamble:1
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+tightlist
+\end_layout
+
+\end_inset
+
+существование 
+\series bold
+математического ожидания
+\series default
+,
+ его конечность и независимость от сдвига во времени;
+ 
+\end_layout
+
+\begin_layout Itemize
+существование 
+\series bold
+дисперсии
+\series default
+,
+ ее конечность и независимость от сдвига во времени;
+ 
+\end_layout
+
+\begin_layout Itemize
+существование 
+\series bold
+автоковариаций
+\series default
+,
+ их конечность и независимость от сдвига во времени;
+ автоковариации должны зависеть 
+\series bold
+только
+\series default
+ от взаимного расположения наблюдений.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+
+\series bold
+Автоковариационной функцией
+\series default
+ случайного процесса 
+\begin_inset Formula $y_{t}$
+\end_inset
+
+ называется функция 
+\begin_inset Formula $\gamma(s)=\gamma_{s}=\Cov(y_{t},y_{t-s})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Сильная стационарность не влечет слабую стационарность!
+ Например,
+ распределение Коши 
+\begin_inset Formula 
+\[
+f_{X}(x)=\frac{1}{\pi\gamma\left[1+\left(\frac{x-x_{0}}{\gamma}\right)^{2}\right]}
+\]
+
+\end_inset
+
+не имеет ни математического ожидания,
+ ни дисперсии.
+\end_layout
+
+\begin_layout Subsection
+Теорема Вольда
+\end_layout
+
+\begin_layout Standard
+Любой слабостационарный недетерминированный случайный процесс 
+\begin_inset Formula $Y_{t}$
+\end_inset
+
+ можно представить в виде 
+\begin_inset Formula 
+\[
+Y_{t}-\mu=\sum_{i=0}^{\infty}\beta_{i}\varepsilon_{t-i}
+\]
+
+\end_inset
+
+где 
+\begin_inset Formula $\varepsilon_{t}\sim WN(0,\sigma_{\varepsilon}^{2})$
+\end_inset
+
+.
+ При этом 
+\begin_inset Formula $\sum_{i=0}^{\infty}|\beta_{i}|<\infty$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Слабая стационарность и обратимость MA процессов
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Процессом скользящего среднего
+\series default
+ порядка 
+\begin_inset Formula $q$
+\end_inset
+
+,
+ или 
+\series bold
+процессом с ошибкой в форме скользящего среднего
+\series default
+,
+ называется процесс вида 
+\begin_inset Formula 
+\[
+y_{t}=a_{0}+\varepsilon_{t}+\beta_{1}\varepsilon_{t-1}+\beta_{2}\varepsilon_{t-2}+\cdots+\beta_{q}\varepsilon_{t-q}
+\]
+
+\end_inset
+
+где 
+\begin_inset Formula $\varepsilon\sim WN(0,\sigma^{2})$
+\end_inset
+
+.
+ Краткое обозначение:
+ 
+\begin_inset Formula $y_{t}\sim\text{MA(q)}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Случайный процесс называется 
+\series bold
+обратимым
+\series default
+,
+ если его можно представить в виде процесса AR(
+\begin_inset Formula $\infty$
+\end_inset
+
+) 
+\begin_inset Formula 
+\[
+y_{t}=\alpha_{0}+\sum_{i=1}^{\infty}\alpha_{i}y_{t-i}+\varepsilon_{t}
+\]
+
+\end_inset
+
+с абсолютно сходящимися весами 
+\begin_inset Formula $\sum_{i=0}^{\infty}|\alpha_{i}|<\infty$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Обычно определение обратимого процесса рассматривается применительно к процессам скользящего среднего.
+ Рассматривать его в отношении процесса авторегрессии 
+\series bold
+конечного
+\series default
+ порядка нет особого смысла,
+ так как процесс AR(p) является частным случаем процесса AR(
+\begin_inset Formula $\infty$
+\end_inset
+
+):
+ достаточно принять 
+\begin_inset Formula $\alpha_{i}=0,\ \forall i>p$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+MA(1)
+\end_layout
+
+\begin_layout Standard
+Рассмотрим условия слабой стационарности процесса MA(1) 
+\begin_inset Formula 
+\[
+y_{t}=a_{0}+\varepsilon_{t}+\beta_{1}\varepsilon_{t-1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Найдем математическое ожидание процесса:
+ 
+\begin_inset Formula 
+\[
+\begin{aligned}\E y_{t} & =\E{\left[a_{0}+\varepsilon_{t}+\beta_{1}\varepsilon_{t-1}\right]}=\\
+ & =a_{0}+{\underbrace{\E\varepsilon_{t}}_{=0}}+\beta_{1}{\underbrace{\E\varepsilon_{t-1}}_{=0}}=\\
+ & =a_{0}=\text{const}
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Найдем дисперсию процесса:
+ 
+\begin_inset Formula 
+\[
+\begin{aligned}\Var y_{t} & =\E{(a_{0}+\varepsilon_{t}+\beta_{1}\varepsilon_{t-1}-a_{0})}^{2}=\\
+ & ={\underbrace{\E{\varepsilon_{t}^{2}}}_{=\sigma^{2}}}+2\beta_{1}{\underbrace{\E{\left[\varepsilon_{t}\varepsilon_{t-1}\right]}}_{=0}}+\beta_{1}^{2}{\underbrace{\E{\varepsilon_{t-1}^{2}}}_{=\sigma^{2}}}=\\
+ & =\left(1+\beta_{1}^{2}\right)\sigma^{2}=\text{const}
+\end{aligned}
+\]
+
+\end_inset
+
+Конечно,
+ можно воспользоваться свойством дисперсии суммы независимых случайных величин:
+ 
+\begin_inset Formula 
+\[
+\begin{aligned}\Var y_{t} & ={\Var\left[a_{0}+\varepsilon_{t}+\beta_{1}\varepsilon_{t-1}\right]}=\\
+ & =\Var{\left[\varepsilon_{t}+\beta_{1}\varepsilon_{t-1}\right]}=\\
+ & =\Var{\varepsilon_{t}}+\beta_{1}^{2}\Var{\varepsilon_{t-1}}=\\
+ & =\left(1+\beta_{1}^{2}\right)\sigma^{2}
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Найдем автоковариации процесса.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+label={
+\backslash
+(s=
+\backslash
+arabic*
+\backslash
+)}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\begin{aligned}\gamma_{1} & =\Cov{\left(y_{t},y_{t-1}\right)}=\E{\left(\varepsilon_{t}+\beta_{1}\varepsilon_{t-1}\right)\left(\varepsilon_{t-1}+\beta_{1}\varepsilon_{t-2}\right)}=\\
+ & ={\underbrace{\E{\left[\varepsilon_{t}\varepsilon_{t-1}\right]}}_{=0}}+\beta_{1}{\underbrace{\E{\left[\varepsilon_{t}\varepsilon_{t-2}\right]}}_{=0}}+\beta_{1}{\underbrace{\E{\varepsilon_{t-1}^{2}}}_{=\sigma^{2}}}+\beta_{1}^{2}{\underbrace{\E{\left[\varepsilon_{t-1}\varepsilon_{t-2}\right]}}_{=0}}=\\
+ & =\beta_{1}\sigma^{2}
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula 
+\[
+\begin{aligned}\gamma_{2} & =\Cov{\left(y_{t},y_{t-2}\right)}=\E{\left(\varepsilon_{t}+\beta_{1}\varepsilon_{t-1}\right)\left(\varepsilon_{t-2}+\beta_{1}\varepsilon_{t-3}\right)}=\\
+ & ={\underbrace{\E{\left[\varepsilon_{t}\varepsilon_{t-2}\right]}}_{=0}}+\beta_{1}{\underbrace{\E{\left[\varepsilon_{t}\varepsilon_{t-3}\right]}}_{=0}}+\beta_{1}{\underbrace{\E{\left[\varepsilon_{t-1}\varepsilon_{t-2}\right]}}_{=0}}+\beta_{1}^{2}{\underbrace{\E{\left[\varepsilon_{t-1}\varepsilon_{t-3}\right]}}_{=0}}=\\
+ & =0
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Нетрудно показать,
+ что 
+\begin_inset Formula $\gamma_{s}=0,\ \forall s>1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Для получения представления в форме AR(
+\begin_inset Formula $\infty$
+\end_inset
+
+) нужно к обеим частям процесса применить оператор,
+ обратный к 
+\begin_inset Formula $\left(1+\beta_{1}L\right)$
+\end_inset
+
+:
+ 
+\begin_inset Formula 
+\[
+{\left(1+\beta_{1}L\right)}^{-1}y_{t}={\left(1+\beta_{1}L\right)}^{-1}a_{0}+\varepsilon_{t}
+\]
+
+\end_inset
+
+Для того,
+ чтобы такой оператор существовал,
+ необходимо выполнение условия 
+\begin_inset Formula $|\beta_{1}|<1$
+\end_inset
+
+;
+ тогда,
+ воспользовавшись пятым свойством лагового оператора,
+ получим 
+\begin_inset Formula 
+\[
+\begin{aligned}{\left(1+\beta_{1}L\right)}^{-1}y_{t} & =\left(1-\beta_{1}L+\beta_{1}^{2}L^{2}-\beta_{1}^{3}L^{3}+\beta_{1}^{4}L^{4}\dots\right)y_{t}=\\
+ & =y_{t}-\beta_{1}y_{t-1}+\beta_{1}^{2}y_{t-2}+\cdots=\\
+ & =y_{t}+\sum_{i=1}^{\infty}{\left(-1\right)}^{i}\beta_{1}^{i}y_{t-i}\\
+{(1+\beta_{1}L)}^{-1}a_{0} & =\left(1-\beta_{1}L+\beta_{1}^{2}L^{2}+\cdots\right)a_{0}=\\
+ & =a_{0}-\beta_{1}a_{0}+\beta_{1}^{2}a_{0}+\cdots=\\
+ & =a_{0}\left(1+\sum_{i=1}^{\infty}{(-1)}^{i}\beta_{1}^{i}\right)=\\
+ & =\frac{a_{0}}{1+\beta_{1}}
+\end{aligned}
+\]
+
+\end_inset
+
+Отсюда искомое представление имеет вид 
+\begin_inset Formula 
+\[
+y_{t}=\frac{a_{0}}{1+\beta_{1}}-\sum_{i=1}^{\infty}\beta_{1}^{i}y_{t-i}+\varepsilon_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+MA(q)
+\end_layout
+
+\begin_layout Standard
+Рассмотрим условия слабой стационарности процесса MA(q) 
+\begin_inset Formula 
+\[
+y_{t}=a_{0}+\varepsilon_{t}+\beta_{1}\varepsilon_{t-1}+\beta_{2}\varepsilon_{t-2}+\cdots+\beta_{q}\varepsilon_{t-q}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Математическое ожидание процесса равно:
+ 
+\begin_inset Formula 
+\[
+\E y_{t}=\E{\left(a_{0}+\varepsilon_{t}+\sum_{i=1}^{q}\beta_{i}\varepsilon_{t-i}\right)}=a_{0}+\E\varepsilon_{t}+\sum_{i=1}^{q}\beta_{i}\E\varepsilon_{t-i}=a_{0}=\text{const}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Дисперсия процесса равна:
+ 
+\begin_inset Formula 
+\[
+\begin{aligned}\Var y_{t} & =\Var{\left[a_{0}+\varepsilon_{t}+\sum_{i=1}^{q}\beta_{i}\varepsilon_{t-i}\right]}=\\
+ & =\Var\varepsilon_{t}+\sum_{i=1}^{q}\beta_{q}^{2}\Var\varepsilon_{t-i}=\left(1+\sum_{i=1}^{q}\beta_{i}^{2}\right)\sigma^{2}
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Авторегрессии процесса равны:
+ 
+\begin_inset Formula 
+\[
+\gamma_{s}=\begin{cases}
+\left(\sum_{i=0}^{q-s}\beta_{i}\beta_{i+s}\right)\sigma^{2}, & s=\overline{1,q-1}\\
+\beta_{q}\sigma^{2}, & s=q\\
+0, & s>q
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Для получения представления в форме AR(
+\begin_inset Formula $\infty$
+\end_inset
+
+) нужно к обеим частям процесса применить оператор,
+ обратный к 
+\begin_inset Formula $\left(1+\beta_{1}L+\beta_{2}L^{2}+\ldots+\beta_{q}L^{q}\right)$
+\end_inset
+
+.
+ Отметим,
+ что лаговый полином второго порядка,
+ который нам следует обратить,
+ можно разложить на полиномы первого порядка следующим образом:
+ 
+\begin_inset Formula 
+\[
+1+\beta_{1}L+\beta_{2}L^{2}+\ldots+\beta_{q}L^{q}=\left(1-\pi_{1}L\right)\left(1-\pi_{2}L\right)\ldots\left(1-\pi_{q}L\right)
+\]
+
+\end_inset
+
+где 
+\begin_inset Formula $\pi_{1},\ldots,\pi_{q}\in\mathbb{C}$
+\end_inset
+
+.
+ Такое разложение всегда существует согласно Основной теореме алгебры;
+ более того,
+ оно единственно.
+ С учетом этого обращение полинома сводится к обращению 
+\begin_inset Formula $q$
+\end_inset
+
+ полиномов первой степени.
+ Условие существования обратных полиномов такое же:
+ 
+\begin_inset Formula $|\pi_{i}|<1,\ i=\overline{1,q}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Выражение для свободного члена получается аналогично процессу MA(1) путем последовательного применения к 
+\begin_inset Formula $a_{0}$
+\end_inset
+
+ всех обратных операторов.
+\end_layout
+
+\begin_layout Subsubsection
+MA(inf)
+\end_layout
+
+\begin_layout Standard
+Рассмотрим условия слабой стационарности процесса MA(
+\begin_inset Formula $\infty$
+\end_inset
+
+) 
+\begin_inset Formula 
+\[
+y_{t}=a_{0}+\varepsilon_{t}+\beta_{1}\varepsilon_{t-1}+\beta_{2}\varepsilon_{t-2}+\dots
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Математическое ожидание процесса равно:
+ 
+\begin_inset Formula 
+\[
+\E y_{t}=a_{0}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Дисперсия процесса равна:
+ 
+\begin_inset Formula 
+\[
+\Var y_{t}=\sigma^{2}\sum_{i=0}^{\infty}\beta_{i}^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Авторегрессии процесса равны:
+ 
+\begin_inset Formula 
+\[
+\gamma_{s}=\sigma^{2}\sum_{i=0}^{\infty}\beta_{i}\beta_{i+s}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Как можно понять из предыдущих результатов,
+ процесс скользящего среднего 
+\series bold
+конечного
+\series default
+ порядка 
+\series bold
+всегда
+\series default
+ слабо стационарен.
+ Для бесконечного MA процесса это не так:
+ для существования вторых моментов процесса необходимо выполнение следующего условия 
+\begin_inset Formula 
+\[
+\sum_{i=0}^{\infty}|\beta_{i}|<\infty
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Слабая стационарность AR процессов
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Процессом авторегрессии
+\series default
+ порядка 
+\begin_inset Formula $p$
+\end_inset
+
+ называется процесс вида 
+\begin_inset Formula 
+\[
+y_{t}=a_{0}+\varepsilon_{t}+a_{1}y_{t-1}+a_{2}y_{t-2}+\cdots+a_{p}y_{t-p}+\varepsilon_{t}
+\]
+
+\end_inset
+
+где 
+\begin_inset Formula $\varepsilon\sim WN\!(\left(0,\sigma^{2}\right)$
+\end_inset
+
+.
+ Краткое обозначение:
+ 
+\begin_inset Formula $y_{t}\sim\text{AR(p)}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Рассмотрим модель ARMA(p,q) 
+\begin_inset Formula 
+\[
+y_{t}=a_{0}+a_{1}y_{t-1}+a_{2}y_{t-2}+\cdots+a_{p}y_{t-p}+\varepsilon_{t}+\beta_{1}\varepsilon_{t-1}+\cdots+\beta_{q}\varepsilon_{t-q}
+\]
+
+\end_inset
+
+Если перенести все запаздывающие значения 
+\begin_inset Formula $y_{t}$
+\end_inset
+
+ в левую часть,
+ то получим,
+ что данная модель представляет собой неоднородное разностное уравнение порядка 
+\begin_inset Formula $p$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\underbrace{y_{t}-a_{1}y_{t-1}-a_{2}y_{t-2}+\cdots-a_{p}y_{t-p}}_{\text{однородное разностное уравнение}}=\underbrace{a_{0}+\varepsilon_{t}+\beta_{1}\varepsilon_{t-1}+\cdots+\beta_{q}\varepsilon_{t-q}}_{\text{неоднородная}\text{часть}}
+\]
+
+\end_inset
+
+Если решить это уравнение,
+ что можно найти выражение для 
+\begin_inset Formula $y_{t}$
+\end_inset
+
+ не в рекурсивной форме.
+ Напомним,
+ что из курса дифференциальных и разностных уравнений (см.,
+ например,
+ 
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "romanko2012kurs"
+literal "false"
+
+\end_inset
+
+) следует,
+ что общее решение такого уравнения равно сумме решений однородной части и какого-либо частного решения 
+\begin_inset Formula 
+\[
+y_{t}=y_{t}^{\text{однородное}}+y_{t}^{\text{частное}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Подробно рассмотрим решение этого уравнения на примере авторегрессии первого порядка.
+ Для авторегрессий большего порядка запишем только общее решение.
+\end_layout
+
+\begin_layout Subsubsection
+AR(1)
+\end_layout
+
+\begin_layout Standard
+Рассмотрим модель 
+\begin_inset Formula 
+\begin{equation}
+y_{t}=a_{0}+a_{1}y_{t-1}+\varepsilon_{t}\label{eq:4.1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Найдем решение однородного уравнения 
+\begin_inset Formula 
+\[
+y_{t}=a_{1}y_{t-1}
+\]
+
+\end_inset
+
+Очевидно,
+ что тривиальное решение 
+\begin_inset Formula $y_{t}\equiv0$
+\end_inset
+
+ нас не сильно устраивает,
+ хотя оно,
+ несомненно,
+ является решением данного однородного уравнения.
+ Теория говорит нам,
+ что имеет смысл искать нетривиальное решение данного уравнения в виде 
+\begin_inset Formula $y_{t}=\lambda^{t}$
+\end_inset
+
+;
+ отметим,
+ что таким образом мы ищем общее решение с точностью до ненулевого множителя.
+ Подставим это выражение в уравнение 
+\begin_inset Formula 
+\[
+\lambda^{t}=a_{1}\lambda^{t-1}
+\]
+
+\end_inset
+
+Поскольку нас интересует нетривиальное решение системы,
+ мы можем смело предполагать 
+\begin_inset Formula $\lambda\neq0$
+\end_inset
+
+;
+ поэтому смело сократим на 
+\begin_inset Formula $\lambda^{t-1}$
+\end_inset
+
+ и получим 
+\begin_inset Formula 
+\begin{equation}
+\lambda=a_{1},\label{eq:4.2}
+\end{equation}
+
+\end_inset
+
+то есть решение однородной части имеет вид 
+\begin_inset Formula 
+\[
+y_{t}^{\text{однородное}}=Ca_{1}^{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Для того,
+ чтобы это решение было устойчивым,
+ необходимо,
+ чтобы выполнялось условие 
+\begin_inset Formula $|a_{1}|<1$
+\end_inset
+
+,
+ что совпадает с условием существования представления процесса AR(1) в виде MA(
+\begin_inset Formula $\infty$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Найдем теперь частное решение неоднородного уравнения.
+ Воспользуемся 
+\series bold
+методом неопределенных коэффициентов
+\series default
+;
+ для этого будем искать частное решение в виде 
+\begin_inset Formula 
+\[
+y_{t}^{\text{частное}}=\alpha+\sum_{i=0}^{\infty}\beta_{i}\varepsilon_{t-i}
+\]
+
+\end_inset
+
+Подставив это выражение в уравнение
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:4.1"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+,
+ получим 
+\begin_inset Formula 
+\[
+\alpha+\sum_{i=0}^{\infty}\beta_{i}\varepsilon_{t-i}=a_{0}+a_{1}\alpha+a_{1}\sum_{i=0}^{\infty}\beta_{i}\varepsilon_{t-i-1}+\varepsilon_{t}
+\]
+
+\end_inset
+
+Приравняв коэффициенты при подобных слагаемых,
+ получим 
+\begin_inset Formula 
+\[
+\begin{aligned}\alpha & =a_{0}+a_{1}\alpha,\ \Rightarrow & \alpha & =\frac{a_{0}}{1-a_{1}}\\
+\beta_{0} & =1\\
+\beta_{1} & =a_{1}\beta_{0},\ \Rightarrow & \beta_{1} & =a_{1}\\
+\beta_{2} & =a_{1}\beta_{1},\ \Rightarrow & \beta_{2} & =a_{1}^{2}\\
+\dots
+\end{aligned}
+\]
+
+\end_inset
+
+Итого 
+\begin_inset Formula 
+\[
+y_{t}^{\text{частное}}=\frac{a_{0}}{1-a_{1}}+\sum_{i=0}^{\infty}a_{1}^{i}\varepsilon_{t-i},
+\]
+
+\end_inset
+
+а полное решение 
+\begin_inset Formula 
+\[
+y_{t}=C_{0}a_{1}^{t}+\frac{a_{0}}{1-a_{1}}+\sum_{i=0}^{\infty}a_{1}^{i}\varepsilon_{t-i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+То же самое решение можно получить методом 
+\series bold
+вариации константы
+\series default
+.
+ Будем искать общее решение в виде 
+\begin_inset Formula 
+\begin{equation}
+y_{t}=C_{t}a_{1}^{t},\label{eq:4.3}
+\end{equation}
+
+\end_inset
+
+то есть будем рассматривать постоянный множитель как функцию от времени.
+\end_layout
+
+\begin_layout Standard
+Подставив это выражение в уравнение
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:4.1"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+,
+ получим 
+\begin_inset Formula 
+\[
+C_{t}a_{1}^{t}=a_{0}+a_{1}C_{t-1}a_{1}^{t-1}+\varepsilon_{t}=a_{0}+C_{t-1}a_{1}^{t}+\varepsilon_{t}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+C_{t}=\frac{a_{0}}{a_{1}^{t}}+C_{t-1}+\frac{\varepsilon_{t}}{a_{1}^{t}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Начнем рекурсивно подставлять 
+\begin_inset Formula $C_{t}$
+\end_inset
+
+ в эту формулу;
+ получим 
+\begin_inset Formula 
+\[
+\begin{gathered}C_{t}=\frac{a_{0}}{a_{1}^{t}}+C_{t-1}+\frac{\varepsilon_{t}}{a_{1}^{t}}\\
+C_{t}=\frac{a_{0}}{a_{1}^{t}}+\frac{a_{0}}{a_{1}^{t-1}}+C_{t-2}+\frac{\varepsilon_{t-1}}{a_{1}^{t-1}}+\frac{\varepsilon_{t}}{a_{1}^{t}}\\
+\dots\\
+C_{t}=\sum_{i=0}^{t-1}\frac{a_{0}}{a_{1}^{t-i}}+C_{0}+\sum_{i=0}^{t-1}\frac{\varepsilon_{t-i}}{a_{1}^{t-i}}
+\end{gathered}
+\]
+
+\end_inset
+
+Подставим полученное выражение в
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:4.2"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\begin{aligned}y_{t} & =\left(\sum_{i=0}^{t-1}\frac{a_{0}}{a_{1}^{t-i}}+C_{0}+\sum_{i=0}^{t-1}\frac{\varepsilon_{t-i}}{a_{1}^{t-i}}\right)a_{1}^{t}=\\
+ & ={\underbrace{C_{0}a_{1}^{t}}_{\to_{t\to\infty}0}}+{\underbrace{\sum_{i=0}^{t-1}a_{0}a_{1}^{i}}_{\to_{t\to\infty}\frac{a_{0}}{1-a_{1}}}}+\sum_{i=0}^{t-1}a_{1}^{i}\varepsilon_{t-i}
+\end{aligned}
+\]
+
+\end_inset
+
+Несмотря на отличия в пределах суммирования,
+ общий вид решения совпадает.
+ Легко увидеть,
+ что 
+\begin_inset Formula $C_{0}=y_{0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Видно,
+ что если 
+\begin_inset Formula $|a_{1}|<1$
+\end_inset
+
+,
+ то
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Argument listpreamble:1
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+tightlist
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $y_{0}a_{i}^{t}\to0,\ t\to\infty$
+\end_inset
+
+;
+ 
+\end_layout
+
+\begin_layout Itemize
+свободный член стремится к значению математического ожидания процесса;
+ 
+\end_layout
+
+\begin_layout Itemize
+последнее слагаемое —
+ процесс MA(
+\begin_inset Formula $\infty$
+\end_inset
+
+) —
+ является слабостационарным процессом.
+ 
+\end_layout
+
+\begin_layout Standard
+То есть общее решение разностного уравнения стремится к представлению Вольда процесса AR(1).
+\end_layout
+
+\begin_layout Standard
+Отметим,
+ что выражение
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:4.3"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ по своей сути является результатом подстановки 
+\begin_inset Formula $\lambda^{t}$
+\end_inset
+
+ вместо 
+\begin_inset Formula $y_{t}$
+\end_inset
+
+ в однородную часть разностного уравнения.
+ Данное уравнение называется 
+\series bold
+характеристическим уравнением
+\series default
+.
+ Условием стабильности решения разностного уравнения является выполнение следующего условия 
+\begin_inset Formula 
+\[
+|\lambda_{i}|<1,\ \forall i
+\]
+
+\end_inset
+
+где 
+\begin_inset Formula $\lambda_{i}$
+\end_inset
+
+ —
+ корни характеристического уравнения.
+ В рассматриваемом примере процесса AR(1) такой корень один,
+ и он равен 
+\begin_inset Formula $a_{1}$
+\end_inset
+
+,
+ откуда и следует рассмотренное ранее условие 
+\begin_inset Formula $|a_{1}|<1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Если же мы подставили бы вместо 
+\begin_inset Formula $L$
+\end_inset
+
+ какую-либо переменную 
+\begin_inset Formula $z$
+\end_inset
+
+ и решали бы уравнение 
+\begin_inset Formula $A(z)=0$
+\end_inset
+
+,
+ то мы получили бы 
+\series bold
+обратное характеристическое уравнение
+\series default
+.
+ Условием стабильности для обратного характеристического уравнения является 
+\begin_inset Formula 
+\[
+|z_{i}|>1,\ \forall i
+\]
+
+\end_inset
+
+где 
+\begin_inset Formula $z_{i}$
+\end_inset
+
+ —
+ корни обратного характеристического уравнения.
+\end_layout
+
+\begin_layout Standard
+Корни этих двух уравнений связаны следующим образом:
+ для любого корня 
+\begin_inset Formula $\lambda_{i}$
+\end_inset
+
+ характеристического уравнения существует соответствующий ему корень обратного характеристического уравнения 
+\begin_inset Formula $z_{i}$
+\end_inset
+
+ такой,
+ что 
+\begin_inset Formula $\lambda_{i}=\frac{1}{z_{i}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Наконец,
+ отметим,
+ что стабильность решения разностного уравнения равносильна слабой стационарности соответствующего авторегрессионного процесса.
+\end_layout
+
+\begin_layout Subsubsection
+AR(p)
+\end_layout
+
+\begin_layout Standard
+Рассмотрим модель 
+\begin_inset Formula 
+\[
+y_{t}=a_{0}+a_{1}y_{t-1}+a_{2}y_{t-2}+\cdots+a_{p}y_{t-p}+\varepsilon_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Соответствующее характеристическое уравнение представляет собой полином степени 
+\begin_inset Formula $p$
+\end_inset
+
+,
+ который имеет,
+ соответственно,
+ 
+\begin_inset Formula $p$
+\end_inset
+
+ корней 
+\begin_inset Formula $\lambda_{i}\in\mathbb{C}$
+\end_inset
+
+.
+ Условие стационарности не меняется:
+ 
+\begin_inset Formula $|\lambda_{i}|<1,\ \forall i=\overline{1,p}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Aвтокорреляция
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Автокорреляционной функцией
+\series default
+ слабостационарного случайного процесса 
+\begin_inset Formula $y_{t}$
+\end_inset
+
+ называется функция 
+\begin_inset Formula $\rho(s)=\rho_{s}=\dfrac{\Cov\left(y_{t},y_{t-s}\right)}{\sqrt{\Var y_{t}\Var y_{t-s}}}=\dfrac{\gamma_{s}}{\gamma_{0}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Выборочной автокорреляционной функцией
+\series default
+ называется функция 
+\begin_inset Formula 
+\[
+r_{s}=\frac{\sum_{t=s+1}^{T}\left(y_{t}-\bar{y}\right)\left(y_{t-s}-\bar{y}\right)}{\sum_{t=1}^{T}{\left(y_{t}-\bar{y}\right)}^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Argument listpreamble:1
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+tightlist
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $r_{s}$
+\end_inset
+
+ в случае независимых наблюдений является смещенной оценкой.
+ 
+\end_layout
+
+\begin_layout Itemize
+С ростом 
+\begin_inset Formula $s$
+\end_inset
+
+ объем используемой выборки,
+ а следовательно и число степеней свободы,
+ уменьшается.
+ Поэтому рекомендуется ограничить порядок 
+\begin_inset Formula $s$
+\end_inset
+
+ и не превышать 
+\begin_inset Formula $\frac{T}{4}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Матрица выборочных автокорреляций положительно определена.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $r_{s}\xrightarrow[T\to\infty]{}\rho_{s}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Автокорреляция,
+ являясь важной характеристикой случайного процесса,
+ обладает определенным недостатком.
+\end_layout
+
+\begin_layout Standard
+Давайте рассмотрим процесс AR(2) 
+\begin_inset Formula 
+\[
+y_{t}=a_{1}y_{t-1}+a_{2}y_{t-2}+\varepsilon_{t}
+\]
+
+\end_inset
+
+Если мы найдем значение 
+\begin_inset Formula $\rho_{2}$
+\end_inset
+
+,
+ то оно,
+ строго говоря,
+ будет показывать нечто среднее между «прямой» корреляцией 
+\begin_inset Formula $y_{t}$
+\end_inset
+
+ и 
+\begin_inset Formula $y_{t-2}$
+\end_inset
+
+ и «опосредованной» корреляцией,
+ возникающей из-за того,
+ что 
+\begin_inset Formula $y_{t}$
+\end_inset
+
+ зависит от величины 
+\begin_inset Formula $y_{t-1}$
+\end_inset
+
+,
+ которая,
+ в свою очередь,
+ зависит от 
+\begin_inset Formula $y_{t-2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Для того,
+ чтобы обойти этот эффект,
+ используют 
+\series bold
+частные автокорреляции
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Частная автокорреляция
+\series default
+ порядка 
+\begin_inset Formula $s$
+\end_inset
+
+ определяется как значение коэффициента 
+\begin_inset Formula $\varphi_{ss}$
+\end_inset
+
+ в следующей модели AR(s):
+ 
+\begin_inset Formula 
+\begin{equation}
+y_{t}=\varphi_{0s}+\varphi_{s1}y_{t-1}+\varphi_{s2}y_{t-2}+\cdots+\varphi_{ss}y_{t-s}+\nu_{t}\label{eq:6.1}
+\end{equation}
+
+\end_inset
+
+Обратите внимание,
+ что при поиске значения 
+\begin_inset Formula $\phi_{ss}$
+\end_inset
+
+ мы полностью игнорируем истинный порядок авторегрессии процесса;
+ значение 
+\begin_inset Formula $s$
+\end_inset
+
+ может принимать произвольные интересующие на значения.
+\end_layout
+
+\begin_layout Standard
+Альтернативным способом рассчета частных автокорреляций является использование системы уравнений Юла-Уокера и метода Крамера.
+ Вернемся к уравнению
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:6.1"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+.
+ Построим систему уравнений 
+\begin_inset Formula 
+\begin{equation}
+\rho_{j}=\varphi_{s1}\rho_{j-1}+\varphi_{s2}\rho_{j-2}+\cdots+\varphi_{ss}\rho_{j-s},\quad j=\overline{1,s}\label{eq:6.2}
+\end{equation}
+
+\end_inset
+
+Для того,
+ чтобы найти 
+\begin_inset Formula $\varphi_{ss}$
+\end_inset
+
+,
+ воспользуемся правилом Крамера.
+ Напомним,
+ что значение 
+\begin_inset Formula $\varphi_{ss}$
+\end_inset
+
+ равно дроби,
+ в знаменателе которой находится определитель матрицы коэффициентов системы 
+\begin_inset Formula 
+\[
+\begin{vmatrix}\rho_{0} & \rho_{1} & \rho_{2} & \cdots & \rho_{s-2} & \rho_{s-1}\\
+\rho_{1} & \rho_{0} & \rho_{1} & \cdots & \rho_{s-3} & \rho_{s-2}\\
+\vdots & \vdots & \vdots & \ddots & \vdots & \vdots\\
+\rho_{s-2} & \rho_{s-3} & \rho_{s-4} & \cdots & \rho_{0} & \rho_{1}\\
+\rho_{s-1} & \rho_{s-2} & \rho_{s-3} & \cdots & \rho_{1} & \rho_{0}
+\end{vmatrix},
+\]
+
+\end_inset
+
+а в числителе —
+ определитель матрицы коэффициентов,
+ в которой последний столбец заменен на столбец свободных членов («правых частей») 
+\begin_inset Formula 
+\[
+\begin{vmatrix}\rho_{0} & \rho_{1} & \rho_{2} & \cdots & \rho_{s-2} & \rho_{1}\\
+\rho_{1} & \rho_{0} & \rho_{1} & \cdots & \rho_{s-3} & \rho_{2}\\
+\vdots & \vdots & \vdots & \ddots & \vdots & \vdots\\
+\rho_{s-2} & \rho_{s-3} & \rho_{s-4} & \cdots & \rho_{0} & \rho_{s-1}\\
+\rho_{s-1} & \rho_{s-2} & \rho_{s-3} & \cdots & \rho_{1} & \rho_{s}
+\end{vmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Выборочная частная автокорреляционная функция
+\series default
+ 
+\begin_inset Formula $\hat{\varphi}_{ss}$
+\end_inset
+
+ определяется как коэффициент 
+\begin_inset Formula $\varphi_{ss}$
+\end_inset
+
+ в выборочной регрессии 
+\begin_inset Formula 
+\[
+\left(y_{t}-\bar{y}\right)=\varphi_{s1}\left(y_{t-1}-\bar{y}\right)+\cdots+\varphi_{ss}\left(y_{t-s}-\bar{y}\right)+\varepsilon_{t}
+\]
+
+\end_inset
+
+Можно показать,
+ что 
+\begin_inset Formula $\hat{\varphi}_{ss}$
+\end_inset
+
+ —
+ состоятельная оценка 
+\begin_inset Formula $\varphi_{ss}$
+\end_inset
+
+.
+ Для поиска значения 
+\begin_inset Formula $\hat{\varphi}_{ss}$
+\end_inset
+
+ можно также воспользоваться правилом Крамера,
+ заменив истинные автокорреляции выборочными.
+\end_layout
+
+\begin_layout Subsection
+AR(1)
+\end_layout
+
+\begin_layout Standard
+Для удобства перейдем к центрированным значениям процесса.
+ Нетрудно показать,
+ что формула для центрированного авторегрессионного процесса 
+\begin_inset Formula $y_{t}$
+\end_inset
+
+ отличается от формулы для исходного процесса отсутствием свободного члена.
+ Действительно,
+ пусть мы имеем процесс AR(p) 
+\begin_inset Formula 
+\[
+y_{t}=a_{0}+a_{1}y_{t-1}+\cdots+a_{p}y_{t-p}+\varepsilon_{t}
+\]
+
+\end_inset
+
+Нам уже известно,
+ что математическое ожидание этого процесса равно 
+\begin_inset Formula 
+\[
+\E y_{t}=\mu=\frac{a_{0}}{1-\sum_{i=1}^{p}a_{i}}
+\]
+
+\end_inset
+
+Вычтем 
+\begin_inset Formula $\mu$
+\end_inset
+
+ из обеих частей процесса:
+ 
+\begin_inset Formula 
+\[
+\begin{aligned}\bar{y}_{t}=y_{t}-\mu & =a_{0}-\frac{a_{0}}{1-\sum_{i=1}^{p}a_{i}}+a_{1}y_{t-1}+\cdots+a_{p}y_{t-p}+\varepsilon_{t}=\\
+ & =\frac{a_{0}-a_{0}a_{1}-a_{0}a_{2}-\cdots-a_{0}a_{p}-a_{0}}{1-\sum_{i=1}^{p}a_{i}}+a_{1}y_{t-1}+\cdots+a_{p}y_{t-p}+\varepsilon_{t}=\\
+ & =\frac{-a_{0}a_{1}-a_{0}a_{2}-\cdots-a_{0}a_{p}}{1-\sum_{i=1}^{p}a_{i}}+a_{1}y_{t-1}+\cdots+a_{p}y_{t-p}+\varepsilon_{t}=\bigast
+\end{aligned}
+\]
+
+\end_inset
+
+Первое слагаемое можно рассматривать как сумму из 
+\begin_inset Formula $p$
+\end_inset
+
+ отдельных дробей.
+ Выделим первую из них.
+ 
+\begin_inset Formula 
+\[
+\begin{aligned}\bigast & =\frac{-a_{0}a_{1}}{1-\sum_{i=1}^{p}a_{i}}+\frac{-a_{0}a_{2}-\cdots-a_{0}a_{p}}{1-\sum_{i=1}^{p}a_{i}}+a_{1}y_{t-1}+\cdots+a_{p}y_{t-p}+\varepsilon_{t}=\\
+ & =\frac{-a_{0}a_{2}-\cdots-a_{0}a_{p}}{1-\sum_{i=1}^{p}a_{i}}+a_{1}\left(y_{t-1}-\frac{a_{0}}{1-\sum_{i=1}^{p}a_{i}}\right)+\cdots+a_{p}y_{t-p}+\varepsilon_{t}=\\
+ & =\frac{-a_{0}a_{2}-\cdots-a_{0}a_{p}}{1-\sum_{i=1}^{p}a_{i}}+a_{1}(\underbrace{y_{t-1}-\mu}_{\bar{y}_{t-1}})+\cdots+a_{p}y_{t-p}+\varepsilon_{t}=\bigast
+\end{aligned}
+\]
+
+\end_inset
+
+Проделав аналогичные действия с остальными слагаемыми,
+ получим 
+\begin_inset Formula 
+\[
+\bigast=a_{1}\bar{y}_{t-1}+\cdots+a_{p}\bar{y}_{t-p}+\varepsilon_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Очевидно,
+ что значения всех автокорреляций для процессов 
+\begin_inset Formula $y_{t}$
+\end_inset
+
+ и 
+\begin_inset Formula $\bar{y}_{t}$
+\end_inset
+
+ совпадают.
+ Поэтому,
+ для упрощения и для краткости будем считать,
+ что мы уже провели центрирование процесса и отбросили свободный член.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+label={
+\backslash
+(s=
+\backslash
+arabic*
+\backslash
+)}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Чтобы найти первую автокорреляцию 
+\begin_inset Formula $\rho_{1}$
+\end_inset
+
+ найдем 
+\begin_inset Formula $\gamma_{1}$
+\end_inset
+
+,
+ умножив обе части процесса на 
+\begin_inset Formula $y_{t-1}$
+\end_inset
+
+ и взяв математическое ожидание.
+ Так как мы условились считать,
+ что мы уже провели центрирование,
+ то математическое ожидание процесса равно нулю,
+ и полученное математическое ожидание в очности равно автоковариации.
+ 
+\begin_inset Formula 
+\[
+\begin{aligned}\gamma_{1}=\E{\left[y_{t}y_{t-1}\right]} & =\E{\left[a_{1}y_{t-1}^{2}+\varepsilon_{t}y_{t-1}\right]}=\\
+ & =a_{1}\underbrace{\E y_{t-1}^{2}}_{=\gamma_{0}}+=\underbrace{\E{\left[\varepsilon_{t}y_{t-1}\right]}}_{0}=\\
+ & =a_{1}\gamma_{0}\\
+\rho_{1}=\frac{\gamma_{1}}{\gamma_{0}} & =a_{1}
+\end{aligned}
+\]
+
+\end_inset
+
+Последнее слагаемое равно нулю,
+ так как мы предполагаем,
+ что прошлое значение процесса 
+\begin_inset Formula $y_{t-1}$
+\end_inset
+
+ не испытывают влияния будущей инновации 
+\begin_inset Formula $\varepsilon_{t}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Автокорреляция 
+\begin_inset Formula $\rho_{2}$
+\end_inset
+
+ ищется аналогичным способом:
+ 
+\begin_inset Formula 
+\[
+\begin{aligned}\gamma_{2}=\E{[y_{t}y_{t-2}]} & =\E{\left[a_{1}y_{t-1}y_{t-2}+\varepsilon_{t}y_{t-2}\right]}=\\
+ & =a_{1}{\underbrace{\E{\left[y_{t-1}y_{t-2}\right]}}_{=\gamma_{1}}}+{\underbrace{\E{\left[\varepsilon_{t}y_{t-2}\right]}}_{=0}}=\\
+ & =a_{1}\gamma_{1}\\
+\rho_{2}=\frac{\gamma_{2}}{\gamma_{0}} & =a_{1}\rho_{1}=a_{1}^{2}
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Нетрудно показать,
+ что для процесса AR(1) выполняется 
+\begin_inset Formula 
+\[
+\rho_{s}=a_{1}\rho_{s-1}=a_{1}^{s}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Теперь найдем его частные автокорреляции.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+label={
+\backslash
+(s=
+\backslash
+arabic*
+\backslash
+)}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Из уравнения 
+\begin_inset Formula 
+\[
+y_{t}=\varphi_{01}+\varphi_{11}y_{t-1}+\nu_{t}
+\]
+
+\end_inset
+
+сразу следует,
+ что
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Это справедливо для 
+\series bold
+любого
+\series default
+ слабостационарного процесса.
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\phi_{11}=\rho_{1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Из уравнения 
+\begin_inset Formula 
+\[
+y_{t}=\varphi_{02}+\varphi_{12}y_{t-1}+\varphi_{22}y_{t-2}+\nu_{t}
+\]
+
+\end_inset
+
+следует,
+ что 
+\begin_inset Formula 
+\[
+\varphi_{22}=\frac{\begin{vmatrix}\rho_{0} & \rho_{1}\\
+\rho_{1} & \rho_{2}
+\end{vmatrix}}{\begin{vmatrix}\rho_{0} & \rho_{1}\\
+\rho_{1} & \rho_{0}
+\end{vmatrix}}=\frac{\begin{vmatrix}1 & a_{1}\\
+a_{1} & a_{1}^{2}
+\end{vmatrix}}{\begin{vmatrix}1 & a_{1}\\
+a_{1} & 1
+\end{vmatrix}}=0
+\]
+
+\end_inset
+
+Очевидно,
+ что последний столбец определителя в числителе является первым столбцом,
+ умноженным на 
+\begin_inset Formula $a_{1}$
+\end_inset
+
+.
+ Другими словами,
+ он равен нулю.
+\end_layout
+
+\begin_layout Standard
+Нетрудно показать,
+ что для 
+\begin_inset Formula $\varphi_{ss}=0,\ \forall s>1$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsection
+AR(2)
+\end_layout
+
+\begin_layout Standard
+Рассмотрим слабостационарный процесс 
+\begin_inset Formula $y_{t}=a_{0}+a_{1}y_{t-1}+a_{2}y_{t-2}+\varepsilon_{t}$
+\end_inset
+
+.
+ Как и ранее,
+ упростим себе задачу,
+ центрировав процесс,
+ то есть отбросив свободный член.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+label={
+\backslash
+(s=
+\backslash
+arabic*
+\backslash
+)}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Найдем первую автокорреляцию:
+ 
+\begin_inset Formula 
+\[
+\begin{aligned}\gamma_{1}=\E{y_{t}y_{t-1}} & =\E\left[a_{1}y_{t-1}^{2}+a_{2}y_{t-2}y_{t-1}+\varepsilon_{t}y_{t-1}\right]=\\
+ & =a_{1}\underbrace{\E y_{t-1}^{2}}_{=\gamma_{0}}+a_{2}\underbrace{\E y_{t-2}y_{t-1}}_{=\gamma_{1}}+\underbrace{\E\varepsilon_{t}y_{t-1}}_{=0}=\\
+ & =a_{1}\gamma_{0}+a_{2}\gamma_{1}\\
+\rho_{1}=\frac{\gamma_{1}}{\gamma_{0}} & =a_{1}+a_{2}\rho_{1}\Rightarrow\rho_{1}=\frac{a_{1}}{1-a_{2}}
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Найдем вторую автокорреляцию:
+ 
+\begin_inset Formula 
+\[
+\begin{aligned}\gamma_{2}=\E{y_{t}y_{t-2}} & =\E\left[a_{1}y_{t-1}y_{t-2}+a_{2}y_{t-2}^{2}+\varepsilon_{t}y_{t-2}\right]=\\
+ & =a_{1}\underbrace{\E{y_{t-1}y_{t-2}}}_{=\gamma_{1}}+a_{2}\underbrace{\E y_{t-2}^{2}}_{=\gamma_{0}}+\underbrace{\E{\varepsilon_{t}y_{t-2}}}_{=0}=\\
+ & =a_{1}\gamma_{1}+a_{2}\gamma_{0}\\
+\rho_{2}=\frac{\gamma_{2}}{\gamma_{0}} & =a_{1}\rho_{1}+a_{2}
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Найдем третью автокорреляцию:
+ 
+\begin_inset Formula 
+\[
+\begin{aligned}\gamma_{3}=\E{y_{t}y_{t-3}} & =\E\left[a_{1}y_{t-1}y_{t-3}+a_{2}y_{t-2}y_{t-3}+\varepsilon_{t}y_{t-3}\right]=\\
+ & =a_{1}\underbrace{\E{y_{t-1}y_{t-3}}}_{=\gamma_{2}}+a_{2}\underbrace{\E{y_{t-2}y_{t-3}}}_{=\gamma_{1}}+\underbrace{\E{\varepsilon_{t}y_{t-3}}}_{=0}=\\
+ & =a_{1}\gamma_{2}+a_{2}\gamma_{1}\\
+\rho_{3}=\frac{\gamma_{3}}{\gamma_{0}} & =a_{1}\rho_{2}+a_{2}\rho_{1}
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Нетрудно показать,
+ что для процесса AR(2) выполняется 
+\begin_inset Formula 
+\[
+\rho_{s}=a_{1}\rho_{s-1}+a_{2}\rho_{s-2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Теперь найдем его частные автокорреляции.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+label={
+\backslash
+(s=
+\backslash
+arabic*
+\backslash
+)}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Ранее мы уже отмечали,
+ что для 
+\series bold
+любого
+\series default
+ слабостационарного процесса 
+\begin_inset Formula 
+\[
+\phi_{11}=\rho_{1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Из уравнения 
+\begin_inset Formula 
+\[
+y_{t}=\varphi_{02}+\varphi_{12}y_{t-1}+\varphi_{22}y_{t-2}+\nu_{t}
+\]
+
+\end_inset
+
+следует,
+ что 
+\begin_inset Formula 
+\[
+\begin{aligned}\varphi_{22} & =\frac{\begin{vmatrix}\rho_{0} & \rho_{1}\\
+\rho_{1} & \rho_{2}
+\end{vmatrix}}{\begin{vmatrix}\rho_{0} & \rho_{1}\\
+\rho_{1} & \rho_{0}
+\end{vmatrix}}=\frac{\rho_{2}-\rho_{1}^{2}}{1-\rho_{1}^{2}}=\frac{\frac{a_{1}^{2}-a_{2}^{2}+a_{2}}{1-a_{2}}-\frac{a_{1}^{2}}{{(1-a_{2})}^{2}}}{1-\frac{a_{1}^{2}}{{(1-a_{2})}^{2}}}=\\
+ & =\frac{a_{2}^{3}-2a_{2}^{2}+a_{2}-a_{1}^{2}a_{2}}{{(1-a_{2})}^{2}-a_{1}^{2}}=\frac{a_{2}\left[\left(1-2a_{2}+a_{2}^{2}\right)-a_{1}^{2}\right]}{{(1-a_{2})}^{2}-a_{1}^{2}}=a_{2}
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula 
+\[
+\varphi_{33}=\frac{\begin{vmatrix}\rho_{0} & \rho_{1} & \rho_{1}\\
+\rho_{1} & \rho_{0} & \rho_{2}\\
+\rho_{2} & \rho_{1} & \rho_{3}
+\end{vmatrix}}{\begin{vmatrix}\rho_{0} & \rho_{1} & \rho_{2}\\
+\rho_{1} & \rho_{0} & \rho_{1}\\
+\rho_{2} & \rho_{1} & \rho_{0}
+\end{vmatrix}}=0
+\]
+
+\end_inset
+
+Очевидно,
+ что последний столбец определителя в числителе является линейной комбинацией первых двух столбцов с коэффициентами 
+\begin_inset Formula $a_{1},a_{2}$
+\end_inset
+
+.
+ Другими словами,
+ он равен нулю.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Нетрудно показать,
+ что для 
+\begin_inset Formula $\varphi_{ss}=0,\ \forall s>2$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+MA(1)
+\end_layout
+
+\begin_layout Standard
+Рассмотрим слабостационарный процесс 
+\begin_inset Formula $y_{t}=a_{0}+\varepsilon_{t}+\beta_{1}\varepsilon_{t-1}$
+\end_inset
+
+.
+ Очевидно,
+ что 
+\begin_inset Formula $\mu=a_{0}$
+\end_inset
+
+,
+ то есть центрирование также дает нам процесс,
+ чья формула совпадает с формулой исходного процесса,
+ но без свободного члена.
+ Как и ранее,
+ упростим себе задачу,
+ центрировав процесс,
+ то есть отбросив свободный член.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+label={
+\backslash
+(s=
+\backslash
+arabic*
+\backslash
+)}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Найдем первую автокорреляцию:
+ 
+\begin_inset Formula 
+\[
+\begin{aligned}\gamma_{0}=\E y_{t}^{2} & =\E{(\varepsilon_{t}+\beta_{1}\varepsilon_{t-1})}^{2}=\\
+ & =\underbrace{\E\varepsilon_{t}^{2}}_{=\sigma^{2}}+2\beta_{1}\underbrace{\E{\varepsilon_{t}\varepsilon_{t-1}}}_{=0}+\beta_{1}^{2}\underbrace{\E\varepsilon_{t-1}^{2}}_{=\sigma^{2}}=\\
+ & =(1+\beta_{1}^{2})\sigma^{2}\\
+\gamma_{1}=\E{y_{t}y_{t-1}} & =\E\left(\varepsilon_{t}+\beta_{1}\varepsilon_{t-1}\right)\left(\varepsilon_{t-1}+\beta_{1}\varepsilon_{t-2}\right)=\\
+ & =\underbrace{\E{\varepsilon_{t}\varepsilon_{t-1}}}_{=0}+\beta_{1}\underbrace{\E{\varepsilon_{t}\varepsilon_{t-2}}}_{=0}+\beta_{1}\underbrace{\E{\varepsilon_{t-1}\varepsilon_{t-1}}}_{=\sigma^{2}}+\beta_{1}^{2}\underbrace{\E{\varepsilon_{t-1}\varepsilon_{t-2}}}_{=0}=\\
+ & =\beta_{1}\sigma^{2}\\
+\rho_{1}=\frac{\gamma_{1}}{\gamma_{0}} & =\frac{\beta_{1}}{1+\beta_{1}^{2}}
+\end{aligned}
+\]
+
+\end_inset
+
+Обратим внимание,
+ что для процесса MA(1) первая автокорреляция не превышает по абсолютному значению 
+\begin_inset Formula $0,5$
+\end_inset
+
+!
+\end_layout
+
+\begin_layout Enumerate
+Найдем вторую автокорреляцию:
+ 
+\begin_inset Formula 
+\[
+\begin{aligned}\gamma_{2}=\E{y_{t}y_{t-2}} & =\E\left(\varepsilon_{t}+\beta_{1}\varepsilon_{t-1}\right)\left(\varepsilon_{t-2}+\beta_{1}\varepsilon_{t-3}\right)=\\
+ & =\underbrace{\E{\varepsilon_{t}\varepsilon_{t-2}}}_{=0}+\beta_{1}\underbrace{\E{\varepsilon_{t}\varepsilon_{t-3}}}_{=0}+\beta_{1}\underbrace{\E{\varepsilon_{t-1}\varepsilon_{t-2}}}_{=0}+\beta_{1}^{2}\underbrace{\E{\varepsilon_{t-1}\varepsilon_{t-3}}}_{=0}=\\
+ & =0\\
+\rho_{2}=\frac{\gamma_{2}}{\gamma_{0}} & =0
+\end{aligned}
+\]
+
+\end_inset
+
+Все последующие автокорреляции также равны 0.
+ 
+\end_layout
+
+\begin_layout Standard
+Теперь найдем его частные автокорреляции.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+label={
+\backslash
+(s=
+\backslash
+arabic*
+\backslash
+)}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Ранее мы уже отмечали,
+ что для 
+\series bold
+любого
+\series default
+ слабостационарного процесса 
+\begin_inset Formula 
+\[
+\phi_{11}=\rho_{1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula 
+\[
+\varphi_{22}=\frac{\begin{vmatrix}\rho_{0} & \rho_{1}\\
+\rho_{1} & 0
+\end{vmatrix}}{\begin{vmatrix}\rho_{0} & \rho_{1}\\
+\rho_{1} & \rho_{0}
+\end{vmatrix}}=\frac{-\rho_{1}^{2}}{1-\rho_{1}^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula 
+\[
+\varphi_{33}=\frac{\begin{vmatrix}\rho_{0} & \rho_{1} & \rho_{1}\\
+\rho_{1} & \rho_{0} & 0\\
+0 & \rho_{1} & 0
+\end{vmatrix}}{\begin{vmatrix}\rho_{0} & \rho_{1} & 0\\
+\rho_{1} & \rho_{0} & \rho_{1}\\
+0 & \rho_{1} & \rho_{0}
+\end{vmatrix}}=\frac{\rho_{1}^{3}}{1-2\rho_{1}^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula 
+\[
+\varphi_{44}=\frac{\begin{vmatrix}\rho_{0} & \rho_{1} & 0 & \rho_{1}\\
+\rho_{1} & \rho_{0} & \rho_{1} & 0\\
+0 & \rho_{1} & \rho_{0} & 0\\
+0 & 0 & \rho_{1} & 0
+\end{vmatrix}}{\begin{vmatrix}\rho_{0} & \rho_{1} & 0 & 0\\
+\rho_{1} & \rho_{0} & \rho_{1} & 0\\
+0 & \rho_{1} & \rho_{0} & \rho_{1}\\
+0 & 0 & \rho_{1} & \rho_{0}
+\end{vmatrix}}=\frac{-\rho_{1}^{4}}{1-\rho_{1}^{2}+\rho_{1}^{4}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Нетрудно заметить,
+ что в знаменателе 
+\series bold
+всегда
+\series default
+ стоит положительное значение,
+ поскольку это определитель корреляционной матрицы,
+ которая положительно определена.
+ Поэтому знак частной автокорреляции будет зависеть от знака 
+\begin_inset Formula $\rho_{1}$
+\end_inset
+
+,
+ который зависит от знака 
+\begin_inset Formula $\beta_{1}$
+\end_inset
+
+:
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Argument listpreamble:1
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+tightlist
+\end_layout
+
+\end_inset
+
+Если 
+\begin_inset Formula $\beta_{1}>0$
+\end_inset
+
+,
+ то 
+\begin_inset Formula 
+\[
+\varphi_{ss}=\begin{cases}
+>0, & s\text{ нечетно}\\
+<0, & s\text{ четно}
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Если 
+\begin_inset Formula $\beta_{1}<0$
+\end_inset
+
+,
+ то 
+\begin_inset Formula $\varphi_{ss}<0,\ \forall s$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+По абсолютному значению 
+\begin_inset Formula $\varphi_{ss}$
+\end_inset
+
+ будет убывать в обоих случаях.
+\end_layout
+
+\begin_layout Subsection
+MA(2)
+\end_layout
+
+\begin_layout Standard
+Рассмотрим слабостационарный процесс 
+\begin_inset Formula $y_{t}=a_{0}+\varepsilon_{t}+\beta_{1}\varepsilon_{t-1}+\beta_{2}\varepsilon_{t-2}$
+\end_inset
+
+.
+ Как и ранее,
+ упростим себе задачу,
+ центрировав процесс,
+ то есть отбросив свободный член.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+label={
+\backslash
+(s=
+\backslash
+arabic*
+\backslash
+)}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Найдем первую автокорреляцию:
+ 
+\begin_inset Formula 
+\[
+\begin{aligned}\gamma_{0}=\E y_{t}^{2} & =\E{(\varepsilon_{t}+\beta_{1}\varepsilon_{t-1}+\beta_{2}\varepsilon_{t-2})}^{2}=\\
+ & =\underbrace{\E\varepsilon_{t}^{2}}_{\sigma^{2}}+\beta_{1}^{2}\underbrace{\E\varepsilon_{t-1}^{2}}_{\sigma^{2}}+\beta_{2}^{2}\underbrace{\E\varepsilon_{t-2}^{2}}_{\sigma^{2}}+\\
+ & \phantom{=}+2\beta_{1}\underbrace{\E{\varepsilon_{t}\varepsilon_{t-1}}}_{=0}+2\beta_{2}\underbrace{\E{\varepsilon_{t}\varepsilon_{t-2}}}_{=0}+2\beta_{1}\beta_{2}\underbrace{\E{\varepsilon_{t-1}\varepsilon_{t-2}}}_{=0}=\\
+ & =\left(1+\beta_{1}^{2}+\beta_{2}^{2}\right)\sigma^{2}
+\end{aligned}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\begin{aligned}\gamma_{1}=\E{y_{t}y_{t-1}} & =\E\left(\varepsilon_{t}+\beta_{1}\varepsilon_{t-1}+\beta_{2}\varepsilon_{t-2}\right)\left(\varepsilon_{t-1}+\beta_{1}\varepsilon_{t-2}+\beta_{2}\varepsilon_{t-3}\right)=\\
+ & ={\underbrace{\E{\varepsilon_{t}\varepsilon_{t-1}}}_{=0}}+\beta_{1}{\underbrace{\E{\varepsilon_{t}\varepsilon_{t-2}}}_{=0}}+\beta_{2}{\underbrace{\E{\varepsilon_{t}\varepsilon_{t-3}}}_{=0}}+\\
+ & \phantom{=}+\beta_{1}{\underbrace{\E{\varepsilon_{t-1}\varepsilon_{t-1}}}_{=\sigma^{2}}}+\beta_{1}^{2}{\underbrace{\E{\varepsilon_{t-1}\varepsilon_{t-2}}}_{=0}}+\beta_{1}\beta_{2}{\underbrace{\E{\varepsilon_{t-1}\varepsilon_{t-3}}}_{=0}}+\\
+ & \phantom{=}+\beta_{2}{\underbrace{\E{\varepsilon_{t-2}\varepsilon_{t-1}}}_{=0}}+\beta_{2}\beta_{1}{\underbrace{\E{\varepsilon_{t-2}\varepsilon_{t-2}}}_{=\sigma^{2}}}+\beta_{2}^{2}{\underbrace{\E[\varepsilon_{t-2}\varepsilon_{t-3}]}_{=0}}=\\
+ & =\left(\beta_{1}+\beta_{1}\beta_{2}\right)\sigma^{2}\\
+\rho_{1}=\frac{\gamma_{1}}{\gamma_{0}} & =\frac{\beta_{1}+\beta_{1}\beta_{2}}{1+\beta_{1}^{2}+\beta_{2}^{2}}
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Найдем вторую автокорреляцию:
+ 
+\begin_inset Formula 
+\[
+\begin{aligned}\gamma_{2}=\E{y_{t}y_{t-2}} & =\E\left(\varepsilon_{t}+\beta_{1}\varepsilon_{t-1}+\beta_{2}\varepsilon_{t-2}\right)\left(\varepsilon_{t-2}+\beta_{1}\varepsilon_{t-3}+\beta_{2}\varepsilon_{t-4}\right)=\\
+ & ={\underbrace{\E{\varepsilon_{t}\varepsilon_{t-2}}}_{=0}}+\beta_{1}{\underbrace{\E{\varepsilon_{t}\varepsilon_{t-3}}}_{=0}}+\beta_{2}{\underbrace{\E{\varepsilon_{t}\varepsilon_{t-4}}}_{=0}}+\\
+ & \phantom{=}+\beta_{1}{\underbrace{\E{\varepsilon_{t-1}\varepsilon_{t-2}}}_{=0}}+\beta_{1}^{2}{\underbrace{\E{\varepsilon_{t-1}\varepsilon_{t-3}}}_{=0}}+\beta_{1}\beta_{2}{\underbrace{\E{\varepsilon_{t-1}\varepsilon_{t-4}}}_{=0}}+\\
+ & \phantom{=}+\beta_{2}{\underbrace{\E{\varepsilon_{t-2}\varepsilon_{t-2}}}_{=\sigma^{2}}}+\beta_{2}\beta_{1}{\underbrace{\E{\varepsilon_{t-2}\varepsilon_{t-3}}}_{=0}}+\beta_{2}^{2}{\underbrace{\E{\varepsilon_{t-2}\varepsilon_{t-4}}}_{=0}}=\\
+ & =\beta_{2}\sigma^{2}\\
+\rho_{2}=\frac{\gamma_{1}}{\gamma_{0}} & =\frac{\beta_{2}}{1+\beta_{1}^{2}+\beta_{2}^{2}}
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Найдем третью автокорреляцию:
+ 
+\begin_inset Formula 
+\[
+\begin{aligned}\gamma_{3}=\E{y_{t}y_{t-3}} & =\E\left(\varepsilon_{t}+\beta_{1}\varepsilon_{t-1}+\beta_{2}\varepsilon_{t-2}\right)\left(\varepsilon_{t-3}+\beta_{1}\varepsilon_{t-4}+\beta_{2}\varepsilon_{t-5}\right)=\\
+ & =\underbrace{\E{\varepsilon_{t}\varepsilon_{t-3}}}_{=0}+\beta_{1}\underbrace{\E{\varepsilon_{t}\varepsilon_{t-4}}}_{=0}+\beta_{2}\underbrace{\E{\varepsilon_{t}\varepsilon_{t-5}}}_{=0}+\\
+ & \phantom{=}+\beta_{1}\underbrace{\E{\varepsilon_{t-1}\varepsilon_{t-3}}}_{=0}+\beta_{1}^{2}\underbrace{\E{\varepsilon_{t-1}\varepsilon_{t-4}}}_{=0}+\beta_{1}\beta_{2}\underbrace{\E{\varepsilon_{t-1}\varepsilon_{t-5}}}_{=0}+\\
+ & \phantom{=}+\beta_{2}\underbrace{\E{\varepsilon_{t-2}\varepsilon_{t-3}}}_{=0}+\beta_{2}\beta_{1}\underbrace{\E{\varepsilon_{t-2}\varepsilon_{t-4}}}_{=0}+\beta_{2}^{2}\underbrace{\E{\varepsilon_{t-2}\varepsilon_{t-4}}}_{=0}=\\
+ & =0\\
+\rho_{3}=\frac{\gamma_{1}}{\gamma_{0}} & =0
+\end{aligned}
+\]
+
+\end_inset
+
+Все последующие автокорреляции также равны 0.
+ 
+\end_layout
+
+\begin_layout Standard
+Рассмотрим общий случай.
+ В числителе выражения для 
+\begin_inset Formula $\varphi_{ss}$
+\end_inset
+
+ находится следующий определитель 
+\begin_inset Formula 
+\[
+\begin{vmatrix}\rho_{0} & \rho_{1} & \rho_{2} & 0 & 0 & \cdots & 0 & \rho_{1}\\
+\rho_{1} & \rho_{0} & \rho_{1} & \rho_{2} & 0 & \cdots & 0 & \rho_{2}\\
+\rho_{2} & \rho_{1} & \rho_{0} & \rho_{1} & \rho_{2} & \cdots & 0 & 0\\
+0 & \rho_{2} & \rho_{1} & \rho_{0} & \rho_{1} & \cdots & 0 & 0\\
+0 & 0 & \rho_{2} & \rho_{1} & \rho_{0} & \cdots & 0 & 0\\
+\vdots & \vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots\\
+0 & 0 & 0 & 0 & 0 & \cdots & \rho_{0} & 0\\
+0 & 0 & 0 & 0 & 0 & \cdots & \rho_{1} & 0
+\end{vmatrix}\neq0
+\]
+
+\end_inset
+
+При этом,
+ его значения с ростом 
+\begin_inset Formula $s$
+\end_inset
+
+ стемятся к нулю.
+\end_layout
+
+\begin_layout Subsection
+MA(q)
+\end_layout
+
+\begin_layout Standard
+Проведя аналогичные расчеты для процесса MA(q) можно показать,
+ что 
+\begin_inset Formula 
+\[
+\rho_{s}=\begin{cases}
+>0, & s=q\\
+0, & s>q
+\end{cases}
+\]
+
+\end_inset
+
+При 
+\begin_inset Formula $s<q$
+\end_inset
+
+ автокорреляции могут принимать любые допустимые значения.
+\end_layout
+
+\begin_layout Standard
+Для PACF рассуджения аналогичны таковым для процесса MA(2).
+\end_layout
+
+\begin_layout Subsection
+ARMA(1,1)
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+label={
+\backslash
+(s=
+\backslash
+arabic*
+\backslash
+)}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Найдем первую автокорреляцию:
+ 
+\begin_inset Formula 
+\[
+\begin{aligned}\E{y_{t}\varepsilon_{t}} & =\E{\left(a_{1}y_{t-1}+\varepsilon_{t}+\beta_{1}\varepsilon_{t-1}\right)\varepsilon_{t}}=\\
+ & =a_{1}{\underbrace{\E{y_{t-1}\varepsilon_{t}}}_{=0}}+{\underbrace{\E\varepsilon_{t}^{2}}_{=\sigma^{2}}}+\beta_{1}{\underbrace{\E{\varepsilon_{t-1}\varepsilon_{t}}}_{=0}}=\sigma^{2}
+\end{aligned}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\begin{aligned}\E{y_{t}\varepsilon_{t-1}} & =\E{\left(a_{1}y_{t-1}+\varepsilon_{t}+\beta_{1}\varepsilon_{t-1}\right)\varepsilon_{t-1}}=\\
+ & =a_{1}{\underbrace{\E{y_{t-1}\varepsilon_{t-1}}}_{=\sigma^{2}}}+{\underbrace{\E{\varepsilon_{t}\varepsilon_{t-1}}}_{=0}}+\beta_{1}{\underbrace{\E{\varepsilon_{t-1}\varepsilon_{t-1}}}_{=\sigma^{2}}}=\left(a_{1}+\beta_{1}\right)\sigma^{2}
+\end{aligned}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\begin{aligned}\gamma_{0}=\E y_{t}^{2} & =\E{(a_{1}y_{t-1}+\varepsilon_{t}+\beta_{1}\varepsilon_{t-1})}^{2}=\\
+ & =a_{1}^{2}{\underbrace{\E y_{t-1}^{2}}_{=\gamma_{0}}}+a_{1}{\underbrace{\E{y_{t-1}\varepsilon_{t}}}_{=0}}+a_{1}\beta_{1}{\underbrace{\E{y_{t-1}\varepsilon_{t-1}}}_{=\sigma^{2}}}+\\
+ & \phantom{=}+a_{1}{\underbrace{\E{\varepsilon_{t}y_{t-1}}}_{=0}}+{\underbrace{\E\varepsilon_{t}^{2}}_{=\sigma^{2}}}+\beta_{1}{\underbrace{\E{\varepsilon_{t}\varepsilon_{t-1}}}_{=0}}+\\
+ & \phantom{=}+a_{1}\beta_{1}{\underbrace{\E{\varepsilon_{t-1}y_{t-1}}}_{=\sigma^{2}}}+\beta_{1}{\underbrace{\E{\varepsilon_{t-1}\varepsilon_{t}}}_{=0}}+\beta_{1}^{2}{\underbrace{\E\varepsilon_{t-1}^{2}}_{=\sigma^{2}}}\Rightarrow\\
+\Rightarrow\gamma_{0} & =\frac{1+\beta_{1}^{2}+2a_{1}\beta_{1}}{1-a_{1}^{2}}\sigma^{2}
+\end{aligned}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\begin{aligned}\gamma_{1}=\E{y_{t}y_{t-1}} & =\E\left(a_{1}y_{t-1}+\varepsilon_{t}+\beta_{1}\varepsilon_{t-1}\right)\left(a_{1}y_{t-2}+\varepsilon_{t-1}+\beta_{1}\varepsilon_{t-2}\right)=\\
+ & =a_{1}^{2}{\underbrace{\E{y_{t-1}y_{t-2}}}_{=\gamma_{1}}}+a_{1}{\underbrace{\E{y_{t-1}\varepsilon_{t-1}}}_{=\sigma^{2}}}+a_{1}\beta_{1}{\underbrace{\E{y_{t-1}\varepsilon_{t-2}}}_{=(a_{1}+\beta_{1})\sigma^{2}}}+\\
+ & \phantom{=}+a_{1}{\underbrace{\E{\varepsilon_{t}y_{t-2}}}_{=0}}+{\underbrace{\E{\varepsilon_{t}\varepsilon_{t-1}}}_{=0}}+\beta_{1}{\underbrace{\E{\varepsilon_{t}\varepsilon_{t-2}}}_{=0}}+\\
+ & \phantom{=}+a_{1}\beta_{1}{\underbrace{\E{\varepsilon_{t-1}y_{t-2}}}_{=0}}+\beta_{1}{\underbrace{\E{\varepsilon_{t-1}\varepsilon_{t-1}}}_{=\sigma^{2}}}+\beta_{1}^{2}{\underbrace{\E{\varepsilon_{t-1}\varepsilon_{t-2}}}_{=0}}=\\
+ & =a_{1}^{2}\gamma_{1}+\left[a_{1}+a_{1}\beta_{1}\left(a_{1}+\beta_{1}\right)+\beta_{1}\right]\sigma^{2}\Rightarrow\\
+\Rightarrow\gamma_{1} & =\frac{\left(1+a_{1}\beta_{1}\right)\left(a_{1}+\beta_{1}\right)}{1-a_{1}^{2}}\\
+\rho_{1} & =\frac{\left(1+a_{1}\beta_{1}\right)\left(a_{1}+\beta_{1}\right)}{1+\beta_{1}^{2}+2a_{1}\beta_{1}}
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Найдем вторую автокорреляцию.
+ 
+\begin_inset Formula 
+\[
+\begin{aligned}\E{y_{t}\varepsilon_{t-2}} & =\E{\left(a_{1}y_{t-1}+\varepsilon_{t}+\beta_{1}\varepsilon_{t-1}\right)\varepsilon_{t-2}}=\\
+ & =a_{1}{\underbrace{\E{y_{t-1}\varepsilon_{t-2}}}_{=(a_{1}+\beta_{1})\sigma^{2}}}+{\underbrace{\E{\varepsilon_{t}\varepsilon_{t-2}}}_{=0}}+\beta_{1}{\underbrace{\E{\varepsilon_{t-1}\varepsilon_{t-2}}}_{=0}}=a_{1}\left(a_{1}+\beta_{1}\right)\sigma^{2}
+\end{aligned}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\begin{aligned}\gamma_{2}=\E{y_{t}y_{t-2}} & =\E\left(a_{1}y_{t-1}+\varepsilon_{t}+\beta_{1}\varepsilon_{t-1}\right)\left(a_{1}y_{t-3}+\varepsilon_{t-2}+\beta_{1}\varepsilon_{t-3}\right)=\\
+ & =a_{1}^{2}{\underbrace{\E{y_{t-1}y_{t-3}}}_{=\gamma_{2}}}+a_{1}{\underbrace{\E{y_{t-1}\varepsilon_{t-2}}}_{=(a_{1}+\beta_{1})\sigma^{2}}}+a_{1}\beta_{1}{\underbrace{\E{y_{t-1}\varepsilon_{t-3}}}_{=a_{1}(a_{1}+\beta_{1})\sigma^{2}}}+\\
+ & \phantom{=}+a_{1}{\underbrace{\E{\varepsilon_{t}y_{t-3}}}_{=0}}+{\underbrace{\E{\varepsilon_{t}\varepsilon_{t-2}}}_{=0}}+\beta_{1}{\underbrace{\E{\varepsilon_{t}\varepsilon_{t-3}}}_{=0}}+\\
+ & \phantom{=}+a_{1}\beta_{1}{\underbrace{\E{\varepsilon_{t-1}y_{t-3}}}_{=0}}+\beta_{1}{\underbrace{\E{\varepsilon_{t-1}\varepsilon_{t-2}}}_{=0}}+\beta_{1}^{2}{\underbrace{\E{\varepsilon_{t-1}\varepsilon_{t-3}}}_{=0}}=\\
+ & =a_{1}^{2}\gamma_{2}+\left[a_{1}\left(a_{1}+\beta_{1}\right)+a_{1}^{2}\beta_{1}\left(a_{1}+\beta_{1}\right)\right]\sigma^{2}\Rightarrow\\
+\Rightarrow\gamma_{2} & =\frac{\left(1+a_{1}\beta_{1}\right)\left(a_{1}+\beta_{1}\right)}{1-a_{1}^{2}}\\
+\rho_{2} & =\frac{a_{1}\left(1+a_{1}\beta_{1}\right)\left(a_{1}+\beta_{1}\right)}{1+\beta_{1}^{2}+2a_{1}\beta_{1}}=a_{1}\rho_{1}
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Найдем третью автокорреляцию.
+ 
+\begin_inset Formula 
+\[
+\begin{aligned}\E{y_{t}\varepsilon_{t-3}} & =\E{\left(a_{1}y_{t-1}+\varepsilon_{t}+\beta_{1}\varepsilon_{t-1}\right)\varepsilon_{t-3}}=\\
+ & =a_{1}{\underbrace{\E{y_{t-1}\varepsilon_{t-3}}}_{=a_{1}(a_{1}+\beta_{1})\sigma^{2}}}+{\underbrace{\E{\varepsilon_{t}\varepsilon_{t-3}}}_{=0}}+\beta_{1}{\underbrace{\E{\varepsilon_{t-1}\varepsilon_{t-3}}}_{=0}}=a_{1}^{2}\left(a_{1}+\beta_{1}\right)\sigma^{2}
+\end{aligned}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\begin{aligned}\gamma_{3}=\E{y_{t}y_{t-3}} & =\E{\left(a_{1}y_{t-1}+\varepsilon_{t}+\beta_{1}\varepsilon_{t-1}\right)\left(a_{1}y_{t-4}+\varepsilon_{t-3}+\beta_{1}\varepsilon_{t-4}\right)}=\\
+ & =a_{1}^{2}{\underbrace{\E{y_{t-1}y_{t-4}}}_{=\gamma_{3}}}+a_{1}{\underbrace{\E{y_{t-1}\varepsilon_{t-3}}}_{=a_{1}(a_{1}+\beta_{1})\sigma^{2}}}+a_{1}\beta_{1}{\underbrace{\E{y_{t-1}\varepsilon_{t-4}}}_{=a_{1}^{2}(a_{1}+\beta_{1})\sigma^{2}}}+\\
+ & \phantom{=}+a_{1}{\underbrace{\E{\varepsilon_{t}y_{t-4}}}_{=0}}+{\underbrace{\E{\varepsilon_{t}\varepsilon_{t-3}}}_{=0}}+\beta_{1}{\underbrace{\E{\varepsilon_{t}\varepsilon_{t-4}}}_{=0}}+\\
+ & \phantom{=}+a_{1}\beta_{1}{\underbrace{\E{\varepsilon_{t-1}y_{t-4}}}_{=0}}+\beta_{1}{\underbrace{\E{\varepsilon_{t-1}\varepsilon_{t-3}}}_{=0}}+\beta_{1}^{2}{\underbrace{\E{\varepsilon_{t-1}\varepsilon_{t-4}}}_{=0}}=\\
+ & =a_{1}^{2}\gamma_{3}+\left[a_{1}^{2}\left(a_{1}+\beta_{1}\right)+a_{1}^{3}\beta_{1}\left(a_{1}+\beta_{1}\right)\right]\sigma^{2}\Rightarrow\\
+\Rightarrow\gamma_{3} & =\frac{a_{1}^{2}\left(1+a_{1}\beta_{1}\right)\left(a_{1}+\beta_{1}\right)}{1-a_{1}^{2}}\\
+\rho_{3} & =\frac{a_{1}^{2}\left(1+a_{1}\beta_{1}\right)\left(a_{1}+\beta_{1}\right)}{1+\beta_{1}^{2}+2a_{1}\beta_{1}}=a_{1}^{2}\rho_{1}
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Нетрудно показать,
+ что 
+\begin_inset Formula 
+\[
+\rho_{s}=a_{1}^{s-1}\rho_{1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ручной расчет частных автокорреляций затруднен в силу одновременного присутствия AR и MA части.
+ Однако,
+ наличие MA части приводит к тому,
+ что значения PACF экспоненциально убывают.
+\end_layout
+
+\begin_layout Subsection
+ARMA(p,q)
+\end_layout
+
+\begin_layout Standard
+Процессы ARMA сочетают в себе «худшие» свойства автокорреляционной и частной автокорреляционной функций AR и MA процессов.
+ Для процесса ARMA(p,
+ q) наблюдается следующее:
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Argument listpreamble:1
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+tightlist
+\end_layout
+
+\end_inset
+
+ACF начинает экспоненциально убывать,
+ начиная с лага 
+\begin_inset Formula $q$
+\end_inset
+
+;
+ убывание может быть знакопеременным.
+ 
+\end_layout
+
+\begin_layout Itemize
+PACF начинает экспоненциально убывать,
+ начиная с лага 
+\begin_inset Formula $p$
+\end_inset
+
+;
+ убывание может быть знакопеременным.
+ 
+\end_layout
+
+\begin_layout Standard
+Подытожим все вышесказанное в общей таблице.
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\begin_inset Tabular
+<lyxtabular version="3" rows="11" columns="3">
+<features booktabs="true" islongtable="true" lastFootEmpty="true" longtabularalignment="center">
+<column alignment="left" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row endfirsthead="true" caption="true">
+<cell multicolumn="1" alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Поведение ACF и PACF
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row endfirsthead="true">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+ACF 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+PACF 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row endhead="true">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+ACF 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+PACF 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+WN 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset Formula $\rho_{s}=0,\ \forall s>0$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset Formula $\varphi_{ss}=0,\ \forall s>0$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+AR(1) 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset Formula $\rho_{s}=a_{1}^{s},\ \forall s>0$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset Formula $\varphi_{ss}=\begin{cases}
+\rho_{1}, & s=1\\
+0, & s>1
+\end{cases}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+AR(2) 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset Formula $\rho_{s}=\begin{cases}
+\frac{a_{1}}{1-a_{2}}, & s=1\\
+a_{1}\rho_{s-1}+a_{2}\rho_{s-2}, & s>1
+\end{cases}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset Formula $\varphi_{ss}=\begin{cases}
+\rho_{1}, & s=1\\
+\frac{\rho_{2}-\rho_{1}^{2}}{1-\rho_{1}^{2}}, & s=2\\
+0, & s>2
+\end{cases}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+AR(p) 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset Formula $\rho_{s}=\sum_{i=1}^{p}a_{i}\rho_{s-i}\to0$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset Formula $\varphi_{ss}=\begin{cases}
+\neq0, & s=\footnotemark p\\
+0, & s>p
+\end{cases}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+MA(1) 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset Formula $\rho_{s}=\begin{cases}
+\frac{\beta_{1}}{1+\beta_{1}^{2}}, & s=1\\
+0, & s>1
+\end{cases}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset Formula $\varphi_{ss}=\begin{cases}
+>0, & \beta_{1}>0\text{ и }s\text{ нечетно}\\
+<0, & \text{иначе}
+\end{cases}\to0$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+MA(2) 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset Formula $\rho_{s}=\begin{cases}
+\frac{\beta_{1}\left(1+\beta_{2}\right)}{1+\beta_{1}^{2}+\beta_{2}^{2}}, & s=1\\
+\frac{\beta_{2}}{1+\beta_{1}^{2}+\beta_{2}^{2}}, & s=2\\
+0, & s>2
+\end{cases}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset Formula $\varphi_{ss}\to0$
+\end_inset
+
+,
+ возможно знакопеременно.
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+MA(q) 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset Formula $\rho_{s}=\begin{cases}
+\neq0, & s=q\\
+0, & s>q
+\end{cases}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset Formula $\varphi_{ss}\to0$
+\end_inset
+
+,
+ возможно знакопеременно.
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+ARMA(p,
+ q) 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset Formula $\rho_{s}\to0$
+\end_inset
+
+,
+ начиная с 
+\begin_inset Formula $q$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset Formula $\varphi_{ss}\to0$
+\end_inset
+
+,
+ начиная с 
+\begin_inset Formula $p$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\size normal
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+footnotetext{
+\end_layout
+
+\end_inset
+
+В большинстве источников в первом случае принимают 
+\begin_inset Formula $s\leqslant p$
+\end_inset
+
+,
+ но,
+ строго говоря,
+ требование неравенства нулю накладывается только на 
+\begin_inset Formula $\varphi_{pp}$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+Обратите внимание на некоторую симметрию,
+ присущую моделям AR и MA.
+\end_layout
+
+\begin_layout Section
+Процедура Бокса-Дженкинса
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument listpreamble:1
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+tightlist
+\end_layout
+
+\end_inset
+
+
+\size normal
+Определение порядка интегрированности процесса.
+ Определение порядков ARMA процесса.
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\size normal
+Оценивание модели процесса.
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\size normal
+Диагностика оцененной модели.
+ 
+\end_layout
+
+\begin_layout Subsection
+Третий этап
+\end_layout
+
+\begin_layout Subsubsection
+Автокорреляция в остатках
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+Для тестирования гипотезы об отсутствии автокорреляции в остатках модели можно использовать тесты Бокса-Пирса и Льюнг-Бокса,
+ но важно помнить,
+ что у тестовых статистик меняется распределение:
+ при применении тестов к остаткам оценивания модели ARMA(p,q) статистики будут иметь асимптотическое распределение 
+\begin_inset Formula $\chi^{2}(s-p-q)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\size normal
+Тест Бройша-Годфри
+\series default
+ представляет собой тест множителей Лагранжа.
+ Процедура тестирования включает в себя два шага:
+ 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument listpreamble:1
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+tightlist
+\end_layout
+
+\end_inset
+
+
+\size normal
+При помощи МНК оцениваем регрессию 
+\begin_inset Formula 
+\[
+y_{t}=\beta_{0}+\beta_{1}x_{1t}+\cdots+\beta_{k}x_{kt}+\varepsilon_{t},
+\]
+
+\end_inset
+
+где 
+\begin_inset Formula $x_{it}$
+\end_inset
+
+ —
+ какие-то интересующие нас регрессоры,
+ в том числе лаги 
+\begin_inset Formula $y_{t}$
+\end_inset
+
+.
+ После оценки регрессии получаем остатки 
+\begin_inset Formula $\hat{\varepsilon}_{t}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\size normal
+Оцениваем регрессию 
+\begin_inset Formula 
+\[
+\hat{\varepsilon}_{t}=\alpha_{0}+\alpha_{1}x_{1t}+\cdots+\alpha_{k}x_{kt}+\gamma_{1}\hat{\varepsilon}_{t-1}+\cdots+\gamma_{s}\hat{\varepsilon}_{t-s}+\nu_{t}
+\]
+
+\end_inset
+
+Запоминаем значение 
+\series bold
+нескорректированного (!)
+\series default
+ 
+\begin_inset Formula $R^{2}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+Для тестирования набора гипотез 
+\begin_inset Formula 
+\[
+\begin{aligned}H_{0} & :\gamma_{1}=\gamma_{2}=\cdots=\gamma_{s}=0\\
+H_{a} & :\sum_{i=1}^{s}\gamma_{i}^{2}>0
+\end{aligned}
+\]
+
+\end_inset
+
+воспользуемся тестовой статистикой 
+\begin_inset Formula 
+\[
+TR^{2}\sim\chi^{2}(s)
+\]
+
+\end_inset
+
+Если остатки имеют нормальное распределение,
+ то можно проводить тестирование с помощью F-статистики.
+\end_layout
+
+\begin_layout Subsubsection
+Нормальность остатков
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+Для этого можно воспользоваться 
+\series bold
+тестом Харке-Бера
+\series default
+,
+ в котором рассматриваются следующие гипотезы 
+\begin_inset Formula 
+\[
+\begin{aligned}H_{0} & :\varepsilon\sim N(0,\sigma^{2})\\
+H_{a} & :\varepsilon\not\sim N(0,\sigma^{2})
+\end{aligned}
+\]
+
+\end_inset
+
+Строго говоря в тесте проверяется не нормальность,
+ а совпадение коэффициентов асимметрии и эксцесса у распределения ошибок со значениями,
+ присущими нормальному распределению (0 и 3 соответственно).
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+Статистика имеет вид 
+\begin_inset Formula 
+\[
+\begin{aligned}JB & =\frac{T}{6}\left[\hat{S}+\frac{1}{4}\left(\hat{K}-3\right)^{2}\right]\overset{asy.}{\sim}\chi^{2}(2)\\
+\hat{S} & =\frac{\frac{1}{T}\sum_{t=1}^{T}\left(\hat{\varepsilon}_{t}-\hat{\mu}_{\hat{\varepsilon}}\right)^{3}}{\hat{\sigma}_{\hat{\varepsilon}}^{3}}\quad\text{выборочный коэффициент асимметрии}\\
+\hat{K} & =\frac{\frac{1}{T}\sum_{t=1}^{T}\left(\hat{\varepsilon}_{t}-\hat{\mu}_{\hat{\varepsilon}}\right)^{4}}{\hat{\sigma}_{\hat{\varepsilon}}^{4}}\quad\text{выборочный коэффициент эксцесса}
+\end{aligned}
+\]
+
+\end_inset
+
+Тест Харке-Бера очень чувствителен к наличию выбросов в данных.
+\end_layout
+
+\begin_layout Subsubsection
+Условная гетероскедастичность
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\size normal
+ARCH-тест
+\series default
+,
+ так же как и тест Бройша-Годфри,
+ представляет собой LM-тест.
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+Процедура тестирования включает в себя два шага:
+ 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument listpreamble:1
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+tightlist
+\end_layout
+
+\end_inset
+
+
+\size normal
+При помощи МНК оцениваем регрессию 
+\begin_inset Formula 
+\[
+y_{t}=\beta_{0}+\beta_{1}x_{1t}+\cdots+\beta_{k}x_{kt}+\varepsilon_{t},
+\]
+
+\end_inset
+
+где 
+\begin_inset Formula $x_{it}$
+\end_inset
+
+ —
+ какие-то интересующие нас регрессоры,
+ в том числе лаги 
+\begin_inset Formula $y_{t}$
+\end_inset
+
+.
+ После оценки регрессии получаем остатки 
+\begin_inset Formula $\hat{\varepsilon}_{t}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\size normal
+Оцениваем регрессию 
+\begin_inset Formula 
+\[
+\hat{\varepsilon}_{t}^{2}=\alpha_{0}+\gamma_{1}\hat{\varepsilon}_{t-1}^{2}+\cdots+\gamma_{s}\hat{\varepsilon}_{t-s}^{2}+\nu_{t}
+\]
+
+\end_inset
+
+Запоминаем значение 
+\series bold
+нескорректированного (!)
+\series default
+ 
+\begin_inset Formula $R^{2}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+Для тестирования набора гипотез 
+\begin_inset Formula 
+\[
+\begin{aligned}H_{0} & :\gamma_{1}=\gamma_{2}=\cdots=\gamma_{s}=0\\
+H_{a} & :\sum_{i=1}^{s}\gamma_{i}^{2}>0
+\end{aligned}
+\]
+
+\end_inset
+
+воспользуемся тестовой статистикой 
+\begin_inset Formula 
+\[
+TR^{2}\sim\chi^{2}(s)
+\]
+
+\end_inset
+
+Если остатки имеют нормальное распределение,
+ то можно проводить тестирование с помощью F-статистики.
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+Если нулевая гипотеза не отвергается,
+ то ошибки модели условно гомоскедастичны;
+ в противном случае они условно гетероскедастичны.
+\end_layout
+
+\begin_layout Standard
+
+\size normal
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "data/bibliography"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{Список литературы}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

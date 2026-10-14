@@ -1,0 +1,2963 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass extarticle
+\begin_preamble
+\usepackage[changes]{praeambel}
+\usepackage[mathb]{mathabx}
+\usepackage{icomma}
+\VerbatimFootnotes
+\raggedbottom
+\end_preamble
+\use_default_options false
+\begin_modules
+enumitem
+\end_modules
+\maintain_unincluded_children no
+\language russian
+\language_package none
+\inputencoding utf8
+\fontencoding default
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command biber
+\index_command default
+\float_placement class
+\float_alignment class
+\paperfontsize 12
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize a4
+\use_geometry false
+\use_package amsmath 0
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 0
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine biblatex
+\cite_engine_type authoryear
+\biblio_style plain
+\biblatex_bibstyle gost-authoryear-min
+\biblatex_citestyle gost-authoryear
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 0
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style russian
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content true
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+preview true
+filename "~/AppData/Roaming/LyX2.4/templates/ru/Articles/trinkets.lyx"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+Лекция 2
+\end_layout
+
+\begin_layout SubTitle
+Нестационарные и коинтегрированные временные ряды
+\end_layout
+
+\begin_layout Author
+Зямалов В.Е.
+\end_layout
+
+\begin_layout Section
+Стационарность
+\end_layout
+
+\begin_layout Description
+\begin_inset Argument listpreamble:1
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+tightlist
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+Сильная стационарность
+\end_layout
+
+\end_inset
+
+ независимость совместных распределений от сдвига во времени.
+ 
+\end_layout
+
+\begin_layout Description
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+Слабая стационарность
+\end_layout
+
+\end_inset
+
+ выполнение следующих условий:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Argument listpreamble:1
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+tightlist
+\end_layout
+
+\end_inset
+
+существование 
+\series bold
+математического ожидания
+\series default
+,
+ его конечность и независимость от сдвига во времени;
+ 
+\end_layout
+
+\begin_layout Itemize
+существование 
+\series bold
+дисперсии
+\series default
+,
+ ее конечность и независимость от сдвига во времени;
+ 
+\end_layout
+
+\begin_layout Itemize
+существование 
+\series bold
+автокорреляций
+\series default
+,
+ их конечность и независимость от сдвига во времени;
+ автокорреляции должны зависеть 
+\series bold
+только
+\series default
+ от взаимного расположения наблюдений.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Сильная стационарность не влечет слабую стационарность!
+ Например,
+ распределение Коши 
+\begin_inset Formula 
+\[
+f_{X}(x)=\frac{1}{\pi\gamma\left[1+\left(\frac{x-x_{0}}{\gamma}\right)^{2}\right]}
+\]
+
+\end_inset
+
+не имеет ни математического ожидания,
+ ни дисперсии.
+\end_layout
+
+\begin_layout Subsection
+Случайное блуждание
+\end_layout
+
+\begin_layout Standard
+Рассмотрим процесс 
+\series bold
+случайного блуждания
+\series default
+ 
+\begin_inset Formula 
+\[
+y_{t}=y_{t-1}+\varepsilon_{t}
+\]
+
+\end_inset
+
+который очевидным образом можно переписать в виде 
+\begin_inset Formula 
+\[
+y_{t}=y_{0}+\sum\limits_{i=1}^{t}\varepsilon_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Данный процесс не является слабостационарным:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\E y_{t}=\E(y_{0}+\sum\limits_{i=1}^{t}\varepsilon_{i})=y_{0}+\sum\limits_{i=1}^{t}\E\varepsilon_{i}=y_{0}$
+\end_inset
+
+,
+ 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\Var y_{t}=\Var\left[\sum\limits_{i=1}^{t}\varepsilon_{i}\right]=t\sigma_{\varepsilon}^{2}$
+\end_inset
+
+,
+ 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\Cov(y_{t},y_{t-s})=\E\left[\sum\limits_{i=1}^{t}\varepsilon_{i}\sum\limits_{j=1}^{t-s}\varepsilon_{j}\right]=(t-s)\sigma_{\varepsilon}^{2}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Из последнего пункта видно,
+ что 
+\begin_inset Formula 
+\[
+\rho_{s,t}=\frac{\Cov(y_{t},y_{t-s})}{\sqrt{\Var y_{t}\Var y_{t-s}}}=\frac{t-s}{\sqrt{t(t-s)}}=\sqrt{\frac{t-s}{t}}=\sqrt{1-\frac{s}{t}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Тест Дики-Фуллера (DF-тест)
+\end_layout
+
+\begin_layout Standard
+Рассмотрим следующий процесс 
+\begin_inset Formula 
+\[
+\begin{aligned}y_{t} & ={\underbrace{a_{0}}_{\text{опц.}}}+a_{1}y_{t-1}+{\underbrace{\beta t}_{\text{опц.}}}+\varepsilon_{t}\\
+\varepsilon_{t} & \sim WN(0,\sigma_{\varepsilon}^{2})
+\end{aligned}
+\]
+
+\end_inset
+
+Вычтем из этого процесса 
+\begin_inset Formula $y_{t-1}$
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{equation}
+\Delta y_{t}=a_{0}+{\underbrace{(a_{1}-1)}_{\gamma}}y_{t-1}+\beta t+\varepsilon_{t}\label{eq:DF}
+\end{equation}
+
+\end_inset
+
+Для того,
+ чтобы протестировать,
+ является ли 
+\begin_inset Formula $y_{t}$
+\end_inset
+
+ DS-рядом,
+ мы можем протестировать следующую гипотезу 
+\begin_inset Formula 
+\[
+\begin{aligned}H_{0} & : & \gamma=0\\
+H_{a} & : & \gamma<0
+\end{aligned}
+\]
+
+\end_inset
+
+Для этого мы бы хотели воспользоваться t-тестом 
+\begin_inset Formula 
+\[
+t_{DF}=\frac{\gamma}{\SE(\gamma)}
+\]
+
+\end_inset
+
+однако мы сталкиваемся с проблемой,
+ состоящей в том,
+ что в условиях справедливости 
+\begin_inset Formula $H_{0}$
+\end_inset
+
+ грубо нарушается предпосылка о постоянстве дисперсии случайной ошибки.
+ Другими словами,
+ 
+\begin_inset Formula $t_{DF}$
+\end_inset
+
+ имеет нестандартное распределение,
+ то есть нужно пользоваться специальными таблицами для трех спецификаций
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "fuller1995introduction"
+literal "false"
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Argument listpreamble:1
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+tightlist
+\end_layout
+
+\end_inset
+
+без константы и тренда,
+ 
+\end_layout
+
+\begin_layout Itemize
+с константой но без тренда,
+ 
+\end_layout
+
+\begin_layout Itemize
+с константой и трендом.
+ 
+\end_layout
+
+\begin_layout Subsection
+Расширенный тест Дики-Фуллера (ADF-тест)
+\end_layout
+
+\begin_layout Standard
+DF-тест предполагает,
+ что 
+\begin_inset Formula $\varepsilon_{t}\sim WN\!\left(0,\sigma_{\varepsilon}^{2}\right)$
+\end_inset
+
+.
+ Однако 
+\begin_inset Formula $\varepsilon_{t}$
+\end_inset
+
+ может представлять собой ARMA-процесс.
+ Было показано,
+ что для учета этого достаточно добавить в модель для 
+\begin_inset Formula $\Delta y_{t}$
+\end_inset
+
+ запаздывающие значения 
+\begin_inset Formula $\Delta y_{t-1},\dots$
+\end_inset
+
+.
+ При добавлении нужного числа лагов 
+\begin_inset Formula $\Delta y_{t}$
+\end_inset
+
+ итоговые распределения 
+\begin_inset Formula $t_{DF}$
+\end_inset
+
+ не изменяются
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "dickey1979distribution"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Следует отметить,
+ что результирующая регрессия является 
+\series bold
+перепараметризацией
+\series default
+ исходной модели.
+ Действительно,
+ рассмотрим процесс 
+\begin_inset Formula 
+\begin{align}
+y_{t} & =a_{1}y_{t-1}+a_{2}y_{t-2}+\dots+a_{p}y_{t-p}+\varepsilon_{t}\label{eq:AR(p)}\\
+\varepsilon_{t} & \sim WN\!\left(0,\sigma_{\varepsilon}^{2}\right)\nonumber 
+\end{align}
+
+\end_inset
+
+Вычтем 
+\begin_inset Formula $y_{t-1}$
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{equation}
+\Delta y_{t}=(a_{1}-1)y_{t-1}+a_{2}y_{t-2}+\dots+a_{p}y_{t-p}+\varepsilon_{t}\label{eq:AR(p)-2}
+\end{equation}
+
+\end_inset
+
+Далее заметим,
+ что 
+\begin_inset Formula 
+\[
+\begin{aligned}y_{t-2} & =y_{t-1}-\Delta y_{t-1}\\
+y_{t-3} & =y_{t-2}-\Delta y_{t-2}=y_{t-1}-\Delta y_{t-1}-\Delta\chreplaced{y_{t-2}}{y{t-2}}\\
+\dots\\
+y_{t-p} & =y_{t-p+1}-\Delta y_{t-p+1}=\chadded{y_{t-1}-\Delta y_{t-1}-\Delta y_{t-2}-\dots-\Delta y_{t-p+1}}
+\end{aligned}
+\]
+
+\end_inset
+
+Подставив эти выражение в модель 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:AR(p)-2"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+,
+ получим 
+\begin_inset Formula 
+\begin{align}
+\Delta y_{t} & ={\underbrace{(a_{1}+\dots+a_{p}-1)}_{\gamma}}y_{t-1}+{\underbrace{\chadded{(-a_{2}-\dots-a_{p})}}_{d_{1}}}\Delta y_{t-1}+{\underbrace{\chadded{(-a_{3}-\dots-a_{p})}}_{d_{2}}}\Delta y_{t-2}+\dots+\nonumber \\
+ & \qquad+{\underbrace{\chadded{(-a_{p})}}_{d_{p-1}}}\Delta y_{t-p+1}+\varepsilon_{t}\nonumber \\
+\Delta y_{t} & =\gamma y_{t-1}+d_{1}\Delta y_{t-1}+d_{2}\Delta y_{t-2}+\dots+d_{p-1}\Delta y_{t-p+1}+\varepsilon_{t}\label{eq:ADF}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Так как модель 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:ADF"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ является перепараметризацией модели 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:AR(p)"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+,
+ то у этих моделей,
+ например,
+ одинаковые остатки.
+\end_layout
+
+\begin_layout Subsubsection
+Процедура Доладо-Дженкинс
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+chadded
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+он
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+а-Сосвилья-Риверо
+\end_layout
+
+\begin_layout Standard
+Данная процедура,
+ предложенная в работе
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "dolado1990cointegration"
+literal "false"
+
+\end_inset
+
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+На самом деле,
+ в статье описание самой процедуры занимает один короткий абзац,
+ которому,
+ тем не менее,
+ предшествует описание технических моментов,
+ с ней связанных.
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename data/fig_1_1.png
+	width 12cm
+	keepAspectRatio
+	special height=\textheight
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+,
+ помогает определить оптимальную спецификацию ADF-теста для рассматриваемого ряда.
+\end_layout
+
+\begin_layout Standard
+Процедура состоит в выполнении следующих шагов
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "kantorovich2002lekciib"
+literal "false"
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Enumerate
+Проведем ADF-тест с константой и трендом,
+ то есть протестируем гипотезу 
+\begin_inset Formula $\gamma=0$
+\end_inset
+
+ против альтернативы 
+\begin_inset Formula $\gamma<0$
+\end_inset
+
+ в модели 
+\begin_inset Formula 
+\begin{equation}
+\Delta y_{t}=\alpha+\beta t+\gamma y_{t-1}+\sum_{i=1}^{p-1}\delta_{i}\Delta y_{t-j}+\varepsilon_{t}\label{DJSR-1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Argument listpreamble:1
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+tightlist
+\end_layout
+
+\end_inset
+
+Если 
+\begin_inset Formula $\gamma=0$
+\end_inset
+
+ гипотеза 
+\series bold
+отвергается
+\series default
+,
+ то останавливаем процедуру и отдаем предпочтение модели 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "DJSR-1"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Если 
+\begin_inset Formula $\gamma=0$
+\end_inset
+
+ 
+\series bold
+не отвергается
+\series default
+,
+ то переходим к следующему шагу.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Так как ADF-тест обладает невысокой мощностью,
+ то мы могли не отвергнуть 
+\begin_inset Formula $\gamma=0$
+\end_inset
+
+ по причине неверного включения в модель 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "DJSR-1"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ линейного тренда.
+ Оценим модель 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "DJSR-1"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ с учетом 
+\begin_inset Formula $\gamma=0$
+\end_inset
+
+,
+ то есть 
+\begin_inset Formula 
+\begin{equation}
+\Delta y_{t}=\alpha+\beta t+\sum_{i=1}^{p-1}\delta_{i}\Delta y_{t-j}+\varepsilon_{t}\label{DJSR-1b}
+\end{equation}
+
+\end_inset
+
+и протестируем гипотезу 
+\begin_inset Formula $\beta=0$
+\end_inset
+
+.
+ Критические значения для статистики 
+\begin_inset Formula $\tau_{\beta\tau}$
+\end_inset
+
+ приведены в статье
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "dickey1981likelihood"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Argument listpreamble:1
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+tightlist
+\end_layout
+
+\end_inset
+
+Если 
+\begin_inset Formula $\beta=0$
+\end_inset
+
+ отвергается,
+ значит мы верно не отвергли 
+\begin_inset Formula $\gamma=0$
+\end_inset
+
+ и истинной моделью процесса является 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "DJSR-1b"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+В
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "nosko2021ekonometrika"
+literal "false"
+
+\end_inset
+
+ предлагается провести повторное тестирование 
+\begin_inset Formula $\gamma=0$
+\end_inset
+
+ при условии 
+\begin_inset Formula $\beta\neq0$
+\end_inset
+
+ в модели 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "DJSR-1"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+;
+ t-статистика будет иметь асимптотически нормальное распределение,
+ для конечных выборок имеются таблицы в
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "kwiatkowski1990dickeyfuller"
+literal "false"
+
+\end_inset
+
+.
+ При отвержении гипотезы делаем выбор в пользу 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "DJSR-1"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+;
+ в противном случае истинная модель —
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "DJSR-1b"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Если 
+\begin_inset Formula $\beta=0$
+\end_inset
+
+ 
+\series bold
+не отвергается
+\series default
+,
+ то переходим к следующему шагу.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Проведем ADF-тест с константой,
+ то есть протестируем гипотезу 
+\begin_inset Formula $\gamma=0$
+\end_inset
+
+ против альтернативы 
+\begin_inset Formula $\gamma<0$
+\end_inset
+
+ в модели 
+\begin_inset Formula 
+\begin{equation}
+\Delta y_{t}=\alpha+\gamma y_{t-1}+\sum_{i=1}^{p-1}\delta_{i}\Delta y_{t-j}+\varepsilon_{t}\label{DJSR-2}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Argument listpreamble:1
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+tightlist
+\end_layout
+
+\end_inset
+
+Если 
+\begin_inset Formula $\gamma=0$
+\end_inset
+
+ гипотеза 
+\series bold
+отвергается
+\series default
+,
+ то останавливаем процедуру и отдаем предпочтение модели 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "DJSR-2"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Если 
+\begin_inset Formula $\gamma=0$
+\end_inset
+
+ 
+\series bold
+не отвергается
+\series default
+,
+ то переходим к следующему шагу.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Так как ADF-тест обладает невысокой мощностью,
+ то мы могли не отвергнуть 
+\begin_inset Formula $\gamma=0$
+\end_inset
+
+ по причине неверного включения в модель 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "DJSR-2"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ константы.
+ Оценим модель 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "DJSR-2"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ с учетом 
+\begin_inset Formula $\gamma=0$
+\end_inset
+
+,
+ то есть 
+\begin_inset Formula 
+\begin{equation}
+\Delta y_{t}=\alpha+\sum_{i=1}^{p-1}\delta_{i}\Delta y_{t-j}+\varepsilon_{t}\label{DJSR-2b}
+\end{equation}
+
+\end_inset
+
+и протестируем гипотезу 
+\begin_inset Formula $\chreplaced{\alpha}{\beta}=0$
+\end_inset
+
+.
+ Критические значения для статистики 
+\begin_inset Formula $\tau_{\alpha\chreplaced{\mu}{\tau}}$
+\end_inset
+
+ приведены в статье
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "dickey1981likelihood"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Argument listpreamble:1
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+tightlist
+\end_layout
+
+\end_inset
+
+Если 
+\begin_inset Formula $\alpha=0$
+\end_inset
+
+ отвергается,
+ значит мы верно не отвергли 
+\begin_inset Formula $\gamma=0$
+\end_inset
+
+ и истинной моделью процесса является 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "DJSR-2b"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+В
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "nosko2021ekonometrika"
+literal "false"
+
+\end_inset
+
+ предлагается провести повторное тестирование 
+\begin_inset Formula $\gamma=0$
+\end_inset
+
+ при условии 
+\begin_inset Formula $\alpha\neq0$
+\end_inset
+
+ в модели
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "DJSR-2"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+;
+ t-статистика будет иметь асимптотически нормальное распределение.
+ При отвержении гипотезы делаем выбор в пользу 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "DJSR-2"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+;
+ в противном случае истинная модель —
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "DJSR-2b"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Если 
+\begin_inset Formula $\beta=0$
+\end_inset
+
+ 
+\series bold
+не отвергается
+\series default
+,
+ то переходим к следующему шагу.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Проведем ADF-тест без константы и тренда,
+ то есть протестируем гипотезу 
+\begin_inset Formula $\gamma=0$
+\end_inset
+
+ против альтернативы 
+\begin_inset Formula $\gamma<0$
+\end_inset
+
+ в модели 
+\begin_inset Formula 
+\begin{equation}
+\Delta y_{t}=\gamma y_{t-1}+\varepsilon_{t}\label{DJSR-3}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Argument listpreamble:1
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+tightlist
+\end_layout
+
+\end_inset
+
+Если 
+\begin_inset Formula $\gamma=0$
+\end_inset
+
+ гипотеза 
+\series bold
+отвергается
+\series default
+,
+ то останавливаем процедуру и отдаем предпочтение модели 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "DJSR-3"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Если 
+\begin_inset Formula $\gamma=0$
+\end_inset
+
+ 
+\series bold
+не отвергается
+\series default
+,
+ то отдаем предпочтение модели 
+\begin_inset Formula 
+\[
+\Delta y_{t}=\sum_{i=1}^{p-1}\delta_{i}\Delta y_{t-j}+\varepsilon_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Тест Филлипса-Перрона (PP-тест)
+\end_layout
+
+\begin_layout Standard
+Тест Филлипса-Перрона использует в своей основе уравнение DF-теста
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "phillips1988testing"
+literal "false"
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\Delta{y_{t}}={\underbrace{a_{0}}_{\text{опц.}}}+\gamma y_{t-1}+{\underbrace{\beta t}_{\text{опц.}}}+\varepsilon_{t}
+\]
+
+\end_inset
+
+Для решения проблемы остаточной автокорреляции и неоднородности ошибок в тесте производится непараметрическая корректировка t-статистики.
+ Полученная статистика устойчива к проблемам с ошибками,
+ но,
+ как отмечается,
+ на малых выборках тест работает хуже,
+ чем ADF.
+\end_layout
+
+\begin_layout Standard
+В рамках теста важным параметром является ширина окна 
+\begin_inset Formula $l$
+\end_inset
+
+,
+ применяемого для расчета long-run дисперсии временного ряда
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "newey1987simple"
+literal "false"
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\hat{\sigma}_{T}^{2}(l)=\frac{1}{T}\sum_{t=1}^{T}e_{t}^{2}+2\frac{1}{T}\sum_{s=1}^{l}{\underbrace{\left(1-\frac{s}{l+1}\right)}_{w_{sl}}}\sum_{t=s+1}^{T}e_{t}e_{t-s}
+\]
+
+\end_inset
+
+Веса Бартлетта 
+\begin_inset Formula $w_{sl}$
+\end_inset
+
+ гарантируют положительность 
+\begin_inset Formula $\sigma_{T}^{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Часто для выбора ширины окна используют рекомендацию Шверта 
+\begin_inset Formula 
+\[
+l=\left[K\left(\frac{T}{100}\right)^{1/4}\right]
+\]
+
+\end_inset
+
+где 
+\begin_inset Formula $K=4$
+\end_inset
+
+ для квартальных и 
+\begin_inset Formula $K=12$
+\end_inset
+
+ для месячных данных;
+ либо рекомендацию Ньюи-Веста 
+\begin_inset Formula 
+\[
+l=\left[4\left(\frac{T}{100}\right)^{2/9}\right]
+\]
+
+\end_inset
+
+
+\begin_inset Formula $[\cdot]$
+\end_inset
+
+ в данных формулах означает целую часть числа.
+\end_layout
+
+\begin_layout Subsection
+Тест Эллиота-Розенберга-Стока (DF-GLS-тест)
+\end_layout
+
+\begin_layout Standard
+Сущность данного теста состоит в том,
+ что ADF-тест применяется не к исходному ряду,
+ а к ряду,
+ к которому применено GLS-детрендирование
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "elliott1996efficient"
+literal "false"
+
+\end_inset
+
+.
+ В данном тесте ряд 
+\begin_inset Formula $y_{t}$
+\end_inset
+
+ рассматривается в следующем виде 
+\begin_inset Formula 
+\[
+\begin{aligned}y_{t} & =d_{t}+u_{t}\\
+u_{t} & =\alpha u_{t-1}+\nu_{t}
+\end{aligned}
+\]
+
+\end_inset
+
+где 
+\begin_inset Formula $d_{t}$
+\end_inset
+
+ —
+ детерминированная компонента,
+ 
+\begin_inset Formula $\nu_{t}$
+\end_inset
+
+ —
+ стационарный процесс с нулевым математическим ожиданием.
+\end_layout
+
+\begin_layout Standard
+Суть детрендирования состоит в следующем:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument listpreamble:1
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+tightlist
+\end_layout
+
+\end_inset
+
+Нужно выбрать функциональный вид 
+\begin_inset Formula $\Vect d=(d_{1},\dots,d_{T})'=\Vect Z\Vect{\beta}$
+\end_inset
+
+,
+ где 
+\begin_inset Formula $\Vect Z=(z_{1},z_{2},\dots)'$
+\end_inset
+
+ —
+ наблюдаемые компоненты детерминированного тренда.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Преобразовываем 
+\begin_inset Formula $\Vect y$
+\end_inset
+
+ и 
+\begin_inset Formula $\Vect Z$
+\end_inset
+
+ следующим образом 
+\begin_inset Formula 
+\[
+\begin{aligned}\Vect y_{a} & =(y_{1},y_{2}-ay_{1},\dots,y_{T}-ay_{T-1})'\\
+\Vect Z_{a} & =(z_{1},z_{2}-az_{1},\dots,z_{T}-az_{T-1})'
+\end{aligned}
+\]
+
+\end_inset
+
+где 
+\begin_inset Formula $a=1+\frac{c}{T}$
+\end_inset
+
+.
+ Для случая,
+ когда в 
+\begin_inset Formula $y_{t}$
+\end_inset
+
+ входит только константа,
+ 
+\begin_inset Formula $c=-7$
+\end_inset
+
+;
+ если в ряд входит константа и тренд,
+ то 
+\begin_inset Formula $c=-13.5$
+\end_inset
+
+.
+ Данные значения получены авторами методом Монте-Карло и являются оптимальными с точки зрения мощности теста.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Находим 
+\begin_inset Formula $\hat{\Vect{\beta}}=(\Vect Z'_{a}\Vect Z_{a})^{-1}\Vect Z'_{a}\Vect y_{a}$
+\end_inset
+
+ и производим детрендирование 
+\series bold
+исходного
+\series default
+ ряда 
+\begin_inset Formula 
+\[
+\Vect y^{d}\coloneq\Vect y-\Vect Z\hat{\Vect{\beta}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+DF-GLS-тест состоит в проведении обычного ADF-теста 
+\series bold
+без
+\series default
+ детерминированных компонент применительно к детрендированному ряду 
+\begin_inset Formula $y_{t}^{d}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Argument listpreamble:1
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+tightlist
+\end_layout
+
+\end_inset
+
+Если исходный ряд включал только константу в качестве детерминированной компоненты,
+ то распределение итоговой t-статистики не меняется и можно использовать обычные таблицы Дики-Фуллера для 
+\begin_inset Formula $\tau^{\mu}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Если исходный ряд включал константу и тренд,
+ то t-статистика будет иметь отличающееся распределение,
+ критические значения для которого приведены в статье.
+ 
+\end_layout
+
+\begin_layout Standard
+Для тестирования можно использовать статистику,
+ предложенную авторами 
+\begin_inset Formula 
+\[
+P_{T}=\frac{S(a)-aS(1)}{\hat{\omega}^{2}}
+\]
+
+\end_inset
+
+где 
+\begin_inset Formula $\hat{\omega}^{2}$
+\end_inset
+
+ —
+ оценка 
+\begin_inset Formula $\omega^{2}=\sum_{k=-\infty}^{\infty}\gamma(k)$
+\end_inset
+
+;
+ 
+\begin_inset Formula $S(a)$
+\end_inset
+
+ —
+ сумма квадратов остатков в регрессии 
+\begin_inset Formula $\Vect y_{a}$
+\end_inset
+
+ на 
+\begin_inset Formula $\Vect Z_{a}$
+\end_inset
+
+.
+ Для расчета критических значений авторы использовали 
+\begin_inset Formula $\hat{\omega}^{2}=S(1)/T$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Тест KPSS
+\end_layout
+
+\begin_layout Standard
+Тест Квятковского-Филлипса-Шмидта-Шина 
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "kwiatkowski1992testing"
+literal "false"
+
+\end_inset
+
+ стоит особняком,
+ так как в качестве нулевой гипотезы предполагает TS ряд.
+ Временной ряд в тесте представляется в виде 
+\begin_inset Formula 
+\[
+\begin{aligned}y_{t} & =d_{t}+u_{t}+\varepsilon_{t}\\
+u_{t} & =u_{t-1}+\nu_{t}
+\end{aligned}
+\]
+
+\end_inset
+
+где 
+\begin_inset Formula $\varepsilon_{t}\sim WN(0,\sigma_{\varepsilon}^{2})$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\nu_{t}\sim WN(0,\sigma_{\nu}^{2})$
+\end_inset
+
+,
+ 
+\begin_inset Formula $d_{t}$
+\end_inset
+
+ —
+ TS компонента.
+ Тестируется гипотеза 
+\begin_inset Formula 
+\[
+\begin{aligned}H_{0} & : & \sigma_{\nu}^{2} & =0\\
+H_{a} & : & \sigma_{\nu}^{2} & \neq0
+\end{aligned}
+\]
+
+\end_inset
+
+Так как в данном тесте также считаются ошибки Ньюи-Веста,
+ то здесь также приходится следовать рекомендациям по выбору ширины окна.
+\end_layout
+
+\begin_layout Section
+Структурные сдвиги
+\end_layout
+
+\begin_layout Standard
+Структурные сдвиги можно разделить на:
+\end_layout
+
+\begin_layout Description
+\begin_inset Argument listpreamble:1
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+tightlist
+\end_layout
+
+\end_inset
+
+аддитивные которые можно представить как изменение детерминированного тренда 
+\begin_inset Formula $f(t)$
+\end_inset
+
+ в следующей модели 
+\begin_inset Formula 
+\[
+\begin{aligned}y_{t} & =f(t)+z_{t}\\
+z_{t} & \sim\text{ARMA}
+\end{aligned}
+\]
+
+\end_inset
+
+В этом случае изменение тренда происходит мгновенно.
+ 
+\end_layout
+
+\begin_layout Description
+инновационные которые можно представить как изменение детерминированного тренда 
+\begin_inset Formula $f(t)$
+\end_inset
+
+ в следующей модели 
+\begin_inset Formula 
+\[
+y_{t}=f(t)+a_{1}y_{t-1}+\dots+\varepsilon_{t}
+\]
+
+\end_inset
+
+В этом случае изменение тренда происходит постепенно.
+ 
+\end_layout
+
+\begin_layout Subsection
+Тест Перрона
+\end_layout
+
+\begin_layout Standard
+Если в рассматриваемом временном ряду есть структурный сдвиг,
+ то приведенные выше тесты резко теряют свою мощность и начинают слишком часто не отвергать нулевую гипотезу.
+\end_layout
+
+\begin_layout Standard
+Перрон
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "perron1989great,perron1990testing,nosko2021ekonometrika"
+literal "false"
+
+\end_inset
+
+ рассматривал следующие варианты инновационных (внезапно для самого себя
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Проблема состояла в том,
+ что Перрон запутался в собственных вычислениях и выводах.
+ Изначально он предлагал оценивать модели из 
+\begin_inset Formula $H_{a}$
+\end_inset
+
+,
+ получать их остатки,
+ после чего прогонять их через ADF-тест без детерминированных компонент.
+ Тем самым он пытался удалить из данных 
+\series bold
+аддитивный
+\series default
+ сдвиг;
+ однако то,
+ что 
+\begin_inset Formula $\varepsilon_{t}$
+\end_inset
+
+ мог быть ARMA-процессом автоматически превращало сдвиг в 
+\series bold
+инновационный
+\series default
+.
+ Также,
+ как выяснилось позднее,
+ Перрон в своих рассуждениях опирался на t-статистику,
+ полученную из других моделей.
+\end_layout
+
+\end_inset
+
+) структурных сдвигов:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Argument listpreamble:1
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+tightlist
+\end_layout
+
+\end_inset
+
+модель «краха» 
+\begin_inset Formula 
+\[
+\begin{aligned}H_{0} & : & y_{t} & =a_{0}+d{DTB}_{t}+y_{t-1}+\varepsilon_{t} & \text{(DS-ряд)}\\
+H_{a} & : & y_{t} & =a_{0}+\theta{DU}_{t}+\beta t+\varepsilon_{t} & \text{(TS-ряд)}
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+модель «изменения роста» 
+\begin_inset Formula 
+\[
+\begin{aligned}H_{0} & : & y_{t} & =a_{0}+\theta{DU}_{t}+y_{t-1}+\varepsilon_{t} & \text{(DS-ряд)}\\
+H_{a} & : & y_{t} & =a_{0}+\beta t+\gamma{DTS}_{t}+\varepsilon_{t} & \text{(TS-ряд)}
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+модель,
+ допускающая оба эффекта 
+\begin_inset Formula 
+\[
+\begin{aligned}H_{0} & : & y_{t} & =a_{0}++d{DTB}_{t}+\theta{DU}_{t}+y_{t-1}+\varepsilon_{t} & \text{(DS-ряд)}\\
+H_{a} & : & y_{t} & =a_{0}+\theta{DU}_{t}+\beta t+\delta{DT}_{t}+\varepsilon_{t} & \text{(TS-ряд)}
+\end{aligned}
+\]
+
+\end_inset
+
+где 
+\begin_inset Formula 
+\[
+\begin{aligned}{DTB}_{t} & =\begin{cases}
+1 & \text{для }t=T_{b}+1\\
+0 & \text{иначе}
+\end{cases}\\
+{DU}_{t} & =\begin{cases}
+1 & \text{для }t>T_{b}\\
+0 & \text{иначе}
+\end{cases}\\
+{DTS}_{t} & =\begin{cases}
+t-T_{b} & \text{для }t>T_{b}\\
+0 & \text{иначе}
+\end{cases}\\
+{DT}_{t} & =\begin{cases}
+t & \text{для }t>T_{b}\\
+0 & \text{иначе}
+\end{cases}\\
+\varepsilon_{t} & \sim\text{ARMA}
+\end{aligned}
+\]
+
+\end_inset
+
+а 
+\begin_inset Formula $T_{b}$
+\end_inset
+
+ —
+ момент структурного сдвига.
+ 
+\end_layout
+
+\begin_layout Standard
+Для проведения теста на единичный корень нужно взять модель из 
+\series bold
+альтернативной
+\series default
+ гипотезы и дописать в нее слагаемое 
+\begin_inset Formula $\alpha y_{t-1}$
+\end_inset
+
+,
+ после чего протестировать гипотезу 
+\begin_inset Formula $\alpha=1$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\begin{aligned}y_{t} & =a_{0}+\theta{DU}_{t}+\beta t+\alpha y_{t-1}+\varepsilon_{t} &  & \text{модель краха}\\
+y_{t} & =a_{0}+\beta t+\gamma{DTS}_{t}+\alpha y_{t-1}+\varepsilon_{t} &  & \text{модель изменения роста}\\
+y_{t} & =a_{0}+\theta{DU}_{t}+\beta t+\delta{DT}_{t}+\alpha y_{t-1}+\varepsilon_{t} &  & \text{оба эффекта}
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Для ситуации 
+\series bold
+аддитивных
+\series default
+ сдвигов Перрон и Фогельзанг
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "perron1993note"
+literal "false"
+
+\end_inset
+
+ предложили следующую процедуру:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Argument listpreamble:1
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+tightlist
+\end_layout
+
+\end_inset
+
+для модели изменения роста нужно оценить модель из 
+\begin_inset Formula $H_{a}$
+\end_inset
+
+ (
+\series bold
+без
+\series default
+ добавок),
+ получить ее остатки 
+\begin_inset Formula $e_{t}$
+\end_inset
+
+ и протестировать гипотезу 
+\begin_inset Formula $\alpha=1$
+\end_inset
+
+ для модели 
+\begin_inset Formula 
+\[
+e_{t}=\alpha e_{t-1}+\sum_{j=1}^{k}c_{j}\Delta e_{t-j}+\nu_{t}
+\]
+
+\end_inset
+
+при помощи критических значений из статьи 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "perron1993note"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+для модели краха и третьей модели нужно оценить модель из 
+\begin_inset Formula $H_{a}$
+\end_inset
+
+ (
+\series bold
+без
+\series default
+ добавок),
+ получить ее остатки 
+\begin_inset Formula $e_{t}$
+\end_inset
+
+ и протестировать гипотезу 
+\begin_inset Formula $\alpha=1$
+\end_inset
+
+ для модели 
+\begin_inset Formula 
+\[
+e_{t}=\sum_{j=0}^{k}\omega_{j}{DTB}_{t-j}+\alpha e_{t-1}+\sum_{j=1}^{k}c_{j}\Delta e_{t-j}+\nu_{t}
+\]
+
+\end_inset
+
+при помощи критических значений из статьи 
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "perron1990testing"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Тест Зивота-Эндрюса
+\end_layout
+
+\begin_layout Standard
+Главным слабым местом процедуры Перрона является то,
+ что момент сдвига 
+\begin_inset Formula $T_{b}$
+\end_inset
+
+ задается 
+\series bold
+экзогенно
+\series default
+.
+ Зивот и Эндрюс
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "zivot1992further"
+literal "false"
+
+\end_inset
+
+ предложили модификацию теста Перрона
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "perron1990testing"
+literal "false"
+
+\end_inset
+
+ для эндогенного определения момента сдвига.
+\end_layout
+
+\begin_layout Standard
+Смысл процедуры заключается в последовательном применении теста Перрона для всех потенциальных моментов структурного сдвига,
+ для каждого из которых сохраняется 
+\begin_inset Formula $t_{\alpha}$
+\end_inset
+
+ —
+ t-статистика для гипотезы 
+\begin_inset Formula $\alpha=1$
+\end_inset
+
+.
+ В качестве итоговой статистики принимается 
+\begin_inset Formula 
+\[
+t_{\alpha}(\lambda_{inf})=\inf_{\lambda\in\Lambda}t_{\alpha}(\lambda)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Сезонность
+\end_layout
+
+\begin_layout Subsection
+Тест Дики-Белла-Миллера
+\end_layout
+
+\begin_layout Standard
+Представляет собой обычный ADF-тест,
+ в который добавлены фиктивные переменные,
+ отвечающие за сезоны 
+\begin_inset Formula 
+\[
+\Delta y_{t}=\alpha_{0}+\alpha_{1}D_{1,t}+\dots+\alpha_{s-1}D_{s-1,t}+{\underbrace{\beta t}_{\text{опц.}}}+\gamma y_{t-1}+\sum_{i=1}^{p-1}\delta_{i}\Delta y_{t-i}+\varepsilon_{t}
+\]
+
+\end_inset
+
+t-статистика имеет распределение Дики-Фуллера,
+ то есть можно использовать обычные критические значения 
+\begin_inset Formula $\tau_{\mu}$
+\end_inset
+
+ и 
+\begin_inset Formula $\tau_{\tau}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Тест HEGY
+\end_layout
+
+\begin_layout Standard
+Источником нестационарности может выступать не только «текущее» поведение ряда,
+ но и «сезонная» связь.
+ Рассмотрим на примере мультипликативной сезонности для 
+\series bold
+квартальных
+\series default
+ данных,
+ тем более,
+ что тест Хюллеберга-Энгла-Грейнджера-Ю
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "hylleberg1990seasonal"
+literal "false"
+
+\end_inset
+
+ изначально сформулирован именно для этой постановки.
+\end_layout
+
+\begin_layout Standard
+Рассмотрим процесс вида 
+\begin_inset Formula 
+\begin{equation}
+(1-L^{4})\tilde{A}(L)y_{t}=\varepsilon_{t}\label{HEGY-1}
+\end{equation}
+
+\end_inset
+
+Очевидно,
+ что данный процесс имеет 
+\series bold
+четыре
+\series default
+ единичных корня 
+\begin_inset Formula $(1,-1,i,-i)$
+\end_inset
+
+.
+ Не забываем,
+ что «единичность» корня определяется его абсолютным значением,
+ а 
+\begin_inset Formula $|i|=1$
+\end_inset
+
+.
+ Данные единичные корни соответствуют частотам 
+\begin_inset Formula $\omega_{j}=2\pi\frac{j}{s}$
+\end_inset
+
+,
+ где 
+\begin_inset Formula $j=0,1,\dots,\lfloor s/2\rfloor$
+\end_inset
+
+,
+ 
+\begin_inset Formula $s=4$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Также очевидно,
+ что
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Argument listpreamble:1
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+tightlist
+\end_layout
+
+\end_inset
+
+дифференцирование может не до конца устранить проблем единичного корня в сезонных данных,
+ так как остаются еще три корня;
+ 
+\end_layout
+
+\begin_layout Itemize
+слепое взятие сезонной разности 
+\begin_inset Formula $\Delta_{4}y_{t}\coloneq y_{t}-y_{t-4}$
+\end_inset
+
+ может привести к передифференцированию,
+ так как не все четыре корня обязаны быть в данных.
+ 
+\end_layout
+
+\begin_layout Standard
+Рассмотрим полином 
+\begin_inset Formula $A(L)=(1-L^{4})\tilde{A}(L)$
+\end_inset
+
+.
+ Согласно одной из теорем,
+ предложенных Лагранжем,
+ любой полином,
+ принимающий в некоторых 
+\series bold
+ненулевых
+\series default
+ точках 
+\begin_inset Formula $\theta_{1},\dots,\theta_{p}$
+\end_inset
+
+ конечные значения,
+ может быть представлен в виде 
+\begin_inset Formula 
+\[
+\begin{aligned}A(L) & =\sum_{k=1}^{p}\lambda_{k}\frac{\Delta(L)}{\delta_{k}(L)}+\Delta(L)\hat{A}(L) &  & \pm\Delta(L)\sum_{k=1}^{p}\lambda_{k}\\
+A(L) & =\sum_{k=1}^{p}\lambda_{k}\Delta(L)\frac{1+\delta_{k}(L)}{\delta_{k}(L)}+\Delta(L)\bar{A}(L)\\
+\text{где}\\
+\delta_{k}(L) & =1-\frac{1}{\theta_{k}}L\\
+\Delta(L) & =\prod_{k=1}^{p}\delta_{k}(L)
+\end{aligned}
+\]
+
+\end_inset
+
+Причем если какое-либо 
+\begin_inset Formula $\theta_{k}$
+\end_inset
+
+ является 
+\series bold
+корнем
+\series default
+ 
+\begin_inset Formula $A(L)$
+\end_inset
+
+,
+ то соответствующая 
+\begin_inset Formula $\lambda_{k}=0$
+\end_inset
+
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Это ключевой факт!
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Если взять в качестве 
+\begin_inset Formula $\theta_{k}$
+\end_inset
+
+ единичные корни 
+\begin_inset Formula $(1,-1,i,-i)$
+\end_inset
+
+,
+ то получим 
+\begin_inset Formula 
+\[
+\begin{aligned}A(L) & =\lambda_{1}L(1+L)(1+L^{2})+\\
+ & \hspace{1em}+\lambda_{2}(-L)(1-L)(1+L^{2})+\\
+ & \hspace{1em}+\lambda_{3}(-iL)(1-L)(1+L)(1-iL)+\\
+ & \hspace{1em}+\lambda_{4}(iL)(1-L)(1+L)(1+iL)+\\
+ & \hspace{1em}+\bar{A}(L)(1-L^{4})\\
+\lambda_{3} & =\lambda_{4}^{*}\quad\Leftarrow A(L)\in\mathbb{R}
+\end{aligned}
+\]
+
+\end_inset
+
+При помощи следующей подстановки 
+\begin_inset Formula 
+\[
+\begin{aligned}\lambda_{1} & =-\pi_{1}\\
+\lambda_{2} & =-\pi_{2}\\
+\lambda_{3} & =\frac{-\pi_{3}+i\pi_{4}}{2}\\
+\lambda_{4} & =\frac{-\pi_{3}-i\pi_{4}}{2}
+\end{aligned}
+\]
+
+\end_inset
+
+получим итоговое выражение 
+\begin_inset Formula 
+\begin{align}
+A(L) & =-\pi_{1}L(1+L+L^{2}+L^{3})-\pi_{2}(-L)(1-L+L^{2}-L^{3})-\nonumber \\
+ & \hspace{1em}-(\pi_{4}+\pi_{3}L)(-L)(1-L^{2})+\bar{A}(L)(1-L^{4})\label{HEGY-2}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Подставим 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "HEGY-2"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ в 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "HEGY-1"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ и получим 
+\begin_inset Formula 
+\begin{align}
+\bar{A}(L)y_{4,t} & =\pi_{1}y_{1,t-1}+\pi_{2}y_{2,t-1}+\pi_{3}y_{3,t-2}+\pi_{4}y_{3,t-1}+\varepsilon_{t}\label{HEGY-3}\\
+y_{1,t} & =(1+L+L^{2}+L^{3})y_{t}\nonumber \\
+y_{2,t} & =-(1-L+L^{2}-L^{3})y_{t}\nonumber \\
+y_{3,t} & =-(1-L^{2})y_{t}\nonumber \\
+y_{4,t} & =(1-L^{4})y_{t}=\Delta_{4}y_{t}\nonumber 
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Уравнение 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "HEGY-3"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ оценивается обычным МНК.
+ Полученные оценки можно использовать для тестирования наличия тех или иных единичных корней:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Argument listpreamble:1
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+tightlist
+\end_layout
+
+\end_inset
+
+Наличие корня 
+\begin_inset Formula $1$
+\end_inset
+
+ определяется тестом 
+\begin_inset Formula $\pi_{1}=0$
+\end_inset
+
+ против 
+\begin_inset Formula $\pi_{1}<0$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Наличие корня 
+\begin_inset Formula $-1$
+\end_inset
+
+ определяется тестом 
+\begin_inset Formula $\pi_{2}=0$
+\end_inset
+
+ против 
+\begin_inset Formula $\pi_{2}<0$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Наличие корней 
+\begin_inset Formula $\pm i$
+\end_inset
+
+ определяется тестом 
+\begin_inset Formula $\pi_{3}=\pi_{4}=0$
+\end_inset
+
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Альтернативным подходом является двухсторонний тест гипотезы 
+\begin_inset Formula $\pi_{4}=0$
+\end_inset
+
+,
+ при неотвержении которой следует провести левосторонний тест гипотезы 
+\begin_inset Formula $\pi_{3}=0$
+\end_inset
+
+.
+ Однако данный подход имеет более низкую мощность.
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Section
+Коинтеграция
+\end_layout
+
+\begin_layout Standard
+«Пьяный матрос с собачкой».
+\end_layout
+
+\begin_layout Standard
+Ряды 
+\begin_inset Formula $y_{1,t},y_{2,t},\dots,y_{n,t}$
+\end_inset
+
+ называются коинтегрированными порядка 
+\begin_inset Formula $CI(d,b)$
+\end_inset
+
+ если:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument listpreamble:1
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+tightlist
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $y_{j,t}\sim I(d),\ \forall j$
+\end_inset
+
+,
+ 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\exists(\alpha_{1},\dots,\alpha_{n})\neq\Vect 0:\ \sum_{j=1}^{n}\alpha_{j}y_{j,t}\sim I(d-b)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsection
+Критерий Энгла-Грейнджера
+\end_layout
+
+\begin_layout Standard
+Данный критерий позволяет определить наличие коинтеграции между рядами 
+\begin_inset Newline linebreak
+\end_inset
+
+
+\begin_inset Formula $y_{1,t},y_{2,t},\dots,y_{n,t}\sim I(1)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument listpreamble:1
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+tightlist
+\end_layout
+
+\end_inset
+
+Оцениваем регрессию 
+\begin_inset Formula $y_{1,t}$
+\end_inset
+
+ на 
+\begin_inset Formula $y_{2,t},\dots,y_{n,t}$
+\end_inset
+
+,
+ получаем остатки.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Тестируем остатки на наличие единичного корня при помощи ADF-теста.
+ Распределение t-статистики 
+\series bold
+отличается
+\series default
+ от Дики-Фуллера,
+ критические значения берутся из таблиц в
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "engle1987cointegration"
+literal "false"
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Subsection
+Критерий Йохансена
+\end_layout
+
+\begin_layout Standard
+Ранее мы рассмотрели тест Энгла-Грейнджера,
+ предназначенный для тестирования наличия коинтеграции между переменными.
+ Однако данный тест способен проверить только факт наличия таковой,
+ но не способен определить число коинтеграционных соотношений.
+ Для решения данной задачи предназначена процедура Йохансена
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "johansen1988statistical,johansen1990maximum,johansen1992testing"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+В основе теста Йохансена лежит VAR модель,
+ которая переписывается в виде VECM модели.
+ Обратим внимание на следующее.
+ Существует 
+\series bold
+два
+\series default
+ способа представить VAR в виде VECM:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Argument listpreamble:1
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+tightlist
+\end_layout
+
+\end_inset
+
+«transitory» VECM:
+ это тот вид VECM модели,
+ к которому мы все привыкли,
+ и который вы встретите в любом учебнике.
+ 
+\begin_inset Formula 
+\[
+\Delta\Vect y_{t}=A_{0}+\Pi\Vect y_{t-1}+\Gamma_{1}\Delta\Vect y_{t-1}+\Gamma_{2}\Delta\Vect y_{t-2}+\cdots+\Gamma_{p-1}\Delta\Vect y_{t-p+1}+\Vect{\varepsilon}_{t}
+\]
+
+\end_inset
+
+Дальнейший материал приводится именно для этого варианта VECM
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "hamilton1994time"
+literal "false"
+
+\end_inset
+
+!
+\end_layout
+
+\begin_layout Itemize
+«long run» VECM:
+ отличается лишь тем,
+ что при 
+\begin_inset Formula $\Pi$
+\end_inset
+
+ стоит 
+\begin_inset Formula $\chdeleted{\Delta}y_{t-p}$
+\end_inset
+
+.
+ Данная модель отличается от предыдущей только матрицами 
+\begin_inset Formula $\Gamma_{i}$
+\end_inset
+
+.
+ Матрица 
+\begin_inset Formula $\Pi$
+\end_inset
+
+ 
+\series bold
+такая же
+\series default
+.
+ Йохансен рассматривал именно такую модель.
+ 
+\begin_inset Formula 
+\[
+\Delta\Vect y_{t}=A_{0}+\Pi\Vect y_{t-p}+\Gamma_{1}\Delta\Vect y_{t-1}+\Gamma_{2}\Delta\Vect y_{t-2}+\cdots+\Gamma_{p-1}\Delta\Vect y_{t-p+1}+\Vect{\varepsilon}_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Интересующим нас вопросом в рамках теста Йохансена является 
+\series bold
+ранг
+\series default
+ матрицы 
+\begin_inset Formula $\Pi$
+\end_inset
+
+.
+ В процедуре Йохансена можно использовать две различные статистики:
+\end_layout
+
+\begin_layout Itemize
+«trace» статистика 
+\begin_inset Formula 
+\[
+Q=-T\sum_{i=r+1}^{k}\ln(1-\hat{\lambda}_{i})
+\]
+
+\end_inset
+
+где 
+\begin_inset Formula $\hat{\lambda}_{i}$
+\end_inset
+
+ —
+ оценки собственных значений весьма специфически построенной матрицы 
+\begin_inset Formula $\hat{\Sigma}_{VV}^{-1}\hat{\Sigma}_{VU}\hat{\Sigma}_{UU}^{-1}\hat{\Sigma}_{UV}$
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "hamilton1994time"
+literal "false"
+
+\end_inset
+
+,
+ где
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Argument listpreamble:1
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+tightlist
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\hat{\Sigma}_{VV}=\frac{1}{T}\sum_{i=1}^{T}\hat{\Vect v}_{t}\hat{\Vect v}'_{t}$
+\end_inset
+
+ —
+ оценка ковариационной матрицы остатков регрессии 
+\begin_inset Formula $\Vect y_{t-1}$
+\end_inset
+
+ на 
+\begin_inset Formula $p-1$
+\end_inset
+
+ лаг 
+\begin_inset Formula $\Delta\Vect y_{t}$
+\end_inset
+
+,
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\hat{\Sigma}_{UU}=\frac{1}{T}\sum_{i=1}^{T}\hat{\Vect u}_{t}\hat{\Vect u}'_{t}$
+\end_inset
+
+ —
+ оценка ковариационной матрицы остатков регрессии 
+\begin_inset Formula $\Delta\Vect y_{t}$
+\end_inset
+
+ на 
+\begin_inset Formula $p-1$
+\end_inset
+
+ лаг 
+\begin_inset Formula $\Delta\Vect y_{t}$
+\end_inset
+
+,
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\hat{\Sigma}_{UV}=\frac{1}{T}\sum_{i=1}^{T}\hat{\Vect u}_{t}\hat{\Vect v}'_{t}$
+\end_inset
+
+ и 
+\begin_inset Formula $\hat{\Sigma}_{VU}=\frac{1}{T}\sum_{i=1}^{T}\hat{\Vect v}_{t}\hat{\Vect u}'_{t}$
+\end_inset
+
+ —
+ оценки кросс-ковариационных матриц приведенных выше остатков.
+ 
+\end_layout
+
+\begin_layout Standard
+Собственные значения упорядочены по убыванию!
+\end_layout
+
+\begin_layout Standard
+Данная статистика предназначена для тестирования гипотез 
+\begin_inset Formula 
+\[
+\begin{aligned}H_{0} & : & \rank\Pi & =r\\
+H_{a} & : & \rank\Pi & =k
+\end{aligned}
+\]
+
+\end_inset
+
+где 
+\begin_inset Formula $k$
+\end_inset
+
+ —
+ число переменных в модели;
+ другими словами при справедливости альтернативной гипотезы 
+\begin_inset Formula $\Pi$
+\end_inset
+
+ имеет полный ранг.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+«eigen» статистика 
+\begin_inset Formula 
+\[
+Q=-T\ln(1-\hat{\lambda}_{r+1})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Данная статистика предназначена для тестирования нулевой гипотезы 
+\begin_inset Formula 
+\[
+\begin{aligned}H_{0} & : & \rank\Pi & =r\\
+H_{a} & : & \rank\Pi & =r+1
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Всего существует 5 спецификаций теста
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "mackinnon1999numerical"
+literal "false"
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument listpreamble:1
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+tightlist
+\end_layout
+
+\end_inset
+
+В VAR и в коинтеграционное соотношение не входят константа и тренд.
+ 
+\end_layout
+
+\begin_layout Enumerate
+В коинтеграционном соотношении есть свободный член.
+ 
+\end_layout
+
+\begin_layout Enumerate
+В VAR и коинтеграционном соотношении есть свободный член.
+ 
+\end_layout
+
+\begin_layout Enumerate
+В VAR есть свободный член,
+ в коинтеграционном соотношении есть константа и тренд.
+ 
+\end_layout
+
+\begin_layout Enumerate
+В VAR и коинтеграционном соотношении есть свободный член и тренд.
+ 
+\end_layout
+
+\begin_layout Standard
+Критические значения нужно считать методом Монте-Карло.
+ Также можно воспользоваться критическими значениями,
+ рассчитанными в статье
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "mackinnon1999numerical"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "data/bibliography"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{Список литературы}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

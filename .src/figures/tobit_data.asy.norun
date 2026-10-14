@@ -1,0 +1,43 @@
+texpreamble("\usepackage{fontspec}\usepackage{unicode-math}\setmainfont{Noto Sans}\setmathfont{Noto Sans Math}");
+
+settings.tex = "xelatex";
+settings.outformat = "pdf";
+settings.prc = false;
+settings.render = 0;
+
+unitsize(2mm);
+
+import graph;
+import stats;
+import myfunc;
+
+int n = 300;
+real sgm = 4, xmax = 60, a0 = -10, a1 = .5, dy = 10;
+
+real[][] gendata(int n) {
+	real[] x, y, y0;
+	for (int i=0; i < n; ++i) x[i] = unitrand() * xmax;
+	x = sort(x);
+    for (int i=0; i < n; ++i) y[i] = a0 + a1 * x[i] + Gaussrand()*sgm;
+    return new real[][] {x, y};
+}
+
+real[][] data = gendata(n);
+
+real[] x = copy(data[0]), y = copy(data[1]);
+for (int i=0; i < n; ++i) y[i] = y[i] > 0 ? y[i] + dy : 0;
+
+for (int i=0; i < n; ++i) {
+	filldraw(Circle((x[i], y[i]), .3), white, black);
+}
+
+draw((0., dy)--(xmax, dy), red);
+
+xaxis("$x$", xmin=0, xmax=xmax, arrow=Arrow(TeXHead));
+yaxis("$y$", arrow=Arrow(TeXHead));
+
+shipout("tobit_censored");
+
+file fout = output("tobit.txt");
+write(fout, transpose(data));
+close(fout);

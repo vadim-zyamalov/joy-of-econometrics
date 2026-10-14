@@ -1,0 +1,6639 @@
+#LyX 2.5 created this file. For more info see https://www.lyx.org/
+\lyxformat 643
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass extarticle
+\begin_preamble
+\usepackage{unicode-math}
+\usepackage{adjustbox}
+\usepackage[mathb]{mathabx}
+\usepackage{icomma}
+\usepackage{fancyvrb}
+\VerbatimFootnotes
+\raggedbottom
+
+\AtEndPreamble{\renewcommand{\thesubtable}{\Asbuk{subtable}}}
+\end_preamble
+\use_default_options false
+\begin_modules
+enumitem
+\end_modules
+\maintain_unincluded_children no
+\language russian
+\language_package babel
+\inputencoding utf8
+\fontencoding default
+\font_roman "default" "PT Serif"
+\font_sans "default" "PT Astra Sans"
+\font_typewriter "default" "Iosevka"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype true
+\use_dash_ligatures false
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command biber
+\index_command default
+\float_placement class
+\float_alignment class
+\paperfontsize 12
+\spacing onehalf
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize a4
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine biblatex
+\cite_engine_type authoryear
+\biblio_style plain
+\biblatex_bibstyle gost-authoryear-min
+\biblatex_citestyle gost-authoryear
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification default
+\crossref_package prettyref
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\backgroundcolor none
+\fontcolor none
+\notefontcolor lightgray
+\boxbgcolor red
+\table_border_color default
+\table_odd_row_color default
+\table_even_row_color default
+\table_alt_row_colors_start 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 3cm
+\topmargin 2cm
+\rightmargin 1.5cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style russian
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tablestyle Formal_with_Footline
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content true
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\docbook_mathml_version 0
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "~/AppData/Roaming/LyX2.5/templates/ru/Articles/trinkets.lyx"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+Лекция 6
+\end_layout
+
+\begin_layout SubTitle
+Модели с переключением режимов
+\end_layout
+
+\begin_layout Author
+Зямалов В.Е.
+\end_layout
+
+\begin_layout Standard
+Подробнее можно посмотреть в
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "enders2015applied"
+posttextlist "enders2015applied гл. 7"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Линейные модели
+\end_layout
+
+\begin_layout Standard
+Рассмотрим простую AR(1) модель 
+\begin_inset Formula 
+\[
+y_{t}=a_{0}+a_{1}y_{t-1}+\varepsilon_{t},\ 0<a_{1}<1
+\]
+
+\end_inset
+
+Обозначив математическое ожидание 
+\begin_inset Formula $y_{t}$
+\end_inset
+
+ как 
+\begin_inset Formula $\bar{y}=\frac{a_{0}}{1-a_{1}}$
+\end_inset
+
+,
+ можно переписать это уравнение как 
+\begin_inset Formula 
+\[
+y_{t}-\bar{y}=a_{1}\left(y_{t-1}-\bar{y}\right)+\varepsilon_{t}
+\]
+
+\end_inset
+
+Если 
+\begin_inset Formula $y_{t}\neq\bar{y}$
+\end_inset
+
+,
+ то 
+\begin_inset Formula $a_{1}$
+\end_inset
+
+-я часть отклонения перейдет в следующий период.
+ Причем отметим,
+ что вне зависимости ни от каких условий,
+ в следующий период перейдет именно 
+\begin_inset Formula $a_{1}$
+\end_inset
+
+-я часть отклонения 
+\begin_inset Formula $y_{t}$
+\end_inset
+
+ от своего математического ожидания.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement ht
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename data/fig_7_1_a.png
+	width 60line%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Нелинейность модели
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Однако имеются свидетельства того,
+ что переходящая часть может зависеть от знака отклонения!
+ 
+\begin_inset Formula 
+\[
+y_{t}-\bar{y}=\begin{cases}
+a_{1}\left(y_{t-1}-\bar{y}\right)+\varepsilon_{t} & y_{t-1}>\bar{y}\\
+a_{2}\left(y_{t-1}-\bar{y}\right)+\varepsilon_{t} & y_{t-1}\le\bar{y}
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+NLAR модель
+\end_layout
+
+\begin_layout Standard
+Рассмотрим простейший
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+С позиции внешнего вида формулы,
+ но,
+ отнюдь,
+ не с позиций расчетов.
+\end_layout
+
+\end_inset
+
+ вид модели,
+ который может моделировать подобное поведение —
+ нелинейную AR (NLAR) модель 
+\begin_inset Formula 
+\[
+y_{t}=f\left(y_{t-1},y_{t-2},\dots\right)+\varepsilon_{t}
+\]
+
+\end_inset
+
+где 
+\begin_inset Formula $f(\dots)$
+\end_inset
+
+ —
+ некоторая скалярная нелинейная функция.
+\end_layout
+
+\begin_layout Standard
+Очевидно,
+ что данная модель обладает крайне большой гибкостью,
+ позволяющей моделировать самое разное поведение.
+ Однако,
+ не менее очевидно,
+ что оценивать данную модель может быть крайне сложно;
+ так как оценивание будет проводиться либо методом максимального правдоподобия,
+ либо нелинейным МНК,
+ то вид функции может привести к катастрофическому усложнению вычислительных процедур.
+\end_layout
+
+\begin_layout Standard
+Также,
+ если функциональная форма 
+\begin_inset Formula $f(\dots)$
+\end_inset
+
+ неизвестна,
+ то сложно разделить нелинейность в параметрах от нелинейности в переменных.
+ Для статистических тестов может быть сложным увидеть разницу между моделью,
+ в которой некоторые регрессоры входят со степенью,
+ отличной от 1,
+ и моделью,
+ в которой параметры изменяются во времени.
+\end_layout
+
+\begin_layout Standard
+Отметим,
+ что NAR модель можно представить в виде модели с переменным параметром 
+\begin_inset Formula 
+\[
+y_{t}={\underbrace{\tilde{t}\left(y_{t-1},y_{t-2},\dots\right)}_{\alpha_{1,t}}}y_{t-1}+\varepsilon_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Обобщенная AR модель
+\end_layout
+
+\begin_layout Standard
+В свете сказанного выше хотелось бы несколько упростить модель
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+И жизнь эконометриста\SpecialChar ldots
+
+\end_layout
+
+\end_inset
+
+.
+ Достичь этого можно при помощи разложения 
+\begin_inset Formula $f(\dots)$
+\end_inset
+
+ в ряд Тейлора до какой-либо 
+\series bold
+разумной
+\series default
+ степени.
+\end_layout
+
+\begin_layout Standard
+Например,
+ рассмотрим NLAR(2) 
+\begin_inset Formula 
+\[
+y_{t}=f\left(y_{t-1},y_{t-2}\right)+\varepsilon_{t}
+\]
+
+\end_inset
+
+и разложим 
+\begin_inset Formula $f$
+\end_inset
+
+,
+ допустим,
+ до третьей степени:
+ 
+\begin_inset Formula 
+\[
+\begin{aligned}y_{t} & =a_{0}+a_{1}y_{t-1}+a_{2}y_{t-2}+\\
+ & +a_{11}y^{2}_{t-1}+a_{22}y^{2}_{t-2}+a_{12}y_{t-1}y_{t-2}+\\
+ & +a_{111}y^{3}_{t-1}+a_{112}y^{2}_{t-1}y_{t-2}+a_{122}y_{t-1}y^{2}_{t-2}+a_{222}y^{3}_{t-2}+\\
+ & +\varepsilon_{t}
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Для NLAR(
+\begin_inset Formula $p$
+\end_inset
+
+) нам понадобится запись покомпактнее 
+\begin_inset Formula 
+\[
+y_{t}=a_{0}+\sum^{p}_{i=1}a_{i}y_{t-i}+\sum^{p}_{i=1}\sum^{p}_{j=i}\sum^{r}_{k=1}\sum^{s}_{l=1}a_{ijkl}y^{k}_{t-i}y^{l}_{t-j}+\varepsilon_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Чтобы не поменять шило на мыло и не получить вместо нелинейной модели линейную,
+ но с астрономическим числом коэффициентов,
+ обычно вводят ограничение 
+\begin_inset Formula $s+r\le4$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Для сокращения модели можно использовать весь инструментарий t- и F-тестов,
+ однако из-за,
+ очевидно,
+ крайне высокой мультиколлинеарности,
+ оптимальным будет использование информационных критериев.
+\end_layout
+
+\begin_layout Subsection
+Билинейная модель (BL)
+\end_layout
+
+\begin_layout Standard
+По аналогии с ARMA-моделями можно 
+\series bold
+значительно
+\series default
+ сократить модель,
+ введя в нее лаги ошибки 
+\begin_inset Formula $\varepsilon_{t}$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+y_{t}=\alpha_{0}+\alpha_{1}y_{t-1}+\beta_{1}\varepsilon_{t-1}+\gamma_{1}y_{t-1}\varepsilon_{t-1}+\varepsilon_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Двумерные BL модели являются естественным расширением ARMA модели в том плане,
+ что для учета нелинейности они включают произведение 
+\begin_inset Formula $y_{t-i}$
+\end_inset
+
+ и 
+\begin_inset Formula $\varepsilon_{t-j}$
+\end_inset
+
+.
+ В общем виде двумерная модель BL(
+\begin_inset Formula $p,q,r,s$
+\end_inset
+
+) равна 
+\begin_inset Formula 
+\[
+y_{t}=\alpha_{0}+\sum\limits^{p}_{i=1}\alpha_{i}y_{t-i}+\varepsilon_{t}+\sum\limits^{q}_{i=1}\beta_{i}\varepsilon_{t-i}+\sum\limits^{r}_{i=1}\sum\limits^{s}_{j=1}c_{ij}y_{t-i}\varepsilon_{t-j}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Двумерную модель можно рассматривать как модель со стохастическими параметрами.
+ Чтобы понять это,
+ перепишем для примера BL модель 
+\begin_inset Formula 
+\[
+y_{t}=\alpha_{0}+\alpha_{1}y_{t-1}+c_{1}y_{t-1}\varepsilon_{t-1}+\varepsilon_{t}
+\]
+
+\end_inset
+
+в виде 
+\begin_inset Formula 
+\[
+y_{t}=\alpha_{0}+{\underbrace{\left(\alpha_{1}+c_{1}\varepsilon_{t-1}\right)}_{\alpha_{1,t}}}y_{t-1}+\varepsilon_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Тестирование нелинейности
+\end_layout
+
+\begin_layout Subsubsection
+Анализ коррелограммы
+\end_layout
+
+\begin_layout Standard
+Если построить ACF для 
+\series bold
+ряда
+\series default
+,
+ то можно получить неверный результат.
+ Пусть 
+\begin_inset Formula 
+\[
+y_{t}=\varepsilon^{2}_{t-1}+\varepsilon_{t},\ \varepsilon_{t}\sim WN(0,\sigma^{2})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Очевидно,
+ что 
+\begin_inset Formula 
+\[
+\E y_{t}=\E y_{t-1}=\sigma^{2}
+\]
+
+\end_inset
+
+Тогда 
+\begin_inset Formula 
+\[
+\begin{aligned}\gamma(i) & =\E{\left(y_{t}-\sigma^{2}\right)\left(y_{t-i}-\sigma^{2}\right)}=\\
+ & =\E{\left(\varepsilon^{2}_{t-1}+\varepsilon_{t}-\sigma^{2}\right)\left(\varepsilon^{2}_{t-1-i}+\varepsilon_{t-i}-\sigma^{2}\right)}=\\
+ & =\E\left(\varepsilon^{2}_{t-1}\varepsilon^{2}_{t-1-i}+\varepsilon^{2}_{t-1}\varepsilon_{t-i}-\varepsilon^{2}_{t-1}\sigma^{2}+\right.\\
+ & \quad+\varepsilon_{t}\varepsilon^{2}_{t-1-i}+\varepsilon_{t}\varepsilon_{t-i}-\varepsilon_{t}\sigma^{2}-\\
+ & \quad\left.-\sigma^{2}\varepsilon^{2}_{t-1-i}-\sigma^{2}\varepsilon_{t-i}+\sigma^{2}\sigma^{2}\right)
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Так как
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\E(\varepsilon^{2}_{t-i}\varepsilon^{2}_{t-j})=\sigma^{2}\sigma^{2},\ i\neq j$
+\end_inset
+
+,
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\E(\varepsilon_{t}\varepsilon^{2}_{t-j})=\E\varepsilon_{t}\sigma^{2}=0,\ j\neq0$
+\end_inset
+
+,
+ 
+\end_layout
+
+\begin_layout Standard
+то 
+\begin_inset Formula 
+\[
+\gamma(i)=\E\left[\varepsilon^{2}_{t-1}\varepsilon_{t-i}\right]=\begin{cases}
+0 & i\neq1\\
+0 & i=1,\ \varepsilon_{t}\sim N(0,\sigma^{2})
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Однако,
+ анализ 
+\series bold
+квадратов
+\series default
+ и 
+\series bold
+кубов
+\series default
+ остатков может выявить наличие нелинейности.
+\end_layout
+
+\begin_layout Standard
+Хороший пример приведен в
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "enders2015applied"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Строго говоря,
+ к квадратам остатков «наилучшей» линейной модели можно применять и тест Льюнг-Бокса,
+ и тест МакЛеода-Ли.
+\end_layout
+
+\begin_layout Subsubsection
+RESET-тест
+\end_layout
+
+\begin_layout Standard
+Тест на ошибочную спецификацию проверяет отсутствие связи между остатками модели и ее регрессорами или подобранными значениями.
+\end_layout
+
+\begin_layout Enumerate
+Оцените «наилучшую» линейную модель и получите остатки 
+\begin_inset Formula $\{e_{t}\}$
+\end_inset
+
+ и подобранные значения 
+\begin_inset Formula $\{\hat{y}_{t}\}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Оцените модель 
+\begin_inset Formula 
+\[
+e_{t}=\delta z_{t}+\sum^{H}_{h=2}\alpha_{h}\hat{y}^{h}_{t}+\nu_{t},\ H\ge2
+\]
+
+\end_inset
+
+где 
+\begin_inset Formula $z_{t}$
+\end_inset
+
+ —
+ регрессоры линейной модели.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Протестируйте совместную гипотезу 
+\begin_inset Formula $\alpha_{2}=\dots=\alpha_{H}=0$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Тест прост,
+ но имеет малую мощность для выявления асимметричных моделей.
+\end_layout
+
+\begin_layout Subsubsection
+Тест множителей Лагранжа (ML)
+\end_layout
+
+\begin_layout Standard
+Описанные выше тесты не дают информацию о виде нелинейной модели!
+ LM-тест позволяет тестировать гипотезу линейности против 
+\series bold
+конкретной
+\series default
+ альтернативы.
+\end_layout
+
+\begin_layout Standard
+Пусть 
+\begin_inset Formula $f(\dots)$
+\end_inset
+
+ —
+ нелинейная функция,
+ 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ —
+ параметры 
+\begin_inset Formula $f(\dots)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Оцените 
+\series bold
+линейную
+\series default
+ часть 
+\begin_inset Formula $f(\dots)$
+\end_inset
+
+ и получите остатки 
+\begin_inset Formula $\{e_{t}\}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Постройте частные производные 
+\begin_inset Formula $\frac{\partial f}{\partial\alpha}\Big|_{H_{0}}$
+\end_inset
+
+ в предположении истинности нулевой гипотезы линейности.
+ Оцените регрессию 
+\begin_inset Formula $e_{t}$
+\end_inset
+
+ на эти частные производные.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Статистика 
+\begin_inset Formula $TR^{2}$
+\end_inset
+
+ имеет распределение 
+\begin_inset Formula $\chi^{2}$
+\end_inset
+
+ с числом степеней свободы,
+ равным числу регрессоров на шаге 2
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+На малых выборках используйте F-тест.
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Тест позволяет тестировать конкретную нелинейную альтернативу,
+ поскольку мы вручную задаем вид 
+\begin_inset Formula $f(\dots)$
+\end_inset
+
+ и считаем частные производные.
+ Но и он не всесилен:
+ если компоненты двух альтернативных моделей достаточно сильно коррелируют,
+ то тест может не справиться с их разделением.
+ Например,
+ 
+\begin_inset Formula 
+\[
+\begin{aligned}y_{t} & =\alpha_{0}+\alpha_{1}y_{t-1}+\alpha_{2}y_{t-2}+\alpha_{3}y_{t-1}y_{t-2}+\varepsilon_{t}\\
+y_{t} & =\alpha_{0}+\alpha_{1}y_{t-1}+\alpha_{2}y_{t-2}+\alpha_{3}\varepsilon_{t-1}y_{t-2}+\varepsilon_{t}
+\end{aligned}
+\]
+
+\end_inset
+
+Так как 
+\begin_inset Formula $y_{t-1}$
+\end_inset
+
+ и 
+\begin_inset Formula $\varepsilon_{t-1}$
+\end_inset
+
+,
+ очевидно,
+ достаточно сильно коррелируют,
+ то статистики для этих моделей могут быть достаточно близки.
+\end_layout
+
+\begin_layout Section
+Проблема Дэвиса
+\end_layout
+
+\begin_layout Standard
+Вы можете подумать,
+ что достаточно оценить нелинейную модель и наложить ограничения на ряд параметров,
+ позволяющие протестировать модель на линейность.
+ Однако,
+ в случае нелинейных моделей сделать вывод,
+ зачастую,
+ достаточно сложно из-за «неизвестных зашумляющих параметров» или «проблемы Дэвиса».
+ Проблема возникает тогда,
+ когда один (или более) из параметров модели неидентифицируем при истинности нулевой гипотезы.
+\end_layout
+
+\begin_layout Standard
+Рассмотрим нелинейную модель 
+\begin_inset Formula $y_{t}=\alpha_{0}+\alpha_{1}x^{\alpha_{2}}_{t}+\varepsilon_{t}$
+\end_inset
+
+.
+ Предположим,
+ что вы оценили модель и хотите проверить гипотезу 
+\begin_inset Formula $\alpha_{2}=0$
+\end_inset
+
+.
+ Должно быть понятно,
+ что при истинности нулевой гипотезы 
+\begin_inset Formula $\alpha_{2}=0$
+\end_inset
+
+ значения 
+\begin_inset Formula $\alpha_{0}$
+\end_inset
+
+ и 
+\begin_inset Formula $\alpha_{1}$
+\end_inset
+
+ неидентифицируемы,
+ так как модель вырождается в 
+\begin_inset Formula $y_{t}=\alpha_{0}+\alpha_{1}+\varepsilon_{t}$
+\end_inset
+
+.
+ Если эта сумма,
+ например,
+ равна 5,
+ то любые два значения 
+\begin_inset Formula $\alpha_{0}$
+\end_inset
+
+ и 
+\begin_inset Formula $\alpha_{1}$
+\end_inset
+
+ являются удовлетворительными,
+ покуда 
+\begin_inset Formula $\alpha_{1}=5-\alpha_{0}$
+\end_inset
+
+.
+ Следовательно,
+ собственные значения 
+\begin_inset Formula $\alpha_{0}$
+\end_inset
+
+ и 
+\begin_inset Formula $\alpha_{1}$
+\end_inset
+
+ не идентифицированы при нулевой гипотезе 
+\begin_inset Formula $\alpha_{2}=0$
+\end_inset
+
+.
+ Аналогичные замечания справедливы и для 
+\begin_inset Formula $\alpha_{1}=0$
+\end_inset
+
+.
+ При нулевой гипотезе 
+\begin_inset Formula $\alpha_{1}=0$
+\end_inset
+
+ подходит любое значение 
+\begin_inset Formula $\alpha_{2}$
+\end_inset
+
+.
+ По сути функции правдоподобия безразлично значение 
+\begin_inset Formula $\alpha_{2}$
+\end_inset
+
+ при 
+\begin_inset Formula $\alpha_{1}=0$
+\end_inset
+
+.
+ Заметим,
+ что гипотеза 
+\begin_inset Formula $\alpha_{0}=0$
+\end_inset
+
+ не приводит в проблеме Дэвиса,
+ так как 
+\begin_inset Formula $\alpha_{1}$
+\end_inset
+
+ и 
+\begin_inset Formula $\alpha_{2}$
+\end_inset
+
+ идентифицируемы даже при 
+\begin_inset Formula $\alpha_{0}=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Строго говоря,
+ рассмотрим модель с двумя параметрами такую,
+ что функция логарифмического правдоподобия может быть записана как функция от параметров 
+\begin_inset Formula $\alpha_{1}$
+\end_inset
+
+ и 
+\begin_inset Formula $\alpha_{2}$
+\end_inset
+
+:
+ 
+\begin_inset Formula 
+\[
+L\left(\alpha_{1},\alpha_{2}\right)
+\]
+
+\end_inset
+
+В обычном случае,
+ максимизация 
+\begin_inset Formula $L$
+\end_inset
+
+ по 
+\begin_inset Formula $\alpha_{1}$
+\end_inset
+
+ и 
+\begin_inset Formula $\alpha_{2}$
+\end_inset
+
+ приводит к неограниченным оценкам параметров
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+В смысле,
+ что на них не накладываются ограничения.
+\end_layout
+
+\end_inset
+
+.
+ Обозначим это максимизированное значение 
+\begin_inset Formula $L_{a}(\alpha_{1},\alpha_{2})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Предположим теперь,
+ что мы накладываем ограничение 
+\begin_inset Formula $\alpha_{1}=\bar{\alpha}_{1}$
+\end_inset
+
+ и максимизируем 
+\begin_inset Formula $L$
+\end_inset
+
+ по 
+\begin_inset Formula $\alpha_{2}$
+\end_inset
+
+.
+ При нулевой гипотезе максимизированное значение 
+\begin_inset Formula $L$
+\end_inset
+
+ равно 
+\begin_inset Formula $L_{n}(\bar{\alpha}_{1},\alpha_{2})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Статистика теста отношений правдоподобий равна 
+\begin_inset Formula 
+\[
+R=2\left[L_{a}\left(\alpha_{1},\alpha_{2}\right)-L_{n}\left(\bar{\alpha}_{1},\alpha_{2}\right)\right]\sim\chi^{2}(1)
+\]
+
+\end_inset
+
+где число степеней свободы равно числу ограничений.
+ В идеальной ситуации,
+ при истинности гипотезы 
+\begin_inset Formula $\alpha_{1}=\bar{\alpha}_{1}$
+\end_inset
+
+ оценка 
+\begin_inset Formula $\alpha_{2}$
+\end_inset
+
+ должна быть такой же и при нулевой и при альтернативной гипотезе;
+ поэтому должно выполняться 
+\begin_inset Formula 
+\[
+L_{a}\left(\alpha_{1},\alpha_{2}\right)=L_{n}\left(\bar{\alpha}_{1},\alpha_{2}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Предположим,
+ что под нулевой гипотезой значение 
+\begin_inset Formula $\alpha_{2}$
+\end_inset
+
+ неидентифицируемо.
+ Другими словами,
+ предположим,
+ что 
+\begin_inset Formula $\partial{L}_{n}/\partial\alpha_{2}=0,\ \forall\alpha_{2}$
+\end_inset
+
+.
+ В сущности,
+ при справедливости нулевой гипотезы 
+\begin_inset Formula $\alpha_{2}$
+\end_inset
+
+ не влияет на функцию правдоподобия,
+ то есть значение 
+\begin_inset Formula $r$
+\end_inset
+
+ становится равным 
+\begin_inset Formula 
+\[
+r=2\left[L_{a}\left(\alpha_{1},\alpha_{2}\right)-L_{n}\left(\bar{\alpha}_{1}\right)\right]
+\]
+
+\end_inset
+
+В этом случае разность между 
+\begin_inset Formula $L_{a}\left(\alpha_{1},\alpha_{2}\right)$
+\end_inset
+
+ и 
+\begin_inset Formula $L_{n}\left(\bar{\alpha}_{1}\right)$
+\end_inset
+
+ будет зависеть от значения 
+\begin_inset Formula $\alpha_{2}$
+\end_inset
+
+;
+ статистика 
+\begin_inset Formula $R\not\sim\chi^{2}(1)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Дэвис
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "davies1987hypothesis"
+literal "false"
+
+\end_inset
+
+ предложил использовать 
+\series bold
+супремум
+\series default
+ тест:
+ рассчитать критические значения при помощи таких значений зашумляющих параметров,
+ при которых отвержение становится наиболее сложным.
+ Для получения критических значений можно воспользоваться следующим методом Монте-Карло:
+\end_layout
+
+\begin_layout Enumerate
+Сгенерируйте ряд 
+\begin_inset Formula $\{y_{t}\}$
+\end_inset
+
+ при нулевой гипотезе (можно использовать бутстрап,
+ если создавать 
+\begin_inset Formula $\{y_{t}\}$
+\end_inset
+
+ на базе реальных остатков линейной модели).
+ 
+\end_layout
+
+\begin_layout Enumerate
+Оцените наилучшую нелинейную модель.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Получите 
+\begin_inset Formula $t$
+\end_inset
+
+-статистику (или 
+\begin_inset Formula $F$
+\end_inset
+
+-статистику,
+ или статистику 
+\begin_inset Formula $\chi^{2}$
+\end_inset
+
+) для нулевой гипотезы о равенстве нулю коэффициентов уравнения.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Повторяйте эту процедуру много раз для получения распределения интересующей нас статистики.
+ Для заданного 
+\begin_inset Formula $p$
+\end_inset
+
+-значения —
+ например 5% для двухстороннего 
+\begin_inset Formula $t$
+\end_inset
+
+-теста —
+ выборочную 
+\begin_inset Formula $t$
+\end_inset
+
+-статистику можно сравнивать с 2,5% и 97,5% перцентилями сгенерированного распределения.
+ 
+\end_layout
+
+\begin_layout Section
+Пороговые модели
+\end_layout
+
+\begin_layout Standard
+В многорежимных моделях 
+\begin_inset Formula $\{y_{t}\}$
+\end_inset
+
+ зависит от состояния системы.
+ Например,
+ во время рецессии безработица растет быстрее,
+ чем она же падает во время бума.
+ То есть модель может находиться в одном из 
+\series bold
+режимов
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+Такие модели,
+ обычно,
+ оценивать достаточно тяжело.
+ Статистические пакеты обычно включают только простейшие модели.
+\end_layout
+
+\begin_layout Subsection
+TAR модель
+\end_layout
+
+\begin_layout Standard
+Простейшая TAR модель имеет следующий вид
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "tong1980threshold"
+literal "false"
+
+\end_inset
+
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Данный вид модели также называется самовозбуждающейся TAR (SETAR).
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+y_{t}=\begin{cases}
+a_{1}y_{t-1}+\varepsilon_{1t} & y_{t-1}>0\\
+a_{2}y_{t-1}+\varepsilon_{2t} & y_{t-1}\le0
+\end{cases}
+\]
+
+\end_inset
+
+Если 
+\begin_inset Formula $\Var\varepsilon_{1t}=\Var\varepsilon_{2t}$
+\end_inset
+
+,
+ то можно переписать модель в виде 
+\begin_inset Formula 
+\[
+\begin{aligned}y_{t} & =a_{1}I_{t}y_{t-1}+a_{2}\left(1-I_{t}\right)y_{t-1}+\varepsilon_{t}\\
+I_{t} & =\begin{cases}
+1 & y_{t-1}>0\\
+0 & y_{t-1}\le0
+\end{cases}
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+В более общем виде модель записывается как 
+\begin_inset Formula 
+\[
+y_{t}=\begin{cases}
+\alpha_{10}+\sum^{p}_{i=1}\alpha_{1i}y_{t-i}+\varepsilon_{1t} & y_{t-1}>0\\
+\alpha_{20}+\sum^{r}_{i=1}\alpha_{2i}y_{t-i}+\varepsilon_{2t} & y_{t-1}\le0
+\end{cases},\quad\Var\varepsilon_{1t}\neq\Var\varepsilon_{2t}
+\]
+
+\end_inset
+
+или 
+\begin_inset Formula 
+\[
+\begin{aligned}y_{t} & =I_{t}\left[\alpha_{10}+\sum^{p}_{i=1}\alpha_{1i}y_{t-i}\right]+(1-I_{t})\left[\alpha_{20}+\sum^{r}_{i=1}\alpha_{2i}y_{t-i}\right]+\varepsilon_{t}\\
+I_{t} & =\begin{cases}
+1 & y_{t-1}>\tau\\
+0 & y_{t-1}\le\tau
+\end{cases}\\
+\Var\varepsilon_{1t} & =\Var\varepsilon_{2t}
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+TAR модель легко оценивается при помощи обычного МНК.
+\end_layout
+
+\begin_layout Standard
+Если пороговое значение 
+\begin_inset Formula $\tau$
+\end_inset
+
+ неизвестно,
+ то Чан
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "chan1993consistency"
+literal "false"
+
+\end_inset
+
+ предложил способ получения его состоятельной оценки:
+\end_layout
+
+\begin_layout Enumerate
+Определите допустимые границы для порогового значения.
+ Не забудьте оставить достаточно наблюдений для оценивания коэффициентов в каждом из режимов.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Для 
+\series bold
+каждого
+\series default
+ значения 
+\begin_inset Formula $y_{t}$
+\end_inset
+
+ в заданных пределах оцените TAR c 
+\begin_inset Formula $\tau=y_{t}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Состоятельной оценкой 
+\begin_inset Formula $\tau$
+\end_inset
+
+ будет 
+\begin_inset Formula $\arg\min_{\tau}RSS(\tau)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Модификации TAR
+\end_layout
+
+\begin_layout Description
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+Произвольная глубина запаздывания
+\end_layout
+
+\end_inset
+
+ в качестве определяющей переменной можно использовать произвольный лаг 
+\begin_inset Formula $y_{t-d}$
+\end_inset
+
+.
+ 
+\begin_inset Formula $d$
+\end_inset
+
+ можно оценить аналогично 
+\begin_inset Formula $\tau$
+\end_inset
+
+:
+ последовательным перебором и взятием 
+\begin_inset Formula $d=\arg\min RSS$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Description
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+Несколько режимов (band-TAR)
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\begin{aligned}y_{t} & =\alpha_{10}+\sum^{p_{1}}_{i=1}\alpha_{1i}y_{t-i}+\varepsilon_{1t},\qquad y_{t-1}\le\tau_{1}\\
+y_{t} & =\alpha_{20}+\sum^{p_{2}}_{i=1}\alpha_{2i}y_{t-i}+\varepsilon_{2t},\qquad\tau_{1}<y_{t-1}\le\tau_{2}\\
+ & \dots\\
+y_{t} & =\alpha_{n0}+\sum^{p_{n}}_{i=1}\alpha_{ni}y_{t-i}+\varepsilon_{nt},\qquad\tau_{n-1}<y_{t-1}
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+Модель регрессии с порогом
+\end_layout
+
+\end_inset
+
+ перенос идеи TAR на регрессионные модели с объясняющими переменными.
+ 
+\begin_inset Formula 
+\[
+\begin{aligned}y_{t} & =a_{0}+\left(a_{1}+b_{1}I_{t}\right)x_{t}+\varepsilon_{t}\\
+I_{t} & =\begin{cases}
+1 & y_{t-d}>\tau\\
+0 & y_{t-d}\le\tau
+\end{cases}
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+Инерционная TAR (M-TAR)
+\end_layout
+
+\end_inset
+
+ отличается определение 
+\begin_inset Formula $I_{t}$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+I_{t}=\begin{cases}
+1 & \Delta y_{t-1}>0\\
+0 & \Delta y_{t-1}\le0
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Тестирование TAR
+\end_layout
+
+\begin_layout Standard
+TAR-модель недифференцируема в точке 
+\begin_inset Formula $\tau$
+\end_inset
+
+,
+ следовательно LM-тесты не подходят.
+\end_layout
+
+\begin_layout Standard
+Можно воспользоваться сумремум тестом Дэвиса.
+ Также можно применить F-тест 
+\begin_inset Formula 
+\[
+F=\frac{\nicefrac{\left(RSS_{r}-RSS_{u}\right)}{n}}{\nicefrac{RSS_{u}}{\left(T-2n\right)}}
+\]
+
+\end_inset
+
+где 
+\begin_inset Formula $RSS_{r}$
+\end_inset
+
+ —
+ RSS линейной модели (
+\begin_inset Formula $H_{0}$
+\end_inset
+
+),
+ 
+\begin_inset Formula $RSS_{u}$
+\end_inset
+
+ —
+ RSS TAR-модели.
+\end_layout
+
+\begin_layout Standard
+Однако мы не можем использовать табличные значения!
+ Хансен
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "hansen1997inference"
+literal "false"
+
+\end_inset
+
+ предложил следующую процедуру:
+\end_layout
+
+\begin_layout Enumerate
+Сгенерируйте последовательность 
+\begin_inset Formula $\{\varepsilon_{t}\},\ \varepsilon_{t}\sim N(0,1)$
+\end_inset
+
+ длины 
+\begin_inset Formula $T$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Оцените линейную и TAR-модели с 
+\begin_inset Formula $\{\varepsilon_{t}\}$
+\end_inset
+
+ в левой части.
+ В правой должны быть 
+\begin_inset Formula $y_{t}$
+\end_inset
+
+!
+ Получите 
+\begin_inset Formula $RSS^{*}_{r}$
+\end_inset
+
+ и 
+\begin_inset Formula $RSS^{*}_{u}$
+\end_inset
+
+,
+ соответственно.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Рассчитайте 
+\begin_inset Formula $F^{*}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Повторяя шаги 1–3 большое количество раз набираем выборочную функцию распределения статистики.
+ 
+\end_layout
+
+\begin_layout Subsection
+Тесты на наличие единичного корня и TAR модели
+\end_layout
+
+\begin_layout Standard
+Предположим,
+ что вы уверены в том,
+ что 
+\begin_inset Formula $\Vect y_{t}$
+\end_inset
+
+ имеет TAR природу.
+ Перед оцениванием TAR модели вы,
+ возможно,
+ захотите определить,
+ возвращается ли ряд к своему долгосрочному равновесному значению.
+ 
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "pippenger1993practitioners,balke1997threshold"
+pretextlist "balke1997threshold"
+posttextlist "balke1997threshold"
+literal "false"
+
+\end_inset
+
+ показали,
+ что стандартные тесты на единичный корень обладают низкой мощностью в отношении рядов,
+ порожденных нелинейными моделями.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "enders1998unitroot"
+literal "false"
+
+\end_inset
+
+ предложили расширение теста на наличие единичных корней при альтернативе TAR модели.
+ Рассмотрим модель 
+\begin_inset Formula 
+\[
+\begin{aligned}\Delta y_{t} & =I_{t}\rho_{1}\left(y_{t-1}-\tau\right)+\left(1-I_{t}\right)\rho_{2}\left(y_{t-1}-\tau\right)+\sum\limits^{p}_{i=1}\alpha_{i}\Delta y_{t-i}+\varepsilon_{t}\\
+I_{t} & =\begin{cases}
+1 & \text{если }y_{t-1}\geq\tau\\
+0 & \text{если }y_{t-1}<\tau
+\end{cases}\quad\text{или}\quad I_{t}=\begin{cases}
+1 & \text{если }\Delta y_{t-1}\geq\tau\\
+0 & \text{если }\Delta y_{t-1}<\tau
+\end{cases}
+\end{aligned}
+\]
+
+\end_inset
+
+Заметим,
+ что если 
+\begin_inset Formula $\rho_{1}=\rho_{2}=0$
+\end_inset
+
+,
+ то процесс является случайным блужданием.
+ Достаточным условием стационарности последовательности 
+\begin_inset Formula $\{y_{t}\}$
+\end_inset
+
+ является 
+\begin_inset Formula $-2<(\rho_{1},\rho_{2})<0$
+\end_inset
+
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Петручелли и Вулфорд
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "petruccelli1984threshold"
+literal "false"
+
+\end_inset
+
+ показали,
+ что более слабыми достаточными условиями стационарности 
+\begin_inset Formula $\{y_{t}\}$
+\end_inset
+
+ являются 
+\begin_inset Formula $\rho_{1}<0$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\rho_{2}<0$
+\end_inset
+
+ и 
+\begin_inset Formula $(1+\rho_{1})(1+\rho_{2})<1$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Для проведения теста следует сделать следующее:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument listpreamble:1
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset FormulaMacro
+\newcommand{\labelenumi}{\arabic{enumi}.}
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Если значение 
+\begin_inset Formula $\tau$
+\end_inset
+
+ и вид TAR модели вам известны,
+ то оцените приведенную выше модель.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Если значение 
+\begin_inset Formula $\tau$
+\end_inset
+
+ вам не известно,
+ то воспользуйтесь процедурой
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "chan1993consistency"
+literal "false"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Если вы не уверены насчет вида модели —
+ TAR или M-TAR —
+ то воспользуйтесь процедурой
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "chan1993consistency"
+literal "false"
+
+\end_inset
+
+ для обоих случаев и выберите наилучшую из моделей TAR или M-TAR при помощи информационных критериев.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Воспользуйтесь выбранной моделью для расчета 
+\begin_inset Formula $F$
+\end_inset
+
+-статистики для нулевой гипотезы 
+\begin_inset Formula $\rho_{1}=\rho_{2}=0$
+\end_inset
+
+.
+ Для TAR модели сравните эту статистику с соответствующим критическим значением из таблицы
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "enders2015applied"
+posttextlist "enders2015applied прил. G"
+literal "false"
+
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Используйте часть A,
+ если вы оцениваете 
+\begin_inset Formula $\tau$
+\end_inset
+
+ для TAR модели,
+ и часть B —
+ для M-TAR модели.
+ 
+\end_layout
+
+\begin_layout Itemize
+Если вам известно пороговое значение,
+ и вы оцениваете M-TAR модель,
+ то используйте часть C.
+ 
+\end_layout
+
+\begin_layout Itemize
+В случае TAR модели с известным порогом тест имеет более низкую мощность по сравнению с тестом Дики-Фуллера.
+ Критические значения для этого случая не приведены.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Если альтернативная гипотеза не отвергается (то есть при наличии «аттрактора»),
+ то возможно провести тестирование симметричности коррекции,
+ так как совместное асимптотичесоке распределение 
+\begin_inset Formula $\rho_{1}$
+\end_inset
+
+ и 
+\begin_inset Formula $\rho_{2}$
+\end_inset
+
+ сходится к многомерному нормальному.
+ То есть,
+ нулевая гипотеза 
+\begin_inset Formula $\rho_{1}=\rho_{2}$
+\end_inset
+
+ может быть проверено с использованием метода бутсрапа Хансена
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "hansen1997inference"
+literal "false"
+
+\end_inset
+
+ или,
+ приблизительно,
+ с использованием стандартного 
+\begin_inset Formula $F$
+\end_inset
+
+-теста.
+ 
+\end_layout
+
+\begin_layout Subsection
+Модели с плавной сменой режимов
+\end_layout
+
+\begin_layout Standard
+Вернемся к TAR модели 
+\begin_inset Formula 
+\[
+y_{t}=a_{1}I_{t}y_{t-1}+a_{2}\left(1-I_{t}\right)y_{t-1}+\varepsilon_{t}
+\]
+
+\end_inset
+
+Если заменить 
+\begin_inset Formula $I_{t}$
+\end_inset
+
+ на некую непрерывную функцию 
+\begin_inset Formula $G(s_{t};\gamma,c)$
+\end_inset
+
+,
+ то получим простейшую STAR-модель 
+\begin_inset Formula 
+\[
+y_{t}=a_{1}y_{t-1}G\left(s_{t};\gamma,c\right)+a_{2}\left[1-G\left(s_{t};\gamma,c\right)\right]y_{t-1}+\varepsilon_{t}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+y_{t}=\underbrace{\left(a_{10}+\sum^{p}_{i=1}a_{1i}y_{t-i}\right)}_{a_{1}'x_{t}}G\left(s_{t};\gamma,c\right)+\left(a_{20}+\sum^{p}_{i=1}a_{2i}y_{t-i}\right)\left[1-G\left(s_{t};\gamma,c\right)\right]+\varepsilon_{t}
+\]
+
+\end_inset
+
+где 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ —
+ крутизна перехода,
+ 
+\begin_inset Formula $c$
+\end_inset
+
+ —
+ пороговое значение.
+\end_layout
+
+\begin_layout Standard
+Функция 
+\begin_inset Formula $G(\dots)$
+\end_inset
+
+ должна быть ограничена между 0 и 1.
+ На практике используются две:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $G\left(s_{t};\gamma,c\right)=\frac{1}{1+\exp\left[-\gamma\left(s_{t}-c\right)\right]},\quad\gamma>0$
+\end_inset
+
+ —
+ LSTAR-модель;
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $G(s_{t};\gamma,c)=1-\exp\left[-\gamma\left(s_{t}-c\right)^{2}\right],\quad\gamma>0$
+\end_inset
+
+ —
+ ESTAR-модель.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement ht
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename data/fig_7_2.pdf
+	width 60line%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+LSTAR
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement ht
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename data/fig_7_3.pdf
+	width 60line%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+ESTAR
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Нетрудно заметить,
+ что
+\end_layout
+
+\begin_layout Itemize
+при 
+\begin_inset Formula $\gamma\rightarrow\infty$
+\end_inset
+
+,
+ LSTAR превращается в TAR,
+ 
+\end_layout
+
+\begin_layout Itemize
+при 
+\begin_inset Formula $\gamma\rightarrow0$
+\end_inset
+
+,
+ LSTAR превращается в линейную модель,
+ 
+\end_layout
+
+\begin_layout Itemize
+ESTAR в обоих случаях превращается в линейную модель.
+ 
+\end_layout
+
+\begin_layout Standard
+В качестве определяющей переменной 
+\begin_inset Formula $s_{t}$
+\end_inset
+
+ можно использовать практически что угодно:
+ лаги 
+\begin_inset Formula $y_{t}$
+\end_inset
+
+,
+ экзогенную переменную,
+ тренд\SpecialChar ldots
+
+\end_layout
+
+\begin_layout Standard
+Многорежимные STAR-модели имеют вид
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "vandijk2000smooth"
+literal "false"
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{align}
+y_{t} & =\sum^{M}_{i=1}\left[G_{i}(s_{t})-G_{i+1}(s_{t})\right]\underbrace{\left(a_{i0}+\sum^{p}_{j=1}a_{ij}y_{t-j}\right)}_{a_{i}'x_{t}}+\varepsilon_{t}\label{star-multi}\\
+G_{i}\left(s_{t}\right) & \coloneq G\left(s_{t};\gamma,c\right)\nonumber \\
+G_{1} & =1\iff c_{1}\rightarrow-\infty\nonumber \\
+G_{M+1} & =0\iff c_{M+1}\rightarrow\infty\nonumber \\
+a_{i} & =\left(a_{i0},a_{i1},a_{i2},\dots\right)'\nonumber \\
+x_{t} & =\left(1,y_{t-1},y_{t-2},\dots\right)'\nonumber 
+\end{align}
+
+\end_inset
+
+или 
+\begin_inset Formula 
+\begin{equation}
+y_{t}=a'_{1}x_{t}+\left(a'_{2}-a'_{1}\right)x_{t}G\left(s_{t};\gamma_{2},c_{2}\right)+\dots+\left(a'_{M}-a'_{M-1}\right)x_{t}G\left(s_{t};\gamma_{M},c_{M}\right)+\varepsilon_{t}\label{star-multi-2}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+На рисунке
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:STAR-M"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ на примере трехрежимной модели показано,
+ почему многорежимная STAR-модель задается выражением
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "star-multi"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+.
+ Для каждого значения 
+\begin_inset Formula $s_{t}$
+\end_inset
+
+ можно рассчитать значения 
+\begin_inset Formula $G^{0},G^{1},G^{2},G^{3}$
+\end_inset
+
+.
+ Данные значения в совокупности должны определить веса,
+ с которыми отдельные авторегрессионные модели входят в общую модель при заданном значении 
+\begin_inset Formula $s_{t}$
+\end_inset
+
+.
+ Очевидно,
+ что в сумме эти веса должны составлять единицу.
+\end_layout
+
+\begin_layout Standard
+Именно это и отражено на рисунке.
+ Фигурные скобки показывают интервалы,
+ равные по своей длине весу соответствующего режима:
+ от первого до последнего сверху вниз.
+ Длины интервалов рассчитываются в полном соответствии с формулой
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "star-multi"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Вспомните эконометрику межобъектных данных.
+ На ней вам должны были рассказывать об особенностях интерпретации коэффициентов в модели с бинарными объясняющими переменными.
+ Данный материал поможет вам понять,
+ как связаны между собой
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "star-multi"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ и
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "star-multi-2"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement ht
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename data/STAR.pdf
+	width 95text%
+
+\end_inset
+
+ 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Интерпретация формулы
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "star-multi"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:STAR-M"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Тестирование STAR
+\end_layout
+
+\begin_layout Standard
+Вы уже должны догадаться,
+ что LM-тесты нам не подходят.
+ Терясвирта
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "terasvirta2014specification"
+literal "false"
+
+\end_inset
+
+ предложил простой тест,
+ позволяющий не только выявить STAR,
+ но и определить его тип:
+ LSTAR или ESTAR.
+\end_layout
+
+\begin_layout Standard
+Для описания общей идеи обозначим 
+\begin_inset Formula $x=-\gamma\left(s_{t}-c\right)$
+\end_inset
+
+.
+ Тогда 
+\begin_inset Formula 
+\[
+G\left(s_{t};\gamma,c\right)=G(x)\approx G(0)+G'(0)x+\frac{G''(0)}{2!}x^{2}+\frac{G'''(0)}{3!}x^{3}
+\]
+
+\end_inset
+
+Можно показать,
+ что 
+\begin_inset Formula 
+\[
+\begin{aligned}\text{LSTAR} & : & G(x) & \approx\frac{x}{4}-\frac{x^{3}}{48}\\
+\text{ESTAR} & : & G(x) & \approx x^{2}
+\end{aligned}
+\]
+
+\end_inset
+
+LSTAR-модель примет вид 
+\begin_inset Formula 
+\[
+y_{t}=\alpha_{0}+\alpha_{1}y_{t-1}+\dots+\left(\beta_{0}+\beta_{1}y_{t-1}+\dots\right)\left(\frac{x}{4}-\frac{x^{3}}{48}\right)+\varepsilon_{t}
+\]
+
+\end_inset
+
+ESTAR-модель примет вид 
+\begin_inset Formula 
+\[
+y_{t}=\alpha_{0}+\alpha_{1}y_{t-1}+\dots+\left(\beta_{0}+\beta_{1}y_{t-1}+\dots\right)x^{2}+\varepsilon_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+После обратной подстановки 
+\begin_inset Formula $x$
+\end_inset
+
+ получим для LSTAR 
+\begin_inset Formula 
+\[
+y_{t}=a'x_{t}+\beta_{1}'s_{t}x_{t}+\beta_{2}'s^{2}_{t}x_{t}+\beta_{3}'s^{3}_{t}x_{t}+\varepsilon_{t}
+\]
+
+\end_inset
+
+и для ESTAR 
+\begin_inset Formula 
+\[
+y_{t}=a'x_{t}+\beta_{1}'s_{t}x_{t}+\beta_{2}'s^{2}_{t}x_{t}+\varepsilon_{t}
+\]
+
+\end_inset
+
+то есть аппроксимация ESTAR входит в LSTAR.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "escribano1999improved"
+literal "false"
+
+\end_inset
+
+ предлагают раскладывать 
+\begin_inset Formula $G$
+\end_inset
+
+ для ESTAR до 4 степени,
+ тогда имеем 
+\begin_inset Formula 
+\[
+y_{t}=a'x_{t}+\beta_{1}'s_{t}x_{t}+\beta_{2}'s^{2}_{t}x_{t}+\beta_{3}'s^{3}_{t}x_{t}+\beta_{4}'s^{4}_{t}x_{t}+\varepsilon_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Для тестирования LSTAR нужно оценить полученную приближенную модель и протестировать 
+\begin_inset Formula $H_{0}:\ \beta_{1}=\beta_{2}=\beta_{3}=0$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $TR^{2}\sim\chi^{2}\left(3\left(p+1\right)\right)$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $F\sim F\left(3\left(p+1\right);T-4\left(p+1\right)\right)$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+Для ESTAR:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $TR^{2}\sim\chi^{2}\left(4\left(p+1\right)\right)$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $F\sim F\left(4\left(p+1\right);T-5\left(p+1\right)\right)$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Оценивание и диагностика STAR
+\end_layout
+
+\begin_layout Standard
+Оценивание STAR моделей при помощи МНК невозможно из-за мультипликативности коэффициентов
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+На самом деле это не совсем так.
+ 
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "terasvirta2014specification"
+literal "false"
+
+\end_inset
+
+ показывают,
+ что если зафиксировать параметры 
+\begin_inset Formula $G$
+\end_inset
+
+,
+ то получившаяся модель оенивается обычным МНК.
+\end_layout
+
+\end_inset
+
+.
+ Поэтому используем нелинейный МНК или метод максимального правдоподобия.
+\end_layout
+
+\begin_layout Standard
+Также следует отметить,
+ что из-за потенциальной возможности попадания в область,
+ в которой функция правдоподобия будет достаточно «плоской»,
+ одновременная оценка 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ и 
+\begin_inset Formula $c$
+\end_inset
+
+ обычно невозможна.
+ Хагган и Одзаки
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "haggan1981modelling"
+literal "false"
+
+\end_inset
+
+ предложили искать 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ по сетке с одновременным оцениванием остальных коэффициентов нелинейным МНК.
+\end_layout
+
+\begin_layout Description
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+Остаточная нелинейность
+\end_layout
+
+\end_inset
+
+ Эйтрхайм и Терясвирта
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "eitrheim1996testing"
+literal "false"
+
+\end_inset
+
+ предложили тест на двухрежимный LSTAR процесс против трехрежимного.
+ Идея аналогична тесту на STAR:
+ раскладываем в ряд Тейлора 
+\begin_inset Formula $G\left(s_{t};\gamma_{2},c_{2}\right)$
+\end_inset
+
+ 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ LSTAR с набором дополнительных регрессоров 
+\begin_inset Formula 
+\[
+\begin{aligned}y_{t} & =\alpha_{0}'x_{t}+G\left(s_{t};\gamma_{1},c_{1}\right)\alpha_{1}'x_{t}+\beta_{1}\bar{w}_{t}s_{t}+\beta_{2}\bar{w}_{t}s^{2}_{t}+\beta_{3}\bar{w}_{t}s^{3}_{t}+\nu_{t}\\
+\bar{w}_{t} & =\left(y_{t-1},y_{t-2},\dots\right)'
+\end{aligned}
+\]
+
+\end_inset
+
+Тестируемая гипотеза 
+\begin_inset Formula $H_{0}:\ \beta_{1}=\beta_{2}=\beta_{3}=\Vect 0$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Description
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+Остаточная автокорреляция
+\end_layout
+
+\end_inset
+
+ Можем воспользоваться LM-тестом:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Оцените модель и получите остатки 
+\begin_inset Formula $\{e_{t}\}$
+\end_inset
+
+.
+ На основе этих остатков рассчитайте 
+\begin_inset Formula $RSS_{0}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Оцените значения 
+\begin_inset Formula $\nabla y_{t}=\frac{\partial y_{t}}{\partial\theta}$
+\end_inset
+
+,
+ где под 
+\begin_inset Formula $y_{t}$
+\end_inset
+
+ для краткости понимаем модель,
+ 
+\begin_inset Formula $\theta$
+\end_inset
+
+ —
+ совокупность всех оцениваемых параметров.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Оцените регрессию 
+\begin_inset Formula $e_{t}$
+\end_inset
+
+ на 
+\begin_inset Formula $\nabla y_{t}$
+\end_inset
+
+ и 
+\begin_inset Formula $e_{t-1},\dots,e_{t-q}$
+\end_inset
+
+.
+ В
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "eitrheim1996testing"
+literal "false"
+
+\end_inset
+
+ приводится эквивалентная форма этого выражения,
+ в которой оценивается регрессия 
+\begin_inset Formula $e_{t}$
+\end_inset
+
+ на 
+\begin_inset Formula $x_{t}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $x_{t}G\left(s_{t};\gamma_{1},c_{1}\right)$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\frac{\partial G}{\partial\gamma}\left(s_{t};\gamma_{1},c_{1}\right)a'_{1}x_{t}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\frac{\partial G}{\partial c}\left(s_{t};\gamma_{1},c_{1}\right)a'_{1}x_{t}$
+\end_inset
+
+ и 
+\begin_inset Formula $e_{t-1},\dots,e_{t-q}$
+\end_inset
+
+.
+ Для данной регрессии рассчитайте 
+\begin_inset Formula $RSS$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Рассчитайте статистику 
+\begin_inset Formula 
+\[
+\begin{aligned}F & =\frac{(RSS_{0}-RSS)/q}{\nicefrac{RSS}{T-n-q}}\sim F(q,T-n-q)\\
+TR^{2} & \sim\chi^{2}(q)
+\end{aligned}
+\]
+
+\end_inset
+
+где 
+\begin_inset Formula $n$
+\end_inset
+
+ —
+ число переменных в 
+\begin_inset Formula $\nabla y_{t}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Векторные модели с переключением режимов
+\end_layout
+
+\begin_layout Subsection
+TAR модели
+\end_layout
+
+\begin_layout Standard
+Подробно останавливаться на TAR модели не стоит,
+ так как принципиально ничего в их отношении не меняется.
+ 
+\begin_inset Formula 
+\[
+\begin{aligned}\Vect y_{t} & =I_{t}\left[A_{10}+\sum^{p}_{i=1}A_{1i}\Vect y_{t-i}\right]+(1-I_{t})\left[A_{20}+\sum^{r}_{i=1}A_{2i}\Vect y_{t-i}\right]+\Vect{\varepsilon}_{t}\\
+I_{t} & =\begin{cases}
+1 & s_{t-1}>\tau\\
+0 & s_{t-1}\le\tau
+\end{cases}\\
+A_{i0} & \sim\left(k\times1\right),\ i=1,2\\
+A_{ij} & \sim\left(k\times k\right),\ i=1,2,\ j=1,\dots,\{p,r\}
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+VSTAR модели
+\end_layout
+
+\begin_layout Standard
+VSTAR модель —
+ многомерное обобщение одномерной STAR модели,
+ простейшая форма которой имеет вид
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "terasvirta2014specification,vandijk2000smooth"
+literal "false"
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\Vect y_{t}=\phi_{1}'\Vect x_{t}+\left(\phi_{2}-\phi_{1}\right)'\Vect x_{t}g\left(s_{t}\mid\gamma,c\right)+\varepsilon_{t}
+\]
+
+\end_inset
+
+где 
+\begin_inset Formula $\Vect x_{t}$
+\end_inset
+
+ —
+ вектор 
+\series bold
+всех
+\series default
+ регрессоров,
+ включая лаги 
+\begin_inset Formula $\Vect y_{t}$
+\end_inset
+
+,
+ экзогенные Согласно
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "rothman1999multivariate"
+literal "false"
+
+\end_inset
+
+,
+ коинтеграционное отношение также может быть включено в список экзогенных переменных.
+\end_layout
+
+\begin_layout Standard
+Очевидным обобщением является многорежимная STAR модель 
+\begin_inset Formula 
+\[
+\Vect y_{t}=\phi'_{1}\Vect y_{t}+\tilde{\phi}'_{2}\Vect y_{t}g\left(s_{t}\mid\gamma_{1},c_{1}\right)+\tilde{\phi}'_{3}\Vect y_{t}g\left(s_{t}\mid\gamma_{2},c_{2}\right)+\dots+\varepsilon_{t}
+\]
+
+\end_inset
+
+где подразумевается,
+ что 
+\begin_inset Formula $c_{1}<c_{2}<c_{3}<\dots$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Если пойти дальше,
+ то следующим очевидным обобщением STAR будет многомерная,
+ или векторная STAR
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "camacho2004vector"
+literal "false"
+
+\end_inset
+
+.
+ Начнем с модели VAR(p) с одним режимом 
+\begin_inset Formula 
+\begin{equation}
+\Vect y_{t}=A_{1}'\Vect y_{t-1}+A_{2}'\Vect y_{t-2}+\dots+A_{p}'\Vect y_{t-p}+\Phi'd_{t}+\varepsilon_{t}\label{eq:vstar-1}
+\end{equation}
+
+\end_inset
+
+где 
+\begin_inset Formula $\Vect y_{t}\sim\left(k\times1\right)$
+\end_inset
+
+ —
+ вектор эндогенных переменных,
+ 
+\begin_inset Formula $d_{t}\sim\left(q\times1\right)$
+\end_inset
+
+ —
+ вектор всех детерминированных компонентов,
+ 
+\begin_inset Formula $A_{i}\sim\left(k\times k\right),\Phi\sim\left(q\times k\right)$
+\end_inset
+
+ —
+ матрицы соответствующих коэффициентов.
+\end_layout
+
+\begin_layout Standard
+Модель
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:vstar-1"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ можно записать в более компактной форме.
+ Если принять 
+\begin_inset Formula 
+\[
+\begin{aligned}F & =\left(A_{1}',A_{2}',\dots,A_{p}',\Phi'\right)' & \left\{ \left(pk+q\right)\times k\right\} \\
+\Vect x_{t} & =\left(\Vect y_{t-1}',\Vect y_{t-2}',\dots,\Vect y_{t-p}',d_{t}'\right) & \left\{ \left(pk+1\right)\times1\right\} 
+\end{aligned}
+\]
+
+\end_inset
+
+тогда
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:vstar-1"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ примет следующий вид 
+\begin_inset Formula 
+\begin{equation}
+\Vect y_{t}=F'\Vect x_{t}+\varepsilon_{t}\label{eq:vstar-2}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+При помощи модели
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:vstar-2"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ многомерная STAR модель может быть записана как 
+\begin_inset Formula 
+\begin{align}
+\Vect y_{t} & =\left[\sum^{M}_{i=1}\left(G^{i}_{t}-G^{i+1}_{t}\right)F_{i}'\right]\Vect x_{t}+\varepsilon_{t}\label{eq:vstar-3}\\
+\varepsilon_{t} & \sim WN(0,\Omega)\nonumber \\
+G^{i}_{t} & =\diag\left\{ g\left(s_{1it}\mid\gamma_{i1},c_{i1}\right),\dots,g\left(s_{kit}\mid\gamma_{ik},c_{ik}\right)\right\} \nonumber \\
+G^{1}_{t} & =I_{k}\nonumber \\
+G^{M+1}_{t} & =0\nonumber 
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:vstar-3"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ можно перепараметризовать в виде 
+\begin_inset Formula 
+\begin{align}
+\Vect y_{t} & =\left(\Vect B_{1}'+G^{1}_{t}\Vect B_{2}'+\dots+G^{m-1}_{t}\Vect B_{m}'\right)\Vect x_{t}+\varepsilon_{t}\label{eq:vstar-4}\\
+\varepsilon_{t} & \sim WN(0,\Omega)\nonumber \\
+G^{i}_{t} & =\diag\left\{ g\left(s_{1it}\mid\gamma_{i1},c_{i1}\right),\dots,g\left(s_{kit}\mid\gamma_{ik},c_{ik}\right)\right\} \nonumber \\
+\Vect B_{1} & =F_{1}\nonumber \\
+\Vect B_{i} & =F_{i}-F_{i-1}\nonumber 
+\end{align}
+
+\end_inset
+
+Если принять 
+\begin_inset Formula $\Vect{\Psi}_{t}=\left(I_{k},G^{1}_{t},\dots,G^{m-1}_{t}\right)'$
+\end_inset
+
+ и 
+\begin_inset Formula $\Vect B=(\Vect B_{1},\Vect B_{2},\dots,\Vect B_{m})$
+\end_inset
+
+,
+ то 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:vstar-4"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ примет вид 
+\begin_inset Formula 
+\begin{equation}
+\Vect y_{t}=\Vect{\Psi}_{t}'\Vect B'\Vect x_{t}+\varepsilon_{t}\label{eq:vstar-5}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Мы должны сделать важное замечание.
+ В самом общем случае 
+\series bold
+каждая
+\series default
+ функция перехода 
+\begin_inset Formula $g$
+\end_inset
+
+ для 
+\series bold
+каждого
+\series default
+ режима имеет свои собственные 
+\begin_inset Formula $\gamma_{ij}$
+\end_inset
+
+ и 
+\begin_inset Formula $c_{ij}$
+\end_inset
+
+ для 
+\series bold
+каждого
+\series default
+ уравнения в системе!
+ Хотя это самая общая и гибкая спецификация,
+ ее может быть трудно оценить из-за того,
+ что 
+\begin_inset Formula $\gamma_{ij}$
+\end_inset
+
+ и 
+\begin_inset Formula $c_{ij}$
+\end_inset
+
+ обычно оцениваются с помощью нелинейного МНК,
+ а соответствующие начальные значения получаются с помощью поиска по сетке.
+ Поэтому было бы лучше уменьшить количество 
+\begin_inset Formula $\gamma_{ij}$
+\end_inset
+
+ и 
+\begin_inset Formula $c_{ij}$
+\end_inset
+
+ настолько,
+ насколько это возможно.
+\end_layout
+
+\begin_layout Standard
+Самый простой,
+ но подходящий в большинстве случаев способ —
+ принять 
+\begin_inset Formula $\gamma_{m1}=\gamma_{m2}=\dots=\gamma_{mk}=\gamma_{m}$
+\end_inset
+
+ и 
+\begin_inset Formula $c_{m1}=c_{m2}=\dots=c_{mk}=c_{m}$
+\end_inset
+
+ для любого заданного режима 
+\begin_inset Formula $m$
+\end_inset
+
+.
+ Это означает,
+ что все уравнения системы будут иметь одну и ту же функцию перехода для любого заданного режима 
+\begin_inset Formula $m$
+\end_inset
+
+.
+ Другими словами,
+ матрица 
+\begin_inset Formula $G^{m}_{t}$
+\end_inset
+
+ примет следующий вид 
+\begin_inset Formula 
+\[
+G^{m}_{t}=I_{k}g\left(s_{t}\mid\gamma_{m},c_{m}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Оценивание VSTAR
+\end_layout
+
+\begin_layout Standard
+Если мы соберем все параметры из
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:vstar-5"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+,
+ которые мы должны оценить,
+ то получим 
+\begin_inset Formula 
+\[
+\theta=\left\{ \Vect B,\Omega,\Gamma,C\right\} 
+\]
+
+\end_inset
+
+где 
+\begin_inset Formula $\Vect B=(\Vect B_{1},\Vect B_{2},\dots,\Vect B_{m})$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\Gamma=\{\gamma_{ij}\}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $C=\{c_{ij}\}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+В работе
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "camacho2004vector"
+literal "false"
+
+\end_inset
+
+ предлагается оценивать параметры при помощи метода максимального правдопообия.
+ 
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "terasvirta1994specification,terasvirta2014specification,terasvirta2014linearity"
+literal "false"
+
+\end_inset
+
+ для этой цели используют нелинейный МНК.
+ 
+\begin_inset Formula 
+\begin{equation}
+\hat{\theta}=\arg\min_{\theta}\sum^{T}_{t=1}\left(\Vect y_{t}-\Vect{\Psi}_{t}'\Vect B'\Vect x_{t}\right)'\left(\Vect y_{t}-\Vect{\Psi}_{t}'\Vect B'\Vect x_{t}\right)\label{eq:nls-1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Однако
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "terasvirta2014specification"
+literal "false"
+
+\end_inset
+
+ отмечают,
+ что если зафиксировать значения 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ и 
+\begin_inset Formula $C$
+\end_inset
+
+,
+ т.
+ е.
+ значения параметров функции перехода,
+ то система
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:vstar-5"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ превращается в линейную VAR-модель,
+ которую можно оценить обычным МНК.
+ Поэтому стратегия оценки следующая:
+\end_layout
+
+\begin_layout Enumerate
+Построить сетку значений 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ и 
+\begin_inset Formula $C$
+\end_inset
+
+,
+ используя адекватные границы и плотность сетки.
+ 
+\end_layout
+
+\begin_layout Enumerate
+В каждой точке сетки оценить систему по уравнениям МНК,
+ используя соответствующие значения параметров переходной функции.
+ Получить 
+\begin_inset Formula $\hat{\beta}_{j}$
+\end_inset
+
+,
+ т.
+ е.
+ оценки коэффициентов для каждого уравнения,
+ и вычислить SSR системы.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Взять точку сетки с минимальным значением SSR.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Использовать полученные оценки в качестве начальных значений для NLM.
+ 
+\end_layout
+
+\begin_layout Standard
+Мы можем легко показать,
+ что условие первого порядка для
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:nls-1"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ —
+ это 
+\begin_inset Formula 
+\begin{equation}
+\sum^{T}_{t=1}\Vect x_{t}\left(\Vect y_{t}-\Vect{\Psi}_{t}'\Vect B'\Vect x_{t}\right)'\Vect{\Psi}_{t}'=0\label{eq:nls-2}
+\end{equation}
+
+\end_inset
+
+или 
+\begin_inset Formula 
+\[
+\sum^{T}_{t=1}\Vect x_{t}\Vect y_{t}'\Vect{\Psi}_{t}'=\sum^{T}_{t=1}\Vect x_{t}\Vect x_{t}'\Vect B\Vect{\Psi}_{t}\Vect{\Psi}_{t}'
+\]
+
+\end_inset
+
+Тогда для фиксированных 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ и 
+\begin_inset Formula $C$
+\end_inset
+
+ мы получим 
+\begin_inset Formula 
+\[
+\vecc\hat{\Vect B}=\left[T^{-1}\sum^{T}_{t=1}\left(\Vect{\Psi}_{t}\Vect{\Psi}_{t}'\right)\otimes\left(\Vect x_{t}\Vect x_{t}'\right)\right]^{-1}\left[T^{-1}\sum^{T}_{t=1}\vecc\left(\Vect x_{t}\Vect y_{t}'\Vect{\Psi}_{t}'\right)\right]
+\]
+
+\end_inset
+
+что можно упростить до 
+\begin_inset Formula 
+\begin{align}
+\vecc\hat{\Vect B} & =\left(M'M\right){}^{-1}M'\vecc\left(Y'\right)\label{eq:nls-3}\\
+M & =\left(\Upsilon_{1},\dots,\Upsilon_{t}\right)' & \left\{ Tk\times mk\left(pk+q\right)\right\} \nonumber \\
+\Upsilon_{t} & =\Vect{\Psi}_{t}\otimes\Vect x_{t} & \left\{ mk\left(pk+q\right)\times k\right\} \nonumber 
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ковариационная матрица 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ оценивается следующим образом 
+\begin_inset Formula 
+\[
+\begin{aligned}\hat{\Omega} & =T^{-1}\hat{E}'\hat{E}\\
+\hat{E} & =\left(\hat{\varepsilon}_{1},\dots,\hat{\varepsilon}_{t}\right)'\\
+\hat{\varepsilon}_{t} & =\Vect y_{t}-\Vect{\Psi}_{t}'\hat{\Vect B}'\Vect x_{t}
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+После того,
+ как мы получим начальные значения,
+ мы можем получить окончательные оценки с помощью следующего итерационного процесса:
+\end_layout
+
+\begin_layout Enumerate
+При заданной оценке 
+\begin_inset Formula $\hat{\Vect B}$
+\end_inset
+
+ оцените 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ и 
+\begin_inset Formula $C$
+\end_inset
+
+ при помощи NLS.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Используя эти вновь полученные 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ и 
+\begin_inset Formula $C$
+\end_inset
+
+,
+ переоцените 
+\begin_inset Formula $\hat{\Vect B}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Продолжайте,
+ пока не будет достигнута сходимость.
+ 
+\end_layout
+
+\begin_layout Section
+Тесты на адекватность модели
+\end_layout
+
+\begin_layout Standard
+В работе
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "terasvirta2014linearity"
+literal "false"
+
+\end_inset
+
+ авторы приводят ряд тестов на адекватность оцененной LVSTAR модели.
+ Рассмотрим их поподробнее.
+\end_layout
+
+\begin_layout Standard
+В основе этих тестов лежит функция правдоподобия 
+\begin_inset Formula 
+\[
+\begin{split}\ln L(\theta\mid\Vect Y) & =-\frac{Tp}{2}\ln2\pi-\frac{T}{2}\ln\left|\Omega\right|-\\
+ & \hspace{1em}-\frac{1}{2}\sum^{T}_{t=1}(\Vect y_{t}-\Vect{\Psi}'_{t}\Vect B'\Vect x_{t})'\Vect{\Omega}^{-1}(\Vect y_{t}-\Vect{\Psi}'_{t}\Vect B'\Vect x_{t})
+\end{split}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Тест на линейность
+\end_layout
+
+\begin_layout Standard
+Является многомерным обобщением теста
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "terasvirta2014specification"
+literal "false"
+
+\end_inset
+
+.
+ В основе лежит LVSTAR модель с одним переходом 
+\begin_inset Formula 
+\[
+\Vect y_{t}=\Vect B'_{1}\Vect x_{t}+\Vect G_{t}\Vect B'_{2}\Vect x_{t}+\Vect{\varepsilon}_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Оцените линейную модель регрессии 
+\begin_inset Formula $\Vect Y$
+\end_inset
+
+ на 
+\begin_inset Formula $\Vect X$
+\end_inset
+
+.
+ Получите остатки 
+\begin_inset Formula $\bar{\Vect E}$
+\end_inset
+
+ и рассчитайте 
+\begin_inset Formula $\Vect{RSS}_{0}=\bar{\Vect E}'\bar{\Vect E}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Постройте матрицу 
+\begin_inset Formula $\Vect Z_{n}$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\Vect Z_{n}=\begin{bmatrix}\Vect x_{1}'s_{1} & \Vect x_{1}'s^{2}_{1} & \cdots & \Vect x_{1}'s^{n}_{1}\\
+\Vect x_{2}'s_{2} & \Vect x_{2}'s^{2}_{2} & \cdots & \Vect x_{2}'s^{n}_{2}\\
+\vdots & \vdots & \ddots & \vdots\\
+\Vect x_{T}'s_{T} & \Vect x_{T}'s^{2}_{T} & \cdots & \Vect x_{T}'s^{n}_{T}
+\end{bmatrix}
+\]
+
+\end_inset
+
+Оцените регрессию 
+\begin_inset Formula $\bar{\Vect E}$
+\end_inset
+
+ на 
+\begin_inset Formula $(\Vect X,\Vect Z_{n})$
+\end_inset
+
+.
+ Получите остатки 
+\begin_inset Formula $\bar{\Vect{\Xi}}$
+\end_inset
+
+ и рассчитайте 
+\begin_inset Formula $\Vect{RSS}_{1}=\bar{\Vect{\Xi}}'\bar{\Vect{\Xi}}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Рассчитайте статистику 
+\begin_inset Formula 
+\[
+\begin{split}LM_{n} & =T\tr\{\Vect{RSS}^{-1}_{0}(\Vect{RSS}_{0}-\Vect{RSS}_{1})\}=\\
+ & =T(p-\tr\{\Vect{RSS}^{-1}_{0}\Vect{RSS}_{1}\})\sim\chi^{2}\left(np\left(kp+q\right)\right)
+\end{split}
+\]
+
+\end_inset
+
+где 
+\begin_inset Formula $k$
+\end_inset
+
+ —
+ размер 
+\begin_inset Formula $\Vect y_{t}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $p$
+\end_inset
+
+ —
+ порядок авторегрессии,
+ 
+\begin_inset Formula $q$
+\end_inset
+
+ —
+ число детерминированных компонент.
+ 
+\end_layout
+
+\begin_layout Standard
+Если для разных уравнений используются разные 
+\begin_inset Formula $s_{it}$
+\end_inset
+
+,
+ формирующие матрицы 
+\begin_inset Formula $\Vect S_{t}=\diag(s_{1,t},\dots,s_{p,t})$
+\end_inset
+
+,
+ то тот же тест можно провести с использованием матрицы 
+\begin_inset Formula 
+\[
+\Vect Z^{s}_{n}=\begin{bmatrix}\vecc(\Vect S_{1}\otimes\Vect x_{1})' & \vecc(\Vect S^{2}_{1}\otimes\Vect x_{1})' & \cdots & \vecc(\Vect S^{n}_{1}\otimes\Vect x_{1})'\\
+\vecc(\Vect S_{2}\otimes\Vect x_{2})' & \vecc(\Vect S^{2}_{2}\otimes\Vect x_{2})' & \cdots & \vecc(\Vect S^{n}_{2}\otimes\Vect x_{2})'\\
+\vdots & \vdots & \ddots & \vdots\\
+\vecc(\Vect S_{T}\otimes\Vect x_{T})' & \vecc(\Vect S^{2}_{T}\otimes\Vect x_{T})' & \cdots & \vecc(\Vect S^{n}_{T}\otimes\Vect x_{T})'
+\end{bmatrix}
+\]
+
+\end_inset
+
+Единственный минус —
+ для этого варианта теста неизвестно распределение статистики.
+\end_layout
+
+\begin_layout Subsubsection
+Улучшение размера теста
+\end_layout
+
+\begin_layout Description
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+Перемасштабированная LM-статистика
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+F=\frac{pT-K}{q\times pT}LM\sim F\left(q,pT-K\right)
+\]
+
+\end_inset
+
+где 
+\begin_inset Formula $q$
+\end_inset
+
+ —
+ число ограничений,
+ 
+\begin_inset Formula $K$
+\end_inset
+
+ —
+ число оцениваемых параметров.
+ 
+\end_layout
+
+\begin_layout Description
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+Аппроксимация Бартлетта статистики Уилкса
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\begin{aligned}\Lambda & =\frac{\left|\Vect{RSS}_{1}\right|}{\left|\Vect{RSS}_{0}\right|}\sim\mathcal{L}(p,m,n)\\
+\lambda & =\left\{ \frac{1}{2}\left[p+\mathrm{cd}\left(\Vect Z\right)+1\right]+\mathrm{cd}\left(\Vect X\right)-T\right\} \ln\Lambda\sim\chi^{2}\left(\mathrm{cd}\left(\Vect Z\right)p\right)
+\end{aligned}
+\]
+
+\end_inset
+
+где 
+\begin_inset Formula $\mathrm{cd}(\dots)$
+\end_inset
+
+ —
+ число столбцов матрицы.
+ 
+\end_layout
+
+\begin_layout Description
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+Статистика Рао
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\begin{aligned}F_{Rao} & =\left[\left(\frac{\left|\Vect{RSS}_{0}\right|}{\left|\Vect{RSS}_{1}\right|}\right)^{1/s}-1\right]\frac{Ns-\frac{1}{2}\mathrm{cd}\left(\Vect Z\right)p+1}{\mathrm{cd}\left(\Vect Z\right)p}\sim F(\mathrm{cd}\left(\Vect Z\right)p,Ns-\frac{1}{2}\mathrm{cd}\left(\Vect Z\right)p+1)\\
+N & =T-\mathrm{cd}\left(\Vect X\right)-\frac{1}{2}\left(p+\mathrm{cd}\left(\Vect Z\right)+1\right)\\
+s & =\sqrt{\frac{p^{2}\mathrm{cd}^{2}\left(\Vect Z\right)-4}{p^{2}+\mathrm{cd}^{2}\left(\Vect Z\right)-5}}
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Тест на остаточную автокорреляцию
+\end_layout
+
+\begin_layout Enumerate
+Оцените LVSTAR модель без ограничений и соберите векторы остатков.
+ Выберите глубину запаздываний 
+\begin_inset Formula $J$
+\end_inset
+
+.
+ Постойте матрицу 
+\begin_inset Formula $\bar{\Vect U}=(\bar{\Vect u}_{J+1},\dots,\bar{\Vect u}_{T})'$
+\end_inset
+
+ и рассчитайте
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "eitrheim1996testing"
+literal "false"
+
+\end_inset
+
+ предлагают использовать вместо 
+\begin_inset Formula $\bar{\Vect U}$
+\end_inset
+
+ остатки регрессии 
+\begin_inset Formula $\bar{\Vect U}$
+\end_inset
+
+ на 
+\begin_inset Formula $\bar{\Vect K}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\Vect{RSS}_{0}=\bar{\Vect U}'\bar{\Vect U}$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Также сформируйте матрицу 
+\begin_inset Formula $\bar{\Vect Z}=(\bar{\Vect z}_{J+1},\dots,\bar{\Vect z}_{T})'$
+\end_inset
+
+,
+ где 
+\begin_inset Formula $\bar{\Vect z}_{t}=(\bar{\Vect u}'_{t-1},\dots,\bar{\Vect u}'_{t-J})'$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Рассчитайте матрицу 
+\begin_inset Formula 
+\[
+\bar{\Vect K}=\begin{bmatrix}\vecc\left[\partial\left(\bar{\Vect{\Psi}}'_{J+1}\bar{\Vect B}'\Vect x_{J+1}\right)/\partial\theta\right]'\\
+\vecc\left[\partial\left(\bar{\Vect{\Psi}}'_{J+2}\bar{\Vect B}'\Vect x_{J+2}\right)/\partial\theta\right]'\\
+\vdots\\
+\vecc\left[\partial\left(\bar{\Vect{\Psi}}'_{T}\bar{\Vect B}'\Vect x_{T}\right)/\partial\theta\right]'
+\end{bmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Оцените регрессию 
+\begin_inset Formula $\bar{\Vect U}$
+\end_inset
+
+ на 
+\begin_inset Formula $(\bar{\Vect K},\bar{\Vect Z})$
+\end_inset
+
+.
+ Получите остатки 
+\begin_inset Formula $\bar{\Vect{\Xi}}$
+\end_inset
+
+ и рассчитайте 
+\begin_inset Formula $\Vect{RSS}_{1}=\bar{\Vect{\Xi}}'\bar{\Vect{\Xi}}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Рассчитайте статистику
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+К этой и последующим статистикам можно применить методы увеличения размера.
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\begin{split}LM_{n} & =\left(T-J\right)\tr\left\{ \Vect{RSS}^{-1}_{0}\left(\Vect{RSS}_{0}-\Vect{RSS}_{1}\right)\right\} =\\
+ & =\left(T-J\right)\left(p-\tr\left\{ \Vect{RSS}^{-1}_{0}\Vect{RSS}_{1}\right\} \right)\sim\chi^{2}\left(Jp^{2}\right)
+\end{split}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Аддитивная нелинейность
+\end_layout
+
+\begin_layout Standard
+По-другому,
+ тест на остаточную нелинейность.
+\end_layout
+
+\begin_layout Enumerate
+Оцените LVSTAR модель без ограничений и соберите векторы остатков 
+\begin_inset Formula $\bar{\Vect E}$
+\end_inset
+
+.
+ Оцените регрессию остатков 
+\begin_inset Formula $\bar{\Vect E}$
+\end_inset
+
+ на 
+\begin_inset Formula $\bar{\Vect K}$
+\end_inset
+
+ и соберите остатки 
+\begin_inset Formula $\bar{\Vect V}$
+\end_inset
+
+.
+ Рассчитайте 
+\begin_inset Formula $\Vect{RSS}_{0}=\bar{\Vect V}'\bar{\Vect V}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Оцените регрессию 
+\begin_inset Formula $\bar{\Vect V}$
+\end_inset
+
+ на 
+\begin_inset Formula $(\bar{\Vect K},\bar{\Vect Z}_{N})$
+\end_inset
+
+,
+ где 
+\begin_inset Formula $N$
+\end_inset
+
+ —
+ степень разложения 
+\begin_inset Formula $g$
+\end_inset
+
+ в ряд Тейлора.
+ Получите остатки 
+\begin_inset Formula $\bar{\Vect{\Xi}}$
+\end_inset
+
+ и рассчитайте 
+\begin_inset Formula $\Vect{RSS}_{1}=\bar{\Vect{\Xi}}'\bar{\Vect{\Xi}}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Рассчитайте статистику 
+\begin_inset Formula 
+\[
+\begin{split}LM_{n} & =T\tr\{\Vect{RSS}^{-1}_{0}(\Vect{RSS}_{0}-\Vect{RSS}_{1})\}=\\
+ & =T(p-\tr\{\Vect{RSS}^{-1}_{0}\Vect{RSS}_{1}\})\sim\chi^{2}(pN(kp+q))
+\end{split}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Тест на постоянство параметров
+\end_layout
+
+\begin_layout Enumerate
+Оцените LVSTAR модель без ограничений и соберите векторы остатков 
+\begin_inset Formula $\bar{\Vect E}$
+\end_inset
+
+.
+ Оцените регрессию остатков 
+\begin_inset Formula $\bar{\Vect E}$
+\end_inset
+
+ на 
+\begin_inset Formula $\bar{\Vect K}$
+\end_inset
+
+ и соберите остатки 
+\begin_inset Formula $\bar{\Vect V}$
+\end_inset
+
+.
+ Рассчитайте 
+\begin_inset Formula $\Vect{RSS}_{0}=\bar{\Vect V}'\bar{\Vect V}$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Также постойте матрицы 
+\begin_inset Formula 
+\[
+\bar{\Vect Z}=\begin{bmatrix}\vecc(\bar{\Vect{\Psi}}_{1}\otimes\Vect x_{1}\tau_{1})'\\
+\vecc(\bar{\Vect{\Psi}}_{2}\otimes\Vect x_{2}\tau_{2})'\\
+\vdots\\
+\vecc(\bar{\Vect{\Psi}}_{T}\otimes\Vect x_{T}\tau_{T})'
+\end{bmatrix}
+\]
+
+\end_inset
+
+где 
+\begin_inset Formula $\tau_{t}=t/T$
+\end_inset
+
+,
+ и 
+\begin_inset Formula 
+\[
+\bar{\Vect K}=\begin{bmatrix}\vecc[\partial(\bar{\Vect{\Psi}}'_{1}\bar{\Vect B}'\Vect x_{1})/\partial\theta]'\\
+\vecc[\partial(\bar{\Vect{\Psi}}'_{2}\bar{\Vect B}'\Vect x_{2})/\partial\theta]'\\
+\vdots\\
+\vecc[\partial(\bar{\Vect{\Psi}}'_{T}\bar{\Vect B}'\Vect x_{T})/\partial\theta]'
+\end{bmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Оцените регрессию 
+\begin_inset Formula $\bar{\Vect V}$
+\end_inset
+
+ на 
+\begin_inset Formula $(\bar{\Vect K},\bar{\Vect Z})$
+\end_inset
+
+,
+ где 
+\begin_inset Formula $N$
+\end_inset
+
+ —
+ степень разложения 
+\begin_inset Formula $g$
+\end_inset
+
+ в ряд Тейлора.
+ Получите остатки 
+\begin_inset Formula $\bar{\Vect{\Xi}}$
+\end_inset
+
+ и рассчитайте 
+\begin_inset Formula $\Vect{RSS}_{1}=\bar{\Vect{\Xi}}'\bar{\Vect{\Xi}}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Рассчитайте статистику 
+\begin_inset Formula 
+\[
+\begin{split}LM_{n} & =T\tr\{\Vect{RSS}^{-1}_{0}(\Vect{RSS}_{0}-\Vect{RSS}_{1})\}=\\
+ & =T(p-\tr\{\Vect{RSS}^{-1}_{0}\Vect{RSS}_{1}\})\sim\chi^{2}\left(mp^{2}\left(kp+q\right)\right)
+\end{split}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Функции импульсных откликов
+\end_layout
+
+\begin_layout Standard
+Рассмотрим «обычную» однорежимную VAR модель 
+\begin_inset Formula 
+\[
+\Vect y_{t}=A_{0}+A_{1}\Vect y_{t-1}+\dots+A_{p}\Vect y_{t-p}+\varepsilon_{t}
+\]
+
+\end_inset
+
+Как показано,
+ например,
+ в
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "lutkepohl2005New"
+literal "false"
+
+\end_inset
+
+,
+ эту модель можно переписать в виде 
+\begin_inset Formula 
+\[
+\Vect y_{t}=A_{0}+\sum^{\infty}_{i=0}\Phi_{i}\varepsilon_{t-i}
+\]
+
+\end_inset
+
+или 
+\begin_inset Formula 
+\[
+\Vect y_{t}=A_{0}+\sum^{\infty}_{i=0}\Theta_{i}w_{t-i}
+\]
+
+\end_inset
+
+где 
+\begin_inset Formula $\Theta_{i}=\Phi_{i}P$
+\end_inset
+
+,
+ 
+\begin_inset Formula $w_{t}=\varepsilon_{t}P$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\Phi_{0}=I$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\Phi_{i}=\sum^{i}_{j=1}\Phi_{i-j}A_{j}$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\Phi_{i}$
+\end_inset
+
+ и 
+\begin_inset Formula $\Theta_{i}$
+\end_inset
+
+ интерпретируют как импульсные отклики.
+\end_layout
+
+\begin_layout Standard
+В силу того,
+ что в нелинейных моделях 
+\series bold
+возможна
+\series default
+ смена режимов и,
+ соответственно,
+ коэффициентов,
+ то подобный фокус в них неприменим.
+ Для построения графиков функций импульсных откликов была предложена методология 
+\series bold
+обобщенных
+\series default
+ IRF
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "koop1996impulse"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Основная формула 
+\begin_inset Formula 
+\[
+GI_{\Vect y}\left(n,v_{t},\omega_{t-1}\right)=\E\left[\Vect y_{t+n}\mid v_{t},\omega_{t-1}\right]-\E\left[\Vect y_{t+n}\mid\omega_{t-1}\right]
+\]
+
+\end_inset
+
+или,
+ если предположить,
+ что 
+\begin_inset Formula $GI_{Y}$
+\end_inset
+
+ порождается тем же процессом,
+ что и 
+\begin_inset Formula $\Vect y_{t}$
+\end_inset
+
+,
+ 
+\begin_inset Formula 
+\[
+GI_{\Vect y}\left(n,V_{t},\Omega_{t-1}\right)=\E\left[\Vect y_{t+n}\mid V_{t},\Omega_{t-1}\right]-\E\left[\Vect y_{t+n}\mid\Omega_{t-1}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Свойства 
+\begin_inset Formula $GI_{Y}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\E\left[GI_{\Vect y}\left(n,V_{t},\Omega_{t-1}\right)\right]=\Vect 0$
+\end_inset
+
+ —
+ безусловное матожидание;
+ 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\E\left[GI_{\Vect y}\left(n,V_{t},\omega_{t-1}\right)\right]=\Vect 0$
+\end_inset
+
+ —
+ матожидание,
+ условное относительно истории;
+ 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\E\left[GI_{\Vect y}(n,v_{t},\Omega_{t-1})\right]=\E\left[\Vect y_{t+n}\mid v_{t}\right]-\E\left[\Vect y_{t+n}\right]$
+\end_inset
+
+ —
+ матожидание,
+ условное относительно шока.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "data/bibliography"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+addcontentsline{toc}{section}{Список литературы}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\start_of_appendix
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+%dummy comment inserted by tex2lyx to ensure that this paragraph is not empty
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Вывод
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:nls-2"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The equation
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:nls-2"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+ derivation is pretty straightforward
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Текст оставлен на английском,
+ но он понятен и так.
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+First,
+ from
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "gentle2017matrix,magnus2019matrix"
+literal "false"
+
+\end_inset
+
+ we know,
+ that 
+\begin_inset Formula 
+\begin{gather*}
+\dd f=\tr\left[\left(\frac{df}{dA}\right)'\dd A\right]\\
+\dd f=\dd\left(\tr f\right)=\tr\left(\dd f\right)
+\end{gather*}
+
+\end_inset
+
+where 
+\begin_inset Formula $\tr$
+\end_inset
+
+ is the trace function,
+ i.e.
+\begin_inset space ~
+\end_inset
+
+the sum of the diagonal elements of a matrix,
+ 
+\begin_inset Formula $A$
+\end_inset
+
+ is a matrix,
+ 
+\begin_inset Formula $f$
+\end_inset
+
+ is a scalar function.
+\end_layout
+
+\begin_layout Standard
+We have 
+\begin_inset Formula 
+\[
+f=\sum^{T}_{t=1}\left(\Vect y_{t}-\Vect{\Psi}_{t}'\Vect B'\Vect x_{t}\right)'\left(\Vect y_{t}-\Vect{\Psi}_{t}'\Vect B'\Vect x_{t}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Using the following properties of differential and trace 
+\begin_inset Formula 
+\begin{gather*}
+\dd A=\left(\dd a_{ij}\right)\\
+\dd\left(AB\right)=\dd A\,B+A\,\dd B\\
+\dd\tr A=\tr\left(\dd A\right)\\
+\dd A'=\left(\dd A\right)'\\
+\tr A=\tr A'\\
+\tr\left(AB\right)=\tr\left(BA\right)\\
+\tr\left(A+B\right)=\tr A+\tr B
+\end{gather*}
+
+\end_inset
+
+we get the following chain of expressions 
+\begin_inset Formula 
+\[
+\begin{aligned}\dd f & =\tr\left(\dd\sum^{T}_{t=1}\left(\Vect y_{t}-\Vect{\Psi}_{t}'\Vect B'\Vect x_{t}\right)'\left(\Vect y_{t}-\Vect{\Psi}_{t}'\Vect B'\Vect x_{t}\right)\right)=\\
+ & =\tr\sum^{T}_{t=1}\dd\left[\left(\Vect y_{t}-\Vect{\Psi}_{t}'\Vect B'\Vect x_{t}\right)'\left(\Vect y_{t}-\Vect{\Psi}_{t}'\Vect B'\Vect x_{t}\right)\right]=\\
+ & =\sum^{T}_{t=1}\tr\dd\left[\left(\Vect y_{t}-\Vect{\Psi}_{t}'\Vect B'\Vect x_{t}\right)'\left(\Vect y_{t}-\Vect{\Psi}_{t}'\Vect B'\Vect x_{t}\right)\right]=\\
+ & =\sum^{T}_{t=1}\tr\left[\dd\left(\Vect y_{t}-\Vect{\Psi}_{t}'\Vect B'\Vect x_{t}\right)'\left(\Vect y_{t}-\Vect{\Psi}_{t}'\Vect B'\Vect x_{t}\right)+\left(\Vect y_{t}-\Vect{\Psi}_{t}'\Vect B'\Vect x_{t}\right)'\dd\left(\Vect y_{t}-\Vect{\Psi}_{t}'\Vect B'\Vect x_{t}\right)\right]=\\
+ & =-\sum^{T}_{t=1}\tr\left[\dd\left(\Vect{\Psi}_{t}'\Vect B'\Vect x_{t}\right)'\left(\Vect y_{t}-\Vect{\Psi}_{t}'\Vect B'\Vect x_{t}\right)+\left(\Vect y_{t}-\Vect{\Psi}_{t}'\Vect B'\Vect x_{t}\right)'\dd\left(\Vect{\Psi}_{t}'\Vect B'\Vect x_{t}\right)\right]=\\
+ & =-\sum^{T}_{t=1}\left\{ \tr\left[\dd\left(\Vect{\Psi}_{t}'\Vect B'\Vect x_{t}\right)'\left(\Vect y_{t}-\Vect{\Psi}_{t}'\Vect B'\Vect x_{t}\right)\right]+\tr\left[\left(\Vect y_{t}-\Vect{\Psi}_{t}'\Vect B'\Vect x_{t}\right)'\dd\left(\Vect{\Psi}_{t}'\Vect B'\Vect x_{t}\right)\right]\right\} =\\
+ & =-\sum^{T}_{t=1}\left\{ \tr\left[\left(\Vect y_{t}-\Vect{\Psi}_{t}'\Vect B'\Vect x_{t}\right)'\dd\left(\Vect{\Psi}_{t}'\Vect B'\Vect x_{t}\right)\right]+\tr\left[\left(\Vect y_{t}-\Vect{\Psi}_{t}'\Vect B'\Vect x_{t}\right)'\dd\left(\Vect{\Psi}_{t}'\Vect B'\Vect x_{t}\right)\right]\right\} =\\
+ & =-2\tr\left[\sum^{T}_{t=1}\left(\Vect y_{t}-\Vect{\Psi}_{t}'\Vect B'\Vect x_{t}\right)'\dd\left(\Vect{\Psi}_{t}'\Vect B'\Vect x_{t}\right)\right]=\bigast
+\end{aligned}
+\]
+
+\end_inset
+
+Here we use 
+\begin_inset Formula $\bigast$
+\end_inset
+
+ to mark the break in the expression chain.
+\end_layout
+
+\begin_layout Standard
+To proceed,
+ let's simplify the differential inside the sum 
+\begin_inset Formula 
+\[
+\begin{aligned}\dd\left(\Vect{\Psi}_{t}'\Vect B'\Vect x_{t}\right) & =\dd\Vect{\Psi}_{t}'\left(\Vect B'\Vect x_{t}\right)+\Vect{\Psi}_{t}'\dd\left(\Vect B'\Vect x_{t}\right)=\\
+ & =\Vect{\Psi}_{t}'\left(\dd\Vect B'\Vect x_{t}+\Vect B'\dd\Vect x_{t}\right)=\\
+ & =\Vect{\Psi}_{t}'\dd\Vect B'\,\Vect x_{t}.
+\end{aligned}
+\]
+
+\end_inset
+
+For every 
+\begin_inset Formula $t$
+\end_inset
+
+ we can consider 
+\begin_inset Formula $\Vect{\Psi}_{t}$
+\end_inset
+
+ and 
+\begin_inset Formula $\Vect x_{t}$
+\end_inset
+
+ as constants,
+ hence their differentials are zero.
+\end_layout
+
+\begin_layout Standard
+With that,
+ we get 
+\begin_inset Formula 
+\[
+\begin{aligned}\bigast & =-2\tr\left[\sum^{T}_{t=1}\left(\Vect y_{t}-\Vect{\Psi}_{t}'\Vect B'\Vect x_{t}\right)'\Vect{\Psi}_{t}'\dd\Vect B'\Vect x_{t}\right]=\\
+ & =-2\tr\left[\sum^{T}_{t=1}\Vect x_{t}'\dd\Vect B_{t}\:\Vect{\Psi}_{t}\left(\Vect y_{t}-\Vect{\Psi}_{t}'\Vect B'\Vect x_{t}\right)\right]=\bigast
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+From 
+\begin_inset Formula $\tr\left(AB\right)=\tr\left(BA\right)$
+\end_inset
+
+ it follows that 
+\begin_inset Formula $\tr\left(A_{1}A_{2}\dots A_{n}\right)=\tr\left(A_{n}A_{1}\dots A_{n-1}\right)$
+\end_inset
+
+.
+ Then we have 
+\begin_inset Formula 
+\[
+\begin{aligned}\bigast & =-2\tr\left[\sum^{T}_{t=1}\Vect{\Psi}_{t}\left(\Vect y_{t}-\Vect{\Psi}_{t}'\Vect B'\Vect x_{t}\right)\Vect x_{t}'\dd\Vect B\right]=\\
+ & =\tr\left\{ \left[-2\sum^{T}_{t=1}\Vect{\Psi}_{t}\left(\Vect y_{t}-\Vect{\Psi}_{t}'\Vect B'\Vect x_{t}\right)\Vect x_{t}'\right]\dd\Vect B\right\} .
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hence,
+ we get 
+\begin_inset Formula 
+\[
+\frac{df}{d\Vect B}=\left[-2\sum^{T}_{t=1}\Vect{\Psi}_{t}\left(\Vect y_{t}-\Vect{\Psi}_{t}'\Vect B'\Vect x_{t}\right)\Vect x_{t}'\right]'=-2\sum^{T}_{t=1}\Vect x_{t}\left(\Vect y_{t}-\Vect{\Psi}_{t}'\Vect B'\Vect x_{t}\right)'\Vect{\Psi}_{t}'
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Вывод
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:nls-3"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let's go back to 
+\begin_inset Formula 
+\[
+\vecc\hat{\Vect B}=\left[T^{-1}\sum^{T}_{t=1}\left(\Vect{\Psi}_{t}\Vect{\Psi}_{t}'\right)\otimes\left(\Vect x_{t}\Vect x_{t}'\right)\right]^{-1}\left[T^{-1}\sum^{T}_{t=1}\vecc\left(\Vect x_{t}\Vect y_{t}'\Vect{\Psi}_{t}'\right)\right]=\bigast
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+From
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "gentle2017matrix"
+literal "false"
+
+\end_inset
+
+ we can get the following properties of Kronecker product 
+\begin_inset Formula 
+\begin{gather*}
+\left(A\otimes B\right)'=A'\otimes B'\\
+\left(A\otimes B\right)\left(C\otimes D\right)=\left(AC\right)\otimes\left(BD\right)\\
+\vecc\left(ABC\right)=\left(C'\otimes A\right)\vecc B
+\end{gather*}
+
+\end_inset
+
+The corresponding matrix products should exist.
+\end_layout
+
+\begin_layout Standard
+Then we have 
+\begin_inset Formula 
+\[
+\bigast=\left[T^{-1}\sum^{T}_{t=1}\left(\Vect{\Psi}_{t}\otimes\Vect x_{t}\right)\left(\Vect{\Psi}_{t}'\otimes\Vect x_{t}'\right)\right]^{-1}\left[T^{-1}\sum^{T}_{t=1}\left(\Vect{\Psi}_{t}\otimes\Vect x_{t}\right)\vecc\Vect x_{t}'\right]=\bigast
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As 
+\begin_inset Formula $\Vect y_{t}$
+\end_inset
+
+ is already a vector then 
+\begin_inset Formula $\vecc\Vect y_{t}'=\vecc\Vect y_{t}$
+\end_inset
+
+.
+ Hence we have 
+\begin_inset Formula 
+\[
+\begin{aligned}\bigast & =\left[\sum^{T}_{t=1}\left(\Vect{\Psi}_{t}\otimes\Vect x_{t}\right)\left(\Vect{\Psi}_{t}'\otimes\Vect x_{t}'\right)\right]^{-1}\left[\sum^{T}_{t=1}\left(\Vect{\Psi}_{t}\otimes\Vect x_{t}\right)\vecc\Vect y_{t}\right]=\\
+ & =\left[\sum^{T}_{t=1}\Upsilon_{t}\Upsilon_{t}'\right]^{-1}\left[\sum^{T}_{t=1}\Upsilon_{t}\vecc\Vect y_{t}\right]
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Setting 
+\begin_inset Formula $M=\left(\Upsilon_{1},\Upsilon_{2},\dots,\Upsilon_{T}\right)'$
+\end_inset
+
+ we can see that 
+\begin_inset Formula 
+\[
+\sum^{T}_{t=1}\Upsilon_{t}\Upsilon_{t}'=M'M
+\]
+
+\end_inset
+
+Setting 
+\begin_inset Formula $\Vect Y=\left(\Vect y_{1}',\dots,\Vect y_{Y}'\right)'$
+\end_inset
+
+ we can get 
+\begin_inset Formula 
+\[
+\sum^{T}_{t=1}\Upsilon_{t}\vecc\Vect y_{t}=M'\vecc\left(\Vect Y'\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hence,
+ we get
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:nls-3"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+In the package
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Данный текст взят из виньетки пакета,
+ который лектор писал для своих нужд при написании своей диссертации.
+ Лектору хотелось разобраться в формулах из статьи
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand autocite
+key "terasvirta2014specification"
+literal "false"
+
+\end_inset
+
+.
+ На сегодняшний день этот пакет уже не нужен,
+ так как в феврале 2024 был опубликован более адекватно написанный пакет...
+\end_layout
+
+\end_inset
+
+ the matrix 
+\begin_inset Formula $M$
+\end_inset
+
+ is built in more vectorized form to avoid loops as much as possible.
+\end_layout
+
+\begin_layout Standard
+The matrix 
+\begin_inset Formula $M$
+\end_inset
+
+ is defined as follows 
+\begin_inset Formula 
+\[
+M=\left[\left(\begin{array}{c|ccc}
+1 & g_{1}(s_{1}) & \dots & g_{m-1}(s_{1})\\
+\vdots & \vdots &  & \vdots\\
+1 & g_{1}(s_{T}) & \dots & g_{m-1}(s_{T})
+\end{array}\right)\otimes I_{k}\otimes e_{kp+q}'\right]\circ\left[e_{km}'\otimes\Vect X\otimes e_{k}\right]
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $g_{k}(s)=g\left(s\mid\gamma_{k},c_{k}\right)$
+\end_inset
+
+,
+ 
+\begin_inset Formula $e_{N}=(\underbrace{1,\dots,1}_{N})'$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\circ$
+\end_inset
+
+ denotes Hadamard (element-wize) product.
+\end_layout
+
+\begin_layout Section
+Таблицы для теста Эндерса-Грейнджера
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement H
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Критические значения для пороговых тестов на единичные корни
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float table
+placement document
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Состоятельные оценки порога с применением TAR модели
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{adjustbox}{max width=
+\backslash
+linewidth}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="13">
+<features booktabs="true" tabularvalignment="middle">
+<column alignment="left" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $T$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="none" valignment="top" topline="true" bottomline="true" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Нет лагов приращений
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="none" valignment="top" topline="true" bottomline="true" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1 лаг приращений
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="none" valignment="top" topline="true" bottomline="true" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4 лага приращений
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" toplineltrim="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+90%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+95%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+97.5%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" toplinertrim="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+99%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" toplineltrim="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+90%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+95%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+97.5%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" toplinertrim="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+99%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" toplineltrim="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+90%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+95%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+97.5%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" toplinertrim="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+99%
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+50
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5.15
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6.19
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7.25
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+8.64
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5.55
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6.62
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7.66
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+9.10
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5.49
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6.55
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7.59
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+9.00
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+100
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5.08
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6.06
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6.93
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+8.19
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5.39
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6.34
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7.30
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+8.54
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5.38
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6.32
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7.29
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+8.56
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+250
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5.11
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6.03
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6.88
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+8.04
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5.26
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6.12
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6.99
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+8.14
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5.36
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6.29
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7.15
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+8.35
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{adjustbox}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float table
+placement document
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Состоятельные оценки порога с применением M-TAR модели
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{adjustbox}{max width=
+\backslash
+linewidth}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="13">
+<features booktabs="true" tabularvalignment="middle">
+<column alignment="left" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $T$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="none" valignment="top" topline="true" bottomline="true" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Нет лагов приращений
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="none" valignment="top" topline="true" bottomline="true" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1 лаг приращений
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="none" valignment="top" topline="true" bottomline="true" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4 лага приращений
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" toplineltrim="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+90%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+95%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+97.5%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" toplinertrim="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+99%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" toplineltrim="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+90%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+95%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+97.5%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" toplinertrim="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+99%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" toplineltrim="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+90%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+95%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+97.5%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" toplinertrim="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+99%
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+50
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5.02
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6.05
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7.09
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+8.59
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4.98
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6.07
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7.15
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+8.56
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4.93
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5.96
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7.01
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+8.48
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+100
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4.81
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5.77
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6.73
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7.99
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4.77
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5.71
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6.56
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7.90
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4.74
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5.70
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6.67
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7.97
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+250
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4.70
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5.64
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6.51
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7.64
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4.64
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5.54
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6.40
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7.56
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4.64
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5.54
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6.39
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7.61
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{adjustbox}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float table
+placement document
+alignment document
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Известное значение порога в M-TAR модели
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+begin{adjustbox}{max width=
+\backslash
+linewidth}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="13">
+<features booktabs="true" tabularvalignment="middle">
+<column alignment="left" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $T$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="none" valignment="top" topline="true" bottomline="true" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Нет лагов приращений
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="none" valignment="top" topline="true" bottomline="true" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1 лаг приращений
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="none" valignment="top" topline="true" bottomline="true" usebox="none" special="c">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4 лага приращений
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" toplineltrim="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+90%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+95%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+97.5%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" toplinertrim="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+99%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" toplineltrim="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+90%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+95%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+97.5%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" toplinertrim="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+99%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" toplineltrim="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+90%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+95%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+97.5%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" toplinertrim="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+99%
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+50
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4.21
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5.19
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6.15
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7.55
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4.12
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5.11
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6.05
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7.25
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3.82
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4.73
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5.65
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6.84
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+100
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4.11
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5.04
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5.96
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7.10
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4.08
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4.97
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5.87
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7.06
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3.81
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4.72
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5.63
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6.83
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+250
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4.08
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4.97
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5.83
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6.91
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4.05
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4.93
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5.78
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6.83
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3.69
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4.71
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5.63
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6.78
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+end{adjustbox}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
