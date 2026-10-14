@@ -1,0 +1,345 @@
+---
+title: "Семинар 2"
+author: "Вадим Зямалов"
+date: "2026-01-24"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+require(magrittr)
+```
+
+# Сравнение AR и ADF
+
+Покажем, что уравнение ADF-теста является перепараметризацией исходного AR процесса.
+
+```{r}
+require(zoo)
+
+e <- rnorm(150)
+y <- rep(0, 150)
+y[1:2] <- c(2, 1)
+
+for (t in 3:150) {
+  y[t] <- (5 / 4) * y[t - 1] - (3 / 8) * y[t - 2] + e[t]
+}
+
+y <- zoo(y)
+plot(y)
+```
+
+Оценим модели ручным способом...
+
+```{r}
+df <- data.frame(y = y)
+df$y <- zoo(y)
+df["dy"] <- diff(y, na.pad = TRUE)
+df["y1"] <- lag(y, -1, na.pad = TRUE)
+df["y2"] <- lag(y, -2, na.pad = TRUE)
+df["dy1"] <- lag(df$dy, -1, na.pad = TRUE)
+
+df <- df[51:150, ]
+
+model0 <- lm(y ~ y1 + y2 - 1, data = df)
+model1 <- lm(dy ~ y1 + dy1 - 1, data = df)
+
+all(dplyr::near(model0$residuals, model1$residuals))
+```
+
+...
+и при помощи `dynlm`.
+
+```{r}
+model0 <- dynlm::dynlm(y ~ L(y, 1:2) - 1, data = df)
+model1 <- dynlm::dynlm(d(y) ~ L(y, 1) + d(L(y, 1)) - 1, data = df)
+
+all(dplyr::near(model0$residuals, model1$residuals))
+```
+
+# Тесты на единичный корень
+
+```{r}
+require(quantmod)
+usum <- urca::summary
+```
+
+## Подготовка данных
+
+Загрузим дневные данные по торгам акциями "одной фруктовой компании".
+
+```{r}
+getSymbols("AAPL",
+           from = "2020/01/01",
+           to = "2025/12/31",
+           periodicity = "daily")
+```
+
+Посчитаем логарифм доходности и отсечем первое -- NA -- значение.
+
+```{r}
+apple_l <- log(AAPL$AAPL.Adjusted)
+apple_r <- log(AAPL$AAPL.Adjusted / Lag(AAPL$AAPL.Adjusted, 1))
+apple_r <- na.omit(apple_r)
+
+# Посмотрим на график.
+plot.ts(apple_l)
+plot.ts(apple_r)
+```
+
+```{r}
+N <- length(apple_l)
+schwert <- trunc(12 * (N / 100)^(1 / 4))
+```
+
+## ADF
+
+```{r}
+tseries::adf.test(apple_l, k = schwert)
+```
+
+```{r}
+aTSA::adf.test(apple_l, nlag = schwert)
+```
+
+```{r}
+usum(urca::ur.df(
+  apple_l,
+  type = "none",
+  lags = schwert,
+  selectlags = "BIC"
+))
+usum(urca::ur.df(
+  apple_l,
+  type = "drift",
+  lags = schwert,
+  selectlags = "BIC"
+))
+usum(urca::ur.df(
+  apple_l,
+  type = "trend",
+  lags = schwert,
+  selectlags = "BIC"
+))
+```
+
+```{r}
+tseries::adf.test(apple_r)
+```
+
+```{r}
+aTSA::adf.test(apple_r)
+```
+
+```{r}
+usum(urca::ur.df(
+  apple_r,
+  type = "none",
+  lags = schwert,
+  selectlags = "BIC"
+))
+usum(urca::ur.df(
+  apple_r,
+  type = "drift",
+  lags = schwert,
+  selectlags = "BIC"
+))
+usum(urca::ur.df(
+  apple_r,
+  type = "trend",
+  lags = schwert,
+  selectlags = "BIC"
+))
+```
+
+## PP
+
+```{r}
+tseries::pp.test(apple_l)
+```
+
+```{r}
+aTSA::pp.test(apple_l)
+```
+
+```{r}
+usum(urca::ur.pp(
+  apple_l,
+  type = "Z-tau",
+  model = "constant",
+  lags = "long"
+))
+usum(urca::ur.pp(
+  apple_l,
+  type = "Z-tau",
+  model = "trend",
+  lags = "long"
+))
+```
+
+```{r}
+tseries::pp.test(apple_r)
+```
+
+```{r}
+aTSA::pp.test(apple_r)
+```
+
+```{r}
+usum(urca::ur.pp(
+  apple_r,
+  type = "Z-tau",
+  model = "constant",
+  lags = "long"
+))
+usum(urca::ur.pp(
+  apple_r,
+  type = "Z-tau",
+  model = "trend",
+  lags = "long"
+))
+```
+
+## DF-GLS
+
+```{r}
+usum(urca::ur.ers(
+  apple_l,
+  type = "DF-GLS",
+  model = "constant",
+  lag.max = schwert
+))
+usum(urca::ur.ers(
+  apple_l,
+  type = "DF-GLS",
+  model = "trend",
+  lag.max = schwert
+))
+```
+
+```{r}
+usum(urca::ur.ers(
+  apple_r,
+  type = "DF-GLS",
+  model = "constant",
+  lag.max = schwert
+))
+usum(urca::ur.ers(
+  apple_r,
+  type = "DF-GLS",
+  model = "trend",
+  lag.max = schwert
+))
+```
+
+## KPSS
+
+```{r}
+# Можно выбрать спецификацию
+tseries::kpss.test(apple_l, null = "Trend")
+```
+
+```{r}
+aTSA::kpss.test(apple_l)
+```
+
+```{r}
+usum(urca::ur.kpss(apple_l, type = "mu", lags = "long"))
+usum(urca::ur.kpss(apple_l, type = "tau", lags = "long"))
+```
+
+```{r}
+tseries::kpss.test(apple_r)
+```
+
+```{r}
+aTSA::kpss.test(apple_r)
+```
+
+```{r}
+usum(urca::ur.kpss(apple_r, type = "mu", lags = "long"))
+usum(urca::ur.kpss(apple_r, type = "tau", lags = "long"))
+```
+
+## ZA
+
+```{r}
+usum(urca::ur.za(apple_l, model = "both", lag = schwert))
+```
+
+```{r}
+usum(urca::ur.za(apple_r, model = "intercept", lag = schwert))
+```
+
+## HEGY
+
+```{r}
+uroot::hegy.test(
+  ts(apple_l, frequency = 12),
+  lag.method = "BIC",
+  maxlag = schwert,
+  pvalue = "RS"
+)
+```
+
+```{r}
+x <- uroot::bgt.data[["LCONSEXPCO"]]
+
+plot(x)
+
+uroot::hegy.test(
+  x,
+  deterministic = c(1, 1, 1),
+  lag.method = "fixed", # AIC, BIC AICc
+  maxlag = 1
+)
+```
+
+# Коинтеграция
+
+Повторим пример Йохансена на его данных.
+
+```{r}
+data(denmark, package = "urca")
+sjd <- denmark[, c("LRM", "LRY", "IBO", "IDE")]
+plot.ts(sjd)
+```
+
+Тест Энгла-Грейнджера.
+
+```{r}
+aTSA::coint.test(sjd[[1]], as.matrix(sjd[-1]))
+```
+
+Тест Филлипса-Уреалиса.
+
+```{r}
+urca::ca.po(sjd, demean = "constant", type = "Pz") |> usum()
+```
+
+```{r}
+vars::VARselect(sjd,
+                lag.max = 10,
+                type = "const",
+                season = 4)
+```
+
+```{r}
+urca::ca.jo(
+  sjd,
+  ecdet = "const",
+  type = "eigen",
+  K = 2,
+  spec = "transitory",
+  season = 4
+) |> usum()
+
+urca::ca.jo(
+  sjd,
+  ecdet = "const",
+  type = "trace",
+  K = 2,
+  spec = "transitory",
+  season = 4
+) |> usum()
+```

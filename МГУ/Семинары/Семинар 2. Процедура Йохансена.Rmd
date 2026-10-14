@@ -1,0 +1,88 @@
+---
+title: "Семинар 2: Процедура Йохансена руками"
+author: "Вадим Зямалов"
+date: "2026-01-24"
+output: html_document
+---
+
+```{r}
+require(magrittr)
+require(matrixcalc)
+```
+
+Загрузим набор данных `denmark` из пакета `urca`:
+
+```{r}
+data(denmark, package = "urca")
+sjd <- denmark[, c("LRM", "LRY", "IBO", "IDE")]
+```
+
+Преобразуем `sjd` в матрицу, построим матрицы с первыми разностями и лагами переменных.
+
+```{r}
+Y  <- as.matrix(sjd)
+dY <- Y - shift.down(Y, 1, 0)
+lY <- shift.down(Y, 1, 0)
+```
+
+Построим матрицу переменных для вспомогательных регрессий.
+
+```{r}
+X <- cbind(shift.down(dY, 1, 0), 1)
+
+lY <- lY[3:55, ]
+dY <- dY[3:55, ]
+X <- X[3:55, ]
+```
+
+Найдем остатки вспомогательных регрессий.
+
+```{r}
+b1 <- solve(t(X) %*% X, t(X) %*% lY)
+b2 <- solve(t(X) %*% X, t(X) %*% dY)
+
+V <- lY - X %*% b1
+U <- dY - X %*% b2
+```
+
+Рассчитаем ковариационные и кросс-ковариационные матрицы.
+
+```{r}
+Svv <- matrix(0, ncol = 4, nrow = 4)
+Suu <- Svv
+Suv <- Svv
+Svu <- Svv
+for (i in 1:53) {
+  Svv <- Svv + t(V[i, 1:4, drop = FALSE]) %*% V[i, 1:4, drop = FALSE]
+  Suu <- Suu + t(U[i, 1:4, drop = FALSE]) %*% U[i, 1:4, drop = FALSE]
+  Svu <- Svu + t(V[i, 1:4, drop = FALSE]) %*% U[i, 1:4, drop = FALSE]
+  Suv <- Suv + t(U[i, 1:4, drop = FALSE]) %*% V[i, 1:4, drop = FALSE]
+}
+Svv <- Svv / 53
+Suu <- Suu / 53
+Svu <- Svu / 53
+Suv <- Suv / 53
+```
+
+Найдем итоговую матрицу для расчета собственных значений.
+
+```{r}
+M <- solve(Svv) %*% Svu %*% solve(Suu) %*% Suv
+```
+
+Найдем собственные векторы матрицы $M$.
+
+```{r}
+sjd.vecm <- urca::ca.jo(
+  sjd,
+  ecdet = "none",
+  type = "eigen",
+  K = 2,
+  spec = "transitory"
+)
+urca::summary(sjd.vecm)@V
+```
+
+```{r}
+eigen(M)$vectors %>% sweep(., 2, .[1, ], FUN = "/")
+```

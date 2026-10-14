@@ -1,0 +1,253 @@
+---
+title: "Семинар 3: ММП"
+author: "Вадим Зямалов"
+date: "2026-01-24"
+output: html_document
+---
+
+```{r}
+library(zoo)
+library(magrittr)
+library(zeallot)
+```
+
+# Линейная модель
+
+Сгенерируем процесс $y_t = 1 + 2 x_t + \varepsilon_t$
+
+```{r}
+e <- rnorm(250)
+x <- rnorm(250)
+y <- 1 + 2 * x + e
+```
+
+Оценим линейную регрессию при помощи встроенного метода `lm`, использующего МНК.
+
+```{r}
+lm(y ~ x) %>% summary()
+```
+
+```{r}
+lm(y ~ x) |> summary()
+```
+
+Зададим фунцию, которая принимает на вход вектор параметров и прочие параметры
+
+```{r}
+L <- function(pars, y, x) {
+  N <- length(y)
+  # a-la Python: a, b, s = pars
+  c(a, b, s2) %<-% pars
+  -(N / 2) * log(s2) - sum((y - a - b * x)^2) / (2 * s2)
+}
+```
+
+Максимизируем функцию при помощи функции `optim` методом `Nelder-Mead`.
+Данная функция по-умолчанию минимизирует целевую функцию; для максимизации следует передать параметр `control`, включающий в себя поле `fnscale` с отрицательным значением.
+
+Прочие аргументы:
+
+-   вектор начальных значений оцениваемых параметров; вектор может быть именованным.
+-   целевая функция.
+-   прочие аргументы целевой функции.
+-   метод (опционально).
+-   границы для параметров (опционально).
+-   булевое значение, показывающее, следует ли возвращать значение гессиана.
+
+```{r}
+res <- optim(c(a = 0, b = 0, sigsq = 1),
+  L,
+  y = y,
+  x = x,
+  hessian = TRUE,
+  control = list(fnscale = -1)
+)
+```
+
+```{r}
+res
+```
+
+Выведем оценки параметров
+
+```{r}
+res$par
+```
+
+Оценим стандартные ошибки параметров
+
+```{r}
+-res$hessian |>
+  solve() |>
+  diag() |>
+  sqrt()
+```
+
+# AR(p)
+
+```{r}
+e <- rnorm(250)
+y <- numeric(250)
+```
+
+Сгенерируем процесс $y_t = 0.8 y_{t-1} + \varepsilon_t$
+
+```{r}
+for (t in 2:250) y[t] <- .8 * y[t - 1] + e[t]
+y <- ts(y[51:250])
+```
+
+Оценим процесс при помощи МНК...
+
+```{r}
+dynlm::dynlm(y ~ L(y, 1) - 1) |> summary()
+```
+
+специального метода `arima`...
+
+```{r}
+arima(y, order = c(1, 0, 0), include.mean = FALSE)
+```
+
+и руками...
+
+```{r}
+L <- function(pars, y) {
+  N <- length(y)
+  ps <- length(pars) - 1
+
+  res <- -((N - ps) / 2) * log(pars[ps + 1])
+  for (t in ps:N) {
+    eps <- y[t] - sum(pars[1:ps] * y[(t - 1):(t - ps)])
+    res <- res - eps^2 / (2 * pars[ps + 1])
+  }
+  res
+}
+```
+
+```{r}
+res <- optim(c(a1 = 0.1, sigsq = 0.1),
+  L,
+  y = y,
+  hessian = TRUE,
+  control = list(fnscale = -1)
+)
+```
+
+Выведем оценки параметров
+
+```{r}
+res$par
+```
+
+Оценим стандартные ошибки параметров
+
+```{r}
+-res$hessian |>
+  solve() |>
+  diag() |>
+  sqrt()
+```
+
+# AR(2)
+
+```{r}
+e <- rnorm(250)
+y <- numeric(250)
+```
+
+Сгенерируем процесс $y_t = y_{t-1} - 0.21 y_{t-2} + \varepsilon_t$
+
+```{r}
+for (t in 3:250) y[t] <- 1 * y[t - 1] - 0.21 * y[t - 2] + e[t]
+y <- ts(y[51:250])
+```
+
+```{r}
+dynlm::dynlm(y ~ L(y, 1:2) - 1) %>% summary()
+```
+
+```{r}
+arima(y, order = c(2, 0, 0), include.mean = FALSE)
+```
+
+```{r}
+res <- optim(c(a1 = 0.1, a2 = 0.1, sigsq = 10),
+  L,
+  y = y,
+  hessian = TRUE,
+  control = list(fnscale = -1)
+)
+```
+
+Выведем оценки параметров
+
+```{r}
+res$par
+```
+
+Оценим стандартные ошибки параметров
+
+```{r}
+-res$hessian |>
+  solve() |>
+  diag() |>
+  sqrt()
+```
+
+# MA(1), неточный метод
+
+```{r}
+e <- rnorm(250)
+y <- numeric(250)
+```
+
+Сгенерируем процесс $y_t = 1 + \varepsilon_t - 0.5 \varepsilon_{t-1}$
+
+```{r}
+for (t in 2:250) y[t] <- 1 + e[t] - 0.5 * e[t - 1]
+y <- y[51:250]
+```
+
+```{r}
+arima(y, order = c(0, 0, 1))
+```
+
+```{r}
+L <- function(pars, y, e0 = 0) {
+  N <- length(y)
+  c(m, b, s2) %<-% pars
+  e <- e0
+  eps <- 0
+  for (t in 1:N) {
+    e <- y[t] - m - b * e
+    eps <- eps + e^2
+  }
+  -(N / 2) * log(s2) - eps / (2 * s2)
+}
+```
+
+```{r}
+res <- optim(c(m = 0, b = 0, sigsq = 1),
+  L,
+  y = y,
+  e0 = 1,
+  hessian = TRUE,
+  control = list(fnscale = -1)
+)
+```
+
+Выведем оценки параметров
+
+```{r}
+res$par
+```
+
+Оценим стандартные ошибки параметров
+
+```{r}
+-res$hessian |>
+  solve() |>
+  diag() |>
+  sqrt()
+```
