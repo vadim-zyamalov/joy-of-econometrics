@@ -8,7 +8,7 @@
 
 = Смещение из-за пропущенной переменной
 
-Это пример нарушения *первого* условия Гаусса-Маркова: $Ex [u_i mid(bar.v) X_1 , dots, X_n] = 0$.
+Это пример нарушения *первого* условия Гаусса-Маркова: $Ex [u_i vert X_1 , dots, X_n] = 0$.
 
 Так как $u_i$ включает в себя переменные, *не включенные* в модель, то если в $u_i$ входит $Z$ такая, что $Cov[X, Z] eq.not 0$, то
 $ hat(beta)_1 limits(->)^p beta_1 + rho_(X u) frac(sigma_u, sigma_X) $
@@ -114,7 +114,7 @@ $ hat(Vect(beta)) = (Vect(X)' Vect(X))^(-1) Vect(X)' Vect(Y) $
 
 == Предположения МНК в модели множественной регрессии
 
-+ $Ex[u_i mid(bar.v) X_(1 i), dots, X_(k i)] = 0$.
++ $Ex[u_i vert X_(1 i), dots, X_(k i)] = 0$.
 + $(X_(1 i), dots, X_(k i), Y_i) tilde #text[iid]$.
 + $(X_(1 i), dots, X_(k i), Y_i)$ имеют конечные четвертые моменты --- большие выбросы маловероятны.
 + *Отсутствует совершенная мультиколлинеарность*.
@@ -175,9 +175,9 @@ $
 
   По определению
   $
-    Sigma_hat(Vect(beta)) & = Ex[(hat(Vect(beta)) - Vect(beta))(hat(Vect(beta)) - Vect(beta))' mid(bar.v) Vect(X)] =\
-    & = Ex[(Vect(X)' Vect(X))^(-1) Vect(X)' Vect(u) Vect(u)' Vect(X) (Vect(X)' Vect(X))^(-1) mid(bar.v) Vect(X)] =\
-    & = (Vect(X)' Vect(X))^(-1) Vect(X)' Ex[Vect(u) Vect(u)' mid(bar.v) Vect(X)] Vect(X) (Vect(X)' Vect(X))^(-1) =\
+    Sigma_hat(Vect(beta)) & = Ex[(hat(Vect(beta)) - Vect(beta))(hat(Vect(beta)) - Vect(beta))' vert Vect(X)] =\
+    & = Ex[(Vect(X)' Vect(X))^(-1) Vect(X)' Vect(u) Vect(u)' Vect(X) (Vect(X)' Vect(X))^(-1) vert Vect(X)] =\
+    & = (Vect(X)' Vect(X))^(-1) Vect(X)' Ex[Vect(u) Vect(u)' vert Vect(X)] Vect(X) (Vect(X)' Vect(X))^(-1) =\
     & = sigma^2_u (Vect(X)' Vect(X))^(-1) Vect(X)' Vect(I) Vect(X) (Vect(X)' Vect(X))^(-1) =\
     & = sigma^2_u (Vect(X)' Vect(X))^(-1)
   $
@@ -254,9 +254,9 @@ $ "VIF"(X_j) = frac(1, 1 - R^2_j) $
 
 #proof[
   При выполнении условий теоремы Гаусса-Маркова
-  $ Var[hat(Vect(beta)) mid(bar.v) Vect(X)] = sigma^2_u (Vect(X)'Vect(X))^(-1) $
+  $ Var[hat(Vect(beta)) vert Vect(X)] = sigma^2_u (Vect(X)'Vect(X))^(-1) $
   откуда
-  $ Var[hat(Vect(beta))_k mid(bar.v) Vect(X)] = sigma^2_(u)[(Vect(X)' Vect(X))^(-1)]_(k k) $
+  $ Var[hat(Vect(beta))_k vert Vect(X)] = sigma^2_(u)[(Vect(X)' Vect(X))^(-1)]_(k k) $
 
   Для простоты, перестановкой столбцов матрицы $Vect(X)$ поставим $k$-й регрессор на 1-е место.
   Также предположим, что все столбцы матрицы центрированы.
@@ -277,10 +277,10 @@ $ "VIF"(X_j) = frac(1, 1 - R^2_j) $
     eta' eta = Vect(X)'_(1)Vect(X)_1 (1 - R^2_1) \
     frac(1, eta' eta)= (Vect(X)'_(1)Vect(X)_1)^(-1)frac(1, 1 - R^2_1)
   $
-  $ Var[hat(Vect(beta))_1 mid(bar.v) Vect(X)] = sigma^2_u (Vect(X)'_(1)Vect(X)_1)^(-1)frac(1, 1 - R^2_1) $
+  $ Var[hat(Vect(beta))_1 vert Vect(X)] = sigma^2_u (Vect(X)'_(1)Vect(X)_1)^(-1)frac(1, 1 - R^2_1) $
 
   При этом, если бы $Vect(X)_1$ и $Vect(X)_(-1)$ были ортогональны, то
-  $ Var[hat(Vect(beta))_1 mid(bar.v) Vect(X)] = sigma^2_u (Vect(X)'_(1)Vect(X)_1)^(-1) $
+  $ Var[hat(Vect(beta))_1 vert Vect(X)] = sigma^2_u (Vect(X)'_(1)Vect(X)_1)^(-1) $
   То есть $"VIF"$ показывает, во сколько раз увеличится дисперсия коэффициента $hat(beta)_1$ из-за его коррелированности с прочими регрессорами.
 ]
 

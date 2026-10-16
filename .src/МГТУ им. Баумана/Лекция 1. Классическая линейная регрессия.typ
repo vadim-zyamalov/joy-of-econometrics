@@ -41,14 +41,14 @@ $] <eq-2.4>
 
 Данные условия представляют собой систему из двух уравнений с двумя неизвестными, решение которого равно
 $
-  hat(beta)_1 & = frac(sum^N_(i = 1)(y_i - overline(y)) (x_i - overline(x)), sum^N_(i = 1)(x_i - overline(x))^2) = frac(s_(y x), s^2_x) \
-  hat(beta)_0 & = overline(y) - hat(beta)_1 overline(x) \
+  hat(beta)_1 & = frac(sum^N_(i = 1)(y_i - macron(y)) (x_i - macron(x)), sum^N_(i = 1)(x_i - macron(x))^2) = frac(s_(y x), s^2_x) \
+  hat(beta)_0 & = macron(y) - hat(beta)_1 macron(x) \
   hat(u)_i & = y_i - hat(y)_i = y_i - hat(beta)_0 - hat(beta)_1 x_i
 $
 
 == Предпосылки МНК
 
-+ Условное распределение $u_i$ относительно $X_i$ имеет нулевое среднее: $Ex [ u_i mid(bar.v) x_i ] = 0$;
++ Условное распределение $u_i$ относительно $X_i$ имеет нулевое среднее: $Ex [ u_i vert x_i ] = 0$;
   #image("fig/OLS_homo_errors.pdf", width: 8cm)
 + Наблюдения $(y_i,x_i) tilde #text[i.i.d.]$;
 + Большие выбросы маловероятны: $y_i$ и $x_i$ имеют ненулевые и конечные четвертые моменты.
@@ -189,9 +189,9 @@ $
 
 Этот факт позволяет получить несмещенную оценку $sigma^2_u$ #cite(<pierse2021ols>):
 $
-  Ex (hat(Vect(u))^(prime)hat(Vect(u)) abs(thin Vect(X)) & = tr [ Ex (Vect(u)^(prime)Vect(M)^(prime)Vect(M) Vect(u)) thin Vect(X)) ] = Ex [ tr (Vect(u)^(prime)Vect(M) Vect(u)) bar.v thin Vect(X) ] = \
-  & = Ex [ tr (Vect(M) Vect(u) Vect(u)^(prime)) bar.v thin Vect(X) ] = sigma^2_u tr Vect(M) = sigma^2_u (N - K) \
-  sigma^2_u & = Ex (frac(hat(Vect(u))^(prime)hat(Vect(u)), N - K)bar.v thin Vect(X))
+  Ex (hat(Vect(u))^(prime)hat(Vect(u)) abs(thin Vect(X)) & = tr [ Ex (Vect(u)^(prime)Vect(M)^(prime)Vect(M) Vect(u)) thin Vect(X)) ] = Ex [ tr (Vect(u)^(prime)Vect(M) Vect(u)) vert thin Vect(X) ] = \
+  & = Ex [ tr (Vect(M) Vect(u) Vect(u)^(prime)) vert thin Vect(X) ] = sigma^2_u tr Vect(M) = sigma^2_u (N - K) \
+  sigma^2_u & = Ex (frac(hat(Vect(u))^(prime)hat(Vect(u)), N - K) vert thin Vect(X))
 $
 
 == Расширенные предпосылки МНК
@@ -207,17 +207,17 @@ $
 
 + $hat(Vect(beta))$ — несмещенная оценка;
 + $display(frac(1, N))sum^N_(i = 1)hat(u)_i = 0$ — выборочное среднее остатков равно нулю;
-+ $display(frac(1, N))sum^N_(i = 1)hat(y)_i = overline(y)$;
++ $display(frac(1, N))sum^N_(i = 1)hat(y)_i = macron(y)$;
 + $sum^N_(i = 1)hat(u)_i x_(k i) = 0, forall k in { 1,...,K }$.
 + $TSS = ESS + RSS$, где
-  - $TSS = sum^N_(i = 1)(y_i - overline(y))^2$ — полная сумма квадратов,
-  - $ESS = sum^N_(i = 1)(hat(y_i) - overline(y))^2$ — объясненная сумма квадратов,
+  - $TSS = sum^N_(i = 1)(y_i - macron(y))^2$ — полная сумма квадратов,
+  - $ESS = sum^N_(i = 1)(hat(y_i) - macron(y))^2$ — объясненная сумма квадратов,
   - $RSS = sum^N_(i = 1)(y_i - hat(y)_i)^2 = sum^N_(i = 1)hat(u)^2_i$ — остаточная сумма квадратов или сумма квадратов остатков.
   #proof[
     $
-      TSS & = sum^N_(i = 1)(y_i - overline(y))^2 = sum^N_(i = 1)[ (y_i - hat(y)_i) + (hat(y)_i - overline(y)) ]^2 = \
-      & = sum^N_(i = 1)(y_i - hat(y)_i)^2 + sum^N_(i = 1)(hat(y)_i - overline(y))^2 + 2 sum^N_(i = 1)(y_i - hat(y)_i) (hat(y)_i - overline(y)) = \
-      & = RSS + ESS + 2 sum^N_(i = 1)hat(u)_i hat(y)_i - 2 overline(y) sum^N_(i = 1)hat(u)_i
+      TSS & = sum^N_(i = 1)(y_i - macron(y))^2 = sum^N_(i = 1)[ (y_i - hat(y)_i) + (hat(y)_i - macron(y)) ]^2 = \
+      & = sum^N_(i = 1)(y_i - hat(y)_i)^2 + sum^N_(i = 1)(hat(y)_i - macron(y))^2 + 2 sum^N_(i = 1)(y_i - hat(y)_i) (hat(y)_i - macron(y)) = \
+      & = RSS + ESS + 2 sum^N_(i = 1)hat(u)_i hat(y)_i - 2 macron(y) sum^N_(i = 1)hat(u)_i
     $
 
     Последнее слагаемое равно нулю в силу второго свойства.
@@ -235,9 +235,9 @@ $
 
 #theorem[Гаусса-Маркова][
   Если для всех $i,j = 1,...,n$ выполняются условия Гаусса-Маркова:
-  + $Ex (u_i mid(bar.v) X_1,...,X_n) = 0$,
-  + $Var (u_i mid(bar.v) X_1,...,X_n) = sigma^2_u, 0 < sigma^2_(u)< infinity$,
-  + $Ex (u_i u_j mid(bar.v) X_1,...,X_n) = 0, i != j$, то МНК оценка $hat(beta)_1$ является наилучшей (эффективной) линейной условно не смещенной оценкой (BLUE) #cite(<gujarati2009basic>).
+  + $Ex (u_i vert X_1,...,X_n) = 0$,
+  + $Var (u_i vert X_1,...,X_n) = sigma^2_u, 0 < sigma^2_(u)< infinity$,
+  + $Ex (u_i u_j vert X_1,...,X_n) = 0, i != j$, то МНК оценка $hat(beta)_1$ является наилучшей (эффективной) линейной условно не смещенной оценкой (BLUE) #cite(<gujarati2009basic>).
 ]
 
 - УГ-М (1) следует из предположений (1) и (2)
@@ -247,15 +247,15 @@ $
 #proof[
   Линейность:
   $
-    sum^n_(i = 1)(X_i - overline(X)) & = 0 => \
-    sum^n_(i = 1)(X_i - overline(X)) (Y_i - overline(Y)) & = sum^n_(i = 1)(X_i - overline(X)) Y_i => \
-    hat(beta)_1 = frac(sum^n_(i = 1)(X_i - overline(X)) (Y_i - overline(Y)), sum^n_(i = 1)(X_i - overline(X))^2) & = frac(sum^n_(i = 1)(X_i - overline(X)) Y_i, sum^n_(i = 1)(X_i - overline(X))^2) = sum^n_(i = 1)hat(a)_i Y_i
+    sum^n_(i = 1)(X_i - macron(X)) & = 0 => \
+    sum^n_(i = 1)(X_i - macron(X)) (Y_i - macron(Y)) & = sum^n_(i = 1)(X_i - macron(X)) Y_i => \
+    hat(beta)_1 = frac(sum^n_(i = 1)(X_i - macron(X)) (Y_i - macron(Y)), sum^n_(i = 1)(X_i - macron(X))^2) & = frac(sum^n_(i = 1)(X_i - macron(X)) Y_i, sum^n_(i = 1)(X_i - macron(X))^2) = sum^n_(i = 1)hat(a)_i Y_i
   $
 
   Условная несмещенность:
   $
-    Ex (hat(beta)_1 mid(bar.v) X_1,...) & = beta_1 + Ex (frac(sum^n_(i = 1)(X_i - overline(X)) u_i, sum^n_(i = 1)(X_i - overline(X))^2)bar.v thin X_1,...) = \
-    & = beta_1 + frac(sum^n_(i = 1)(X_i - overline(X)) Ex (u_i mid(bar.v) X_1,...), sum^n_(i = 1)(X_i - overline(X))^2) = \
+    Ex (hat(beta)_1 vert X_1,...) & = beta_1 + Ex (frac(sum^n_(i = 1)(X_i - macron(X)) u_i, sum^n_(i = 1)(X_i - macron(X))^2) vert thin X_1,...) = \
+    & = beta_1 + frac(sum^n_(i = 1)(X_i - macron(X)) Ex (u_i vert X_1,...), sum^n_(i = 1)(X_i - macron(X))^2) = \
     & = beta_1
   $
 
@@ -264,23 +264,23 @@ $
   Тогда $sum^n_(i = 1)a_i = 0$, $sum^n_(i = 1)a_i X_i = 1$.
   $
     tilde(beta)_1 & = sum^n_(i = 1)a_i Y_i = beta_0 sum^n_(i = 1)a_i + beta_1 sum^n_(i = 1)a_i X_i + sum^n_(i = 1)a_i u_i => \
-    Ex (tilde(beta)_1 mid(bar.v) X_1,...) & = beta_0 underbrace(sum^n_(i = 1)a_i, = 0) + beta_1 underbrace(sum^n_(i = 1)a_i X_i, = 1) = beta_1 \
+    Ex (tilde(beta)_1 vert X_1,...) & = beta_0 underbrace(sum^n_(i = 1)a_i, = 0) + beta_1 underbrace(sum^n_(i = 1)a_i X_i, = 1) = beta_1 \
     tilde(beta)_1 - beta_1 & = sum^n_(i = 1)a_i u_i => \
-    Var (tilde(beta)_1 mid(bar.v) X_1,...) & = Ex [ (sum^n_(i = 1)a_i u_i)^2 bar.v thin X_1,...
+    Var (tilde(beta)_1 vert X_1,...) & = Ex [ (sum^n_(i = 1)a_i u_i)^2 vert thin X_1,...
     ] = \
-    & = sum^n_(i = 1)sum^n_(j = 1)a_i a_j Ex (u_i,u_j mid(bar.v) X_1,...) = sigma^2_u sum^n_(i = 1)a^2_i
+    & = sum^n_(i = 1)sum^n_(j = 1)a_i a_j Ex (u_i,u_j vert X_1,...) = sigma^2_u sum^n_(i = 1)a^2_i
   $
 
   Пусть $a_i = hat(a)_i + d_i$.
   Тогда $sum^n_(i = 1)a^2_i = sum^n_(i = 1)hat(a)_i + 2 sum^n_(i = 1)hat(a)_i d_i + sum^n_(i = 1)d^2_i$.
   $
-    sum^n_(i = 1)hat(a)_i d_i & = sum^n_(i = 1)frac((X_i - overline(X)) d_i, sum^n_(i = 1)(X_i - overline(X))^2) = \
-    & = frac(sum^n_(i = 1)X_i d_i - overline(X) sum^n_(i = 1)d_i, sum^n_(i = 1)(X_i - overline(X))^2) = \
-    & = frac((sum^n_(i = 1)X_i a_i - sum^n_(i = 1)X_i hat(a)_i) - overline(X) (sum^n_(i = 1)a_i - sum^n_(i = 1)hat(a)_i), sum^n_(i = 1)(X_i - overline(X))^2) = 0 \
-    Var (tilde(beta)_1 mid(bar.v) X_1,...) & = sigma^2_u sum^n_(i = 1)a^2_i = \
+    sum^n_(i = 1)hat(a)_i d_i & = sum^n_(i = 1)frac((X_i - macron(X)) d_i, sum^n_(i = 1)(X_i - macron(X))^2) = \
+    & = frac(sum^n_(i = 1)X_i d_i - macron(X) sum^n_(i = 1)d_i, sum^n_(i = 1)(X_i - macron(X))^2) = \
+    & = frac((sum^n_(i = 1)X_i a_i - sum^n_(i = 1)X_i hat(a)_i) - macron(X) (sum^n_(i = 1)a_i - sum^n_(i = 1)hat(a)_i), sum^n_(i = 1)(X_i - macron(X))^2) = 0 \
+    Var (tilde(beta)_1 vert X_1,...) & = sigma^2_u sum^n_(i = 1)a^2_i = \
     & = sigma^2_u sum^n_(i = 1)hat(a)^2_i + sigma^2_u sum^n_(i = 1)d^2_i = \
-    & = Var (hat(beta)_1 mid(bar.v) X_1,...) + sigma^2_u sum^n_(i = 1)d^2_i => \
-    Var (tilde(beta)_1 mid(bar.v) X_1,...) & - Var (hat(beta)_1 mid(bar.v) X_1,...) = sigma^2_u sum^n_(i = 1)d^2_(i)> 0
+    & = Var (hat(beta)_1 vert X_1,...) + sigma^2_u sum^n_(i = 1)d^2_i => \
+    Var (tilde(beta)_1 vert X_1,...) & - Var (hat(beta)_1 vert X_1,...) = sigma^2_u sum^n_(i = 1)d^2_(i)> 0
   $ #qedhere
 ]
 
@@ -364,8 +364,8 @@ $ R^2 = frac(ESS, TSS) = 1 - frac(RSS, TSS) = [ Corr (X,y) ]^2 $
 $R^2$ — доля выборочной дисперсии $Y_i$, объясненной (или предсказанной) $X_i$.
 $R^2$ всегда увеличивается при включении новых переменных в модель, так как $RSS$ всегда уменьшается.
 
-/ Скорректированный коэффициент детерминации $overline(R)^2$:
-$ overline(R)^2 = 1 - frac(n-1, n-k-1)frac(RSS, TSS) = 1 - frac(s^2_(hat(u)), s^2_Y) $
+/ Скорректированный коэффициент детерминации $macron(R)^2$:
+$ macron(R)^2 = 1 - frac(n-1, n-k-1)frac(RSS, TSS) = 1 - frac(s^2_(hat(u)), s^2_Y) $
 
 / Информационные критерии:
 $
@@ -431,13 +431,13 @@ $ H_(0): beta_1 = beta_2 = 0 $
 $ abs(t_1) > 1.96 #text[и/или] abs(t_2) > 1.96 $
 
 Вероятность некорректно отвергнуть $H_0$ на 5%-м уровне значимости, когда она верна, в такой процедуре равна
-$
-  op("Pr")_(H_0)(abs(t_1) > 1.96 #text[и/или] abs(t_2) > 1.96) & = 1 - P_(H_0)(abs(t_1) <= 1.96 #text[и] abs(t_2) <= 1.96) = \
-  & = 1 - P_(H_0)(abs(t_1) <= 1.96) times P_(H_0)(abs(t_2) <= 1.96) = \
+#fill-width-with-text[$
+  Pr_(H_0)(abs(t_1) > 1.96 #text[и/или] abs(t_2) > 1.96) & = 1 - Pr_(H_0)(abs(t_1) <= 1.96 #text[и] abs(t_2) <= 1.96) = \
+  & = 1 - Pr_(H_0)(abs(t_1) <= 1.96) times Pr_(H_0)(abs(t_2) <= 1.96) = \
   & = 1 - 0.95^2 = 0.0975 = 9.75 %
-$
+$]
 
-- Предложенная процедура (на основе $t$-статистик) имеет неправильный размер критерия ($!= 5 %$).
+- Предложенная процедура (на основе $t$-статистик) имеет неправильный размер критерия ($!= 5%$).
 - Этот размер критерия зависит от корреляции между $t_1$ и $t_2$ и, следовательно, между $hat(beta)_1$ и $hat(beta)_2$.
 
 Возможным решением является использование поправки Бонферрони: вместо $alpha$ в качестве уровня значимости следует использовать $display(frac(alpha, q))$.
@@ -446,18 +446,16 @@ $
 
 $F$-статистика позволяет проверять одновременно все ограничения совместной гипотезы.
 Для случая гомоскедастичных ошибок $F$-статистику можно вычислить следующим образом #cite(<nosko2021ekonometrika>):
-- Оцените две регрессии: регрессию "с ограничениями" (т.е.
-в предположениях нулевой гипотезы) и регрессию "без ограничений" (в предположениях альтернативной).
-- Вычислите $R^2_"R"$ и $R^2_"UR"$, соответственно, или $RSS_"R"$
-и $RSS_"UR"$.
-Тогда
-$
-  F = frac((R^2_"UR" - R^2_"R") slash q, (1-R^2_"UR") slash (n-k_"UR"-1)) = frac((italic("RSS")_"R" - italic("RSS")_"UR") / q, italic("RSS")_"UR" / (n-k_"UR"-1))
-$
-- $R^2_"R",R^2_"UR"$ — $R^2$ в регрессиях с ограничениями и без.
-- $italic("RSS")_"R",italic("RSS")_"UR"$ — RSS в регрессиях с ограничениями и без.
-- $q$ — число ограничений в нулевой гипотезе.
-- $k_"UR"$ — число объясняющих переменных (без константы) в модели без ограничений.
+- Оцените две регрессии: регрессию "с ограничениями" (т.е. в предположениях нулевой гипотезы) и регрессию "без ограничений" (в предположениях альтернативной).
+- Вычислите $R^2_"R"$ и $R^2_"UR"$, соответственно, или $RSS_"R"$ и $RSS_"UR"$.
+  Тогда
+  $
+    F = frac((R^2_"UR" - R^2_"R") slash q, (1-R^2_"UR") slash (n-k_"UR"-1)) = frac((italic("RSS")_"R" - italic("RSS")_"UR") slash q, italic("RSS")_"UR" slash (n-k_"UR"-1))
+  $
+  - $R^2_"R",R^2_"UR"$ — $R^2$ в регрессиях с ограничениями и без.
+  - $italic("RSS")_"R",italic("RSS")_"UR"$ — RSS в регрессиях с ограничениями и без.
+  - $q$ — число ограничений в нулевой гипотезе.
+  - $k_"UR"$ — число объясняющих переменных (без константы) в модели без ограничений.
 
 $F$-статистика для случая гомоскедастичных ошибок отвергает нулевую гипотезу, когда включение в модель двух (или больше) новых переменных увеличивает коэффициент детерминации "достаточно" для того, чтобы качество регрессии улучшилось "достаточно".
 $F$-статистика для случая гомоскедастичных ошибок асимптотически распределена как $chi^2_q slash q$#footnote[Если ошибки на самом деле гетероскедастичны, то асимптотическое распределение $F$-статистики для случая гомоскедастичных ошибок не является $chi^2_q slash q$.]:
@@ -518,7 +516,7 @@ $
 где $Vect(R)$ — матрица ограничений, $Vect(r)$ — вектор свободных членов ограничений, $hat(Vect(Sigma))_(hat(beta))$ — ковариационная матрица вектора $hat(Vect(beta))$.
 
 Для того, чтобы $F$-статистика была _точной_, нужно, чтобы:
-+ ошибки $u_i$ были гомоскедастичны, т.е. $Var (u_i mid(bar.v) X_1,...,X_k) = "const"$.
++ ошибки $u_i$ были гомоскедастичны, т.е. $Var (u_i vert X_1,...,X_k) = "const"$.
 + ошибки $u_1,...,u_n$ были нормально распределены.
 В случае ненормальности ошибок регрессии статистика будет _асимптотической_.
 
@@ -528,21 +526,21 @@ $
 
 Пусть $X_i$ обозначает бинарную переменную.
 Рассмотрим регрессию $Y_i = beta_0 + beta_1 X_i + u_i$.
-Пусть $overline(Y)_0$ означает выборочное среднее для наблюдений с $X = 0$, а $overline(Y)_1$ обозначает
+Пусть $macron(Y)_0$ означает выборочное среднее для наблюдений с $X = 0$, а $macron(Y)_1$ обозначает
 выборочное среднее для наблюдений с $X = 1$.
-Покажем, что $hat(beta)_0 = overline(Y)_0$, $hat(beta)_0 + hat(beta)_1 = overline(Y)_1$ и $hat(beta)_1 = overline(Y)_1 - overline(Y)_0$.
+Покажем, что $hat(beta)_0 = macron(Y)_0$, $hat(beta)_0 + hat(beta)_1 = macron(Y)_1$ и $hat(beta)_1 = macron(Y)_1 - macron(Y)_0$.
 $
-  sum X_i & = n_1 \
-  overline(X) & = frac(n_1, n) \
-  sum (X_i - overline(X))^2 & = sum X^2_i - n overline(X)^2 = n_1 - n frac(n^2_1, n^2) - frac(n_0 n_1, n) \
-  sum (X_i - overline(X)) (Y_i - overline(Y)) & = sum X_i (Y_i - overline(Y)) = sum X_i Y_i - overline(Y) sum X_i = \
-  & = n_1 overline(Y)_1 - n_1 overline(Y)
+                                  sum X_i & = n_1 \
+                                macron(X) & = frac(n_1, n) \
+                  sum (X_i - macron(X))^2 & = sum X^2_i - n macron(X)^2 = n_1 - n frac(n^2_1, n^2) - frac(n_0 n_1, n) \
+  sum (X_i - macron(X)) (Y_i - macron(Y)) & = sum X_i (Y_i - macron(Y)) = sum X_i Y_i - macron(Y) sum X_i = \
+                                          & = n_1 macron(Y)_1 - n_1 macron(Y)
 $
 $
-  hat(beta)_1 & = frac(n_1 (overline(Y)_1 - overline(Y)), frac(n_0 n_1, n)) = frac(n, n_0)(overline(Y)_1 - overline(Y)) = frac(n, n_0)(overline(Y)_1 - frac(n_1, n)overline(Y)_1 - frac(n_0, n)overline(Y)_0) = \
-  & = frac(n, n_0)(frac(n_0, n)overline(Y)_1 - frac(n_0, n)overline(Y)_0) = overline(Y)_1 - overline(Y)_0 \
-  hat(beta)_0 & = overline(Y) - hat(beta)_1 overline(X) = overline(Y) - (overline(Y)_1 - overline(Y)_0) frac(n_1, n) = \
-  & = frac(n_1, n)overline(Y)_1 + frac(n_0, n)overline(Y)_0 - frac(n_1, n)overline(Y)_1 - frac(n_1, n)overline(Y)_0 = overline(Y)_0
+  hat(beta)_1 & = frac(n_1 (macron(Y)_1 - macron(Y)), frac(n_0 n_1, n)) = frac(n, n_0)(macron(Y)_1 - macron(Y)) = frac(n, n_0)(macron(Y)_1 - frac(n_1, n)macron(Y)_1 - frac(n_0, n)macron(Y)_0) = \
+  & = frac(n, n_0)(frac(n_0, n)macron(Y)_1 - frac(n_0, n)macron(Y)_0) = macron(Y)_1 - macron(Y)_0 \
+  hat(beta)_0 & = macron(Y) - hat(beta)_1 macron(X) = macron(Y) - (macron(Y)_1 - macron(Y)_0) frac(n_1, n) = \
+  & = frac(n_1, n)macron(Y)_1 + frac(n_0, n)macron(Y)_0 - frac(n_1, n)macron(Y)_1 - frac(n_1, n)macron(Y)_0 = macron(Y)_0
 $
 
 = Нелинейные модели
@@ -601,7 +599,7 @@ $ ln Y_i = beta_0 + beta_1 ln X_i + u_i, i = 1,...,n $
     stroke: none,
     align: (center, center, center),
     table.hline(),
-    [Модель регрессии\ по $X$], [Теоретическая\ модель], [Эластичность\ $Ex (Y mid(bar.v) X$],
+    [Модель регрессии\ по $X$], [Теоретическая\ модель], [Эластичность\ $Ex (Y vert X)$],
     table.hline(),
     [Линейная], [$Y = beta_0 + beta_1 X + u$], [$frac(beta_1 Delta X, beta_0 + beta_1 X)$],
     [Линейно-логарифмическая], [$Y = beta_0 + beta_1 ln X+ u$], [$frac(beta_1, beta_0 + beta_1 ln X)$],

@@ -8,7 +8,7 @@
 
 Ранее мы рассмотрели три предпосылки МНК для парной линейной регрессии.
 Напомним:
-+ $Ex (u_i mid(bar.v) X_i) = 0$;
++ $Ex (u_i vert X_i) = 0$;
 + $(Y_i, X_i) tilde.op "iid"$;
 + $Y_i$ и $X_i$ имеют конечные четвертые моменты --- большие выбросы маловероятны.
 
@@ -24,9 +24,9 @@
 #theorem[Гаусса-Маркова][
   Рассмотрим уравнение $Y_i = beta_0 + beta_1 X_i + u_i$.
   Если для всех $i, j = 1, dots, n$ выполняются *условия Гаусса-Маркова*:
-  + $Ex [u_i mid(bar.v) X_1, dots, X_n] = 0$,
-  + $Var [u_i mid(bar.v) X_1, dots, X_n] = sigma_u^2 < oo$,
-  + $Cov [u_i, u_j mid(bar.v) X_1, dots, X_n] = 0, quad i eq.not j$,\
+  + $Ex [u_i vert X_1, dots, X_n] = 0$,
+  + $Var [u_i vert X_1, dots, X_n] = sigma_u^2 < oo$,
+  + $Cov [u_i, u_j vert X_1, dots, X_n] = 0, quad i eq.not j$,\
   то МНК оценка $hat(beta)_1$ вляется наилучшей (эффективной) линейной несмещенной оценкой (*BLUE*).
 ]
 
@@ -34,10 +34,10 @@
 + Первое условие Гаусса-Маркова следует из первых двух предположений МНК.
   Действительно, второе условие влечет независимость $u_i$ от $X_1,dots, X_n$, поскольку $ u_i = Y_i - beta_0 - beta_1 X_i $ и все наблюдения независимы.
   Поэтому
-  $ Ex [u_i mid(bar.v) X_i] = Ex [u_i mid(bar.v) X_1, dots, X_n] = 0 $
+  $ Ex [u_i vert X_i] = Ex [u_i vert X_1, dots, X_n] = 0 $
 + Второе условие Гаусса-Маркова следует из второго предположения МНК и _дополнительного_ предположения о *гомоскедастичности* ошибок.
 
-  Случайная ошибка $u_i$ называется *гомоскедастичной*, если $forall i, med Var[u_i mid(bar.v) X_i] = "const"$.
+  Случайная ошибка $u_i$ называется *гомоскедастичной*, если $forall i, med Var[u_i vert X_i] = "const"$.
   В противном случае ошибка называется *гетероскедастичной*.
 + Третье условие Гаусса-Маркова следует из второго предположения МНК.
 
@@ -60,11 +60,11 @@
   Тем самым мы показали, что $hat(beta)_1$ --- линейная оценка.
 
   Докажем условную несмещенность $hat(beta)_1$.
-  Требуется показать, что $Ex (hat(beta)_1 mid(bar.v) X_1, dots.h, X_n) = beta_1$.
+  Требуется показать, что $Ex (hat(beta)_1 vert X_1, dots.h, X_n) = beta_1$.
   $
-    Ex [hat(beta)_1 mid(bar.v) X_1, dots.h, X_n) & = Ex [beta_1 + frac(sum_(i = 1)^n (X_i - macron(X))u_i, sum_(i = 1)^n (X_i - macron(X))^2) mid(bar.v) X_1, dots.h, X_n] =\
-    & = beta_1 + Ex [frac(sum_(i = 1)^n (X_i - macron(X)) u_i, sum_(i = 1)^n (X_i - macron(X))^2) mid(bar.v) X_1, dots.h, X_n] =\
-    & = beta_1 + frac(sum_(i = 1)^n (X_i - macron(X)) Ex [u_i mid(bar.v) X_1, dots.h, X_n], sum_(i = 1)^n (X_i - macron(X))^2) =\
+    Ex [hat(beta)_1 vert X_1, dots.h, X_n) & = Ex [beta_1 + frac(sum_(i = 1)^n (X_i - macron(X))u_i, sum_(i = 1)^n (X_i - macron(X))^2) vert X_1, dots.h, X_n] =\
+    & = beta_1 + Ex [frac(sum_(i = 1)^n (X_i - macron(X)) u_i, sum_(i = 1)^n (X_i - macron(X))^2) vert X_1, dots.h, X_n] =\
+    & = beta_1 + frac(sum_(i = 1)^n (X_i - macron(X)) Ex [u_i vert X_1, dots.h, X_n], sum_(i = 1)^n (X_i - macron(X))^2) =\
     & = beta_1 quad "по 1 условию Г.-М."
   $
 
@@ -73,7 +73,7 @@
   Имеем
   $
     tilde(beta)_1 & = beta_0 sum_(i = 1)^n tilde(a)_i + beta_1 sum_(i = 1)^n tilde(a)_i X_i + sum_(i = 1)^n tilde(a)_i u_i arrow.r.double\
-    Ex [tilde(beta)_1 mid(bar.v) X_1, dots.h] & = beta_0 underbrace(sum_(i = 1)^n tilde(a)_i, = 0) + beta_1 underbrace(sum_(i = 1)^n tilde(a)_i X_i, = 1) = beta_1
+    Ex [tilde(beta)_1 vert X_1, dots.h] & = beta_0 underbrace(sum_(i = 1)^n tilde(a)_i, = 0) + beta_1 underbrace(sum_(i = 1)^n tilde(a)_i X_i, = 1) = beta_1
   $
   В общем случае, для выполнения последнего равенства необходимо выполнение $sum_(i=1)^n tilde(a)_i = 0$ и $sum_(i=1)^n tilde(a)_i X_i = 1$.
   В силу произвольности выбранной оценки данные равенства справедливы для любой линейной условно несмещенной оценки, в том числе и МНК оценки $hat(beta)_1$.
@@ -81,8 +81,8 @@
   Найдем дисперсию $tilde(beta)_1$:
   $
     tilde(beta)_1 - beta_1 & = sum_(i = 1)^n tilde(a)_i u_i\
-    Var [tilde(beta)_1 mid(bar.v) X_1, dots.h] & = Var [sum_(i = 1)^n tilde(a)_i u_i mid(bar.v) X_1, dots.h] =\
-    & = sum_(i = 1)^n sum_(j = 1)^n tilde(a)_i tilde(a)_j Cov [u_i, u_j mid(bar.v) X_1, dots.h] =\
+    Var [tilde(beta)_1 vert X_1, dots.h] & = Var [sum_(i = 1)^n tilde(a)_i u_i vert X_1, dots.h] =\
+    & = sum_(i = 1)^n sum_(j = 1)^n tilde(a)_i tilde(a)_j Cov [u_i, u_j vert X_1, dots.h] =\
     & = sigma_u^2 sum_(i = 1)^n tilde(a)_i^2 quad "по 2 и 3 условиям Г.-М."
   $
 
@@ -93,8 +93,8 @@
     sum_(i = 1)^n hat(a)_i d_i & = sum_(i = 1)^n frac((X_i - macron(X)) d_i, sum_(i = 1)^n (X_i - macron(X))^2) =\
     & = frac(sum_(i = 1)^n X_i d_i - macron(X) sum_(i = 1)^n d_i, sum_(i = 1)^n (X_i - macron(X))^2) =\
     & = frac(sum_(i = 1)^n tilde(a)_i X_i - sum_(i = 1)^n hat(a)_i X_i - macron(X) (sum_(i = 1)^n tilde(a)_i - sum_(i = 1)^n hat(a)_i), sum_(i = 1)^n (X_i - macron(X))^2) = 0\
-    Var [tilde(beta)_1 mid(bar.v) X_1, dots.h] & = sigma_u^2 sum_(i = 1)^n tilde(a)_i^2 = sigma_u^2 sum_(i = 1)^n hat(a)_i^2 + sigma_u^2 sum_(i = 1)^n d_i =\
-    & = Var[hat(beta)_1 mid(bar.v) X_1, dots.h] + sigma_u^2 sum_(i = 1)^n d_i > Var[hat(beta)_1 mid(bar.v) X_1, dots.h] quad upright("если") thick tilde(beta)_1 eq.not hat(beta)_1
+    Var [tilde(beta)_1 vert X_1, dots.h] & = sigma_u^2 sum_(i = 1)^n tilde(a)_i^2 = sigma_u^2 sum_(i = 1)^n hat(a)_i^2 + sigma_u^2 sum_(i = 1)^n d_i =\
+    & = Var[hat(beta)_1 vert X_1, dots.h] + sigma_u^2 sum_(i = 1)^n d_i > Var[hat(beta)_1 vert X_1, dots.h] quad upright("если") thick tilde(beta)_1 eq.not hat(beta)_1
   $
   Последнее неравенство следует из того, что если $tilde(beta)_1 eq.not hat(beta)_1$ и $tilde(a)_i = hat(a)_i + d_i$, то $exists i : d_i eq.not 0 arrow.l.r.double sum_(i = 1)^n d_i^2 > 0$.
 ]
@@ -105,8 +105,8 @@
   Если для модели
   #math.equation(block: true, numbering: "(1)", [$Vect(Y) = Vect(X) Vect(beta) + Vect(u)$]) <eq0>
   выполняются следующие условия
-  + $Ex [Vect(u) mid(bar.v) Vect(X)] = 0$;
-  + $Sigma_u := Ex[Vect(u)Vect(u)' mid(bar.v) Vect(X)] = sigma^2_u Vect(I)_n$;
+  + $Ex [Vect(u) vert Vect(X)] = 0$;
+  + $Sigma_u := Ex[Vect(u)Vect(u)' vert Vect(X)] = sigma^2_u Vect(I)_n$;
   + $rank (Vect(X)'Vect(X)) = k + 1$.
   то МНК оценка $hat(Vect(beta))$ вляется наилучшей (эффективной) линейной несмещенной оценкой (*BLUE*).
 ]
@@ -123,9 +123,9 @@
 
   Несмещенность также несложно показать:
   $
-    Ex[hat(Vect(beta)) mid(bar.v) Vect(X)] & = Ex [(Vect(X)'Vect(X))^(-1) Vect(X)' Vect(Y) mid(bar.v) Vect(X)] = \
-    & = Ex [(Vect(X)'Vect(X))^(-1) Vect(X)' (Vect(X)Vect(beta) + Vect(u)) mid(bar.v) Vect(X)] =\
-    & = Vect(beta) + (Vect(X)'Vect(X))^(-1) Vect(X)' underbrace(Ex[Vect(u) mid(bar.v) Vect(X)], =0) = Vect(beta) quad "по 1-му условию"
+    Ex[hat(Vect(beta)) vert Vect(X)] & = Ex [(Vect(X)'Vect(X))^(-1) Vect(X)' Vect(Y) vert Vect(X)] = \
+    & = Ex [(Vect(X)'Vect(X))^(-1) Vect(X)' (Vect(X)Vect(beta) + Vect(u)) vert Vect(X)] =\
+    & = Vect(beta) + (Vect(X)'Vect(X))^(-1) Vect(X)' underbrace(Ex[Vect(u) vert Vect(X)], =0) = Vect(beta) quad "по 1-му условию"
   $
 
   Перейдем к эффективности#footnote[См. Магнус, Катышев, Пересецкий "Эконометрика. Начальный курс".].
@@ -136,7 +136,7 @@
 
   Из несмещенности $tilde(Vect(beta))$
   $
-    Vect(beta) = Ex[tilde(Vect(beta)) mid(bar.v) Vect(X)] = (Vect(B) + Vect(C)) Ex[Vect(Y) mid(bar.v) Vect(X)] = (Vect(B) + Vect(C)) Vect(X) Vect(beta) = (Vect(I)_(k+1) + Vect(C)Vect(X)) Vect(beta)
+    Vect(beta) = Ex[tilde(Vect(beta)) vert Vect(X)] = (Vect(B) + Vect(C)) Ex[Vect(Y) vert Vect(X)] = (Vect(B) + Vect(C)) Vect(X) Vect(beta) = (Vect(I)_(k+1) + Vect(C)Vect(X)) Vect(beta)
   $
   следует, что $Vect(C)Vect(X) = Vect(0)$.
 
@@ -149,15 +149,15 @@
 
   Ковариационная матрица $hat(Vect(beta))$ равна
   $
-    Sigma_hat(Vect(beta)) = Ex[(hat(Vect(beta)) - Vect(beta))(hat(Vect(beta)) - Vect(beta))' mid(bar.v) Vect(X)] & = Ex[(Vect(X)'Vect(X))^(-1) Vect(X)'Vect(u)Vect(u)'Vect(X)(Vect(X)'Vect(X))^(-1) mid(bar.v) Vect(X)] =\
-    & = (Vect(X)'Vect(X))^(-1) Vect(X)' underbrace(Ex[Vect(u)Vect(u)' mid(bar.v) Vect(X)], Sigma_u = sigma^2_u Vect(I)_n) Vect(X) (Vect(X)'Vect(X))^(-1) =\
+    Sigma_hat(Vect(beta)) = Ex[(hat(Vect(beta)) - Vect(beta))(hat(Vect(beta)) - Vect(beta))' vert Vect(X)] & = Ex[(Vect(X)'Vect(X))^(-1) Vect(X)'Vect(u)Vect(u)'Vect(X)(Vect(X)'Vect(X))^(-1) vert Vect(X)] =\
+    & = (Vect(X)'Vect(X))^(-1) Vect(X)' underbrace(Ex[Vect(u)Vect(u)' vert Vect(X)], Sigma_u = sigma^2_u Vect(I)_n) Vect(X) (Vect(X)'Vect(X))^(-1) =\
     & = sigma^2_u (Vect(X)'Vect(X))^(-1) Vect(X)' Vect(I)_n Vect(X) (Vect(X)'Vect(X))^(-1) =\
     & = sigma^2_u (Vect(X)'Vect(X))^(-1)
   $
 
   Ковариационная матрица $tilde(Vect(beta))$ равна
   $
-    Sigma_tilde(Vect(beta)) = Ex[(tilde(Vect(beta)) - Vect(beta))(tilde(Vect(beta)) - Vect(beta))' mid(bar.v) Vect(X)] & = (Vect(B) - Vect(C)) underbrace(Ex[Vect(u)Vect(u)' mid(bar.v) Vect(X)], Sigma_u = sigma^2_u Vect(I)_n) (Vect(B)' - Vect(C)') =\
+    Sigma_tilde(Vect(beta)) = Ex[(tilde(Vect(beta)) - Vect(beta))(tilde(Vect(beta)) - Vect(beta))' vert Vect(X)] & = (Vect(B) - Vect(C)) underbrace(Ex[Vect(u)Vect(u)' vert Vect(X)], Sigma_u = sigma^2_u Vect(I)_n) (Vect(B)' - Vect(C)') =\
     & = sigma^2_u autolr(Vect(B)Vect(B)' + underbrace(Vect(B)Vect(C)' + Vect(C)Vect(B)', =Vect(0) arrow.l Vect(C)Vect(X) = Vect(0)) + Vect(C)Vect(C)') = \
     & = Sigma_hat(Vect(beta)) + sigma^2_u Vect(C)Vect(C)'
   $
@@ -172,7 +172,7 @@
 = Нарушение первого условия
 
 Первое условие Гаусса-маркова нарушается, если
-$ Ex [u_i mid(bar.v) X_1,dots, X_k] eq.not 0 $
+$ Ex [u_i vert X_1,dots, X_k] eq.not 0 $
 или, эквивалентно в матричной форме,
 $ Ex [Vect(u)' Vect(X)] eq.not Vect(0) $
 То есть, в этом случае нарушается условие отсутствия корреляции между случайной ошибкой и регрессорами модели.
@@ -184,7 +184,7 @@ $ Ex [Vect(u)' Vect(X)] eq.not Vect(0) $
 = Нарушение второго условия
 
 Напомним, что второе условие Гаусса-Маркова требует
-$ Var [u_i mid(bar.v) X_1, dots.h, X_k] = sigma_u^2 < oo $
+$ Var [u_i vert X_1, dots.h, X_k] = sigma_u^2 < oo $
 или в матричной форме (если объединить с третьим условием)
 $ Sigma_u = sigma_u^2 Vect(I)_(n times n) $
 
@@ -205,7 +205,7 @@ $ Sigma_u = sigma_u^2 Vect(I)_(n times n) $
 Рассмотрим парную модель
 #math.equation(block: true, numbering: "(1)", [$Y_i = beta_0 + beta_1 X_i + u_i$]) <eq1>
 Пусть
-$ Var[u_i mid(bar.v) X_i] = lambda h(X_i) $
+$ Var[u_i vert X_i] = lambda h(X_i) $
 где $lambda$ --- некоторая константа, $h(X_i)$ --- _известная_ функция.
 Рассмотрим преобразованные переменные
 $
@@ -232,12 +232,12 @@ $ hat(Vect(beta))^"WLS" = (Vect(X)' Sigma^(-1)_u Vect(X))^(-1) Vect(X)' Sigma^(-
 Главная проблема состоит в том, что точный вид функции $h(X_i)$ нам неизвестен; по этой причине полученная выше оценка называется _недоступной_.
 Для получения _доступной_ оценки нужно
 + Оцените регрессию @eq1 при помощи МНК и вычислите остатки $hat(u)_i$.
-+ Оцените _предполагаемую_ модель функции условной дисперсии $Var[u_i mid(bar.v) X_i]$: оцените регрессию $hat(u)_i^2$ на набор переменных, от которых она зависит.
-+ Используйте оцененную модель для расчета предсказанных значений функции условной дисперсии $hat(Var)[u_i mid(bar.v) X_i]$.
-+ Умножьте зависимую переменную и регрессоры (в том числе и свободный член) на величину, обратную квадратному корню из оцененной функции условной дисперсии $hat(Var)[u_i mid(bar.v) X_i]$.
++ Оцените _предполагаемую_ модель функции условной дисперсии $Var[u_i vert X_i]$: оцените регрессию $hat(u)_i^2$ на набор переменных, от которых она зависит.
++ Используйте оцененную модель для расчета предсказанных значений функции условной дисперсии $hat(Var)[u_i vert X_i]$.
++ Умножьте зависимую переменную и регрессоры (в том числе и свободный член) на величину, обратную квадратному корню из оцененной функции условной дисперсии $hat(Var)[u_i vert X_i]$.
 + Оцените коэффициенты взвешенной регрессии @eq2 при помощи МНК; полученные оценки являются ВМНК–оценками @eq1.
 
-Главная проблема ВМНК: как выбрать спецификацию $Var[u_i mid(bar.v) X_i]$?
+Главная проблема ВМНК: как выбрать спецификацию $Var[u_i vert X_i]$?
 Дело в том, что неверный выбор спецификации сохраняет и, иногда, даже усубляет неэффективность оценок.
 
 == Устойчивые к гетероскедастичности ошибки Уайта
@@ -294,7 +294,7 @@ $
 = Нарушение третьего условия
 
 Нарушение третьего условия Гаусса-Маркова означает, что
-$ exists i, j: Ex[u_i u_j mid(bar.v) X_1, dots, X_k] eq.not 0 $
+$ exists i, j: Ex[u_i u_j vert X_1, dots, X_k] eq.not 0 $
 или, в матричной форме, наличие в ковариационной матрице ошибок ненулевых элементов вне главной диагонали.
 Данное явление называется *автокорреляцией*.
 Автокорреляция не приводит к смещению или несостоятельности оценок,

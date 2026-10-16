@@ -18,7 +18,7 @@ $ vv(y) = vv(X) vv(beta) + vv(u) $
 где $vv(y)$ принимает значения $0$ или $1$, и $Ex (vv(u)) = vv(0)$.
 
 Условное математическое ожидание $i$-го наблюдения равно
-$ Ex (vv(y)_i mid(bar.v) vv(x)_i) = vv(x)^prime_i vv(beta) $
+$ Ex (vv(y)_i vert vv(x)_i) = vv(x)^prime_i vv(beta) $
 Данное математическое ожидание следует интерпретировать как вероятность $Pr (y_i = 1)$ #cite(<pierse2021limited>).
 
 В этом месте возникает первая проблема линейной модели:
@@ -255,7 +255,7 @@ $
 
 $
                         vv(y)^(*) & = vv(X) vv(beta) + vv(u) #<eq-ch5-ystar.reg> \
-  Ex (y^(*)_i mid(bar.v) vv(x)_i) & = vv(x)^prime_i vv(beta) \
+  Ex (y^(*)_i vert vv(x)_i) & = vv(x)^prime_i vv(beta) \
                             y^*_i & tilde.op N (vv(x)^prime_i vv(beta), sigma^2)
 $
 
@@ -266,7 +266,7 @@ $ vv(y) = vv(X) vv(beta) + vv(u) $
 
 В такой модели для $w>0$ имеем
 $
-  Pr (y_i <= w) & = Pr (y^*_i <= w mid(bar.v) y^*_i > 0) = (Pr (0 < y^*_i <= w)) / (Pr (y^*_i > 0)) \
+  Pr (y_i <= w) & = Pr (y^*_i <= w vert y^*_i > 0) = (Pr (0 < y^*_i <= w)) / (Pr (y^*_i > 0)) \
   Pr (0 < y^*_i <= w) & = Pr ((-vv(x)^prime_i vv(beta))/sigma < (y^*_i - vv(x)^prime_i vv(beta))/sigma <= (w - vv(x)^prime_i vv(beta))/sigma) = \
   & = Phi ((w-vv(x)^prime_i vv(beta))/sigma) - Phi ((-vv(x)^prime_i vv(beta))/sigma) \
   Pr (y^*_i > 0) & = 1 - Pr ((y^*_i - vv(x)^prime_i vv(beta))/sigma <= (-vv(x)^prime_i vv(beta))/sigma) = 1 - Phi ((-vv(x)^prime_i vv(beta))/sigma) = Phi ((vv(x)^prime_i vv(beta))/sigma)
@@ -277,7 +277,7 @@ $
   p_y (w) = (dif Pr (y_i <= w)) / (dif w) = 1/sigma frac(phi((w - vv(x)^prime_i vv(beta))/sigma), Phi ((vv(x)^prime_i vv(beta))/sigma))
 $
 $
-  Ex (y_i mid(bar.v) vv(x)_i) & = integral_0^oo w p_y (w) dif w = \
+  Ex (y_i vert vv(x)_i) & = integral_0^oo w p_y (w) dif w = \
   & = 1/(sigma Phi ((vv(x)^prime_i vv(beta))/sigma)) integral_0^oo w phi((w - vv(x)^prime_i vv(beta))/sigma) dif w
 $
 #fill-width-with-text[
@@ -292,7 +292,7 @@ $
 ]
 Откуда
 $
-  Ex (y_i mid(bar.v) vv(x)_i) = vv(x)^prime_i vv(beta) + sigma frac(phi((vv(x)^prime_i vv(beta))/sigma), Phi((vv(x)^prime_i vv(beta))/sigma)) > vv(x)^prime_i vv(beta) #<eq-ch5-EYt>
+  Ex (y_i vert vv(x)_i) = vv(x)^prime_i vv(beta) + sigma frac(phi((vv(x)^prime_i vv(beta))/sigma), Phi((vv(x)^prime_i vv(beta))/sigma)) > vv(x)^prime_i vv(beta) #<eq-ch5-EYt>
 $
 
 === Учет нулевых значений
@@ -308,14 +308,14 @@ $
 
 В этом случае имеем, что
 $
-  Pr (y_i = 0 mid(bar.v) vv(x)_i) & = Pr (u_i <= -vv(x)^prime_i vv(beta)) = Phi (-(vv(x)^prime_i vv(beta))/sigma) = 1 - Phi ((vv(x)^prime_i vv(beta))/sigma) \
-  Pr (y_i > 0 mid(bar.v) vv(x)_i) & = Phi ((vv(x)^prime_i vv(beta))/sigma) \
-  Pr (y_i <= w mid(bar.v) vv(x)_i) & = Pr ((y_i - vv(x)^prime_i vv(beta))/sigma <= (w - vv(x)^prime_i vv(beta))/sigma) = Phi((w - vv(x)^prime_i vv(beta))/sigma)
+  Pr (y_i = 0 vert vv(x)_i) & = Pr (u_i <= -vv(x)^prime_i vv(beta)) = Phi (-(vv(x)^prime_i vv(beta))/sigma) = 1 - Phi ((vv(x)^prime_i vv(beta))/sigma) \
+  Pr (y_i > 0 vert vv(x)_i) & = Phi ((vv(x)^prime_i vv(beta))/sigma) \
+  Pr (y_i <= w vert vv(x)_i) & = Pr ((y_i - vv(x)^prime_i vv(beta))/sigma <= (w - vv(x)^prime_i vv(beta))/sigma) = Phi((w - vv(x)^prime_i vv(beta))/sigma)
 $
 
 Отсюда мы можем найти математическое ожидание $y_i$:
 $
-  Ex (y_i mid(bar.v) vv(x)_i) & = 0 times Pr (y_i = 0 mid(bar.v) vv(x)_i) + integral_0^oo w phi((w - vv(x)^prime_i vv(beta))/sigma) dif w times Pr (y_i > 0 mid(bar.v) vv(x)_i) = \
+  Ex (y_i vert vv(x)_i) & = 0 times Pr (y_i = 0 vert vv(x)_i) + integral_0^oo w phi((w - vv(x)^prime_i vv(beta))/sigma) dif w times Pr (y_i > 0 vert vv(x)_i) = \
   & = integral_0^oo w phi((w - vv(x)^prime_i vv(beta))/sigma) dif w times Phi((vv(x)^prime_i vv(beta))/sigma) = \
   & = [vv(x)^prime_i vv(beta) + sigma frac(phi((vv(x)^prime_i vv(beta))/sigma), Phi((vv(x)^prime_i vv(beta))/sigma))] times Phi((vv(x)^prime_i vv(beta))/sigma) #<eq-ch5-EY>
 $
@@ -326,7 +326,7 @@ $
 
 На следующем рисунке это наглядно показано.
 Черные и серые закрашенные кружки обозначают наблюдения $(x_i,y^(*)_i)$, незакрашенные кружки показывают цензурированные наблюдения $(x_i,0)$ для $y^(*)_i< 0$.
-Черная штриховая линия показывает "истинную" линию регрессии @eq-ch5-ystar.reg, красная линия — подобранную линию регрессии @eq-ch5-y.reg, а синяя — график $Ex (y_i mid(bar.v) vv(x)_i)$, построенный по формуле @eq-ch5-EY.
+Черная штриховая линия показывает "истинную" линию регрессии @eq-ch5-ystar.reg, красная линия — подобранную линию регрессии @eq-ch5-y.reg, а синяя — график $Ex (y_i vert vv(x)_i)$, построенный по формуле @eq-ch5-EY.
 Видно, что красная линия смещена относительно истинной линии.
 Синяя линия, в свою очередь, по мере удаления от области с цензурированными значениями стремится к истинной линии.
 #align(center)[#image("fig/tobit.pdf")]
@@ -339,7 +339,7 @@ $
 
 Предельный эффект объясняющих факторов будет равен
 $
-  frac(partial Ex (y_i mid(bar.v) vv(x)_i), partial vv(x)_i) = Phi (frac(vv(x)^prime_i vv(beta), sigma)) vv(beta)
+  frac(partial Ex (y_i vert vv(x)_i), partial vv(x)_i) = Phi (frac(vv(x)^prime_i vv(beta), sigma)) vv(beta)
 $
 
 = Усеченные модели
@@ -350,16 +350,16 @@ $ vv(y) = vv(X) vv(beta) + vv(u), vv(u) tilde.op N (vv(0),sigma^2 vv(I)) $
 и пусть нам доступны только те наблюдения, для которых $y_i> a$.
 Тогда из @eq-ch5-EYt следует
 $
-  Ex (y_i mid(bar.v) y_i > a) & = vv(x)^prime_i vv(beta) + sigma frac(
+  Ex (y_i vert y_i > a) & = vv(x)^prime_i vv(beta) + sigma frac(
                                   phi (frac(a - vv(x)^prime_i vv(beta), sigma)),
                                   Phi (frac(a - vv(x)^prime_i vv(beta), sigma))
                                 ) = \
                               & = vv(x)^prime_i vv(beta) + sigma lambda (frac(a - vv(x)^prime_i vv(beta), sigma))
 $
-то есть если для данной урезанной выборки оценить модель при помощи МНК, то оценки будут смещены, поскольку мы получим, что $Ex (u_i mid(bar.v) vv(x)_i) = sigma lambda (...)$.
+то есть если для данной урезанной выборки оценить модель при помощи МНК, то оценки будут смещены, поскольку мы получим, что $Ex (u_i vert vv(x)_i) = sigma lambda (...)$.
 Поэтому состоятельные оценки можно получить при помощи метода максимального правдоподобия
 $
-  Pr (y_i mid(bar.v) y_i> a) & = 1/sigma frac(phi (frac(y_i - vv(x)^prime_i vv(beta), sigma)), 1 - Phi (frac(a - vv(x)^prime_i vv(beta), sigma))) \
+  Pr (y_i vert y_i> a) & = 1/sigma frac(phi (frac(y_i - vv(x)^prime_i vv(beta), sigma)), 1 - Phi (frac(a - vv(x)^prime_i vv(beta), sigma))) \
   L & = frac(1, sigma^N)[ 1 - Phi (frac(a - vv(x)^prime_i vv(beta), sigma)) ]^N product_i frac(1, sqrt(2 pi sigma^2))exp { - frac((y_i - vv(x)^prime_i vv(beta))^2, 2 sigma^2) }
 $
 

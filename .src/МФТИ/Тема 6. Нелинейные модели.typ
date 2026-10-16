@@ -15,7 +15,7 @@
 
 Предположим, что кривая имеет больший наклон при небольших значениях доходов, и меньший — при более высоких; например, квадратичная зависимость:
 #eqnum[$italic("TestScore")_(i)= beta_(0)+ beta_1 italic("Income")_(i)+ beta_2 italic("Income")^2_(i)+ u_i$] <eq-10.1>
-Здесь $Ex (italic("TestScore") mid(bar.v) italic("Income"))= beta_(0)+ beta_1 italic("Income")_(i)+ beta_2 italic("Income")^2_i$ --- квадратичная функция, а @eq-10.1 --- обычная множественная регрессия!
+Здесь $Ex (italic("TestScore") vert italic("Income"))= beta_(0)+ beta_1 italic("Income")_(i)+ beta_2 italic("Income")^2_i$ --- квадратичная функция, а @eq-10.1 --- обычная множественная регрессия!
 
 Для тестирования нелинейности, то есть для тестирования следующего набора гипотез
 $
@@ -186,7 +186,7 @@ $ ln (1 + x) approx x => ln ((x + Delta x)/ x) approx (Delta x) / x $
     stroke: none,
     align: (left, center, center),
     table.hline(),
-    table.header([Модель регрессии\ по $X$], [Теоретическая\ модель], [Эластичность\ $Ex[Y mid(bar.v) X]$]),
+    table.header([Модель регрессии\ по $X$], [Теоретическая\ модель], [Эластичность\ $Ex[Y vert X]$]),
     table.hline(),
     [Линейная], [$Y = beta_(0)+ beta_1 X + u$], [$frac(beta_1 Delta X, beta_(0)+ beta_1 X)$],
     [Линейно-логарифмическая], [$Y = beta_(0)+ beta_1 ln X+ u$], [$frac(beta_1, beta_(0)+ beta_1 ln X)$],
@@ -227,7 +227,7 @@ $ Y_(i)= beta_(0)+ beta_1 D_(1 i)+ beta_2 D_(2 i)+ u_i $
 Модель регрессии @eq-11.1 — *модель регрессии с бинарной компонентой взаимодействия*.
 
 $
-  Ex[Y_i mid(bar.v) D_(1 i),D_(2 i)]= cases(
+  Ex[Y_i vert D_(1 i),D_(2 i)]= cases(
     beta_(0)\, & #text[при] D_(1 i)= 0\,D_(2 i)= 0,
     beta_(0)+ beta_(1)\, & #text[при] D_(1 i)= 1\,D_(2 i)= 0,
     beta_(0)+ beta_(2)\, & #text[при] D_(1 i)= 0\,D_(2 i)= 1,

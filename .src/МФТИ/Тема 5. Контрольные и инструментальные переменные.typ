@@ -28,7 +28,7 @@
 Поэтому при использовании контрольных переменных первую предпосылку МНК меняют на следующее утверждение:
 #quote(block: true)[
   $W_i$ --- _эффективная контрольная переменная_, если выполняется условие независимости условного среднего:
-  $ Ex[u_i mid(bar.v) X_i, W_i] = Ex[u_i mid(bar.v) W_i] $
+  $ Ex[u_i vert X_i, W_i] = Ex[u_i vert W_i] $
 ]
 
 == Свойства оценок коэффициентов
@@ -42,21 +42,21 @@ $ Y_i = beta_0 + beta_1 X_i + beta_2 W_i + u_i $
   #proof[
     Ожидаемое изменение $Y$ --- результат изменения $X$ при постоянстве $W$, т.е.
     $
-      Ex & [Y mid(bar.v) X = x + Delta x, W = w] - Ex[Y mid(bar.v) X = x, W = w] = \
-         & = {beta_0 + beta_1 (x + Delta x) + beta_2 w + Ex[u mid(bar.v) X = x + Delta x, W = w]} - \
-         & #h(3em) #hide[$x$] - {beta_0 + beta_1 x + beta_2 w + Ex[u mid(bar.v) X = x, W = w]} = \
-         & = beta_1 Delta x + { Ex[u mid(bar.v) X = x + Delta x, W = w] - Ex[u mid(bar.v) X = x, W = w] } = beta_1 Delta x
+      Ex & [Y vert X = x + Delta x, W = w] - Ex[Y vert X = x, W = w] = \
+         & = {beta_0 + beta_1 (x + Delta x) + beta_2 w + Ex[u vert X = x + Delta x, W = w]} - \
+         & #h(3em) #hide[$x$] - {beta_0 + beta_1 x + beta_2 w + Ex[u vert X = x, W = w]} = \
+         & = beta_1 Delta x + { Ex[u vert X = x + Delta x, W = w] - Ex[u vert X = x, W = w] } = beta_1 Delta x
     $
   ]
 + $hat(beta)_1$ не смещена,
 + $hat(beta)_2$, в общем случае, смещена.
   #proof[
-    Пусть (для удобства) $Ex[u_i mid(bar.v) X_i, W_i] = Ex[u_i mid(bar.v) W_i] = gamma_0 + gamma_2 W_i$.
+    Пусть (для удобства) $Ex[u_i vert X_i, W_i] = Ex[u_i vert W_i] = gamma_0 + gamma_2 W_i$.
 
-    Пусть $nu_i = u_i - Ex[u_i mid(bar.v) X_i, W_i]$.
-    Тогда $Ex[nu_i mid(bar.v) X_i, W_i] = 0$.
+    Пусть $nu_i = u_i - Ex[u_i vert X_i, W_i]$.
+    Тогда $Ex[nu_i vert X_i, W_i] = 0$.
 
-    $ u_i = Ex[u_i mid(bar.v) X_i, W_i] + nu_i = gamma_0 + gamma_2 W_i + nu_i $
+    $ u_i = Ex[u_i vert X_i, W_i] + nu_i = gamma_0 + gamma_2 W_i + nu_i $
     Подставляя это выражение в исходную модель получаем
     $
       Y_i & = beta_0 + beta_1 X_i + beta_2 W_i + gamma_0 + gamma_2 W_i + nu_i = \
@@ -64,7 +64,7 @@ $ Y_i = beta_0 + beta_1 X_i + beta_2 W_i + u_i $
           & = delta_0 + beta_1 X_i + delta_2 W_i + nu_i
     $
 
-    Так как $Ex[nu_i mid(bar.v) X_i, W_i] = 0$, то уравнение полученное уравнение удовлетворяет первому условию МНК, следовательно МНК оценки $delta_0$, $beta_1$ и $delta_2$ не смещены.
+    Так как $Ex[nu_i vert X_i, W_i] = 0$, то уравнение полученное уравнение удовлетворяет первому условию МНК, следовательно МНК оценки $delta_0$, $beta_1$ и $delta_2$ не смещены.
 
     Поскольку регрессоры в исходной и преобразованной модели одинаковы, то _de facto_ оценивается именно последняя модель, то есть
     $
@@ -162,14 +162,14 @@ $
                 tilde(y)_i & = y_i + omega_i \
                Ex[omega_i] & = 0 \
             (omega_i ,x_i) & tilde #text[i.i.d.] \
-  Ex[omega mid(bar.v) x_i] & = 0
+  Ex[omega vert x_i] & = 0
 $
 
 Тогда
 $ tilde(y)_i = beta_0 + beta_1 x_i + underbrace(u_i + omega_i, nu_i) $
 
 Отсюда имеем
-$ Ex[omega_i mid(bar.v) x_i] = 0 => Ex[nu_i mid(bar.v) x_i] = Ex[u_i mid(bar.v) x_i] + Ex[omega_i mid(bar.v) x_i] = 0 $
+$ Ex[omega_i vert x_i] = 0 => Ex[nu_i vert x_i] = Ex[u_i vert x_i] + Ex[omega_i vert x_i] = 0 $
 То есть $hat(beta)_1$ — несмещенная оценка. Но
 $ Var[nu_i] = Var[u_i] + Var[omega_i] > Var[u_i] $
 То есть $hat(beta)_1$ — не эффективная оценка.
@@ -360,7 +360,7 @@ $
 
 === Предположения обобщенной регрессии с инструментальными переменными
 
-+ $Ex[u_i mid(bar.v) w_(1 i),...,w_(m_w i)] = 0$;
++ $Ex[u_i vert w_(1 i),...,w_(m_w i)] = 0$;
 + $(x_(1 i),...,x_(m_x i),w_(1 i),...,w_(m_w i),z_(1 i),...,z_(m_z i),y_i) tilde #text[i.i.d.]$;
 + Большие выбросы маловероятны: $x_(i j),y_i,z_(i j),w_(i j)$ имеют ненулевые конечные четвертые моменты;
 + *Выполняются условия допустимости инструментов*.

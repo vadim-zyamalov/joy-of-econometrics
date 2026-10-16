@@ -73,7 +73,7 @@ $ Y_i = hat(beta)_0 + hat(beta)_1 X_i + hat(u)_i $
 Полученные выше оценки являются <<хорошими>> при выполнении следующих предпосылок.
 
 0. Мы *действительно* имеем дело с линейной моделью!
-1. $Ex (u_i mid(bar.v) X_i) = 0$.
+1. $Ex (u_i vert X_i) = 0$.
   Данная предпосылка говорит о том, что наблюдения могут отклоняться от линии регрессии в моменте, но в среднем эти отклонения должны быть нулевыми.
   #align(center)[#image(height: 15%, "fig/OLS_homo_errors.pdf")]
 2. $(Y_i, X_i) tilde.op "iid"$.
@@ -178,20 +178,20 @@ $ italic("SER") = s_(hat(u)_i) = sqrt(frac(1, n - 2) sum_(i = 1)^n hat(u)_i^2) $
 Для проведения теста нам нужно получить оценки стандартных ошибок оценок коэффициентов.
 Их можно получить при помощи следующих формул:
 $
-  hat(italic("Var"))(hat(beta)_1 mid(bar.v) X_1\,dots.h) & = underbrace(frac(s_u^2, sum_(i = 1)^n (X_i - macron(X))^2), sigma_u^2 = upright("const")) = underbrace(1 / n times frac(frac(1, n - 2) sum_(i = 1)^n (X_i - macron(X))^2 hat(u)_i^2, [1 / n sum_(i = 1)^n (X_i - macron(X))^2]^2), sigma_u^2 eq.not upright("const"))
+  hat(italic("Var"))(hat(beta)_1 vert X_1\,dots.h) & = underbrace(frac(s_u^2, sum_(i = 1)^n (X_i - macron(X))^2), sigma_u^2 = upright("const")) = underbrace(1 / n times frac(frac(1, n - 2) sum_(i = 1)^n (X_i - macron(X))^2 hat(u)_i^2, [1 / n sum_(i = 1)^n (X_i - macron(X))^2]^2), sigma_u^2 eq.not upright("const"))
 $
 #proof[$
     hat(beta)_1 - beta_1 & = sum_i hat(a)_i u_i\
-    Var [hat(beta)_1 mid(bar.v) X_1, dots.h] & = Ex [(hat(beta)_1 - beta_1)^2 mid(bar.v) X_1, dots.h] = E [sum_i hat(a)_i u_i] =\
+    Var [hat(beta)_1 vert X_1, dots.h] & = Ex [(hat(beta)_1 - beta_1)^2 vert X_1, dots.h] = E [sum_i hat(a)_i u_i] =\
     & = sigma_u^2 sum_i hat(a)_i^2 = sigma_u^2 sum frac((X_i - macron(X))^2, sum (X_i - macron(X))^2) = frac(sigma_u^2, sum (X_i - macron(X))^2)
   $ #qedhere]
 
 $
-  hat(italic("Var"))(hat(beta)_0 mid(bar.v) X_1, dots.h) & = underbrace(frac((1 / n sum_(i = 1)^n X_i^2) s_u^2, sum_(i = 1)^n (X_i - macron(X))^2), sigma_u^2 = upright("const")) = underbrace(1 / n times frac(frac(1, n - 2) sum_(i = 1)^n hat(H)_i^2 hat(u)_i^2, [1 / n sum_(i = 1)^n hat(H)_i^2]^2), sigma_u^2 eq.not upright("const"))\
+  hat(italic("Var"))(hat(beta)_0 vert X_1, dots.h) & = underbrace(frac((1 / n sum_(i = 1)^n X_i^2) s_u^2, sum_(i = 1)^n (X_i - macron(X))^2), sigma_u^2 = upright("const")) = underbrace(1 / n times frac(frac(1, n - 2) sum_(i = 1)^n hat(H)_i^2 hat(u)_i^2, [1 / n sum_(i = 1)^n hat(H)_i^2]^2), sigma_u^2 eq.not upright("const"))\
   hat(H)_i & = 1 - frac(macron(X), 1 / n sum_(i = 1)^n X_i^2) X_i
 $
 #proof[$
-    Var [hat(beta)_0 mid(bar.v) X_1 \, dots.h] & = Var [macron(Y) - hat(beta)_1 macron(X) mid(bar.v) X_1, dots.h] =\
+    Var [hat(beta)_0 vert X_1 \, dots.h] & = Var [macron(Y) - hat(beta)_1 macron(X) vert X_1, dots.h] =\
     & = Var_X macron(Y) + macron(X) Var_X hat(beta)_1 + 2 Cov_X (macron(Y) \, macron(beta)_1) = ast.op \
     Var_X macron(Y) & = Var_X [1 / n sum (beta_0 + beta_1 X_i + u_i)] = 1 / n^2 Var_X (sum u_i) = 1 / n sigma_u^2\
     Cov_X (macron(Y) \, macron(beta)_1) & = 1 / n Cov_X [sum Y_i \, sum hat(a)_i Y_i] =\

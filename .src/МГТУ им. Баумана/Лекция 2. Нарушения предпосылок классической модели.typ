@@ -11,7 +11,7 @@
 
 = Гетероскедастичность
 
-Случайная ошибка $u_i$ называется *гомоскедастичной*, если условная дисперсия $u_i$ относительно $X_i$ постоянна для $i = 1,...,n$ (то есть $Var [ u_i mid(bar.v) X_i = x ] = "const", i = 1,...,n$).
+Случайная ошибка $u_i$ называется *гомоскедастичной*, если условная дисперсия $u_i$ относительно $X_i$ постоянна для $i = 1,...,n$ (то есть $Var [ u_i vert X_i = x ] = "const", i = 1,...,n$).
 В противном случае ошибка называется *гетероскедастичной*.
 #align(center)[#image("fig/OLS_hetero_errors.pdf", width: 8cm)]
 
@@ -55,9 +55,9 @@ $ Vect(L) Vect(y) = Vect(L) Vect(X) Vect(beta) + Vect(L) Vect(u) $
 Нетрудно догадаться, что в общем случае мы ее не знаем.
 В этом случае прибегают в доступному (feasible) ВМНК:
 + Оцените интересующую вас при помощи МНК и получите остатки $hat(u)_i, i = 1,...,N$.
-+ Оцените предполагаемую модель функции условной дисперсии $Var [ u_i mid(bar.v) X_i ]$: оцените регрессию $hat(u)^2_i$ на набор переменных, от которых, по вашему мнению, она зависит.
-+ Используйте оцененную вспомогательную для расчета предсказанных значений функции условной дисперсии $hat(Var) [ u_i mid(bar.v) X_i ]$.
-+ Умножьте зависимую переменную и регрессоры (в том числе и свободный член) на величину, обратную квадратному корню из оцененной функции условной дисперсии $hat(Var) [ u_i mid(bar.v) X_i ]$.
++ Оцените предполагаемую модель функции условной дисперсии $Var [ u_i vert X_i ]$: оцените регрессию $hat(u)^2_i$ на набор переменных, от которых, по вашему мнению, она зависит.
++ Используйте оцененную вспомогательную для расчета предсказанных значений функции условной дисперсии $hat(Var) [ u_i vert X_i ]$.
++ Умножьте зависимую переменную и регрессоры (в том числе и свободный член) на величину, обратную квадратному корню из оцененной функции условной дисперсии $hat(Var) [ u_i vert X_i ]$.
 + Оцените коэффициенты полученной взвешенной регрессии при помощи МНК; оценки являются ВМНК–оценками.
 
 == Робастные стандартные ошибки
@@ -71,14 +71,14 @@ $ Vect(L) Vect(y) = Vect(L) Vect(X) Vect(beta) + Vect(L) Vect(u) $
 Напомним, что при условии гомоскедастичности ковариационная матрица остатков регрессии равна #cite(<magnus2021ekonometrika>) #cite(<pierse2021ols>)
 $
   Ex (hat(Vect(u)) hat(Vect(u))^(prime)abs(thin Vect(X)) & = Ex [ (Vect(X)^(prime)Vect(X))^(- 1)Vect(X)^(prime)Vect(u) Vect(u)^(prime)Vect(X) (Vect(X)^(prime)Vect(X))^(-1)) thin Vect(X) ] = \
-  & = (Vect(X)^(prime)Vect(X))^(-1)Vect(X)^(prime)Ex (Vect(u) Vect(u)^(prime)bar.v thin Vect(X)) Vect(X) (Vect(X)^(prime)Vect(X))^(-1) = \
+  & = (Vect(X)^(prime)Vect(X))^(-1)Vect(X)^(prime)Ex (Vect(u) Vect(u)^(prime) vert thin Vect(X)) Vect(X) (Vect(X)^(prime)Vect(X))^(-1) = \
   & = sigma^2_u (Vect(X)^(prime)Vect(X))^(- 1)Vect(X)^(prime)Vect(I)_N Vect(X) (Vect(X)^(prime)Vect(X))^(-1) = \
   & = sigma^2_u (Vect(X)^(prime)Vect(X))^(- 1)
 $
 
 При нарушении условия гомоскедастичности упрощения, подобные таковым в формуле выше, уже невозможны, и ковариационная матрица примет вид
 $
-  Ex (hat(Vect(u)) hat(Vect(u))^(prime)bar.v thin Vect(X)) = (Vect(X)^(prime)Vect(X))^(- 1)Vect(X)^(prime)Vect(Sigma)_(Vect(u))Vect(X) (Vect(X)^(prime)Vect(X))^(- 1)
+  Ex (hat(Vect(u)) hat(Vect(u))^(prime) vert thin Vect(X)) = (Vect(X)^(prime)Vect(X))^(- 1)Vect(X)^(prime)Vect(Sigma)_(Vect(u))Vect(X) (Vect(X)^(prime)Vect(X))^(- 1)
 $
 
 Уайт предложил следующую оценку для $Vect(Sigma)_(Vect(u))$
@@ -112,11 +112,11 @@ $
 + Отбрасываем $r$ центральных наблюдений.
 + Оцениваем выбранную модель отдельно на первом и последнем интервале.
 + Вычисляем статистику $F^"act" = frac(italic("SSR")_2, italic("SSR")_1)$.
-+ Отвергаем $H_(0): Var[ u_i mid(bar.v) X_i ] = "const", i = 1,...,n$ на уровне значимости $alpha$, если $F^"act" > F_(1 - alpha)(frac(n - r, 2) - 2; frac(n - r, 2) - 2)$.
++ Отвергаем $H_(0): Var[ u_i vert X_i ] = "const", i = 1,...,n$ на уровне значимости $alpha$, если $F^"act" > F_(1 - alpha)(frac(n - r, 2) - 2; frac(n - r, 2) - 2)$.
 
 === Тест Глейзера
 
-$ Var [ u_i mid(bar.v) X_i ] = theta_0 + theta_1 X^(gamma)_i $
+$ Var [ u_i vert X_i ] = theta_0 + theta_1 X^(gamma)_i $
 + Оцениваем регрессию при помощи МНК и вычисляем остатки $hat(u)_i, i = 1,...,n$.
 + Оцениваем регрессию $abs(hat(u)_i)$ на константу и $X^(gamma)_i$, специфицировав значение $gamma$.
 + Отвергаем $H_(0): theta_1 = 0$ в пользу $H_(a): theta_(1)!= 0$ на 5% уровне значимости, если $abs(t^(a c t)) > 1.96$.
@@ -523,8 +523,8 @@ $
 = Вывод формулы для VIF
 
 На прошлой лекции мы увидели, что при выполнении условий теоремы Гаусса-Маркова
-$ Var (hat(Vect(beta)) bar.v thin Vect(X)) = sigma^2_u (Vect(X)^(prime)Vect(X))^(- 1) $
-откуда $Var (hat(Vect(beta))_k bar.v thin Vect(X)) = sigma^2_(u)[ (Vect(X)'Vect(X))^(- 1) ]_(k k)$.
+$ Var (hat(Vect(beta)) vert thin Vect(X)) = sigma^2_u (Vect(X)^(prime)Vect(X))^(- 1) $
+откуда $Var (hat(Vect(beta))_k vert thin Vect(X)) = sigma^2_(u)[ (Vect(X)'Vect(X))^(- 1) ]_(k k)$.
 
 Перестановкой столбцов матрицы $Vect(X)$ поставим $k$-й регрессор на первое место.
 Предположим также, что он центрирован.
@@ -548,15 +548,15 @@ $
 $
 
 То есть
-$ Var (hat(Vect(beta))_1 bar.v thin Vect(X)) = sigma^2_u (Vect(X)^(prime)_1 Vect(X)_1)^(- 1)frac(1, 1 - R^2_1) $
+$ Var (hat(Vect(beta))_1 vert thin Vect(X)) = sigma^2_u (Vect(X)^(prime)_1 Vect(X)_1)^(- 1)frac(1, 1 - R^2_1) $
 При этом, если $Vect(X)_1$ ортогонален $Vect(X)_(- 1)$, то есть
 $Vect(X)_(1)'Vect(X)_(- 1 = 0$, то
-$ Var (hat(Vect(beta))_1 bar.v thin Vect(X)) = sigma^2_u (Vect(X)^(prime)_1 Vect(X)_1)^(- 1) $
+$ Var (hat(Vect(beta))_1 vert thin Vect(X)) = sigma^2_u (Vect(X)^(prime)_1 Vect(X)_1)^(- 1) $
 
 То есть VIF равен отношению дисперсии оценки коэффициента при интересующей нас переменной к гипотетической дисперсии, если бы переменная была
 бы ортогональной другим регрессорам.
 
 Для практических расчетов удобно использовать эквивалентную формулу
 $
-  italic("VIF")_k = frac(Var (hat(Vect(beta))_k bar.v Vect(X)), sigma^2_u (Vect(X)^(prime)_k Vect(X)_k)^(-1)) = frac(sigma^2_(u)[ (Vect(X)^(prime)Vect(X))^(- 1) ]_(k k), sigma^2_u (Vect(X)^(prime)_k Vect(X)_k)^(- 1)) = frac([ (Vect(X)^(prime)Vect(X))^(- 1) ]_(k k), (Vect(X)^(prime)_k Vect(X)_k)^(- 1))
+  italic("VIF")_k = frac(Var (hat(Vect(beta))_k vert Vect(X)), sigma^2_u (Vect(X)^(prime)_k Vect(X)_k)^(-1)) = frac(sigma^2_(u)[ (Vect(X)^(prime)Vect(X))^(- 1) ]_(k k), sigma^2_u (Vect(X)^(prime)_k Vect(X)_k)^(- 1)) = frac([ (Vect(X)^(prime)Vect(X))^(- 1) ]_(k k), (Vect(X)^(prime)_k Vect(X)_k)^(- 1))
 $
