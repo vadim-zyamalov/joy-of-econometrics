@@ -1,0 +1,1269 @@
+#LyX 2.5 created this file. For more info see https://www.lyx.org/
+\lyxformat 643
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass extarticle
+\begin_preamble
+\usepackage{mathabx}
+\usepackage{unicode-math}
+\allowdisplaybreaks
+\setdisplayskipstretch{}
+\raggedbottom
+\end_preamble
+\use_default_options true
+\begin_modules
+enumitem
+asbuk
+\end_modules
+\maintain_unincluded_children no
+\language russian
+\language_package babel
+\inputencoding utf8
+\fontencoding auto
+\font_roman "default" "PT Astra Serif"
+\font_sans "default" "PT Astra Sans"
+\font_typewriter "default" "Cascadia Code"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype true
+\use_dash_ligatures false
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command biber
+\index_command default
+\float_placement class
+\float_alignment class
+\paperfontsize 12
+\spacing onehalf
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize a4
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine biblatex
+\cite_engine_type authoryear
+\biblio_style plain
+\biblatex_bibstyle gost-authoryear-min
+\biblatex_citestyle gost-authoryear
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification default
+\crossref_package refstyle
+\use_formatted_ref 0
+\use_minted 1
+\use_lineno 0
+\backgroundcolor none
+\fontcolor none
+\notefontcolor lightgray
+\boxbgcolor red
+\table_border_color default
+\table_odd_row_color default
+\table_even_row_color default
+\table_alt_row_colors_start 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 3cm
+\topmargin 2cm
+\rightmargin 1.5cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style russian
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tablestyle default
+\bullet 0 0 0 -1
+\bullet 1 0 8 -1
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content true
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\docbook_mathml_version 0
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "~/AppData/Roaming/LyX2.5/templates/ru/Articles/trinkets.lyx"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Задача 6.12
+\end_layout
+
+\begin_layout Standard
+Рассмотрим процесс MA(1)
+\begin_inset Formula 
+\[
+y_{t}=-1+\varepsilon_{t}-\varepsilon_{t-1}
+\]
+
+\end_inset
+
+Найдем первые пять автокорреляций процесса
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Считаем,
+ что мы уже центрировали процесс и избавились от свободного члена.
+\end_layout
+
+\end_inset
+
+.
+ Дисперсия процесса,
+ очевидно,
+ равна 
+\begin_inset Formula $\gamma_{0}=2\sigma^{2}_{\varepsilon}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\gamma_{1}=\E\left[\left(\varepsilon_{t}-\varepsilon_{t-1}\right)\left(\varepsilon_{t-1}-\varepsilon_{t-2}\right)\right]=-\E\varepsilon^{2}_{t-1}=-\sigma^{2}_{\varepsilon}$
+\end_inset
+
+.
+ То есть 
+\begin_inset Formula $\rho_{1}=-\dfrac{1}{2}.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\gamma_{2}=\E\left[\left(\varepsilon_{t}-\varepsilon_{t-1}\right)\left(\varepsilon_{t-2}-\varepsilon_{t-3}\right)\right]=0$
+\end_inset
+
+,
+ то есть 
+\begin_inset Formula $\rho_{2}=0$
+\end_inset
+
+.
+ Аналогично для бо́льших горизонтов.
+\end_layout
+
+\begin_layout Standard
+Перейдем к частным автокорреляциям.
+\begin_inset Formula 
+\begin{align*}
+\varphi_{11} & =\rho_{1}=-\dfrac{1}{2},\\
+\varphi_{22} & =\frac{\begin{vmatrix}1 & -\frac{1}{2}\\
+-\frac{1}{2} & 0
+\end{vmatrix}}{\begin{vmatrix}1 & -\frac{1}{2}\\
+-\frac{1}{2} & 1
+\end{vmatrix}}=\frac{-\left(-\frac{1}{2}\right)^{2}}{1-\left(-\frac{1}{2}\right)^{2}}=\frac{-\frac{1}{4}}{\frac{3}{4}}=-\frac{1}{3},\\
+\varphi_{33} & =\frac{\begin{vmatrix}1 & -\frac{1}{2} & -\frac{1}{2}\\
+-\frac{1}{2} & 1 & 0\\
+0 & -\frac{1}{2} & 0
+\end{vmatrix}}{\begin{vmatrix}1 & -\frac{1}{2} & 0\\
+-\frac{1}{2} & 1 & -\frac{1}{2}\\
+0 & -\frac{1}{2} & 1
+\end{vmatrix}}=\frac{(-1)^{4}\left(-\frac{1}{2}\right)\left(-\frac{1}{2}\right)^{2}}{\left(-1\right)^{2}\frac{3}{4}+\left(-1\right)^{3}\left(-\frac{1}{2}\right)\left(-\frac{1}{2}\right)}=\frac{-\frac{1}{8}}{\frac{1}{2}}=-\frac{1}{4},\\
+\varphi_{44} & =\frac{\begin{vmatrix}1 & -\frac{1}{2} & 0 & -\frac{1}{2}\\
+-\frac{1}{2} & 1 & -\frac{1}{2} & 0\\
+0 & -\frac{1}{2} & 1 & 0\\
+0 & 0 & -\frac{1}{2} & 0
+\end{vmatrix}}{\begin{vmatrix}1 & -\frac{1}{2} & 0 & 0\\
+-\frac{1}{2} & 1 & -\frac{1}{2} & 0\\
+0 & -\frac{1}{2} & 1 & -\frac{1}{2}\\
+0 & 0 & -\frac{1}{2} & 1
+\end{vmatrix}}=\frac{(-1)^{5}\left(-\frac{1}{2}\right)\left(-\frac{1}{2}\right)^{3}}{\left(-1\right)^{2}\begin{vmatrix}1 & -\frac{1}{2} & 0\\
+-\frac{1}{2} & 1 & -\frac{1}{2}\\
+0 & -\frac{1}{2} & 1
+\end{vmatrix}+\left(-1\right)^{3}\left(-\frac{1}{2}\right)\begin{vmatrix}-\frac{1}{2} & -\frac{1}{2} & 0\\
+0 & 1 & -\frac{1}{2}\\
+0 & -\frac{1}{2} & 1
+\end{vmatrix}}=\\
+ & =\frac{-\left(-\frac{1}{2}\right)^{4}}{\dfrac{1}{2}-\left(-\frac{1}{2}\right)^{2}\begin{vmatrix}1 & -\frac{1}{2}\\
+-\frac{1}{2} & 1
+\end{vmatrix}}=\frac{-\left(-\frac{1}{2}\right)^{4}}{\dfrac{1}{2}-\dfrac{1}{4}\times\dfrac{3}{4}}=\frac{-\dfrac{1}{16}}{\dfrac{5}{16}}=-\frac{1}{5},\\
+\varphi_{55} & =\frac{\begin{vmatrix}1 & -\frac{1}{2} & 0 & 0 & -\frac{1}{2}\\
+-\frac{1}{2} & 1 & -\frac{1}{2} & 0 & 0\\
+0 & -\frac{1}{2} & 1 & -\frac{1}{2} & 0\\
+0 & 0 & -\frac{1}{2} & 1 & 0\\
+0 & 0 & 0 & -\frac{1}{2} & 0
+\end{vmatrix}}{\begin{vmatrix}1 & -\frac{1}{2} & 0 & 0 & 0\\
+-\frac{1}{2} & 1 & -\frac{1}{2} & 0 & 0\\
+0 & -\frac{1}{2} & 1 & -\frac{1}{2} & 0\\
+0 & 0 & -\frac{1}{2} & 1 & -\frac{1}{2}\\
+0 & 0 & 0 & -\frac{1}{2} & 1
+\end{vmatrix}}=\\
+ & =\frac{(-1)^{6}\left(-\frac{1}{2}\right)\left(-\frac{1}{2}\right)^{4}}{\left(-1\right)^{2}\begin{vmatrix}1 & -\frac{1}{2} & 0 & 0\\
+-\frac{1}{2} & 1 & -\frac{1}{2} & 0\\
+0 & -\frac{1}{2} & 1 & -\frac{1}{2}\\
+0 & 0 & -\frac{1}{2} & 1
+\end{vmatrix}+\left(-1\right)^{3}\left(-\frac{1}{2}\right)\begin{vmatrix}-\frac{1}{2} & -\frac{1}{2} & 0 & 0\\
+0 & 1 & -\frac{1}{2} & 0\\
+0 & -\frac{1}{2} & 1 & -\frac{1}{2}\\
+0 & 0 & -\frac{1}{2} & 1
+\end{vmatrix}}=\\
+ & =\frac{\left(-\frac{1}{2}\right)^{5}}{\dfrac{5}{16}-\dfrac{1}{4}\begin{vmatrix}1 & -\frac{1}{2} & 0\\
+-\frac{1}{2} & 1 & -\frac{1}{2}\\
+0 & -\frac{1}{2} & 1
+\end{vmatrix}}=\frac{-\dfrac{1}{32}}{\dfrac{5}{16}-\dfrac{1}{4}\times\dfrac{1}{2}}=\frac{-\dfrac{1}{32}}{\dfrac{3}{16}}=-\frac{1}{6}.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Вообще,
+ легко увидеть,
+ что в числителе выражения для 
+\begin_inset Formula $\varphi_{ss}$
+\end_inset
+
+ стоит 
+\begin_inset Formula $-\left(\frac{1}{2}\right)^{s}$
+\end_inset
+
+,
+ а в знаменателе 
+\begin_inset Formula 
+\[
+D_{s}=D_{s-1}-\frac{1}{4}D_{s-2}.
+\]
+
+\end_inset
+
+Нетривиальное решение данного разностного уравнения имеет вид
+\begin_inset Formula 
+\[
+D_{s}=C_{1}\left(\frac{1}{2}\right)^{s}+C_{2}s\left(\frac{1}{2}\right)^{s},
+\]
+
+\end_inset
+
+константы которого находятся подстановкой вручную рассчитанных значений.
+ Итого имеем
+\begin_inset Formula 
+\[
+D_{s}=\left(1+s\right)\left(\frac{1}{2}\right)^{s},
+\]
+
+\end_inset
+
+то есть для нашей модели
+\begin_inset Formula 
+\[
+\varphi_{ss}=-\frac{1}{1+s}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Задача 6.13
+\end_layout
+
+\begin_layout Standard
+Рассмотрим процесс MA(4)
+\begin_inset Formula 
+\[
+y_{t}=-1+\varepsilon_{t}+\varepsilon_{t-4}
+\]
+
+\end_inset
+
+Найдем первые пять автокорреляций процесса
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Считаем,
+ что мы уже центрировали процесс и избавились от свободного члена.
+\end_layout
+
+\end_inset
+
+.
+ Дисперсия процесса,
+ очевидно,
+ равна 
+\begin_inset Formula $\gamma_{0}=2\sigma^{2}_{\varepsilon}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\gamma_{1}=\E\left[\left(\varepsilon_{t}+\varepsilon_{t-4}\right)\left(\varepsilon_{t-1}+\varepsilon_{t-5}\right)\right]=0$
+\end_inset
+
+.
+ То есть 
+\begin_inset Formula $\rho_{1}=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\gamma_{2}=\E\left[\left(\varepsilon_{t}+\varepsilon_{t-4}\right)\left(\varepsilon_{t-2}+\varepsilon_{t-6}\right)\right]=0$
+\end_inset
+
+.
+ То есть 
+\begin_inset Formula $\rho_{2}=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\gamma_{3}=\E\left[\left(\varepsilon_{t}+\varepsilon_{t-4}\right)\left(\varepsilon_{t-3}+\varepsilon_{t-7}\right)\right]=0$
+\end_inset
+
+.
+ То есть 
+\begin_inset Formula $\rho_{3}=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\gamma_{4}=\E\left[\left(\varepsilon_{t}+\varepsilon_{t-4}\right)\left(\varepsilon_{t-4}+\varepsilon_{t-8}\right)\right]=\sigma^{2}_{\varepsilon}$
+\end_inset
+
+.
+ То есть 
+\begin_inset Formula $\rho_{2}=\dfrac{1}{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Очевидно,
+ что для бо́льших горизонтов 
+\begin_inset Formula $\rho_{s}=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Перейдем к частным автокорреляциям.
+\begin_inset Formula 
+\begin{align*}
+\varphi_{11} & =\rho_{1}=0,\\
+\varphi_{22} & =\frac{\begin{vmatrix}1 & 0\\
+0 & 0
+\end{vmatrix}}{\begin{vmatrix}1 & 0\\
+0 & 1
+\end{vmatrix}}=\frac{0}{1}=0,\\
+\varphi_{33} & =\frac{\begin{vmatrix}1 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & 0
+\end{vmatrix}}{\begin{vmatrix}1 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & 1
+\end{vmatrix}}=\frac{0}{1}=0,\\
+\varphi_{44} & =\frac{\begin{vmatrix}1 & 0 & 0 & 0\\
+0 & 1 & 0 & 0\\
+0 & 0 & 1 & 0\\
+0 & 0 & 0 & \frac{1}{2}
+\end{vmatrix}}{\begin{vmatrix}1 & 0 & 0 & 0\\
+0 & 1 & 0 & 0\\
+0 & 0 & 1 & 0\\
+0 & 0 & 0 & 1
+\end{vmatrix}}=\frac{1}{2},\\
+\varphi_{55} & =\frac{\begin{vmatrix}1 & 0 & 0 & 0 & 0\\
+0 & 1 & 0 & 0 & 0\\
+0 & 0 & 1 & 0 & 0\\
+0 & 0 & 0 & 1 & \frac{1}{2}\\
+\frac{1}{2} & 0 & 0 & 0 & 0
+\end{vmatrix}}{\begin{vmatrix}1 & 0 & 0 & 0 & \frac{1}{2}\\
+0 & 1 & 0 & 0 & 0\\
+0 & 0 & 1 & 0 & 0\\
+0 & 0 & 0 & 1 & 0\\
+\frac{1}{2} & 0 & 0 & 0 & 1
+\end{vmatrix}}=0.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\varphi_{55}=0$
+\end_inset
+
+ так как в числителе стоит определитель матрицы,
+ в которой 
+\emph on
+последний
+\emph default
+ столбец является 
+\emph on
+четвертым
+\emph default
+ столбцом,
+ умноженным на 
+\begin_inset Formula $\dfrac{1}{2}$
+\end_inset
+
+.
+ Аналогично для 
+\begin_inset Formula $\varphi_{66}$
+\end_inset
+
+ и 
+\begin_inset Formula $\varphi_{77}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Рассмотрим 
+\begin_inset Formula $\varphi_{88}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\varphi_{88}=\frac{\begin{vmatrix}\begin{array}{cccc|cccc}
+1 &  &  &  & \frac{1}{2}\\
+ & 1 &  &  &  & \frac{1}{2}\\
+ &  & 1 &  &  &  & \frac{1}{2}\\
+ &  &  & 1 &  &  &  & \frac{1}{2}\\
+\hline \frac{1}{2} &  &  &  & 1\\
+ & \frac{1}{2} &  &  &  & 1\\
+ &  & \frac{1}{2} &  &  &  & 1\\
+ &  &  & \frac{1}{2} &  &  &  & 0
+\end{array}\end{vmatrix}}{\begin{vmatrix}\begin{array}{cccc|cccc}
+1 &  &  &  & \frac{1}{2}\\
+ & 1 &  &  &  & \frac{1}{2}\\
+ &  & 1 &  &  &  & \frac{1}{2}\\
+ &  &  & 1 &  &  &  & \frac{1}{2}\\
+\hline \frac{1}{2} &  &  &  & 1\\
+ & \frac{1}{2} &  &  &  & 1\\
+ &  & \frac{1}{2} &  &  &  & 1\\
+ &  &  & \frac{1}{2} &  &  &  & 1
+\end{array}\end{vmatrix}}=\bigast
+\]
+
+\end_inset
+
+В числителе и знаменателе стоят матрицы,
+ с которыми проще работать как с блочными
+\begin_inset Formula 
+\[
+\bigast=\frac{\begin{vmatrix}\begin{array}{c|c}
+I_{4} & \frac{1}{2}I_{4}\\
+\hline \frac{1}{2}I_{4} & \begin{array}{cccc}
+1 & 0 & 0 & 0\\
+0 & 1 & 0 & 0\\
+0 & 0 & 1 & 0\\
+0 & 0 & 0 & 0
+\end{array}
+\end{array}\end{vmatrix}}{\begin{vmatrix}\begin{array}{c|c}
+I_{4} & \frac{1}{2}I_{4}\\
+\hline \frac{1}{2}I_{4} & I_{4}
+\end{array}\end{vmatrix}}=\bigast
+\]
+
+\end_inset
+
+Для расчета этих определителей можно воспользоваться тем фактом,
+ что если в матрице 
+\begin_inset Formula $M=\begin{pmatrix}A & B\\
+C & D
+\end{pmatrix}$
+\end_inset
+
+ блок 
+\begin_inset Formula $A$
+\end_inset
+
+ обратим,
+ то 
+\begin_inset Formula $\det M=\det A\times\det\left(D-CA^{-1}B\right)$
+\end_inset
+
+.
+ Таким образом
+\begin_inset Formula 
+\[
+\bigast=\frac{1\times\det\left[\begin{pmatrix}1 & 0 & 0 & 0\\
+0 & 1 & 0 & 0\\
+0 & 0 & 1 & 0\\
+0 & 0 & 0 & 0
+\end{pmatrix}-\frac{1}{4}I_{4}\right]}{1\times\det\left[I_{4}-\frac{1}{4}I_{4}\right]}=\frac{\left(\frac{3}{4}\right)^{3}\left(-\frac{1}{4}\right)}{\left(\frac{3}{4}\right)^{4}}=-\frac{1}{3}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Для 
+\begin_inset Formula $\varphi_{99}$
+\end_inset
+
+–
+\begin_inset Formula $\varphi_{11,11}$
+\end_inset
+
+ 
+\emph on
+последний
+\emph default
+ столбец является линейной комбинацией столбцов с номером 
+\begin_inset Formula $4k,k=1,\dots$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Рассмотрим 
+\begin_inset Formula $\varphi_{12,12}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\tilde{N}_{12} & =\begin{pmatrix}\begin{array}{cccc|cccc|cccc}
+1 &  &  &  & \frac{1}{2} &  &  &  & 0\\
+ & 1 &  &  &  & \frac{1}{2} &  &  &  & 0\\
+ &  & 1 &  &  &  & \frac{1}{2} &  &  &  & 0\\
+ &  &  & 1 &  &  &  & \frac{1}{2} &  &  &  & \frac{1}{2}\\
+\hline \frac{1}{2} &  &  &  & 1 &  &  &  & \frac{1}{2}\\
+ & \frac{1}{2} &  &  &  & 1 &  &  &  & \frac{1}{2}\\
+ &  & \frac{1}{2} &  &  &  & 1 &  &  &  & \frac{1}{2}\\
+ &  &  & \frac{1}{2} &  &  &  & 1 & 0 &  &  & 0\\
+\hline  &  &  &  & \frac{1}{2} &  &  &  & 1\\
+ &  &  &  &  & \frac{1}{2} &  &  &  & 1\\
+ &  &  &  &  &  & \frac{1}{2} &  &  &  & 1\\
+ &  &  &  &  &  &  & \frac{1}{2} &  &  &  & 0
+\end{array}\end{pmatrix},\\
+\tilde{D}_{12} & =\begin{pmatrix}\begin{array}{cccc|cccc|cccc}
+1 &  &  &  & \frac{1}{2} &  &  & \\
+ & 1 &  &  &  & \frac{1}{2} &  & \\
+ &  & 1 &  &  &  & \frac{1}{2} & \\
+ &  &  & 1 &  &  &  & \frac{1}{2}\\
+\hline \frac{1}{2} &  &  &  & 1 &  &  &  & \frac{1}{2}\\
+ & \frac{1}{2} &  &  &  & 1 &  &  &  & \frac{1}{2}\\
+ &  & \frac{1}{2} &  &  &  & 1 &  &  &  & \frac{1}{2}\\
+ &  &  & \frac{1}{2} &  &  &  & 1 &  &  &  & \frac{1}{2}\\
+\hline  &  &  &  & \frac{1}{2} &  &  &  & 1\\
+ &  &  &  &  & \frac{1}{2} &  &  &  & 1\\
+ &  &  &  &  &  & \frac{1}{2} &  &  &  & 1\\
+ &  &  &  &  &  &  & \frac{1}{2} &  &  &  & 1
+\end{array}\end{pmatrix},\\
+\varphi_{12,12} & =\frac{\left|\tilde{N}_{12}\right|}{\left|\tilde{D}_{12}\right|}.
+\end{align*}
+
+\end_inset
+
+Воспользовавшись формулой для определителя блочной матрицы,
+ а также формулой Фробениуса для обратной блочной матрицы
+\begin_inset Formula 
+\[
+\begin{pmatrix}A & B\\
+C & D
+\end{pmatrix}^{-1}=\begin{pmatrix}A^{-1}+A^{-1}BH^{-1}CA^{-1} & -A^{-1}BH^{-1}\\
+-H^{-1}CA^{-1} & H^{-1}
+\end{pmatrix},
+\]
+
+\end_inset
+
+где 
+\begin_inset Formula $H=D-CA^{-1}B$
+\end_inset
+
+,
+ можно показать
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Можете попробовать сами,
+ поймете,
+ что задачи на семинаре простые.
+\end_layout
+
+\end_inset
+
+,
+ что 
+\begin_inset Formula $\varphi_{12,12}=\dfrac{1}{4}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection*
+Общее решение
+\end_layout
+
+\begin_layout Standard
+Обозначим частный коэффициент корреляции как 
+\begin_inset Formula $\varphi_{s,s}=\dfrac{\left|\tilde{N}_{s}\right|}{\left|\tilde{D}_{s}\right|}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Относительно несложно увидеть,
+ что матрица 
+\begin_inset Formula $\tilde{D}_{s},\ s=4k$
+\end_inset
+
+ представима в виде 
+\begin_inset Formula $D_{k}\otimes I_{4}$
+\end_inset
+
+,
+ где 
+\begin_inset Formula $D_{k}$
+\end_inset
+
+ —
+ матрица из знаменателя выражения для 
+\begin_inset Formula $\varphi_{kk}$
+\end_inset
+
+ для процесса MA(1) 
+\begin_inset Formula $y_{t}=\varepsilon_{t}+\varepsilon_{t-1}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $I_{4}$
+\end_inset
+
+ —
+ единичная матрица 
+\begin_inset Formula $4\times4$
+\end_inset
+
+.
+ Так получается,
+ что значения определителей 
+\begin_inset Formula $\left|D_{k}\right|$
+\end_inset
+
+ и соответствующая им рекуррентная формула совпадают со значениями определителей для процесса 
+\begin_inset Formula $y_{t}=\varepsilon_{t}-\varepsilon_{t-1}$
+\end_inset
+
+,
+ то есть справедлив вывод о том,
+ что 
+\begin_inset Formula $\left|D_{k}\right|=\left(1+k\right)\left(\frac{1}{2}\right)^{k}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Кроме того,
+ блочная природа матрицы позволяет упростить некоторые расчеты:
+\begin_inset Formula 
+\begin{align*}
+\left|\tilde{D}_{4k}\right| & =\left|D_{k}\right|^{4}\left|I_{4}\right|^{k}=\left|D_{k}\right|^{4},\\
+\tilde{D}^{-1}_{4k} & =D^{-1}_{k}\otimes I^{-1}_{4}=D^{-1}_{k}\otimes I_{4}.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Для произвольного 
+\begin_inset Formula $s=4k$
+\end_inset
+
+ матрица 
+\begin_inset Formula $\tilde{N}_{s}$
+\end_inset
+
+ имеет вид 
+\begin_inset Formula 
+\[
+\tilde{N}_{4k}=\begin{pmatrix}\begin{array}{c|c}
+\tilde{D}_{4\left(k-1\right)} & \begin{array}{c}
+\begin{array}{cccc}
+0\\
+ & 0\\
+ &  & 0\\
+ &  &  & \frac{1}{2}
+\end{array}\\
+\Vect 0_{4}\\
+\vdots\\
+\Vect 0_{4}\\
+\begin{array}{cccc}
+\frac{1}{2}\\
+ & \frac{1}{2}\\
+ &  & \frac{1}{2}\\
+ &  &  & 0
+\end{array}
+\end{array}\\
+\hline \begin{array}{ccccc}
+\Vect 0_{4} & \Vect 0_{4} & \cdots & \Vect 0_{4} & \frac{1}{2}I_{4}\end{array} & \begin{array}{cccc}
+1\\
+ & 1\\
+ &  & 1\\
+ &  &  & 0
+\end{array}
+\end{array}\end{pmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+По приведенной выше формуле определителя блочной матрицы 
+\begin_inset Formula $\begin{pmatrix}\begin{array}{c|c}
+A & B\\
+\hline C & D
+\end{array}\end{pmatrix}$
+\end_inset
+
+ имеем
+\begin_inset Formula 
+\[
+\left|\tilde{N}_{4k}\right|=\left|\tilde{D}_{4(k-1)}\right|\times\left|D-\underbrace{C\tilde{D}^{-1}_{4\left(k-1\right)}B}_{\bigast\bigast}\right|
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Рассмотрим второе слагаемое поподробнее.
+\begin_inset Formula 
+\begin{align*}
+\bigast\bigast & =\begin{pmatrix}\begin{array}{ccccc}
+\Vect 0_{4} & \Vect 0_{4} & \cdots & \Vect 0_{4} & \frac{1}{2}I_{4}\end{array}\end{pmatrix}\tilde{D}^{-1}_{4\left(k-1\right)}\begin{pmatrix}\begin{array}{cccc}
+0\\
+ & 0\\
+ &  & 0\\
+ &  &  & \frac{1}{2}
+\end{array}\\
+\Vect 0_{4}\\
+\vdots\\
+\Vect 0_{4}\\
+\begin{array}{cccc}
+\frac{1}{2}\\
+ & \frac{1}{2}\\
+ &  & \frac{1}{2}\\
+ &  &  & 0
+\end{array}
+\end{pmatrix}=\\
+ & =\left(\frac{1}{2}\right)^{2}\begin{pmatrix}\begin{array}{ccccc}
+\Vect 0_{4} & \Vect 0_{4} & \cdots & \Vect 0_{4} & I_{4}\end{array}\end{pmatrix}\tilde{D}^{-1}_{4\left(k-1\right)}\begin{pmatrix}\begin{array}{cccc}
+0\\
+ & 0\\
+ &  & 0\\
+ &  &  & 1
+\end{array}\\
+\Vect 0_{4}\\
+\vdots\\
+\Vect 0_{4}\\
+\begin{array}{cccc}
+1\\
+ & 1\\
+ &  & 1\\
+ &  &  & 0
+\end{array}
+\end{pmatrix}=\\
+ & =\left(\frac{1}{2}\right)^{2}\left[\begin{pmatrix}\begin{array}{ccccc}
+0 & 0 & \cdots & 0 & 1\end{array}\end{pmatrix}\otimes I_{4}\right]\left[D^{-1}_{k-1}\otimes I_{4}\right]\begin{pmatrix}\begin{array}{cccc}
+0\\
+ & 0\\
+ &  & 0\\
+ &  &  & 1
+\end{array}\\
+\Vect 0_{4}\\
+\vdots\\
+\Vect 0_{4}\\
+\begin{array}{cccc}
+1\\
+ & 1\\
+ &  & 1\\
+ &  &  & 0
+\end{array}
+\end{pmatrix}=\\
+ & =\left(\frac{1}{2}\right)^{2}\left[\begin{pmatrix}\begin{array}{ccccc}
+0 & 0 & \cdots & 0 & 1\end{array}\end{pmatrix}D^{-1}_{k-1}\right]\otimes\underbrace{\left[I_{4}I_{4}\right]}_{I_{4}}\begin{pmatrix}\begin{array}{cccc}
+0\\
+ & 0\\
+ &  & 0\\
+ &  &  & 1
+\end{array}\\
+\Vect 0_{4}\\
+\vdots\\
+\Vect 0_{4}\\
+\begin{array}{cccc}
+1\\
+ & 1\\
+ &  & 1\\
+ &  &  & 0
+\end{array}
+\end{pmatrix}=\bigast
+\end{align*}
+
+\end_inset
+
+В данном выражении происходит следующее:
+\end_layout
+
+\begin_layout Enumerate
+У матрицы 
+\begin_inset Formula $D^{-1}_{k-1}$
+\end_inset
+
+ отбрасываются все строки кроме последней,
+ которая затем преобразуется в блочную строку произведением Кронеккера.
+\end_layout
+
+\begin_layout Enumerate
+Первый блок последнего столбца берет нижнее правое значение,
+ равное 
+\begin_inset Formula $\left[D^{-1}_{k-1}\right]_{k-1,k-1}$
+\end_inset
+
+,
+ из первого блока полученной строки и помещает его в нижний правый угол результата;
+\end_layout
+
+\begin_layout Enumerate
+Последующие нулевые блоки не делают ничего,
+ тем самым игнорируются соответствующие блоки строки;
+\end_layout
+
+\begin_layout Enumerate
+Последний блок столбца берет соответствующие значения последнего блока строки,
+ равные 
+\begin_inset Formula $\left[D^{-1}_{k-1}\right]_{k-1,1}$
+\end_inset
+
+,
+ и помещает их на соответствующие места в результат.
+\end_layout
+
+\begin_layout Standard
+Из сказанного выше понятно,
+ что нам 
+\emph on
+не нужно
+\emph default
+ находить 
+\begin_inset Formula $\tilde{D}^{-1}_{4\left(k-1\right)}$
+\end_inset
+
+;
+ достаточно найти нижнее левое и правое значения у матрицы 
+\begin_inset Formula $D^{-1}_{k-1}$
+\end_inset
+
+,
+ что сильно упрощает задачу.
+ Напомним,
+ что по определению обратной матрицы
+\begin_inset Formula 
+\begin{align*}
+\left[D^{-1}_{k-1}\right]_{k-1,k-1} & =M_{k-1,k-1}/\left|D_{k-1}\right|,\\
+\left[D^{-1}_{k-1}\right]_{k-1,1} & =M_{1,k-1}/\left|D_{k-1}\right|,
+\end{align*}
+
+\end_inset
+
+где 
+\begin_inset Formula $M_{i,j}$
+\end_inset
+
+ —
+ алгебраическое дополнение элемента 
+\begin_inset Formula $\left[D_{k-1}\right]_{i,j}$
+\end_inset
+
+.
+ Если построить матрицу 
+\begin_inset Formula $D_{k-1}$
+\end_inset
+
+,
+ то очевидно,
+ что 
+\begin_inset Formula 
+\begin{align*}
+M_{k-1,k-1} & =\left|D_{k-2}\right|=\left(k-1\right)\left(\frac{1}{2}\right)^{k-2}\\
+M_{1,k-1} & =\left(-1\right)^{k}\left(\frac{1}{2}\right)^{k-2}
+\end{align*}
+
+\end_inset
+
+то есть 
+\begin_inset Formula 
+\begin{align*}
+\left[D^{-1}_{k-1}\right]_{k-1,k-1} & =\dfrac{\left(k-1\right)\left(\frac{1}{2}\right)^{k-2}}{k\left(\frac{1}{2}\right)^{k-1}}=\dfrac{2\left(k-1\right)}{k}\\
+\left[D^{-1}_{k-1}\right]_{k-1,1} & =\dfrac{\left(-1\right)^{k}\left(\frac{1}{2}\right)^{k-2}}{k\left(\frac{1}{2}\right)^{k-1}}=\dfrac{2\left(-1\right)^{k}}{k}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Подставим эти значения в наши расчеты:
+\size small
+
+\begin_inset Formula 
+\[
+\bigast=\left(\frac{1}{2}\right)^{2}\begin{pmatrix}\dfrac{2\left(k-1\right)}{k}\\
+ & \dfrac{2\left(k-1\right)}{k}\\
+ &  & \dfrac{2\left(k-1\right)}{k}\\
+ &  &  & \dfrac{2\left(-1\right)^{k}}{k}
+\end{pmatrix}=\begin{pmatrix}\dfrac{k-1}{2k}\\
+ & \dfrac{k-1}{2k}\\
+ &  & \dfrac{k-1}{2k}\\
+ &  &  & \dfrac{\left(-1\right)^{k}}{2k}
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\size default
+
+\begin_inset Formula 
+\begin{align*}
+\left|\tilde{N}_{4k}\right| & =\left|D_{k-1}\right|^{4}\begin{vmatrix}\dfrac{k+1}{2k}\\
+ & \dfrac{k+1}{2k}\\
+ &  & \dfrac{k+1}{2k}\\
+ &  &  & \dfrac{\left(-1\right)^{k+1}}{2k}
+\end{vmatrix}=\\
+ & =\left(k\left(\frac{1}{2}\right)^{k-1}\right)^{4}\left(\frac{1}{2}\right)^{4}\left(\frac{1}{k}\right)^{4}\left(k+1\right)^{3}\left(-1\right)^{k+1}=\\
+ & =\left(-1\right)^{k+1}\left(k+1\right)^{3}\left(\frac{1}{2}\right)^{4k}\\
+\left|\tilde{D}_{4k}\right| & =\left|D_{k}\right|^{4}=\left[\left(k+1\right)\left(\frac{1}{2}\right)^{k}\right]^{4}\\
+\varphi_{4k,4k} & =\dfrac{\left(-1\right)^{k+1}\left(k+1\right)^{3}\left(\frac{1}{2}\right)^{4k}}{\left(k+1\right)^{4}\left(\frac{1}{2}\right)^{4k}}=\fbox{\left(-1\right)^{k+1}\dfrac{1}{k+1}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Покажем теперь,
+ что для 
+\begin_inset Formula $s\neq4k$
+\end_inset
+
+ выполняется 
+\begin_inset Formula $\left|\tilde{N}_{s}\right|=0$
+\end_inset
+
+.
+ Имеем
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\tilde{N}_{4(k-1)+1} & =\begin{pmatrix}\begin{array}{c|c}
+\tilde{D}_{4\left(k-1\right)} & \begin{array}{c}
+\begin{array}{c}
+0\\
+0\\
+0\\
+\frac{1}{2}
+\end{array}\\
+\Vect 0_{4\times1}\\
+\vdots\\
+\Vect 0_{4\times1}\\
+\Vect 0_{4\times1}
+\end{array}\\
+\hline \begin{array}{ccccc}
+\Vect 0_{1\times4} & \Vect 0_{1\times4} & \cdots & \Vect 0_{1\times4} & \begin{array}{cccc}
+\frac{1}{2} & 0 & 0 & 0\end{array}\end{array} & 0
+\end{array}\end{pmatrix}\\
+\tilde{N}_{4(k-1)+2} & =\begin{pmatrix}\begin{array}{c|c}
+\tilde{D}_{4\left(k-1\right)} & \begin{array}{c}
+\begin{array}{cc}
+0 & 0\\
+0 & 0\\
+0 & 0\\
+0 & \frac{1}{2}
+\end{array}\\
+\Vect 0_{4\times2}\\
+\vdots\\
+\Vect 0_{4\times2}\\
+\begin{array}{cc}
+\frac{1}{2} & 0\\
+0 & 0\\
+0 & 0\\
+0 & 0
+\end{array}
+\end{array}\\
+\hline \begin{array}{ccccc}
+\Vect 0_{2\times4} & \Vect 0_{2\times4} & \cdots & \Vect 0_{2\times4} & \begin{array}{cccc}
+\frac{1}{2} & 0 & 0 & 0\\
+0 & \frac{1}{2} & 0 & 0
+\end{array}\end{array} & \begin{array}{cc}
+1 & 0\\
+0 & 0
+\end{array}
+\end{array}\end{pmatrix}\\
+\tilde{N}_{4(k-1)+3} & =\begin{pmatrix}\begin{array}{c|c}
+\tilde{D}_{4\left(k-1\right)} & \begin{array}{c}
+\begin{array}{ccc}
+0 & 0 & 0\\
+0 & 0 & 0\\
+0 & 0 & 0\\
+0 & 0 & \frac{1}{2}
+\end{array}\\
+\Vect 0_{4\times3}\\
+\vdots\\
+\Vect 0_{4\times3}\\
+\begin{array}{ccc}
+\frac{1}{2} & 0 & 0\\
+0 & \frac{1}{2} & 0\\
+0 & 0 & 0\\
+0 & 0 & 0
+\end{array}
+\end{array}\\
+\hline \begin{array}{ccccc}
+\Vect 0_{3\times4} & \Vect 0_{3\times4} & \cdots & \Vect 0_{3\times4} & \begin{array}{cccc}
+\frac{1}{2} & 0 & 0 & 0\\
+0 & \frac{1}{2} & 0 & 0\\
+0 & 0 & \frac{1}{2} & 0
+\end{array}\end{array} & \begin{array}{ccc}
+1 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & 0
+\end{array}
+\end{array}\end{pmatrix}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+По приведенной выше формуле определителя блочной матрицы 
+\begin_inset Formula $\begin{pmatrix}\begin{array}{c|c}
+A & B\\
+\hline C & D
+\end{array}\end{pmatrix}$
+\end_inset
+
+ имеем
+\begin_inset Formula 
+\[
+\left|\tilde{N}_{s}\right|=\left|\tilde{D}_{4\left(k-1\right)}\right|\times\left|D-C\tilde{D}^{-1}_{4\left(k-1\right)}B\right|=\left|\tilde{D}_{4\left(k-1\right)}\right|\times\left|D-C\left(D^{-1}_{k-1}\otimes I_{4}\right)B\right|
+\]
+
+\end_inset
+
+Рассмотрим слагаемое 
+\begin_inset Formula $C\left(D^{-1}_{k-1}\otimes I_{4}\right)B$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Enumerate
+Произведение 
+\begin_inset Formula $C\left(D^{-1}_{k-1}\otimes I_{4}\right)$
+\end_inset
+
+ равно 
+\begin_inset Formula 
+\[
+C\left(D^{-1}_{k-1}\otimes I_{4}\right)=\frac{1}{2}\left[D^{-1}_{k-1}\right]_{k-1,\dots}\otimes\begin{cases}
+\begin{pmatrix}1 & 0 & 0 & 0\end{pmatrix}, & s=4(k-1)+1,\\
+\begin{pmatrix}1 & 0 & 0 & 0\\
+0 & 1 & 0 & 0
+\end{pmatrix}, & s=4(k-1)+2,\\
+\begin{pmatrix}1 & 0 & 0 & 0\\
+0 & 1 & 0 & 0\\
+0 & 0 & 1 & 0
+\end{pmatrix}, & s=4(k-1)+3,
+\end{cases}
+\]
+
+\end_inset
+
+соответственно,
+ где 
+\begin_inset Formula $\left[D^{-1}_{k-1}\right]_{k-1,\dots}$
+\end_inset
+
+ —
+ последняя строка матрицы 
+\begin_inset Formula $D^{-1}_{k-1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Произведение 
+\begin_inset Formula $C\left(D^{-1}_{k-1}\otimes I_{4}\right)B$
+\end_inset
+
+ равно матрице 
+\begin_inset Formula 
+\[
+C\left(D^{-1}_{k-1}\otimes I_{4}\right)B=\left(\frac{1}{2}\right)^{2}\begin{cases}
+\begin{pmatrix}0\end{pmatrix}, & s=4(k-1)+1,\\
+\begin{pmatrix}\left[D^{-1}_{k-1}\right]_{k-1,k-1} & 0\\
+0 & 0
+\end{pmatrix}, & s=4(k-1)+2,\\
+\begin{pmatrix}\left[D^{-1}_{k-1}\right]_{k-1,k-1} & 0 & 0\\
+0 & \left[D^{-1}_{k-1}\right]_{k-1,k-1} & 0\\
+0 & 0 & 0
+\end{pmatrix}, & s=4(k-1)+3,
+\end{cases}
+\]
+
+\end_inset
+
+так как
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+последний блок матрицы 
+\begin_inset Formula $B$
+\end_inset
+
+ берет первые одно,
+ два или три значения на главной диагонали последнего блока 
+\begin_inset Formula $C\tilde{D}^{-1}_{4\left(k-1\right)}$
+\end_inset
+
+,
+ равные 
+\begin_inset Formula $\left[D^{-1}_{k-1}\right]_{k-1,k-1}$
+\end_inset
+
+ в силу применения произведения Кронеккера,
+ умножает их на 
+\begin_inset Formula $\frac{1}{2}$
+\end_inset
+
+ и помещает их на первые одно или два места на главной диагонали ответа (кроме случая 
+\begin_inset Formula $s=4(k-1)+1$
+\end_inset
+
+,
+ где последний блок матрицы 
+\begin_inset Formula $B$
+\end_inset
+
+ есть нулевой столбец),
+\end_layout
+
+\begin_layout Enumerate
+а первый блок матрицы 
+\begin_inset Formula $B$
+\end_inset
+
+ берет четвертое значение из последней строки 
+\begin_inset Formula $C\tilde{D}^{-1}_{4\left(k-1\right)}$
+\end_inset
+
+,
+ равное 0,
+ и помещает его на последнее место главной диагонали.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Таким образом 
+\begin_inset Formula $D-C\left(D^{-1}_{k-1}\otimes I_{4}\right)B$
+\end_inset
+
+ представляет собой матрицу,
+ у которая либо равна 0,
+ либо у которой в последних строке и столбце стоят одни нули,
+ то есть вырожденную.
+ Поэтому 
+\begin_inset Formula $\left|D-C\left(D^{-1}_{k-1}\otimes I_{4}\right)B\right|=0$
+\end_inset
+
+,
+ что влечет 
+\begin_inset Formula $\left|\tilde{N}_{s}\right|=0$
+\end_inset
+
+.
+\end_layout
+
+\end_body
+\end_document
