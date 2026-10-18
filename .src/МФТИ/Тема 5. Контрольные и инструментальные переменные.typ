@@ -331,13 +331,13 @@ $
   С учетом сказанного выше оценка $hat(Vect(beta))^"TSLS"$ равна
   $
     hat(Vect(beta))^"TSLS" & = (hat(Vect(X))^(*prime)hat(Vect(X))^(*))^(-1)hat(Vect(X))^(*prime)Vect(Y)= \
-                           & = (Vect(X)^(*prime)Vect(P)_Z Vect(X)^(*))^(-1)Vect(X)^(*prime)Vect(P)_Z Vect(Y)= ast.op
+                           & = (Vect(X)^(*prime)Vect(P)_Z Vect(X)^(*))^(-1)Vect(X)^(*prime)Vect(P)_Z Vect(Y)= bigast
   $
 
   Если модель определена _точно_, то матрицы $Vect(X)^(*prime)Vect(Z)^(*)$ и $Vect(Z)^(*prime)Vect(X)^(*)$ квадратные и, следовательно, потенциально обратимые.
   В этом случае выражение для $hat(Vect(beta))^"TSLS"$ можно упростить
   $
-    ast.op & = [ Vect(X)^(*prime)Vect(Z)^(*)(Vect(Z)^(*prime)Vect(Z)^(*))^(-1)Vect(Z)^(*prime)Vect(Z)^(*) ]^(-1)Vect(X)^(*prime)Vect(Z)^(*)(Vect(Z)^(*prime)Vect(Z)^(*))^(-1)Vect(Z)^(*prime)Vect(Y)= \
+    bigast & = [ Vect(X)^(*prime)Vect(Z)^(*)(Vect(Z)^(*prime)Vect(Z)^(*))^(-1)Vect(Z)^(*prime)Vect(Z)^(*) ]^(-1)Vect(X)^(*prime)Vect(Z)^(*)(Vect(Z)^(*prime)Vect(Z)^(*))^(-1)Vect(Z)^(*prime)Vect(Y)= \
     & = (Vect(Z)^(*prime)Vect(X)^(*))^(-1)(Vect(Z)^(*prime)Vect(Z)^(*)) (Vect(X)^(*prime)Vect(Z)^(*))^(-1)(Vect(X)^(*prime)Vect(Z)^(*)) (Vect(Z)^(*prime)Vect(Z)^(*))^(-1)Vect(Z)^(*prime)Vect(Y)= \
     & = (Vect(Z)^(*prime)Vect(X)^(*))^(-1)Vect(Z)^(*prime)Vect(Y)
   $

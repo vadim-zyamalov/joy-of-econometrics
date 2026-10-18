@@ -132,7 +132,7 @@ $
 
 #example[
   $
-    hat(italic("TestScore")) = limits(600.1)_((5.1)) + limits(5.02)_((0.71)) italic("Income")_(i)- limits(0.096)_((0.029)) italic("Income")^2_(i)+ limits(0.00035)_((0.00069)) italic("Income")^3_i, overline(R)^(2)= 0.555
+    hat(italic("TestScore")) = limits(600.1)_((5.1)) + limits(5.02)_((0.71)) italic("Income")_(i)- limits(0.096)_((0.029)) italic("Income")^2_(i)+ limits(0.00035)_((0.00069)) italic("Income")^3_i, macron(R)^(2)= 0.555
   $
   Искомая $t$-статистика (при $italic("Income")^3_i$) равна 1.97 $=>$ отвергаем.
   $F$-статистика для проверки незначимости коэффициентов при $italic("Income")^2_i$ и $italic("Income")^3_i$ равна 37.5 $=>$ отвергаем нулевую гипотезу линейности.

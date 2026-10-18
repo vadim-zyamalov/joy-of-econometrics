@@ -326,7 +326,7 @@ $
 
 Тогда
 $
-  hat(beta)_1 = frac(sum^n_(i = 1)(X_(1 i) - overline(X)) Y_i, sum^n_(i = 1)(X_(1 i) - overline(X))^2) = frac(sum^n_(i = 1)(lambda - lambda) Y, sum^n_(i = 1)(lambda - lambda)^2)
+  hat(beta)_1 = frac(sum^n_(i = 1)(X_(1 i) - macron(X)) Y_i, sum^n_(i = 1)(X_(1 i) - macron(X))^2) = frac(sum^n_(i = 1)(lambda - lambda) Y, sum^n_(i = 1)(lambda - lambda)^2)
 $
 
 == Последствия мультиколлинеарности
@@ -530,11 +530,11 @@ $ Var (hat(Vect(beta)) vert thin Vect(X)) = sigma^2_u (Vect(X)^(prime)Vect(X))^(
 Предположим также, что он центрирован.
 Воспользовавшись
 формулами для регрессии по частям, получим #cite(<taboga2021variance>)
-$ [ (Vect(X)^(prime)Vect(X))^(- 1) ]_(11 = (Vect(X)^(prime)_1 Vect(M)_(- 1)Vect(X)_1)^(- 1 = ast.op $
+$ [ (Vect(X)^(prime)Vect(X))^(- 1) ]_(11 = (Vect(X)^(prime)_1 Vect(M)_(- 1)Vect(X)_1)^(- 1 = bigast $
 
 Так как $Vect(X)_1$ — вектор-столбец, то $[ (Vect(X)^(prime)Vect(X))^(- 1) ]_(11)$ — скаляр, то есть
 $
-  ast.op & = frac(1, Vect(X)^(prime)_1 Vect(M)_(- 1)Vect(X)_1) = \
+  bigast & = frac(1, Vect(X)^(prime)_1 Vect(M)_(- 1)Vect(X)_1) = \
          & = frac(1, Vect(X)^(prime)_1 Vect(M)_(- 1)Vect(M)_(- 1)Vect(X)_1) = \
          & = frac(1, (Vect(M)_(- 1)Vect(X)_1)^(prime)Vect(M)_(- 1)Vect(X)_1) = frac(1, eta' eta)
 $

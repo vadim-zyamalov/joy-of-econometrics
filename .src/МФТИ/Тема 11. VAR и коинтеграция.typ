@@ -35,7 +35,7 @@ t-статистика имеет распределение Дики-Фулле
 Рассмотрим полином $A(L) = (1 - L^4)tilde(A) (L)$.
 Согласно одной из теорем, предложенных Лагранжем, любой полином, принимающий в некоторых *ненулевых* точках $theta_1,...,theta_p$ конечные значения, может быть представлен в виде
 $
-  A(L) & = sum^p_(k = 1)lambda_k frac(Delta (L), delta_k (L)) + Delta (L) hat(A) (L) & & plus.minus Delta (L) sum^p_(k = 1)lambda_k \ A(L) & = sum^p_(k = 1)lambda_k Delta (L) frac(1 + delta_k (L), delta_k (L)) + Delta (L) overline(A) (L) \
+  A(L) & = sum^p_(k = 1)lambda_k frac(Delta (L), delta_k (L)) + Delta (L) hat(A) (L) & & plus.minus Delta (L) sum^p_(k = 1)lambda_k \ A(L) & = sum^p_(k = 1)lambda_k Delta (L) frac(1 + delta_k (L), delta_k (L)) + Delta (L) macron(A) (L) \
   #text[где] \
   delta_k (L) & = 1 - frac(1, theta_k)L \
   Delta (L) & = product^p_(k = 1)delta_k (L)
@@ -48,7 +48,7 @@ $
            & #h(1em) + lambda_2 (- L) (1 - L) (1 + L^2) + \
            & #h(1em) + lambda_3 (- i L) (1 - L) (1 + L) (1 - i L) + \
            & #h(1em) + lambda_4 (i L) (1 - L) (1 + L) (1 + i L) + \
-           & #h(1em) + overline(A) (L) (1 - L^4) \
+           & #h(1em) + macron(A) (L) (1 - L^4) \
   lambda_3 & = lambda^(*)_4 quad -> A(L) in RR
 $
 
@@ -62,12 +62,12 @@ $
 получим итоговое выражение
 #eqnum[$
   A(L) & = - pi_1 L(1 + L + L^2 + L^3) - pi_2 (- L) (1 - L + L^2 - L^3) - \
-       & #h(1em) - (pi_4 + pi_3 L) (- L) (1 - L^2) + overline(A) (L) (1 - L^4)
+       & #h(1em) - (pi_4 + pi_3 L) (- L) (1 - L^2) + macron(A) (L) (1 - L^4)
 $] <HEGY-2>
 
 Подставим @HEGY-2 в @HEGY-1 и получим
 #eqnum[$
-  overline(A) (L)y_(4,t) & = pi_1 y_(1,t - 1) + pi_2 y_(2,t - 1) + pi_3 y_(3,t - 2) + pi_4 y_(3,t - 1) + epsilon_t \
+  macron(A) (L)y_(4,t) & = pi_1 y_(1,t - 1) + pi_2 y_(2,t - 1) + pi_3 y_(3,t - 2) + pi_4 y_(3,t - 1) + epsilon_t \
                  y_(1,t) & = (1 + L + L^2 + L^3) y_t \
                  y_(2,t) & = - (1 - L + L^2 - L^3) y_t \
                  y_(3,t) & = - (1 - L^2) y_t \

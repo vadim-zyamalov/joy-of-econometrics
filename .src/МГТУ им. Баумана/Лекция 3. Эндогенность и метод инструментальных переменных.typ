@@ -388,13 +388,13 @@ $
   С учетом сказанного выше оценка $hat(Vect(beta))^("TSLS")$ равна
   $
     hat(Vect(beta))^("TSLS") & = (hat(XX)' hat(ZZ) )^(-1)hat(XX)' Vect(y) = \
-                             & = (XX' Vect(P)_ZZ XX )^(-1)XX' Vect(P)_ZZ Vect(y) = ast.op
+                             & = (XX' Vect(P)_ZZ XX )^(-1)XX' Vect(P)_ZZ Vect(y) = bigast
   $
 
   Если модель определена _точно_, то матрицы $XX' ZZ$ и $ZZ' XX$ квадратные и, следовательно, потенциально обратимые.
   В этом случае выражение для $hat(Vect(beta))^("TSLS")$ можно упростить
   $
-    ast.op & = [ XX' ZZ (ZZ' ZZ)^(-1)ZZ' ZZ ]^(-1)XX' ZZ (ZZ' ZZ)^(-1)ZZ' Vect(y) = \
+    bigast & = [ XX' ZZ (ZZ' ZZ)^(-1)ZZ' ZZ ]^(-1)XX' ZZ (ZZ' ZZ)^(-1)ZZ' Vect(y) = \
            & = (ZZ' XX )^(-1)(ZZ' ZZ) (XX' ZZ)^(-1)(XX' ZZ) (ZZ' ZZ)^(-1)ZZ' Vect(y) = \
            & = (ZZ' XX )^(-1)ZZ' Vect(y)
   $

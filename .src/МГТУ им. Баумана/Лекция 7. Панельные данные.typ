@@ -118,7 +118,7 @@ $
 При выводе этой формулы использовались свойства произведения Кронеккера.
 
 Разберем оператор $Vect(W)$ подробнее:
-+ $frac(Vect(J)_T, T)$, будучи примененной к подходящему по размеру вектору $Vect(v)$, дает нам вектор аналогичной длины, заполненный выборочными средними значений исходного вектора, то есть $overline(v) Vect(1)_T$.
++ $frac(Vect(J)_T, T)$, будучи примененной к подходящему по размеру вектору $Vect(v)$, дает нам вектор аналогичной длины, заполненный выборочными средними значений исходного вектора, то есть $macron(v) Vect(1)_T$.
 + $Vect(I)_T - frac(Vect(J)_T, T)$, будучи примененной к подходящему по размеру вектору $Vect(v)$, дает нам вектор аналогичной длины, заполненный отклонениями значений элементов вектора от их выборочного среднего.
 + Кронеккерово произведение создает блочную матрицу, применение которой, например, к $Vect(y)$ дает нам вектор центрированных значений, причем для каждого объекта значения центрируются относительного своего выборочного среднего.
 
@@ -210,11 +210,11 @@ $
 
 Дисперсия within-компоненты ошибки $u_(i t)$ равна
 $
-  op("Var")_W u_(i t) = op("Var") (u_(i t) - overline(u)_i) = op("Var") (epsilon_(i t) - overline(epsilon)_i) = sigma^2_(epsilon)(1 - 1/T)
+  op("Var")_W u_(i t) = op("Var") (u_(i t) - macron(u)_i) = op("Var") (epsilon_(i t) - overline(epsilon)_i) = sigma^2_(epsilon)(1 - 1/T)
 $
 Дисперсия between-компоненты ошибки $u_(i t)$ равна
 $
-  op("Var")_B u_(i t) = op("Var") overline(u)_i = op("Var") mu_i + op("Var") overline(epsilon)_i = sigma^2_(mu) + frac(sigma^2_(epsilon), T)
+  op("Var")_B u_(i t) = op("Var") macron(u)_i = op("Var") mu_i + op("Var") overline(epsilon)_i = sigma^2_(mu) + frac(sigma^2_(epsilon), T)
   #<eq-ch7-Var.B>
 $
 Отсюда
@@ -341,9 +341,9 @@ $ y_(i t) = Vect(x)^(prime)_(i t)Vect(beta) + gamma y_(i,t - 1) + alpha_i + epsi
 
 Рассмотрим случай детерминированных $alpha_i$; обычная внутри-оценка на конечных выборках будет смещенной и несостоятельной, так как из-за использования усредненных во времени значений
 $
-  y_(i t) - overline(y)_i = (Vect(x)_(i t) - overline(Vect(x))_i)^(prime)Vect(beta) + gamma (y_(i,t - 1) - overline(y)_i) + (epsilon_(i t) - overline(epsilon)_t)
+  y_(i t) - macron(y)_i = (Vect(x)_(i t) - overline(Vect(x))_i)^(prime)Vect(beta) + gamma (y_(i,t - 1) - macron(y)_i) + (epsilon_(i t) - overline(epsilon)_t)
 $
-регрессор $y_(i,t - 1) - overline(y)_i$ и ошибка $epsilon_(i t) - overline(epsilon)_t$ коррелированы.
+регрессор $y_(i,t - 1) - macron(y)_i$ и ошибка $epsilon_(i t) - overline(epsilon)_t$ коррелированы.
 Более того, оценки исходной регрессии также будут смещенными из-за корреляции между $y_(i,t - 1)$ и $alpha_i$.
 
 @anderson1981estimation предложили устранять индивидуальные эффекты при помощи взятия первых разностей

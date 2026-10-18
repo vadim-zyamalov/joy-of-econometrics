@@ -121,11 +121,11 @@ $ Y_i = hat(beta)_0 + hat(beta)_1 X_i + hat(u)_i $
   - $italic("RSS") = sum_(i = 1)^n (Y_i - hat(Y)_i)^2 = sum_(i = 1)^n hat(u)_i^2$ --- остаточная сумма квадратов или кумма квадратов остатков (residual sum of squares).
   $
     italic("TSS") = sum_(i = 1)^n (Y_i - macron(Y))^2 & = sum_(i = 1)^n [(Y_i - hat(Y)) + (hat(Y) - macron(Y))]^2 = \
-    & = underbrace(sum_(i = 1)^n (Y_i - hat(Y))^2, italic("RSS")) + underbrace(sum_(i = 1)^n (hat(Y) - macron(Y))^2, italic("ESS")) + 2 sum_(i = 1)^n (Y_i - hat(Y))(hat(Y) - macron(Y)) = ast.op \
+    & = underbrace(sum_(i = 1)^n (Y_i - hat(Y))^2, italic("RSS")) + underbrace(sum_(i = 1)^n (hat(Y) - macron(Y))^2, italic("ESS")) + 2 sum_(i = 1)^n (Y_i - hat(Y))(hat(Y) - macron(Y)) = bigast \
     hat(Y)_i - macron(Y) & = hat(beta)_0 + hat(beta)_1 X_i - macron(Y) = \
     & = macron(Y) - hat(beta)_1 macron(X) + hat(beta)_1 X_i - macron(Y) = \
     & = hat(beta)_1 (X_i - macron(X)) \
-    ast.op & = italic("RSS") + italic("ESS") + 2 hat(beta)_1 sum_(i = 1)^n hat(u)_i (X_i - macron(X)) = \
+    bigast & = italic("RSS") + italic("ESS") + 2 hat(beta)_1 sum_(i = 1)^n hat(u)_i (X_i - macron(X)) = \
     & = italic("RSS") + italic("ESS") + 2 hat(beta)_1 autolr(underbrace(sum_(i = 1)^n hat(u)_i X_i, = 0) - macron(X) underbrace(sum_(i = 1)^n hat(u)_i, = 0)) =\
     & = italic("RSS") + italic("ESS")
   $
@@ -192,11 +192,11 @@ $
 $
 #proof[$
     Var [hat(beta)_0 vert X_1 \, dots.h] & = Var [macron(Y) - hat(beta)_1 macron(X) vert X_1, dots.h] =\
-    & = Var_X macron(Y) + macron(X) Var_X hat(beta)_1 + 2 Cov_X (macron(Y) \, macron(beta)_1) = ast.op \
+    & = Var_X macron(Y) + macron(X) Var_X hat(beta)_1 + 2 Cov_X (macron(Y) \, macron(beta)_1) = bigast \
     Var_X macron(Y) & = Var_X [1 / n sum (beta_0 + beta_1 X_i + u_i)] = 1 / n^2 Var_X (sum u_i) = 1 / n sigma_u^2\
     Cov_X (macron(Y) \, macron(beta)_1) & = 1 / n Cov_X [sum Y_i \, sum hat(a)_i Y_i] =\
     & = 1 / n sum sum hat(a)_i underbrace(Cov_X [Y_i, Y_j], =0\, med i eq.not j) = sigma_Y^2 sum hat(a)_i = 0\
-    ast.op & = sigma_u^2 [1 / n + frac(macron(X), sum (X_i - macron(X))^2)] = sigma_u^2 frac(sum (X_i - macron(X))^2 + n macron(X), n sum (X_i - macron(X))^2) =\
+    bigast & = sigma_u^2 [1 / n + frac(macron(X), sum (X_i - macron(X))^2)] = sigma_u^2 frac(sum (X_i - macron(X))^2 + n macron(X), n sum (X_i - macron(X))^2) =\
     & = sigma_u^2 frac(sum X_i^2, n sum (X_i - macron(X))^2)
   $ #qedhere]
 

@@ -83,13 +83,13 @@ $
   Ex tilde(S)^2 & = E [1 / n sum_(i = 1)^n (Y_i - macron(Y))^2] =\
   & = 1 / n sum_(i = 1)^n Ex [Y_i^2 + 1 / n^2 (sum_(j = 1)^n Y_j)^2 - 2 / n Y_i sum_(j = 1)^n Y_j] =\
   & = 1 / n sum_(i = 1)^n [Ex ( Y_i^2 ) + 1 / n^2 (sum_(k eq.not j) E ( Y_k Y_j ) + sum_(j = 1)^n E ( Y_j^2 )) - 2 / n (E ( Y_i^2 ) + sum_(j eq.not i) E ( Y_i Y_j ))] =\
-  & = 1 / n sum_(i = 1)^n [frac(n - 2, n) E ( Y_i^2 ) - 2 / n sum_(j eq.not i) E ( Y_i Y_j ) + 1 / n^2 sum_(k eq.not j) E ( Y_k Y_j ) + 1 / n^2 sum_(j = 1)^n E ( Y_j^2 )] = ast.op
+  & = 1 / n sum_(i = 1)^n [frac(n - 2, n) E ( Y_i^2 ) - 2 / n sum_(j eq.not i) E ( Y_i Y_j ) + 1 / n^2 sum_(k eq.not j) E ( Y_k Y_j ) + 1 / n^2 sum_(j = 1)^n E ( Y_j^2 )] = bigast
 $
 Вспомним, что $sigma^2 = Ex Y^2 - mu^2$, где $mu = Ex Y$.
 Также из независимости выборки следует $Ex (Y_i Y_j) = mu^2$ для $i eq.not j$.
 Тогда
 $
-  ast.op & = 1 / n sum_(i = 1)^n [frac(n - 2, n) ( sigma^2 + mu^2 ) - 2 / n ( n - 1 ) mu^2 + 1 / n^2 n ( n - 1 ) mu^2 + 1 / n^2 n ( sigma^2 + mu^2 )] =\
+  bigast & = 1 / n sum_(i = 1)^n [frac(n - 2, n) ( sigma^2 + mu^2 ) - 2 / n ( n - 1 ) mu^2 + 1 / n^2 n ( n - 1 ) mu^2 + 1 / n^2 n ( sigma^2 + mu^2 )] =\
   & = 1 / n sum_(i = 1)^n [frac(n - 1, n) sigma^2 + (frac(n - 2, n) - frac(n - 1, n) + 1 / n) mu^2] =\
   & = frac(n - 1, n) sigma^2 eq.not sigma^2
 $

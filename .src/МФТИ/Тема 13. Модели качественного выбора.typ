@@ -142,12 +142,12 @@ $
 $
 
 Рассмотрим классическую формулу для коэффициента детерминации
-$ R^2 = 1 - frac(sum^N_(i = 1)(y_i - hat(y)_i)^2, sum^N_(i = 1)(y_i - overline(y))^2) $
-В рамках рассматриваемой нами модели нетрудно увидеть, что $overline(y) = display(frac(n_1, N))$, где $n_1$ — число наблюдений, для которых $y_i = 1$.
+$ R^2 = 1 - frac(sum^N_(i = 1)(y_i - hat(y)_i)^2, sum^N_(i = 1)(y_i - macron(y))^2) $
+В рамках рассматриваемой нами модели нетрудно увидеть, что $macron(y) = display(frac(n_1, N))$, где $n_1$ — число наблюдений, для которых $y_i = 1$.
 Если раскрыть в знаменателе скобки, то мы получим
 $
-  sum^N_(i = 1)(y_i - overline(y))^2 & = sum^N_(i = 1)y^2_i - 2 sum^N_(i = 1)y_i overline(y) + sum^N_(i = 1)overline(y)^2 = \
-  & = n_1 - 2 overline(y) sum^N_(i = 1)y_i + N(frac(n_1, N))^2 = \
+  sum^N_(i = 1)(y_i - macron(y))^2 & = sum^N_(i = 1)y^2_i - 2 sum^N_(i = 1)y_i macron(y) + sum^N_(i = 1)macron(y)^2 = \
+  & = n_1 - 2 macron(y) sum^N_(i = 1)y_i + N(frac(n_1, N))^2 = \
   & = n_1 - 2 frac(n^2_1, N) + frac(n^2_1, N) = frac(n_0 n_1, N)
 $
 

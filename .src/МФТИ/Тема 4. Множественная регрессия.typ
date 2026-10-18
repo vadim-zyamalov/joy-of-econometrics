@@ -191,8 +191,8 @@ $ X = mat(delim: "(", 1, x_1; 1, x_2; dots.v, dots.v; 1, x_n) $
 Легко показать, что
 $
   Vect(X)' Vect(X) & = mat(delim: "(", n, sum_(i = 1)^n x_i; sum_(i = 1)^n x_i, sum_(i = 1)^n x_i^2) \
-  det (Vect(X)' Vect(X)) & = n sum_(i = 1)^n x_i^2 - (sum_(i = 1)^n x_i)^2 = n sum_(i = 1)^n (x_i - overline(x))^2 \
-  (Vect(X)' Vect(X))^(-1) & = 1/n frac(1, sum_(i = 1)^n (x_i - overline(x))^2) mat(delim: "(", sum_(i = 1)^n x_i^2, - sum_(i = 1)^n x_i; - sum_(i = 1)^n x_i, n)
+  det (Vect(X)' Vect(X)) & = n sum_(i = 1)^n x_i^2 - (sum_(i = 1)^n x_i)^2 = n sum_(i = 1)^n (x_i - macron(x))^2 \
+  (Vect(X)' Vect(X))^(-1) & = 1/n frac(1, sum_(i = 1)^n (x_i - macron(x))^2) mat(delim: "(", sum_(i = 1)^n x_i^2, - sum_(i = 1)^n x_i; - sum_(i = 1)^n x_i, n)
 $
 
 Если внимательно посмотреть на главную диагональ, то мы увидим знакомые формулы.
@@ -261,12 +261,12 @@ $ "VIF"(X_j) = frac(1, 1 - R^2_j) $
   Для простоты, перестановкой столбцов матрицы $Vect(X)$ поставим $k$-й регрессор на 1-е место.
   Также предположим, что все столбцы матрицы центрированы.
   Тогда, воспользовавшись формулами для частичной регрессии, получим
-  $ [ (Vect(X)'Vect(X))^(-1) ]_(11)= (Vect(X)'_(1)Vect(M)_(-1)Vect(X)_1)^(-1)= ast.op $
+  $ [ (Vect(X)'Vect(X))^(-1) ]_(11)= (Vect(X)'_(1)Vect(M)_(-1)Vect(X)_1)^(-1)= bigast $
   где $Vect(M)_(-1) = Vect(I) - Vect(X)_(-1)(Vect(X)'_(-1)Vect(X)_(-1))^(-1) Vect(X)'_(-1)$ --- матрица, порождающая остатки регрессии на все столбцы $Vect(X)$, кроме первого.
 
   Так как $[ (Vect(X)'Vect(X))^(-1) ]_(11)$ --- скаляр, то
   $
-    ast.op & = frac(1, Vect(X)'_(1)Vect(M)_(-1)Vect(X)_1)= \
+    bigast & = frac(1, Vect(X)'_(1)Vect(M)_(-1)Vect(X)_1)= \
            & = frac(1, Vect(X)'_(1)Vect(M)_(-1)Vect(M)_(-1)Vect(X)_1)= \
            & = frac(1, (Vect(M)_(-1)Vect(X)_1)'Vect(M)_(-1)Vect(X)_1)= frac(1, eta' eta)
   $

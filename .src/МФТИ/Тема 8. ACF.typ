@@ -12,7 +12,7 @@
 
 *Выборочной автокорреляционной функцией* называется функция
 $
-  r_s = frac(sum^T_(t = s + 1)(y_t - overline(y)) (y_(t - s) - overline(y)), sum^T_(t = 1)(y_t - overline(y))^2)
+  r_s = frac(sum^T_(t = s + 1)(y_t - macron(y)) (y_(t - s) - macron(y)), sum^T_(t = 1)(y_t - macron(y))^2)
 $
 - $r_s$ в случае независимых наблюдений является смещенной оценкой.
 - С ростом $s$ объем используемой выборки, а следовательно и число степеней свободы, уменьшается.
@@ -25,10 +25,11 @@ $
 $ y_t = a_1 y_(t - 1) + a_2 y_(t - 2) + epsilon_t $
 
 Если мы найдем значение $rho_2$, то оно, строго говоря, будет показывать нечто среднее между "прямой" корреляцией $y_t$ и $y_(t - 2)$ и "опосредованной" корреляцией, возникающей из-за того, что $y_t$ зависит от величины $y_(t - 1)$, которая, в свою очередь, зависит от $y_(t - 2)$.
+#align(center)[#image("fig/PACF.pdf", width: 60%)]
 
 Для того, чтобы обойти этот эффект, используют *частные автокорреляции*.
 *Частная автокорреляция* порядка $s$ определяется как значение коэффициента $phi_(s s)$ в следующей модели AR(s):
-#eqnum[$ y_t = phi_(0 s) + phi_(s 1)y_(t - 1) + phi_(s 2)y_(t - 2) + dots.h.c+ phi_(s s)y_(t - s) + nu_t $] <eq-6.1>
+#eqnum[$ y_t = phi_(s 0) + phi_(s 1)y_(t - 1) + phi_(s 2)y_(t - 2) + dots.h.c+ phi_(s s)y_(t - s) + nu_t $] <eq-6.1>
 
 Обратите внимание, что при поиске значения $phi.alt_(s s)$ мы полностью игнорируем истинный порядок авторегрессии процесса; значение $s$ может принимать произвольные интересующие на значения.
 
@@ -62,7 +63,7 @@ $
 $
 
 *Выборочная частная автокорреляционная функция* $hat(phi)_(s s)$ определяется как коэффициент $phi_(s s)$ в выборочной регрессии
-$ (y_t - overline(y)) = phi_(s 1)(y_(t - 1) - overline(y)) + dots.h.c+ phi_(s s)(y_(t - s) - overline(y)) + epsilon_t $
+$ (y_t - macron(y)) = phi_(s 1)(y_(t - 1) - macron(y)) + dots.h.c+ phi_(s s)(y_(t - s) - macron(y)) + epsilon_t $
 
 Можно показать, что $hat(phi)_(s s)$ — состоятельная оценка $phi_(s s)$.
 Для поиска значения $hat(phi)_(s s)$ можно также воспользоваться правилом Крамера, заменив истинные автокорреляции выборочными.
@@ -79,23 +80,23 @@ $ y_t = a_0 + a_1 y_(t - 1) + dots.h.c+ a_p y_(t - p) + epsilon_t $
 $ Ex y_t = mu = frac(a_0, 1 - sum^p_(i = 1)a_i) $
 Вычтем $mu$ из обеих частей процесса:
 $
-  overline(y)_t = y_t - mu & = a_0 - frac(a_0, 1 - sum^p_(i = 1)a_i) + a_1 y_(t - 1) + dots.h.c+ a_p y_(t - p) + epsilon_t = \
+  macron(y)_t = y_t - mu & = a_0 - frac(a_0, 1 - sum^p_(i = 1)a_i) + a_1 y_(t - 1) + dots.h.c+ a_p y_(t - p) + epsilon_t = \
   & = frac(a_0 - a_0 a_1 - a_0 a_2 - dots.h.c- a_0 a_p - a_0, 1 - sum^p_(i = 1)a_i) + a_1 y_(t - 1) + dots.h.c+ a_p y_(t - p) + epsilon_t = \
-  & = frac(- a_0 a_1 - a_0 a_2 - dots.h.c- a_0 a_p, 1 - sum^p_(i = 1)a_i) + a_1 y_(t - 1) + dots.h.c+ a_p y_(t - p) + epsilon_t = ast.op
+  & = frac(- a_0 a_1 - a_0 a_2 - dots.h.c- a_0 a_p, 1 - sum^p_(i = 1)a_i) + a_1 y_(t - 1) + dots.h.c+ a_p y_(t - p) + epsilon_t = bigast
 $
 
 Первое слагаемое можно рассматривать как сумму из $p$ отдельных дробей.
 Выделим первую из них.
 $
-  ast.op& = frac(- a_0 a_1, 1 - sum^p_(i = 1)a_i) + frac(- a_0 a_2 - dots.h.c- a_0 a_p, 1 - sum^p_(i = 1)a_i) + a_1 y_(t - 1) + dots.h.c+ a_p y_(t - p) + epsilon_t = \
+  bigast& = frac(- a_0 a_1, 1 - sum^p_(i = 1)a_i) + frac(- a_0 a_2 - dots.h.c- a_0 a_p, 1 - sum^p_(i = 1)a_i) + a_1 y_(t - 1) + dots.h.c+ a_p y_(t - p) + epsilon_t = \
   & = frac(- a_0 a_2 - dots.h.c- a_0 a_p, 1 - sum^p_(i = 1)a_i) + a_1 (y_(t - 1) - frac(a_0, 1 - sum^p_(i = 1)a_i)) + dots.h.c+ a_p y_(t - p) + epsilon_t = \
-  & = frac(- a_0 a_2 - dots.h.c- a_0 a_p, 1 - sum^p_(i = 1)a_i) + a_1 underbrace((y_(t - 1) - mu), overline(y)_(t - 1)) + dots.h.c+ a_p y_(t - p) + epsilon_t = ast.op
+  & = frac(- a_0 a_2 - dots.h.c- a_0 a_p, 1 - sum^p_(i = 1)a_i) + a_1 underbrace((y_(t - 1) - mu), macron(y)_(t - 1)) + dots.h.c+ a_p y_(t - p) + epsilon_t = bigast
 $
 
 Проделав аналогичные действия с остальными слагаемыми, получим
-$ ast.op= a_1 overline(y)_(t - 1) + dots.h.c+ a_p overline(y)_(t - p) + epsilon_t $
+$ bigast= a_1 macron(y)_(t - 1) + dots.h.c+ a_p macron(y)_(t - p) + epsilon_t $
 
-Очевидно, что значения всех автокорреляций для процессов $y_t$ и $overline(y)_t$ совпадают.
+Очевидно, что значения всех автокорреляций для процессов $y_t$ и $macron(y)_t$ совпадают.
 Поэтому, для упрощения и для краткости будем считать, что мы уже провели центрирование процесса и отбросили свободный член.
 
 + Чтобы найти первую автокорреляцию $rho_1$ найдем $gamma_1$, умножив обе части процесса на $y_(t - 1)$ и взяв математическое ожидание.

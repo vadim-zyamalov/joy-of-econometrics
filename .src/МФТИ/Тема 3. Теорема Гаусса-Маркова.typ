@@ -47,14 +47,14 @@
   / Линейная оценка: оценка, имеющая вид $sum_(i=1)^n a_i Y_i$, где $a_i$ --- коэффициенты, *не зависящие* от $Y_i$.
 
   Вспомним, что
-  $ hat(beta)_1 = frac(sum_(i = 1)^n (Y_i - macron(Y))(X_i - macron(X)), sum_(i = 1)^n (X_i - macron(X))^2) = ast.op $
+  $ hat(beta)_1 = frac(sum_(i = 1)^n (Y_i - macron(Y))(X_i - macron(X)), sum_(i = 1)^n (X_i - macron(X))^2) = bigast $
   Раскроем первую скобку в числителе и получим, что
   $
-    ast.op = frac(sum_(i = 1)^n (X_i - macron(X))Y_i - macron(Y) sum_(i = 1)^n (X_i - macron(X)), sum_(i = 1)^n (X_i - macron(X))^2) = ast.op
+    bigast = frac(sum_(i = 1)^n (X_i - macron(X))Y_i - macron(Y) sum_(i = 1)^n (X_i - macron(X)), sum_(i = 1)^n (X_i - macron(X))^2) = bigast
   $
   Так как $sum_(i=1)^n (X_i - macron(X)) = 0$, то
   $
-    ast.op = frac(sum_(i = 1)^n (X_i - macron(X))Y_i, sum_(i = 1)^n (X_i - macron(X))^2) = sum_(i = 1)^n frac(X_i - macron(X), sum_(i = 1)^n (X_i - macron(X))^2) Y_i = sum_(i = 1)^n hat(a)_i Y_i
+    bigast = frac(sum_(i = 1)^n (X_i - macron(X))Y_i, sum_(i = 1)^n (X_i - macron(X))^2) = sum_(i = 1)^n frac(X_i - macron(X), sum_(i = 1)^n (X_i - macron(X))^2) Y_i = sum_(i = 1)^n hat(a)_i Y_i
   $
   где $hat(a)_i = frac(X_i - macron(X), sum_(i = 1)^n (X_i - macron(X))^2)$.
   Тем самым мы показали, что $hat(beta)_1$ --- линейная оценка.
