@@ -1,0 +1,301 @@
+---
+title: "Семинар 6"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, message=FALSE, warning=FALSE}
+library(zoo)
+```
+
+# Данные
+
+## Пятна на солнце
+
+```{r}
+summary(sunspot.year)
+```
+
+```{r}
+plot.ts(sunspot.year)
+```
+
+Вслед за Хансеном преобразцем данные следующим образом.
+
+```{r}
+sun <- (sqrt(sunspot.year + 1) - 1) * 2
+summary(sun)
+```
+
+```{r}
+plot.ts(sun)
+```
+
+## Рыси
+
+```{r}
+l_lynx <- log10(lynx)
+summary(l_lynx)
+```
+
+```{r}
+plot.ts(l_lynx)
+```
+
+## Акции Apple
+
+```{r, results='hide'}
+library(quantmod)
+getSymbols("AAPL", from="2020/01/01", to="2024/12/31", periodicity="daily")
+```
+
+```{r}
+apple_r <- log(AAPL$AAPL.Adjusted / Lag(AAPL$AAPL.Adjusted, 1))
+apple_r <- na.omit(apple_r)
+```
+
+# Нелинейные модели
+
+## tvAR
+
+```{r}
+e <- rnorm(300, sd = .1)
+x <- numeric(300)
+tau <- (1:300)/300
+beta <- 0.9 * cos(6 * tau)
+for (t in 2:300) {
+  x[t] <- beta[t] * x[t-1] + e[t]
+}
+```
+
+```{r}
+plot.ts(beta)
+```
+
+```{r}
+plot.ts(x)
+```
+
+```{r}
+pacf(x)
+```
+
+```{r}
+arima(x, order = c(2, 0, 0), include.mean = FALSE)
+```
+
+```{r}
+mod.tvAR <- tvReg::tvAR(x, p = 1, type = "none")
+```
+
+```{r}
+plot(mod.tvAR$coefficients, type = "l")
+lines(beta, col="red")
+```
+
+```{r}
+summary(mod.tvAR)
+```
+
+```{r}
+mod.tvAR$residuals**2 |> sum()
+```
+
+```{r}
+arima(x, order = c(2, 0, 0), include.mean = FALSE)$residuals**2 |> sum()
+```
+
+## TAR
+
+Модель задается в следующем виде: $$\begin{aligned}
+y_{t+{steps}} &= \left(\phi_{1,0} + \sum_{i=0}^{mL - 1} \phi_{1,i} y_{t - d i}\right) \mathbb{I}(z_t \leqslant {th}) + \left(\phi_{2,0} + \sum_{i=0}^{mH - 1} \phi_{2,i} y_{t - d i}\right) \mathbb{I}(z_t \gt {th}) + \varepsilon_{t+{steps}} \\
+z_t &= \begin{cases}
+  y_{t - {thDelay} \times d} \\
+  {mTh}_1 y_t + {mTh}_2 y_{t - d} + \dots + {mTh}_m y_{t - (m - 1)d} \\
+  {thVar}_t
+\end{cases}
+\end{aligned}$$
+
+```{r}
+tsDyn::setarTest(
+  sun,
+  m = 11, thDelay = 0,
+  nboot = 10,
+  trim = 0.1,
+  test = "1vs"
+)
+```
+
+```{r}
+mod.setar <- tsDyn::setar(sun, m = 11, thDelay = 0)
+summary(mod.setar)
+```
+
+```{r}
+mod.setar2 <- tsDyn::setar(sun, mL = 9, mH = 5, thDelay = 0)
+summary(mod.setar2)
+```
+
+```{r}
+plot(mod.setar)
+```
+
+```{r}
+plot(mod.setar2)
+```
+
+```{r}
+tsDyn::setarTest(l_lynx, m = 2, thDelay = 1)
+```
+
+```{r}
+mod.setar <- tsDyn::setar(l_lynx, m = 2, thDelay = 1)
+summary(mod.setar)
+```
+
+```{r}
+plot(mod.setar)
+```
+
+```{r}
+mod.setar <- tsDyn::setar(l_lynx, m = 2, thDelay = 1, th = 3.25)
+summary(mod.setar)
+```
+
+```{r}
+tsDyn::setarTest(apple_r, m = 10, thDelay = 0)
+```
+
+```{r}
+mod.setar <- tsDyn::setar(apple_r, m = 10, thDelay = 0)
+summary(mod.setar)
+```
+
+```{r}
+plot(mod.setar)
+```
+
+## STAR
+
+Модель задается в следующем виде: $$\begin{aligned}
+y_{t+{steps}} &= \left(\phi_{1,0} + \sum_{i=1}^{mL - 1} \phi_{1,i} y_{t - d i}\right) G(z_t, \gamma, {th}) + \left(\phi_{2,0} + \sum_{i=1}^{mH - 1} \phi_{2,i} y_{t - d i}\right) [1 - G(z_t, \gamma, {th})] + \varepsilon_{t+{steps}} \\
+z_t &= \begin{cases}
+  y_{t - {thDelay} \times d} \\
+  {mTh}_1 y_t + {mTh}_2 y_{t - d} + \dots + {mTh}_m y_{t - (m - 1)d} \\
+  {thVar}_t
+\end{cases}
+\end{aligned}$$
+
+Проведем тест для ряда `sun`:
+
+```{r}
+model <- dynlm::dynlm(sun ~ L(sun, 1:11) + L(sun^1, 2):L(sun, 1:11) + L(sun^2, 2):L(sun, 1:11) + L(sun^3, 2):L(sun, 1:11))
+summary(model)
+```
+
+```{r}
+hypotheses <- NULL
+for (j in 1:3) for (i in 1:11) {
+  hypotheses <- c(hypotheses, paste("L(sun, 1:11)", i, ":L(sun^", j, ", 2)=0", sep = ""))
+}
+```
+
+```{r}
+car::linearHypothesis(model, hypotheses)
+```
+
+```{r}
+mod.lstar <- tsDyn::lstar(sun, m = 11, thDelay = 1)
+summary(mod.lstar)
+```
+
+```{r}
+mod.lstar <- tsDyn::lstar(sun, m = 11, thDelay = 1, starting.control = list(gammaInt = c(0.1, 40), nGamma = 100))
+mod.lstar
+```
+
+```{r}
+AIC(mod.lstar)
+```
+
+```{r}
+plot(mod.lstar)
+```
+
+Проведем тест для ряда `l_lynx`:
+
+```{r}
+model <- dynlm::dynlm(l_lynx ~ L(l_lynx, 1:2) + L(l_lynx^1, 2):L(l_lynx, 1:2) + L(l_lynx^2, 2):L(l_lynx, 1:2) + L(l_lynx^3, 2):L(l_lynx, 1:2))
+summary(model)
+```
+
+```{r}
+hypotheses <- NULL
+for (j in 1:3) for (i in 1:2) {
+  hypotheses <- c(hypotheses, paste("L(l_lynx, 1:2)", i, ":L(l_lynx^", j, ", 2)=0", sep = ""))
+}
+```
+
+```{r}
+car::linearHypothesis(model, hypotheses)
+```
+
+```{r}
+mod.lstar <- tsDyn::lstar(l_lynx, m = 2, mTh = c(0, 1), control=list(maxit=3000))
+summary(mod.lstar)
+```
+
+```{r}
+AIC(mod.lstar)
+```
+
+```{r}
+plot(mod.lstar)
+```
+
+```{r}
+mod.lstar <- tsDyn::lstar(l_lynx, m = 2, include = "none")
+summary(mod.lstar)
+```
+
+```{r}
+AIC(mod.lstar)
+```
+
+```{r}
+.apple_r <- zoo(apple_r)
+model <- dynlm::dynlm(.apple_r ~ L(.apple_r, 1:10) + L(.apple_r^1, 1):L(.apple_r, 1:10) + L(.apple_r^2, 1):L(.apple_r, 1:10) + L(.apple_r^3, 1):L(.apple_r, 1:10))
+summary(model)
+```
+
+```{r}
+hypotheses <- NULL
+for (j in 1:3) for (i in 1:10) {
+  hypotheses <- c(hypotheses, paste("L(.apple_r, 1:10)", i, ":L(.apple_r^", j, ", 1)=0", sep = ""))
+}
+```
+
+```{r}
+car::linearHypothesis(model, hypotheses)
+```
+
+```{r}
+mod.lstar <- tsDyn::lstar(apple_r, m = 10, thDelay = 0)
+mod.lstar
+```
+
+```{r}
+mod.lstar <- tsDyn::lstar(apple_r, m = 10, starting.control = list(gammaInt = c(0.1, 40), nGamma = 100))
+mod.lstar
+```
+
+```{r}
+AIC(mod.lstar)
+```
+
+```{r}
+plot(mod.lstar)
+```

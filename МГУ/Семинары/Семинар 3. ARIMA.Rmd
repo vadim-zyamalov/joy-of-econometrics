@@ -1,0 +1,51 @@
+---
+title: "Семинар 3: ММП"
+author: "Вадим Зямалов"
+date: "2026-01-24"
+output: html_document
+---
+
+```{r}
+N <- 250
+S <- 51
+```
+
+# AR(1)
+
+```{r}
+e <- rnorm(N)
+y <- numeric(N) # rep(0, N)
+x <- numeric(N)
+```
+
+```{r}
+for (t in 2:N) y[t] <- .8 * y[t - 1] + e[t]
+y <- y[S:N]
+
+arima(y, order = c(1, 0, 0), include.mean = FALSE)
+```
+
+```{r}
+for (t in 2:N) x[t] <- 10 + .8 * x[t - 1] + e[t]
+x <- x[S:N]
+
+arima(x, order = c(1, 0, 0))
+```
+
+# SARIMA(1,1,0)(1,0,0)[4]
+
+```{r}
+# 1 - 1.5 L + 0.5 L^2 - 0.0016 L^4 + 0.0024 L^5 - 0.0008 L^6
+e <- rnorm(5*N)
+z <- numeric(5*N)
+for (t in 7:(5*N)) z[t] <- 1.5 * z[t - 1] - 0.5 * z[t - 2] + 0.0016 * z[t - 4] - 0.0024 * z[t - 5] + 0.0008 * z[t - 6] + e[t]
+z <- ts(z[-(1:50)], frequency = 4)
+```
+
+```{r}
+plot(z)
+```
+
+```{r}
+forecast::auto.arima(z)
+```

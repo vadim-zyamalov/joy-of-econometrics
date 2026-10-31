@@ -1,0 +1,275 @@
+---
+title: "Семинар 2: Мощность"
+author: "Вадим Зямалов"
+date: "2026-01-24"
+output: html_document
+---
+
+Будем параллелить вычисления
+
+```{r}
+library(foreach)
+```
+
+Последовательность коэффициентов $\rho$
+
+```{r}
+rho <- round(seq(from = 1.0, to = 0, by = -0.05), 2)
+```
+
+Для каждого значения rho будем генерировать 1999 рядов длины 100.
+
+```{r}
+iters <- 1999
+N <- 100
+```
+
+Также посмотрим влияние структурных сдвигов на мощность тестов.
+Будем считать, что сдвиг имеет место в момент времени 50.
+
+```{r}
+Tb <- 50
+
+```
+
+Будем строить красивый прогресс-бар
+
+```{r}
+pb <- txtProgressBar(max = iters, style = 3)
+progress <- function(n)
+  setTxtProgressBar(pb, n)
+```
+
+Объявим кластер
+
+```{r}
+cores <- parallel::detectCores()
+cluster <- parallel::makeCluster(max(cores - 1, 1), type = "SOCK")
+doSNOW::registerDoSNOW(cluster)
+opts <- list(progress = progress)
+```
+
+Результаты будем записывать в матрицу с 8 столбцами: - первые три будут содержать результаты для рядов без сдвигов, - а последние --- со сдвигом.
+
+```{r}
+result <- matrix(0, nrow = length(rho), ncol = 8)
+colnames(result) <- c("ADF",
+                      "PP",
+                      "ERS",
+                      "KPSS",
+                      "ADF w/ break",
+                      "PP w/ break",
+                      "ERS w/ break",
+                      "KPSS w/ break")
+rownames(result) <- rho
+
+result_tr <- result
+```
+
+Предельное чило лагов (по Шверту)
+
+```{r}
+m.lags <- trunc(4 * (N / 100)^(1 / 4))
+```
+
+Функция для итераций без константы и тренда $$\begin{align*}
+y_t & = a_1 y_{t-1} + e_t \\
+y^b_t & = 2 I(t > T_B) + a_1 y^b_{t-1} + \varepsilon_t
+\end{align*}$$
+
+```{r}
+iter_step <- function(r) {
+  eps <- rnorm(N + 1)
+  
+  tmp_res <- rep(0, 8)
+  
+  y <- rep(0, N + 1)
+  yb <- rep(0, N + 1)
+  for (t in 2:101) {
+    y[t] <- rho[r] * y[t - 1] + eps[t]
+    yb[t] <- 2 * (t > Tb) + rho[r] * yb[t - 1] + eps[t]
+  }
+  y <- y[2:(N + 1)]
+  yb <- yb[2:(N + 1)]
+  
+  tmp <- urca::ur.df(y,
+                     type = "none",
+                     lags = m.lags,
+                     selectlags = "AIC")
+  tmp_res[1] <- as.numeric(tmp@teststat[1, 1] <= tmp@cval[1, 2])
+  
+  tmp <- urca::ur.pp(y,
+                     type = "Z-tau",
+                     model = "constant",
+                     lags = "short")
+  tmp_res[2] <- as.numeric(tmp@teststat <= tmp@cval[2])
+  
+  tmp <- urca::ur.ers(y,
+                      type = "DF-GLS",
+                      model = "constant",
+                      lag.max = m.lags)
+  tmp_res[3] <- as.numeric(tmp@teststat <= tmp@cval[2])
+  
+  tmp <- urca::ur.kpss(y, type = "mu", lags = "short")
+  tmp_res[4] <- as.numeric(tmp@teststat >= tmp@cval[2])
+  
+  tmp <- urca::ur.df(yb,
+                     type = "none",
+                     lags = m.lags,
+                     selectlags = "AIC")
+  tmp_res[5] <- as.numeric(tmp@teststat[1, 1] <= tmp@cval[1, 2])
+  
+  tmp <- urca::ur.pp(yb,
+                     type = "Z-tau",
+                     model = "constant",
+                     lags = "short")
+  tmp_res[6] <- as.numeric(tmp@teststat <= tmp@cval[2])
+  
+  tmp <- urca::ur.ers(yb,
+                      type = "DF-GLS",
+                      model = "constant",
+                      lag.max = m.lags)
+  tmp_res[7] <- as.numeric(tmp@teststat <= tmp@cval[2])
+  
+  tmp <- urca::ur.kpss(yb, type = "mu", lags = "short")
+  tmp_res[8] <- as.numeric(tmp@teststat >= tmp@cval[2])
+  
+  tmp_res
+}
+```
+
+Запустим параллельные вычисления и посмотрим на результаты.
+В `R` в функцию `foreach` передадим следующие параметры:
+
+-   переменную цикла и набор принимаемых ею значений.
+-   функцию, комбинирующую возвращаемые значения. В нашем случае воспользуемся `rbind` для формирования матрицы с результатами каждого теста по столбцам.
+-   укажем, что нас не интересует порядок результатов.
+-   попросим удалять ошибочные результаты.
+-   добавим прочие опции.
+
+```{r}
+for (r in 1:length(rho)) {
+  cat("\nR =", rho[r], end = "\n")
+  stats <- foreach(
+    i = 1:iters,
+    .combine = rbind,
+    .inorder = FALSE,
+    .errorhandling = "remove",
+    .options.snow = opts
+  ) %dopar% {
+    iter_step(r)
+  }
+  
+  # Найдем средние значения по столбцам
+  result[r, ] <- round(colMeans(stats), 4)
+  if (r == 1) {
+    result[r, c(1, 2, 3, 5, 6, 7)] <- NA
+  } else {
+    result[r, c(4, 8)] <- NA
+  }
+}
+```
+
+Проведем аналогичные вычисления для процессов с линейным трендом.
+$$\begin{align*}
+y_t & = t + a_1 y_{t-1} + e_t \\
+y^b_t & = t + (t - T_B) I(t > T_B) + a_1 y^b_{t-1} + e_t
+\end{align*}$$
+
+```{r}
+iter_step_tr <- function(r) {
+  eps <- rnorm(N + 1)
+  
+  tmp_res <- rep(0, 6)
+  
+  y <- rep(0, N + 1)
+  yb <- rep(0, N + 1)
+  for (t in 2:101) {
+    y[t] <- t + rho[r] * y[t - 1] + eps[t]
+    yb[t] <- (t - Tb) * (t > Tb) + t + rho[r] * yb[t - 1] + eps[t]
+  }
+  y <- y[2:(N + 1)]
+  yb <- yb[2:(N + 1)]
+  
+  tmp <- urca::ur.df(y,
+                     type = "trend",
+                     lags = m.lags,
+                     selectlags = "AIC")
+  tmp_res[1] <- as.numeric(tmp@teststat[1, 1] <= tmp@cval[1, 2])
+  
+  tmp <- urca::ur.pp(y,
+                     type = "Z-tau",
+                     model = "trend",
+                     lags = "short")
+  tmp_res[2] <- as.numeric(tmp@teststat <= tmp@cval[2])
+  
+  tmp <- urca::ur.ers(y,
+                      type = "DF-GLS",
+                      model = "trend",
+                      lags = m.lags)
+  tmp_res[3] <- as.numeric(tmp@teststat <= tmp@cval[2])
+  
+  tmp <- urca::ur.kpss(y, type = "tau", lags = "short")
+  tmp_res[4] <- as.numeric(tmp@teststat >= tmp@cval[2])
+  
+  tmp <- urca::ur.df(yb,
+                     type = "trend",
+                     lags = m.lags,
+                     selectlags = "AIC")
+  tmp_res[5] <- as.numeric(tmp@teststat[1, 1] <= tmp@cval[1, 2])
+  
+  tmp <- urca::ur.pp(yb,
+                     type = "Z-tau",
+                     model = "trend",
+                     lags = m.lags)
+  tmp_res[6] <- as.numeric(tmp@teststat <= tmp@cval[2])
+  
+  tmp <- urca::ur.ers(y,
+                      type = "DF-GLS",
+                      model = "trend",
+                      lags = m.lags)
+  tmp_res[7] <- as.numeric(tmp@teststat <= tmp@cval[2])
+  
+  tmp <- urca::ur.kpss(yb, type = "tau", lags = "short")
+  tmp_res[8] <- as.numeric(tmp@teststat >= tmp@cval[2])
+  
+  tmp_res
+}
+```
+
+```{r}
+for (r in 1:length(rho)) {
+  cat("\nR =", rho[r], end = "\n")
+  stats <- foreach(
+    i = 1:iters,
+    .combine = rbind,
+    .inorder = FALSE,
+    .errorhandling = "remove",
+    .options.snow = opts
+  ) %dopar% {
+    iter_step(r)
+  }
+  
+  # Найдем средние значения по столбцам
+  result_tr[r, ] <- round(colMeans(stats), 4)
+  if (r == 1) {
+    result_tr[r, c(1, 2, 3, 5, 6, 7)] <- NA
+  } else {
+    result_tr[r, c(4, 8)] <- NA
+  }
+}
+```
+
+Останавливаем кластер
+
+```{r}
+parallel::stopCluster(cluster)
+```
+
+```{r}
+result
+```
+
+```{r}
+result_tr
+```

@@ -1,0 +1,25 @@
+[project]
+name = "Econometrics"
+version = "2025.11.11"
+requires-python = ">=3.12"
+dependencies = [
+  "numpy",
+  "pandas",
+  "statsmodels",
+  "arch",
+  "matplotlib",
+  "jupyterlab",
+  "seaborn",
+  "ipython",
+  "scipy",
+  "openpyxl",
+  "xlrd",
+  "yatg",
+  "stargazer",
+  "pygments",
+  "latexminted",
+  "scikit-learn",
+  "pmdarima",
+  "linearmodels",
+  "py4etrics",
+]

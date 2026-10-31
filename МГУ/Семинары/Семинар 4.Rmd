@@ -1,0 +1,315 @@
+---
+title: "Семинар 4"
+output: html_document
+---
+
+# Теория
+
+## Простое экспоненциальное сглаживание
+
+Экспоненциальное сглаживание --- это попытка найти баланс между
+
+-   наивным прогнозом, в котором $\hat{y}_{T+h \mid T} = \hat{y}_{T+1 \mid T} = y_T$, то есть важно **только** последнее наблюдение;
+-   средним прогнозом, в котором $\hat{y}_{T+h \mid T} = \frac1T \sum_{t=1}^T y_t$, и **все** наблюдения имеют одинаковый вес.
+
+Одним из логичных решений является придание наиболее близким наблюдениям больших весов с последующим их уменьшением, например экспоненциальным $$\hat{y}_{T+1 \mid T} = \alpha y_T + \alpha (1 - \alpha) y_{T-1} + \alpha (1 - \alpha)^2 y_{T-2} + \dots$$
+
+Рассмотрим следующую процедуру сглаживания $$\hat{y}_{t+1 \mid t} = \alpha y_t + (1 - \alpha) \hat{y}_{t \mid t-1}$$ то есть следующее сглаженное значение это среднее между прошлым наблюдаемым и прошлым сглаженным.
+Полезна так называемая компонентная форма $$\begin{aligned}
+\hat{y}_{t+h \mid t} &= l_t \\
+l_t &= \alpha y_t + (1 - \alpha) l_{t-1}
+\end{aligned}$$
+
+Нетрудно показать, что при некотором заданном начальном значении $\mathcal{l}_0$ для $h=1$ $$\hat{y}_{t+1 \mid t} = \sum_{j=0}^{t-1} \alpha (1 - \alpha)^j y_{t-j} + (1 - \alpha)^t \mathcal{l}_0$$ Величины $\alpha$ и $\mathcal{l}_0$ можно брать произвольными, но лучше оценить $$(\alpha, \mathcal{l}_0) = \arg\min_{\alpha, \mathcal{l}_0} \sum_{t=1}^T (y_t - \hat{y}_{t \mid t-1})^2$$
+
+## Сглаживание Хольта
+
+Описанная ранее процедура плохо работает, если в данных есть тренд.
+Хольт предложил экспоненциальное сглаживание с трендом $$\begin{aligned}
+\hat{y}_{t+h \mid t} &= l_t + h b_t \\
+l_t &= \alpha y_t + (1 + \alpha) (l_{t-1} + b_{t-1}) \\
+b_t &= \beta(l_t - l_{t-1}) + (1 - \beta) b_{t-1}
+\end{aligned}$$
+
+Гарднер и МакКензи предложили следующую модификацию, призванную избежать перепрогнозирования $$\begin{aligned}
+\hat{y}_{t+h \mid t} &= l_t + (\phi + \phi^2 + \dots + \phi^h) b_t \\
+l_t &= \alpha y_t + (1 + \alpha) (l_{t-1} + \phi b_{t-1}) \\
+b_t &= \beta(l_t - l_{t-1}) + (1 - \beta) \phi b_{t-1}
+\end{aligned}$$
+
+## Сглаживание Хольта-Винтерса
+
+Данный метод призван дополнительно учесть сезонность в данных.
+Аддитивная версия имеет вид $$\begin{aligned}
+\hat{y}_{t+h \mid t} &= l_t + h b_t + s_{t+h-m(k+1)} \\
+l_t &= \alpha (y_t - s_{t-m}) + (1 + \alpha) (l_{t-1} + b_{t-1}) \\
+b_t &= \beta(l_t - l_{t-1}) + (1 - \beta) b_{t-1} \\
+s_t &= \gamma (y_t - l_{t-1} - b_{t-1}) + (1 - \gamma) s_{t-m} \\
+k &= \left[\frac{h-1}{m}\right] \\
+0 &\leqslant \gamma \leqslant 1 - \alpha
+\end{aligned}$$ а мультипликативная $$\begin{aligned}
+\hat{y}_{t+h \mid t} &= (l_t + h b_t) s_{t+h-m(k+1)} \\
+l_t &= \alpha \frac{y_t}{s_{t-m}} + (1 + \alpha) (l_{t-1} + b_{t-1}) \\
+b_t &= \beta(l_t - l_{t-1}) + (1 - \beta) b_{t-1} \\
+s_t &= \gamma \frac{y_t}{l_{t-1} + b_{t-1}} + (1 - \gamma) s_{t-m} \\
+k &= \left[\frac{h-1}{m}\right] \\
+\end{aligned}$$
+
+## Таксономия моделей
+
+![](https://otexts.com/fpp3/figs/pegelstable-1.png)
+
+![](https://otexts.com/fpp3/figs/statespacemodels-1.png)
+
+# Практика
+
+Загрузим нужные пакеты.
+Можно, конечно загрузить `fpp3`, как в книжке, но это неспортивно :)
+
+Пакеты:
+
+-   `tibble` --- аналог `data.frame`, но, по мнению Tidyverse, с улучшениями.
+-   `tsibble` --- расширение `tibble` для временных рядов.
+-   `lubridate` --- пакет для работы с датами. И да, в `R` любят провокационные названия.
+-   `fable` --- пакет с кучей методов автоматического построения прогнозов, аналог `forecast`.
+
+```{r, message=FALSE, warning=FALSE}
+library(tibble)
+library(tsibble)
+library(lubridate)
+library(fable)
+library(fabletools)
+library(dplyr)
+library(ggplot2)
+library(zeallot)
+```
+
+## Пример 1
+
+```{r}
+algeria_economy <- tsibbledata::global_economy %>%
+  filter(Country == "Algeria")
+```
+
+```{r}
+algeria_economy %>%
+  autoplot(Exports) +
+  labs(y = "% of GDP", title = "Exports: Algeria")
+```
+
+Рассмотрим пример прогнозирования при помощи ARIMA.
+
+```{r}
+algeria_economy$Exports |> forecast::auto.arima() |> forecast(h = 6)
+```
+
+Рассмотрим экспоненциальное сглаживание.
+
+```{r}
+fit <- algeria_economy %>%
+  model(ETS(Exports ~ error("A") + trend("N") + season("N")))
+
+fitH <- algeria_economy %>%
+  model(ETS(Exports ~ error("A") + trend("A") + season("N")))
+```
+
+```{r}
+coef(fit)
+```
+
+Оценим параметры простого сглаживания (`fit`) руками.
+
+```{r}
+Q <- function(par, y) {
+  c(a, l) %<-% par
+  if (a > 1 || a < 0) return(Inf)
+  
+  N <- length(y)
+  
+  res <- 0
+  for (i in 1:N) {
+    res <- res + (y[i] - l)^2
+    l <- a * y[i] + (1 - a) * l
+  }
+  res
+}
+```
+
+```{r}
+optim(c(alpha = 1, l0 = algeria_economy$Exports[1]),
+      Q,
+      y = algeria_economy$Exports)
+```
+
+```{r}
+coef(fitH)
+```
+
+Постоим графики рядов и прогнозов.
+
+```{r}
+fplot <- function(x, n = 5) {
+  x %>%
+    forecast(h = n) %>%
+    autoplot(algeria_economy) +
+    geom_line(aes(y = .fitted),
+              col = "#D55E00",
+              data = augment(fit)) +
+    labs(y = "% of GDP", title = "Exports: Algeria") +
+    guides(colour = "none")
+}
+```
+
+```{r}
+fplot(fit)
+```
+
+```{r}
+fplot(fitH)
+```
+
+Посмотрим на использование ARIMA в пакете fable.
+
+```{r}
+library(feasts)
+
+fitA <- algeria_economy %>%
+  model(ARIMA(Exports))
+```
+
+```{r}
+coef(fitA)
+```
+
+```{r}
+fplot(fitA)
+```
+
+## Пример 2
+
+```{r}
+aus_holidays <- tourism %>%
+  filter(Purpose == "Holiday") %>%
+  summarise(Trips = sum(Trips) / 1e3)
+```
+
+```{r}
+fit <- aus_holidays %>%
+  model(ETS(Trips))
+```
+
+```{r}
+components(fit) %>%
+  autoplot() +
+  labs(title = "ETS(M,N,A) components")
+```
+
+```{r}
+fit %>%
+  forecast(h = 8) %>%
+  autoplot(aus_holidays) +
+  labs(title = "Australian domestic tourism", y = "Overnight trips (millions)")
+```
+
+## Пример 3
+
+```{r}
+train <- tsibbledata::aus_production %>%
+  filter_index("1992 Q1" ~ "2006 Q4")
+```
+
+```{r}
+beer_fit <- train %>%
+  model(
+    Mean = MEAN(Beer),
+    `Naïve` = NAIVE(Beer),
+    `Seasonal naïve` = SNAIVE(Beer),
+    `ETS` = ETS(Beer),
+    `ARIMA` = ARIMA(Beer)
+  )
+```
+
+```{r}
+coef(beer_fit)
+```
+
+```{r}
+components(beer_fit["ETS"]) %>%
+  autoplot()
+```
+
+Оценим параметры ETS руками.
+
+```{r}
+L <- function(pars, y, m = 4) {
+  c(a, l, g, ..s) %<-% pars
+  
+  if (any(pars < 0)) return(Inf)
+  if (a < 0 || a > 1) return(Inf)
+  if (g < 0 || g > 1 - a) return(Inf)
+  
+  N <- length(y)
+  s <- c(unlist(s), numeric(N))
+  
+  res <- 0
+  for (i in 1:N) {
+    eps <- (y[i] - l * s[i]) / (l * s[i])
+    res <- res + eps^2
+    l <- l * (1 + a * eps)
+    s[i + m] <- s[i] * (1 + g * eps)
+  }
+  res
+}
+```
+
+```{r}
+optim(
+  c(
+    alpha = 0,
+    l0 = train$Beer[1],
+    gamma = 0,
+    's[-3]' = 1,
+    's[-2]' = 1,
+    's[-1]' = 1,
+    's[0]' = 1
+  ),
+  L,
+  y = train$Beer
+)
+```
+
+```{r}
+beer_fc <- beer_fit %>% forecast(h = 14)
+```
+
+```{r}
+beer_fc %>%
+  autoplot(filter_index(tsibbledata::aus_production, "1992 Q1" ~ .), level = NULL) +
+  labs(y = "Megalitres", title = "Forecasts for quarterly beer production") +
+  guides(colour = guide_legend(title = "Forecast"))
+```
+
+## Пример 4
+
+```{r}
+library(fable.prophet)
+cement <- tsibbledata::aus_production %>%
+  filter(year(Quarter) >= 1988)
+```
+
+```{r}
+train <- cement %>%
+  filter(year(Quarter) <= 2007)
+```
+
+```{r}
+fit <- train %>%
+  model(prophet = prophet(Cement ~ season(period = 4,
+                                          order = 2,
+                                          type = "multiplicative")),
+        ARIMA = ARIMA(Cement))
+```
+
+```{r}
+fit %>% forecast(h = "2 years 6 months") %>% autoplot(cement)
+```

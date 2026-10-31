@@ -1,0 +1,33 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,matrix,backgrounds}
+
+\begin{document}
+\begin{tikzpicture}
+  \matrix [
+    matrix of nodes,
+    nodes in empty cells,
+    nodes={text width=1.5cm, align=center, minimum height=1.5em, anchor=center}
+  ] (m)
+  {
+                 & 1                     & $\pi_1L$            & $\pi^2_1L^2$          & $\pi^3_1L^3$          & $\cdots$ \\
+    1            & $1L^{0}$              & $\pi^1_1\pi^{0}_2L$ & $\pi^2_1\pi^{0}_2L^2$ & $\pi^3_1\pi^{0}_2L^3$ & $\cdots$ \\
+    $\pi_2L$     & $\pi^{0}_1\pi^1_2L$   & $\pi^1_1\pi^1_2L^2$ & $\pi^2_1\pi^1_2L^3$   & $\pi^3_1\pi^1_2L^4$   & $\cdots$ \\
+    $\pi^2_2L^2$ & $\pi^{0}_1\pi^2_2L^2$ & $\pi^1_1\pi^2_2L^3$ & $\pi^2_1\pi^1_2L^4$   & $\pi^3_1\pi^2_2L^5$   & $\cdots$ \\
+    $\pi^3_2L^3$ & $\pi^{0}_1\pi^3_2L^3$ & $\pi^1_1\pi^3_2L^4$ & $\pi^2_1\pi^3_2L^5$   & $\pi^3_1\pi^3_2L^6$   & $\cdots$ \\
+    $\vdots$     & $\vdots$              & $\vdots$            & $\vdots$              & $\vdots$              & $\ddots$ \\
+  };
+  \draw [thick] (m-1-1.south west) -- (m-1-6.south east);
+  \draw [thick] (m-1-1.north east) -- (m-6-1.south east);
+  \begin{scope}[on background layer]
+    \draw [-{Triangle[angle=60:1pt 3]},draw=blue!25!white,line width=1pt] (m-2-2.south west) -- (m-2-2.north east);
+    \draw [-{Triangle[angle=60:1pt 3]},draw=green!25!white,line width=1pt] (m-3-2.south west) -- (m-2-3.north east);
+    \draw [-{Triangle[angle=60:1pt 3]},draw=red!25!white,line width=1pt] (m-4-2.south west) -- (m-2-4.north east);
+    \draw [-{Triangle[angle=60:1pt 3]},draw=blue!25!white,line width=1pt] (m-5-2.south west) -- (m-2-5.north east);
+    \draw [-{Triangle[angle=60:1pt 3]},draw=green!25!white,line width=1pt] (m-6-2.south west) -- (m-2-6.north east);
+    \draw [-{Triangle[angle=60:1pt 3]},draw=red!25!white,line width=1pt] (m-6-3.south west) -- (m-3-6.north east);
+    \draw [-{Triangle[angle=60:1pt 3]},draw=blue!25!white,line width=1pt] (m-6-4.south west) -- (m-4-6.north east);
+    \draw [-{Triangle[angle=60:1pt 3]},draw=green!25!white,line width=1pt] (m-6-5.south west) -- (m-5-6.north east);
+  \end{scope}
+\end{tikzpicture}
+\end{document}
