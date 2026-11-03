@@ -5,7 +5,7 @@
 #set document(title: [Нестационарные и коинтегрированные временные ряды], author: "Зямалов В.Е.")
 #let margins = tschich-var(210mm, 297mm, 1 / 10)
 #let font-size = 14pt
-#show: neat-document.with(margin: margins, leading: 1em, fonts: (size: font-size))
+#show: neat-document.with(margin: margins, leading: 1em, size: font-size)
 #show: show-theorion
 #show: trinkets
 

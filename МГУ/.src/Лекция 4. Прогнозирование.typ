@@ -3,7 +3,9 @@
 #import "@local/neat-document:0.1.0": *
 #import "@local/trinkets:0.1.0": *
 #set document(title: [Прогнозирование], author: "Зямалов В.Е.")
-#show: neat-document.with(margin: tschich-var(210mm, 297mm, 1 / 10))
+#let margins = tschich-var(210mm, 297mm, 1 / 10)
+#let font-size = 14pt
+#show: neat-document.with(margin: margins, leading: 1em, size: font-size)
 #show: show-theorion
 #show: trinkets
 
@@ -97,8 +99,8 @@ $
 Для MA(q) рассуждения в целом аналогичны. Важно понимать, что *все* значения $epsilon_(t)$ вплоть до $t = T$ нам *известны*; они перестают быть случайными величинами и становятся _de facto_ константами. Таким образом
 $
       f_(T,h) & = cases(
-                  ... != alpha_(0) & h <=,
-                  alpha_(0) & h > q
+                  ... != alpha_(0)\, & thick h <= q,
+                  alpha_(0)\, & thick h > q
                 ) \
       e_(T,h) & = sum^(min {q,h })_(i = 0)beta_(i)epsilon_(T + h - i), & beta_(0) & = 1 \
   Var e_(T,h) & = sigma^(2)sum^(min {q,h })_(i = 0)beta^(2)_(i),       & beta_(0) & = 1

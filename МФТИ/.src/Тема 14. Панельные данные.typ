@@ -3,8 +3,11 @@
 #import "@local/neat-document:0.1.0": *
 #import "@local/trinkets:0.1.0": *
 #set document(title: [Панельные данные])
-#show: neat-document.with(margin: tschich-var(210mm, 297mm, 1 / 10))
+#let margins = tschich-var(210mm, 297mm, 1 / 10)
+#let font-size = 14pt
+#show: neat-document.with(margin: margins, leading: 1em, size: font-size)
 #show: show-theorion
+#show: trinkets
 
 Ранее мы с вами рассматривали
 - межобъектные данные, представляющие собой набор наблюдений для разных объектов в один момент времени#footnote[Либо для разных моментов, но при условии несущественности различий во времени.], и

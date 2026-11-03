@@ -4,8 +4,11 @@
 #import "@local/trinkets:0.1.0": *
 #set document(title: [Парная линейная регрессия])
 #set table(stroke: none, inset: 0.5em)
-#show: neat-document.with(margin: tschich-var(210mm, 297mm, 1 / 10))
+#let margins = tschich-var(210mm, 297mm, 1 / 10)
+#let font-size = 14pt
+#show: neat-document.with(margin: margins, leading: 1em, size: font-size)
 #show: show-theorion
+#show: trinkets
 
 После тестирования гипотез о равенстве средних нас может заинтересовать вопрос: как изменится одна из переменных при изменении какой-либо другой?
 Очевидным будет получение оценки следующего параметра

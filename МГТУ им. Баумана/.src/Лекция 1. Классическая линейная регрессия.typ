@@ -5,14 +5,13 @@
 #set document(title: [Классическая линейная модель и свойства МНК-оценок])
 #let margins = tschich-var(210mm, 297mm, 1 / 10)
 #let font-size = 14pt
-#show: neat-document.with(margin: margins, leading: 1em, fonts: (size: font-size))
+#show: neat-document.with(margin: margins, leading: 1em, size: font-size)
 #show: show-theorion
 #show: trinkets
 
 #let TSS = math.italic("TSS")
 #let ESS = math.italic("ESS")
 #let RSS = math.italic("RSS")
-
 
 = Модель парной линейной регрессии
 

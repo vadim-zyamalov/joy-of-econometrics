@@ -3,8 +3,11 @@
 #import "@local/neat-document:0.1.0": *
 #import "@local/trinkets:0.1.0": *
 #set document(title: [Теорема Гаусса-Маркова])
-#show: neat-document.with(margin: tschich-var(210mm, 297mm, 1 / 10))
+#let margins = tschich-var(210mm, 297mm, 1 / 10)
+#let font-size = 14pt
+#show: neat-document.with(margin: margins, leading: 1em, size: font-size)
 #show: show-theorion
+#show: trinkets
 
 Ранее мы рассмотрели три предпосылки МНК для парной линейной регрессии.
 Напомним:
