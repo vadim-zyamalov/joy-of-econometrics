@@ -88,7 +88,7 @@ $ Y_i = beta_0 + beta_1 X_i + beta_2 W_i + u_i $
     Ожидаемое изменение $Y$ — результат изменения $X$ при постоянстве $W$, т.е.
     $
       Ex & [Y vert X = x + Delta x,W = w] - Ex[Y vert X = x,W = w] = \
-         & = { beta_0 + beta_1 (x + Delta x) + beta_2 w + Ex [u vert X = x + Delta x, W = w ]} - \
+         & = { beta_0 + beta_1 (x + Delta x) + beta_2 w + Ex [u vert X = x + Delta x, W = w]} - \
          & #hide[x] - { beta_0 + beta_1 x + beta_2 w + Ex [u vert X = x,W = w] } = \
          & = beta_1 Delta x + { Ex[u vert X = x + Delta x,W = w] - Ex [u vert X = x,W = w]} = \
          & = beta_1 Delta x
@@ -304,7 +304,7 @@ $hat(beta)_1$ — смещенная и несостоятельная оцен�
   Имеем
   $
     hat(beta)^("TSLS")_1 & = frac(sum^N_(i = 1)(hat(x)_i - macron(x)) (y_i - macron(y)), sum^N_(i = 1)(hat(x)_i - macron(x))^2) = \
-    & = frac(sum^N_(i = 1)[ hat(pi)_1 (z_i - macron(z)) ] (y_i - macron(y)), sum^N_(i = 1)[ hat(pi)_1 (z_i - macron(z)) ]^2) = \
+    & = frac(sum^N_(i = 1)[hat(pi)_1 (z_i - macron(z))] (y_i - macron(y)), sum^N_(i = 1)[hat(pi)_1 (z_i - macron(z))]^2) = \
     & = frac(sum^N_(i = 1)(z_i - macron(z)) (y_i - macron(y)), hat(pi)_1 sum^N_(i = 1)(z_i - macron(z))^2) = \
     & = frac(sum^N_(i = 1)(z_i - macron(z))^2 sum^N_(i = 1)(z_i - macron(z)) (y_i - macron(y)), sum^N_(i = 1)(z_i - macron(z)) (x_i - macron(x)) sum^N_(i = 1)(z_i - macron(z))^2) = \
     & = frac(sum^N_(i = 1)(z_i - macron(z)) (y_i - macron(y)), sum^N_(i = 1)(z_i - macron(z)) (x_i - macron(x))) = frac(s_(z y), s_(z x))
@@ -317,7 +317,7 @@ $
   hat(beta)^("TSLS")_1 = frac(s_(z y), s_(z x))limits(arrow.r.long)^p frac(Cov (z_i,y_i), Cov (z_i,x_i)) = beta_(1)
 $
 На больших выборках $hat(beta)^("TSLS")_1 tilde.op N (beta_1,sigma^2_(hat(beta)^("TSLS")_1))$,
-$sigma^2_(hat(beta)^("TSLS")_1) = 1/n frac(Var[ (z_i - mu_z) u_i ], [Cov (z_i, x_i)]^2)$  $=>$ можем использовать $t$ - статистики и т.д.
+$sigma^2_(hat(beta)^("TSLS")_1) = 1/n frac(Var[(z_i - mu_z) u_i], [Cov (z_i, x_i)]^2)$  $=>$ можем использовать $t$ - статистики и т.д.
 
 == Обобщенная регрессия с инструментальными переменными
 
@@ -349,10 +349,10 @@ $
 / Шаг 1: "очистка" эндогенных переменных: оцениваем при помощи МНК регрессии *каждого* $x_(j i)$ на константу, все инструменты $z_(j i)$ и все экзогенные переменные $w_(j i)$.
   В результате получаем "очищенные" подобранные значения $hat(x)_(j i)$.
   На практике производится оценивание модели вида
-  $ XX = ZZ Vect(Pi) + Vect(e) $
-  где $XX = [ Vect(X),Vect(W) ]$ — матрица, включающая в себя эндогенные $Vect(X)$ и _экзогенные_ переменные $Vect(W)$ (в том числе свободный член); $ZZ = [ Vect(W),Vect(Z) ]$ — матрица, включающая в себя экзогенные (в том числе свободный член) и инструментальные переменные.
+  $ Vect(X)^(*) = Vect(Z)^(*) Vect(Pi) + Vect(e) $
+  где $Vect(X)^(*) = [Vect(X),Vect(W)]$ — матрица, включающая в себя эндогенные $Vect(X)$ и _экзогенные_ переменные $Vect(W)$ (в том числе свободный член); $Vect(Z)^(*) = [Vect(W),Vect(Z)]$ — матрица, включающая в себя экзогенные (в том числе свободный член) и инструментальные переменные.
   Включение экзогенных переменных в матрицу $Vect(X)$ не противоречит приведенному выше описанию первого шага, так как при получении МНК - оценок
-  $ hat(Vect(Pi)) = (ZZ' ZZ)^(-1)ZZ' XX $
+  $ hat(Vect(Pi)) = (Vect(Z)^(*prime) Vect(Z)^(*))^(-1)Vect(Z)^(*prime) Vect(X)^(*) $
   в соответствующем столбце матрицы оцененных коэффициентов $hat(Vect(Pi))$ будут нули с единственной единицей, соответствующей экзогенной переменной.
   Это видно на следующем простейшем примере#footnote[К сожалению, Numpy поддерживает и поощряет неаккуратное отношение
     к размерностям перемножаемых массивов. В частности, в нашем случае
@@ -369,49 +369,49 @@ $
   Обратите внимание на оцененные коэффициенты, близкие к заданным нами, в первом столбце и нули с единицами во втором и третьем столбцах.
   Подобранные значения равны
   $
-    hat(ZZ) = ZZ hat(Vect(Pi)) = ZZ (ZZ' ZZ)^(-1)ZZ' XX = Vect(P)_ZZ XX
+    hat(Vect(Z)^(*)) = Vect(Z)^(*) hat(Vect(Pi)) = Vect(Z)^(*) (Vect(Z)^(*prime) Vect(Z)^(*))^(-1)Vect(Z)^(*prime) Vect(X)^(*) = Vect(P)_Vect(Z)^(*) Vect(X)^(*)
   $
-  Отметим, что матрица $Vect(P)_ZZ$ симметрична и идемпотентна, то есть
+  Отметим, что матрица $Vect(P)_Vect(Z)^(*)$ симметрична и идемпотентна, то есть
   $
-    Vect(P)_ZZ Vect(P)_ZZ & = ZZ (ZZ' ZZ)^(-1)ZZ' ZZ (ZZ' ZZ)^(-1)ZZ' = \
-                          & = ZZ (ZZ' ZZ)^(-1)ZZ' = Vect(P)_ZZ
+    Vect(P)_Vect(Z)^(*) Vect(P)_Vect(Z)^(*) & = Vect(Z)^(*) (Vect(Z)^(*prime) Vect(Z)^(*))^(-1)Vect(Z)^(*prime) Vect(Z)^(*) (Vect(Z)^(*prime) Vect(Z)^(*))^(-1)Vect(Z)^(*prime) = \
+    & = Vect(Z)^(*) (Vect(Z)^(*prime) Vect(Z)^(*))^(-1)Vect(Z)^(*prime) = Vect(P)_Vect(Z)^(*)
   $
-  что интуитивно понятно: так как матрица $Vect(P)_ZZ$ дает проекцию на подпростанство, определяемое $ZZ$, то $Vect(P)_ZZ Vect(P)_ZZ$ является попыткой построить проекцию проекции, равную себе самой.
+  что интуитивно понятно: так как матрица $Vect(P)_Vect(Z)^(*)$ дает проекцию на подпростанство, определяемое $Vect(Z)^(*)$, то $Vect(P)_Vect(Z)^(*) Vect(P)_Vect(Z)^(*)$ является попыткой построить проекцию проекции, равную себе самой.
 
 / Шаг 2: при помощи МНК оцениваем
   $
     y_i = beta_0 + beta_1 hat(x)_(1 i) + dots.h.c + beta_(m_x)hat(x)_(m_x i) + beta_(m_x + 1)w_(1 i) + dots.h.c + beta_(k + r)w_(r i) + u_(i)
   $
   или
-  $ Vect(y) = hat(ZZ) Vect(beta) + Vect(u) $
+  $ Vect(y) = hat(Vect(Z))^(*) Vect(beta) + Vect(u) $
 
   С учетом сказанного выше оценка $hat(Vect(beta))^("TSLS")$ равна
   $
-    hat(Vect(beta))^("TSLS") & = (hat(XX)' hat(ZZ) )^(-1)hat(XX)' Vect(y) = \
-                             & = (XX' Vect(P)_ZZ XX )^(-1)XX' Vect(P)_ZZ Vect(y) = bigast
+    hat(Vect(beta))^("TSLS") & = (hat(Vect(X))^(*prime) hat(Vect(Z))^(*))^(-1)hat(Vect(X))^(*prime) Vect(y) = \
+    & = (Vect(X)^(*prime) Vect(P)_Vect(Z)^(*) Vect(X)^(*))^(-1)Vect(X)^(*prime) Vect(P)_Vect(Z)^(*) Vect(y) = bigast
   $
 
-  Если модель определена _точно_, то матрицы $XX' ZZ$ и $ZZ' XX$ квадратные и, следовательно, потенциально обратимые.
+  Если модель определена _точно_, то матрицы $Vect(X)^(*prime) Vect(Z)^(*)$ и $Vect(Z)^(*prime) Vect(X)^(*)$ квадратные и, следовательно, потенциально обратимые.
   В этом случае выражение для $hat(Vect(beta))^("TSLS")$ можно упростить
   $
-    bigast & = [ XX' ZZ (ZZ' ZZ)^(-1)ZZ' ZZ ]^(-1)XX' ZZ (ZZ' ZZ)^(-1)ZZ' Vect(y) = \
-           & = (ZZ' XX )^(-1)(ZZ' ZZ) (XX' ZZ)^(-1)(XX' ZZ) (ZZ' ZZ)^(-1)ZZ' Vect(y) = \
-           & = (ZZ' XX )^(-1)ZZ' Vect(y)
+    bigast & = [Vect(X)^(*prime) Vect(Z)^(*) (Vect(Z)^(*prime) Vect(Z)^(*))^(-1)Vect(Z)^(*prime) Vect(Z)^(*)]^(-1)Vect(X)^(*prime) Vect(Z)^(*) (Vect(Z)^(*prime) Vect(Z)^(*))^(-1)Vect(Z)^(*prime) Vect(y) = \
+    & = (Vect(Z)^(*prime) Vect(X)^(*))^(-1)(Vect(Z)^(*prime) Vect(Z)^(*)) (Vect(X)^(*prime) Vect(Z)^(*))^(-1)(Vect(X)^(*prime) Vect(Z)^(*)) (Vect(Z)^(*prime) Vect(Z)^(*))^(-1)Vect(Z)^(*prime) Vect(y) = \
+    & = (Vect(Z)^(*prime) Vect(X)^(*))^(-1)Vect(Z)^(*prime) Vect(y)
   $
 
   Ковариационная матрица $hat(Vect(beta))^("TSLS")$ примерно равна @cyplakov2007ekskurs
   $
-    Var hat(Vect(beta))^("TSLS")approx hat(sigma)^2_u (hat(XX)' hat(ZZ) )^(-1) = hat(sigma)^2_u (XX' Vect(P)_ZZ XX )^(-1)
+    Var hat(Vect(beta))^("TSLS") approx hat(sigma)^2_u (hat(Vect(X))^(*prime) hat(Vect(Z))^(*))^(-1) = hat(sigma)^2_u (Vect(X)^(*prime) Vect(P)_Vect(Z)^(*) Vect(X)^(*))^(-1)
   $
   где $hat(sigma)^2_u$ — оценка дисперсии $Var[u]_t$.
-  Для оценивания $hat(sigma)^2_u$ нельзя использовать остатки второго шага 2МНК, остатки нужно рассчитывать самостоятельно как $hat(Vect(u)) = Vect(y) - XX hat(Vect(beta))^("TSLS")$.
+  Для оценивания $hat(sigma)^2_u$ нельзя использовать остатки второго шага 2МНК, остатки нужно рассчитывать самостоятельно как $hat(Vect(u)) = Vect(y) - Vect(X)^(*) hat(Vect(beta))^("TSLS")$.
 
   На больших выборках имеем
   $
-    hat(Vect(beta))^("TSLS") & = (XX' Vect(P)_ZZ XX )^(-1)XX' Vect(P)_ZZ (XX Vect(beta) + Vect(u)) = Vect(beta) + (XX' Vect(P)_ZZ XX )^(-1)XX' Vect(P)_ZZ Vect(u) \
-    1/n XX' Vect(P)_ZZ XX & limits(limits(arrow.r.long)^p)_(n - > infinity) Vect(Sigma)_(hat(X)) \
-    1/n XX' Vect(P)_ZZ Vect(u) & limits(limits(arrow.r.long)^p)_(n - > infinity) Vect(Sigma)_(hat(X) u) = Vect(0) \
-    hat(Vect(beta))^("TSLS") & limits(limits(arrow.r.long)^p)_(n - > infinity) = Vect(beta)
+    hat(Vect(beta))^("TSLS") & = (Vect(X)^(*prime) Vect(P)_Vect(Z)^(*) Vect(X)^(*))^(-1)Vect(X)^(*prime) Vect(P)_Vect(Z)^(*) (Vect(X)^(*) Vect(beta) + Vect(u)) = Vect(beta) + (Vect(X)^(*prime) Vect(P)_Vect(Z)^(*) Vect(X)^(*))^(-1)Vect(X)^(*prime) Vect(P)_Vect(Z)^(*) Vect(u) \
+    1/n Vect(X)^(*prime) Vect(P)_Vect(Z)^(*) Vect(X)^(*) & limits(limits(arrow.r.long)^p)_(n -> infinity) Vect(Sigma)_(hat(X)) \
+    1/n Vect(X)^(*prime) Vect(P)_Vect(Z)^(*) Vect(u) & limits(limits(arrow.r.long)^p)_(n -> infinity) Vect(Sigma)_(hat(X) u) = Vect(0) \
+    hat(Vect(beta))^("TSLS") & limits(limits(arrow.r.long)^p)_(n -> infinity) Vect(beta)
   $
 
 === Предположения обобщенной регрессии с инструментальными переменными
@@ -429,9 +429,9 @@ $
 
 Для тестирования гипотез о коэффициентах, в силу того, что оценки имеют асимптотически нормальное распределение, можно использовать статистику Вальда @cyplakov2007ekskurs
 $
-  W = (Vect(R) Vect(beta)_"IV" - Vect(r))^(prime)[ Vect(R) hat(Var) (Vect(beta)_"IV") Vect(R)^(prime) ]^(-1)(Vect(R) Vect(beta)_"IV" - Vect(r)) tilde chi^2_(r)
+  W = (Vect(R) Vect(beta)_"IV" - Vect(r))^(prime)[Vect(R) hat(Var) (Vect(beta)_"IV") Vect(R)^(prime)]^(-1)(Vect(R) Vect(beta)_"IV" - Vect(r)) tilde chi^2_(r)
 $
-где $hat(Var) (hat(Vect(beta))_"IV") = hat(sigma)^2_u (XX' Vect(P)_ZZ XX )^(-1) = hat(sigma)^2_u (hat(XX)' hat(XX) )^(-1)$, $r$ — число ограничений.
+где $hat(Var) (hat(Vect(beta))_"IV") = hat(sigma)^2_u (Vect(X)^(*prime) Vect(P)_Vect(Z)^(*) Vect(X)^(*))^(-1) = hat(sigma)^2_u (hat(Vect(X))^(*prime) hat(Vect(X))^(*))^(-1)$, $r$ — число ограничений.
 
 Если $r = 1$, то удобнее воспользоваться z - статистикой, имеющей асимптотически нормальное распределение.
 Например, для гипотезы $beta_j = beta^(*)_j$
@@ -443,7 +443,7 @@ $ z = frac(beta_j - beta^(*)_j, sqrt(hat(Var) (Vect(beta)_"IV")_(j j))) tilde.op
 В этом случае, записав регрессии первого шага как
 $ Vect(x) = Vect(z)^(*)Vect(Pi) + Vect(v) $
 где $Vect(x)$, $Vect(z)^(*)$, $Vect(v)$ — соответствующие друг-другу строки соответствующих матриц.
-Отсюда следует, что если $Vect(x)$ не коррелирует с $u$, то $Ex [ Vect(v) u ] = Vect(0)$.
+Отсюда следует, что если $Vect(x)$ не коррелирует с $u$, то $Ex [Vect(v) u] = Vect(0)$.
 Из последнего следует, что в модели
 $ u = Vect(v) Vect(tau) + zeta $
 $Vect(tau) = Vect(0)$.
@@ -453,8 +453,8 @@ $
 $
 
 Таким образом, тестирование спецификации можно провести по следующей процедуре @cyplakov2007ekskurs:
-+ Оценим регрессию $Vect(X)$ на $ZZ$ и получаем остатки $hat(Vect(V)) = Vect(M)_(ZZ)Vect(X)$;
-+ Строим регрессию $Vect(y) = XX Vect(beta) + hat(Vect(V)) Vect(tau) + Vect(zeta)$ и тестируем при помощи стандартной F - статистики гипотезу $Vect(tau) = Vect(0)$.
++ Оценим регрессию $Vect(X)$ на $Vect(Z)^(*)$ и получаем остатки $hat(Vect(V)) = Vect(M)_(Vect(Z)^(*))Vect(X)$;
++ Строим регрессию $Vect(y) = Vect(X)^(*) Vect(beta) + hat(Vect(V)) Vect(tau) + Vect(zeta)$ и тестируем при помощи стандартной F - статистики гипотезу $Vect(tau) = Vect(0)$.
   Если мы не можем отвергнуть эту гипотезу, то следует использовать обычный МНК.
 
 В изначальном своем виде статистика теста имеет вид @hausman1978specification
@@ -468,8 +468,8 @@ $
 
 Оценки ковариационных матриц можно рассчитать по формулам
 $
-  hat(Var) (hat(Vect(beta))_"OLS") & = hat(sigma)^2_u (XX' XX )^(-1) \
-   hat(Var) (hat(Vect(beta))_"IV") & = hat(sigma)^2_u (XX' Vect(P)_ZZ XX )^(-1) = hat(sigma)^2_u (hat(XX)' hat(XX) )^(-1)
+  hat(Var) (hat(Vect(beta))_"OLS") & = hat(sigma)^2_u (Vect(X)^(*prime) Vect(X)^(*))^(-1) \
+  hat(Var) (hat(Vect(beta))_"IV") & = hat(sigma)^2_u (Vect(X)^(*prime) Vect(P)_Vect(Z)^(*) Vect(X)^(*))^(-1) = hat(sigma)^2_u (hat(Vect(X))^(*prime) hat(Vect(X))^(*))^(-1)
 $
 где $hat(sigma)^2_u$ — оценка дисперсии ошибок, рассчитанная либо на основе МНК оценок (что является более предпочтительным способом), либо на основе IV-оценок.
 
@@ -483,10 +483,10 @@ $
 Если же эндогенных инструментов _больше_ одного, то рассмотрения отдельных регрессий первого шага может оказаться недостаточно.
 Для этого случая Крэг и Дональд @cragg1993testing предложили рассматривать собственные значения следующей матрицы @cyplakov2007ekskurs:
 $
-  hat(Vect(Sigma))^( - 1 slash 2)_(e e)Vect(X)^(prime)(Vect(M)_(Vect(W)) - Vect(M)_(ZZ)) Vect(X) hat(Vect(Sigma))^( - 1 slash 2)_(e e) slash m
+  hat(Vect(Sigma))^( - 1 slash 2)_(e e)Vect(X)^(prime)(Vect(M)_(Vect(W)) - Vect(M)_(Vect(Z)^(*))) Vect(X) hat(Vect(Sigma))^( - 1 slash 2)_(e e) slash m
   #<eq-ch-1>
 $
-где $hat(Vect(Sigma))_(e e) = display(frac(Vect(X)^(prime)Vect(M)_(ZZ)Vect(X), N - (m_z + m_w)))$
+где $hat(Vect(Sigma))_(e e) = display(frac(Vect(X)^(prime)Vect(M)_(Vect(Z)^(*))Vect(X), N - (m_z + m_w)))$
 — ковариационная матрица регрессий первого шага 2МНК, не включающих экзогенные регрессоры в качестве объясняемых переменных.
 В работе Стока и Його @stock2005testing приведена эквивалентная формула
 $
@@ -498,11 +498,11 @@ $
 
 === Тестирование сверхидентифицирующих ограничений — тест Саргана
 
-Пусть $hat(u)^("TSLS")_i$ — остатки 2МНК регрессии, полученные с использованием $XX$,
+Пусть $hat(u)^("TSLS")_i$ — остатки 2МНК регрессии, полученные с использованием $Vect(X)^(*)$,
 $ hat(Vect(u))^("TSLS") = Vect(y) - Vect(X) hat(Vect(beta))^("TSLS") $
 Оценим вспомогательную регрессию
 $
-  hat(Vect(u))^("TSLS") = ZZ mat(
+  hat(Vect(u))^("TSLS") = Vect(Z)^(*) mat(
     delim: "(", Vect(gamma);
     Vect(delta)
   ) + Vect(e) = Vect(W) Vect(gamma) + Vect(Z) Vect(delta) + Vect(e)
@@ -521,39 +521,46 @@ $ J = T R^2 tilde chi^2 (m_z - m_x) $
 
 #bibliography("bibliography.bib")
 
+#pagebreak()
+
 #show: appendix
+#show: landscape
 
 = Доказательство эквивалентности формул @eq-ch-1 и @eq-ch-2
 
 В данных формулах множитель $hat(Vect(Sigma))^( - 1 slash 2)_(e e)$ совпадает, поэтому, для краткости, опустим его.
 Рассмотрим
-$ Vect(M)_(Vect(W)) - Vect(M)_(ZZ) = Vect(P)_ZZ - Vect(P)_W $
+$ Vect(M)_(Vect(W)) - Vect(M)_(Vect(Z)^(*)) = Vect(P)_Vect(Z)^(*) - Vect(P)_W $
 Значение $Vect(P)_W$ найти очень легко
 $ Vect(P)_W = Vect(W) (Vect(W)^(prime)Vect(W))^(-1)Vect(W)^(prime) $
-Рассмотрим $P_Z$ $ Vect(P)_ZZ & = ZZ (ZZ' ZZ)^(-1)ZZ' = \
-& = mat(delim: "(", Vect(W), Vect(Z)) mat(
-  delim: "(", Vect(W)^(prime)Vect(W), Vect(W)^(prime)Vect(Z);
-  Vect(Z)^(prime)Vect(W), Vect(Z)^(prime)Vect(Z)
-)^(-1)mat(
-  delim: "(", Vect(W)^(prime);
-  Vect(Z)^(prime)
-) = \
-& = mat(delim: "(", Vect(W), Vect(Z)) mat(
-  delim: "(", (Vect(W)^(prime)Vect(W))^(-1) + (Vect(W)^(prime)Vect(W))^(-1)Vect(W)^(prime)Vect(Z) (Vect(Z)^(prime)Vect(M)_(Vect(W))Vect(Z))^(-1)Vect(Z)^(prime)Vect(W) (Vect(W)^(prime)Vect(W))^(-1), - (Vect(W)^(prime)Vect(W))^(-1)Vect(W)^(prime)Vect(Z) (Vect(Z)^(prime)Vect(M)_(Vect(W))Vect(Z))^(-1);
-  - (Vect(Z)^(prime)Vect(M)_(Vect(W))Vect(Z))^(-1)Vect(Z)^(prime)Vect(W) (Vect(W)^(prime)Vect(W))^(-1), (Vect(Z)^(prime)Vect(M)_(Vect(W))Vect(Z))^(-1)
-) mat(
-  delim: "(", Vect(W)^(prime);
-  Vect(Z)^(prime)
-) = \
-& = Vect(W) (Vect(W)^(prime)Vect(W))^(-1)Vect(W)^(prime) + Vect(W) (Vect(W)^(prime)Vect(W))^(-1)Vect(W)^(prime)Vect(Z) (Vect(Z)^(prime)Vect(M)_(Vect(W))Vect(Z))^(-1)Vect(Z)^(prime)Vect(W) (Vect(W)^(prime)Vect(W))^(-1)Vect(W)^(prime) - Vect(Z) (Vect(Z)^(prime)Vect(M)_(Vect(W))Vect(Z))^(-1)Vect(Z)^(prime)Vect(W) (Vect(W)^(prime)Vect(W))^(-1)Vect(W)^(prime) - \
-& #hide[$ = $] - Vect(W) (Vect(W)^(prime)Vect(W))^(-1)Vect(W) Vect(Z) (Vect(Z)^(prime)Vect(M)_(Vect(W))Vect(Z))^(-1)Vect(Z)^(prime) + Vect(Z) (Vect(Z)^(prime)Vect(M)_(Vect(W))Vect(Z))^(-1)Vect(Z)^(prime) $
+Рассмотрим $P_Z$
 $
-  Vect(M)_(Vect(W)) - Vect(M)_(ZZ) & = Vect(W) (Vect(W)^(prime)Vect(W))^(-1)Vect(W)^(prime)Vect(Z) (Vect(Z)^(prime)Vect(M)_(Vect(W))Vect(Z))^(-1)Vect(Z)^(prime)Vect(W) (Vect(W)^(prime)Vect(W))^(-1)Vect(W)^(prime) - Vect(Z) (Vect(Z)^(prime)Vect(M)_(Vect(W))Vect(Z))^(-1)Vect(Z)^(prime)Vect(W) (Vect(W)^(prime)Vect(W))^(-1)Vect(W)^(prime) - \
+  Vect(P)_Vect(Z)^(*) & = Vect(Z)^(*) (Vect(Z)^(*prime) Vect(Z)^(*))^(-1)Vect(Z)^(*prime) = \
+  & = mat(delim: "(", Vect(W), Vect(Z)) mat(
+    delim: "(", Vect(W)^(prime)Vect(W), Vect(W)^(prime)Vect(Z);
+    Vect(Z)^(prime)Vect(W), Vect(Z)^(prime)Vect(Z)
+  )^(-1)mat(
+    delim: "(", Vect(W)^(prime);
+    Vect(Z)^(prime)
+  ) = \
+  & = mat(delim: "(", Vect(W), Vect(Z)) mat(
+    delim: "(", (Vect(W)^(prime)Vect(W))^(-1) + (Vect(W)^(prime)Vect(W))^(-1)Vect(W)^(prime)Vect(Z) (Vect(Z)^(prime)Vect(M)_(Vect(W))Vect(Z))^(-1)Vect(Z)^(prime)Vect(W) (Vect(W)^(prime)Vect(W))^(-1), - (Vect(W)^(prime)Vect(W))^(-1)Vect(W)^(prime)Vect(Z) (Vect(Z)^(prime)Vect(M)_(Vect(W))Vect(Z))^(-1);
+    - (Vect(Z)^(prime)Vect(M)_(Vect(W))Vect(Z))^(-1)Vect(Z)^(prime)Vect(W) (Vect(W)^(prime)Vect(W))^(-1), (Vect(Z)^(prime)Vect(M)_(Vect(W))Vect(Z))^(-1)
+  ) mat(
+    delim: "(", Vect(W)^(prime);
+    Vect(Z)^(prime)
+  ) = \
+  & = Vect(W) (Vect(W)^(prime)Vect(W))^(-1)Vect(W)^(prime) + Vect(W) (Vect(W)^(prime)Vect(W))^(-1)Vect(W)^(prime)Vect(Z) (Vect(Z)^(prime)Vect(M)_(Vect(W))Vect(Z))^(-1)Vect(Z)^(prime)Vect(W) (Vect(W)^(prime)Vect(W))^(-1)Vect(W)^(prime) - Vect(Z) (Vect(Z)^(prime)Vect(M)_(Vect(W))Vect(Z))^(-1)Vect(Z)^(prime)Vect(W) (Vect(W)^(prime)Vect(W))^(-1)Vect(W)^(prime) - \
+  & #hide[$ = $] - Vect(W) (Vect(W)^(prime)Vect(W))^(-1)Vect(W) Vect(Z) (Vect(Z)^(prime)Vect(M)_(Vect(W))Vect(Z))^(-1)Vect(Z)^(prime) + Vect(Z) (Vect(Z)^(prime)Vect(M)_(Vect(W))Vect(Z))^(-1)Vect(Z)^(prime)
+$
+$
+  Vect(M)_(Vect(W)) - Vect(M)_(Vect(Z)^(*)) & = Vect(W) (Vect(W)^(prime)Vect(W))^(-1)Vect(W)^(prime)Vect(Z) (Vect(Z)^(prime)Vect(M)_(Vect(W))Vect(Z))^(-1)Vect(Z)^(prime)Vect(W) (Vect(W)^(prime)Vect(W))^(-1)Vect(W)^(prime) - Vect(Z) (Vect(Z)^(prime)Vect(M)_(Vect(W))Vect(Z))^(-1)Vect(Z)^(prime)Vect(W) (Vect(W)^(prime)Vect(W))^(-1)Vect(W)^(prime) - \
   & #hide[$ = $] - Vect(W) (Vect(W)^(prime)Vect(W))^(-1)Vect(W) Vect(Z) (Vect(Z)^(prime)Vect(M)_(Vect(W))Vect(Z))^(-1)Vect(Z)^(prime) + Vect(Z) (Vect(Z)^(prime)Vect(M)_(Vect(W))Vect(Z))^(-1)Vect(Z)^(prime) = \
   & = Vect(M)_(Vect(W))Vect(Z) (Vect(Z)^(prime)Vect(M)_(Vect(W))Vect(Z))^(-1)Vect(Z)^(prime) - Vect(M)_(Vect(W))Vect(Z) (Vect(Z)^(prime)Vect(M)_(Vect(W))Vect(Z))^(-1)Vect(Z)^(prime)Vect(P)_W = \
   & = Vect(M)_(Vect(W))Vect(Z) (Vect(Z)^(prime)Vect(M)_(Vect(W))Vect(Z))^(-1)Vect(Z)^(prime)Vect(M)_(Vect(W)) = \
   & = Vect(M)_(Vect(W))Vect(Z)^(perp)(Vect(Z)^(perp prime)Vect(Z)^(perp))^(-1)Vect(Z)^(perp prime)Vect(M)_(Vect(W)) = \
   & = Vect(M)_(Vect(W))Vect(P)_(Z^(perp))Vect(M)_(Vect(W)) #<eq-ch-3>
 $
+
 Последние преобразования основаны на свойстве идемпотентности матрицы $Vect(M)_(Vect(W))$.
 Если подставить @eq-ch-3 в @eq-ch-1 мы получим @eq-ch-2.
